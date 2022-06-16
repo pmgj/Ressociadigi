@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>Cadastro de Apenado</title>
+    <meta charset="UTF-8" />
+</head>
+
+<body>
+    <h1>Apenado</h1>
+    <form action="#" th:action="@{/apenado}" th:object="${apenado}" method="post">
+        <table>
+            <tr>
+                <td>CPF:</td>
+                <td><input type="text" th:field="*{cpf}" /></td>
+                <td th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf'}">Erro no CPF</td>
+            </tr>
+            <tr>
+                <td>Nome:</td>
+                <td><input type="text" th:field="*{nome}" /></td>
+                <td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Erro no Nome</td>
+            </tr>
+            <tr>
+                <td>Data de Nascimento:</td>
+                <td><input type="date" th:field="*{dataNascimento}" /></td>
+                <td th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}">Erro na Data de Nascimento</td>
+            </tr>
+            <tr>
+                <td><button type="submit">Submit</button><input type="reset" value="Reset" /></td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

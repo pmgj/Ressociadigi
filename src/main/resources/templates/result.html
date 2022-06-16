@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>Mostrando Dados</title>
+    <meta charset="UTF-8" />
+</head>
+
+<body>
+    <h1>Resultado</h1>
+    <p th:text="'CPF: ' + ${apenado.cpf}" />
+    <p th:text="'Nome: ' + ${apenado.nome}" />
+    <p th:text="'Data de Nascimento: ' + ${apenado.dataNascimento}" />
+    <a href="/apenado">Submit another message</a>
+</body>
+
+</html>
