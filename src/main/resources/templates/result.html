@@ -7,11 +7,26 @@
 </head>
 
 <body>
-    <h1>Resultado</h1>
-    <p th:text="'CPF: ' + ${apenado.cpf}" />
-    <p th:text="'Nome: ' + ${apenado.nome}" />
-    <p th:text="'Data de Nascimento: ' + ${apenado.dataNascimento}" />
-    <a href="/apenado">Submit another message</a>
+    <table>
+        <caption>Banco de Talentos</caption>
+        <thead>
+            <tr>
+                <th>CPF</th>
+                <th>Nome</th>
+                <th>Data de Nascimento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${lista.empty}">
+                <td colspan="3">Nenhum registro armazenado.</td>
+            </tr>
+            <tr th:each="item : ${lista}">
+                <td><span th:text="${item.cpf}">CPF</span></td>
+                <td><span th:text="${item.nome}">Nome</span></td>
+                <td><span th:text="${item.dataNascimento}">Data de Nascimento</span></td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 
 </html>

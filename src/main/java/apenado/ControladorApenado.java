@@ -1,7 +1,8 @@
-package com.example.restservice;
+package apenado;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class ControladorApenado {
 
+    @Autowired
+    private ServicoApenado service;
+
     @GetMapping("/apenado")
     public String greetingForm(Model model) {
         model.addAttribute("apenado", new Apenado());
@@ -18,11 +22,13 @@ public class ControladorApenado {
     }
 
     @PostMapping("/apenado")
-    public String greetingSubmit(@Valid Apenado greeting, BindingResult bindingResult, Model model) {
+    public String inserirApenado(@Valid Apenado apenado, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "apenado";
         }
-        model.addAttribute("apenado", greeting);
+        service.inserirApenado(apenado);
+        model.addAttribute("apenado", apenado);
+        model.addAttribute("lista", service.listarApenados());
         return "result";
     }
 }

@@ -1,4 +1,4 @@
-package com.example.restservice;
+package apenado;
 
 import java.util.List;
 
@@ -10,5 +10,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface RepositorioApenado extends PagingAndSortingRepository<Apenado, String> {
 
     List<Apenado> findByNome(@Param("nome") String nome);
-
+    List<Apenado> findAll();
 }

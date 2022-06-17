@@ -1,4 +1,4 @@
-package com.example.restservice;
+package apenado;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
