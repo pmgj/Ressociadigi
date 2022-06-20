@@ -8,7 +8,7 @@
 
 <body>
     <h1>Apenado</h1>
-    <form action="#" th:action="@{/apenado}" th:object="${apenado}" method="post">
+    <form action="#" th:action="@{/armazenarApenado}" th:object="${apenado}" method="post">
         <table>
             <tr>
                 <td>CPF:</td>
@@ -29,6 +29,7 @@
                 <td><button type="submit">Submit</button><input type="reset" value="Reset" /></td>
             </tr>
         </table>
+        <p><a th:href="@{/listarApenados}">Voltar para a lista</a></p>
     </form>
 </body>
 

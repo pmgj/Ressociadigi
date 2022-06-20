@@ -11,6 +11,7 @@
         <caption>Banco de Talentos</caption>
         <thead>
             <tr>
+                <th><a th:href="@{/inserirApenadoForm}">Incluir</a></th>
                 <th>CPF</th>
                 <th>Nome</th>
                 <th>Data de Nascimento</th>
@@ -18,9 +19,13 @@
         </thead>
         <tbody>
             <tr th:if="${lista.empty}">
-                <td colspan="3">Nenhum registro armazenado.</td>
+                <td colspan="4">Nenhum registro armazenado.</td>
             </tr>
             <tr th:each="item : ${lista}">
+                <td>
+                    <a th:href="@{/alterarApenadoForm(cpf=${item.cpf})}">Atualizar</a>
+                    <a th:href="@{/removerApenado(cpf=${item.cpf})}">Remover</a>
+                </td>
                 <td><span th:text="${item.cpf}">CPF</span></td>
                 <td><span th:text="${item.nome}">Nome</span></td>
                 <td><span th:text="${item.dataNascimento}">Data de Nascimento</span></td>
