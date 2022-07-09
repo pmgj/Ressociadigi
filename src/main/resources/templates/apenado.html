@@ -5,32 +5,109 @@
     <title>Cadastro de Apenado</title>
     <meta charset="UTF-8" />
 </head>
-
 <body>
-    <h1>Apenado</h1>
-    <form action="#" th:action="@{/armazenarApenado}" th:object="${apenado}" method="post">
-        <table>
-            <tr>
-                <td>CPF:</td>
-                <td><input type="text" th:field="*{cpf}" /></td>
-                <td th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}">Erro no CPF</td>
-            </tr>
-            <tr>
-                <td>Nome:</td>
-                <td><input type="text" th:field="*{nome}" /></td>
-                <td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Erro no Nome</td>
-            </tr>
-            <tr>
-                <td>Data de Nascimento:</td>
-                <td><input type="date" th:field="*{dataNascimento}" /></td>
-                <td th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}">Erro na Data de Nascimento</td>
-            </tr>
-            <tr>
-                <td><button type="submit">Submit</button><input type="reset" value="Reset" /></td>
-            </tr>
-        </table>
-        <p><a th:href="@{/listarApenados}">Voltar para a lista</a></p>
-    </form>
+    <main>
+
+        <nav id="menu-lateral">
+            <ul>
+                <li class="topicos" id="dadosPessoais">Dados pessoais</li>
+                <li class="topicos" id="endereco">Endereço</li>
+                <li class="topicos" id="instrucao">Instrução</li>
+                <li class="topicos" id="situacional">Situacional</li>
+            </ul>
+        </nav>
+
+        <section id="conteudo-formulario">
+            <form action="">
+
+                <div id="Cabeçalho-form">
+                    <h1>Dados Pessoais</h1>
+                </div>
+
+                <div class="input-box">
+                    <input type="text" id="nome" required = "required">
+                    <span>Nome completo</span>
+                    <!--dependendo do estilo de input que vamos desenvolver ficaria
+                    mais facil usar o "span" no lugar do label-->
+                </div>
+    
+                <div>
+                    <label for="data">Data de nascimento</label>
+                    <input type="date" id="data">
+                </div>
+
+                <div class="input-box">
+                    <input type="text" id="cpf" required = "required">
+                    <span>CPF</span> 
+                </div>
+
+                <div class="input-box">  
+                    <input type="text" id="email" required = "required">
+                    <span>E-mail</span>
+                </div>
+
+                <div >
+                    <label for="telefone">Telefone</label>
+                    <input type="number" id="telefone">
+                </div>
+
+                <div>
+                    <label for="cnh">CNH</label>
+                    <input type="number" id="cnh">
+                </div>
+
+                <div>
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email">
+                </div>
+
+                <div>
+                    <label for="sexo-bio">Sexo biologico</label>
+                    <input type="text" id="sexo-bio" list="opcoes" placeholder="Sexo biologico">
+                    <datalist id="opcoes">
+                        <option value="Masculino">
+                        <option value="Feminino">
+                    </datalist>
+                </div>
+
+                <div>
+                    <label for="sexo-bio">Orientação sexual</label>
+                    <input type="text" id="sexo-bio" list="opcoes2" placeholder="Orientação sexual">
+                    <datalist id="opcoes2">
+                        <option value="Heterossexual">
+                        <option value="Homossexual">
+                        <option value="Bissexual"></option>
+                        <option value="Assexual"></option>
+                        <option value="Pansexual"></option>
+                    </datalist>
+                </div>
+
+                <div>
+                    <label for="estadoCivil">Estado civil</label>
+                    <input type="text" id="estadoCivil" list="opcoes3" placeholder="Estado civil">
+                    <datalist id="opcoes3">
+                        <option value="Solteiro">
+                        <option value="Casado">
+                        <option value="Divorciado"></option>
+                    </datalist>
+                </div>
+
+                <div>
+                    <label for="filhos">filhos</label>
+                    <input type="number" id="filhos" list="opcoes4" placeholder="filhos">
+                    <datalist id="opcoes4">
+                       <option value="1"></option>
+                       <option value="2"></option>
+                       <option value="3"></option>
+                       <option value="4"></option>
+                       <option value="mais"></option>
+                    </datalist>
+                </div>
+            </form>
+
+        </section>
+
+    </main>
 </body>
 
 </html>
