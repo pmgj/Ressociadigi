@@ -1,114 +1,387 @@
-<!DOCTYPE HTML>
-<html xmlns:th="https://www.thymeleaf.org">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Cadastro de Apenado</title>
-    <meta charset="UTF-8" />
-</head>
-<body>
-    <main>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <script>
+        function exibirTelaInicial(){
+            let endereco = document.getElementById("grupo-input-endereco")
+            let instrucao = document.getElementById("grupo-input-instrucao")
+            let situacional = document.getElementById("grupo-input-sitacional")
+            let pessoais = document.getElementById("grupo-input-pessoais")
 
+            let titulo = document.getElementById("titulox").innerHTML = "Dados Pessoais"
+
+            let navMenu = document.getElementsByTagName("li");
+            navMenu[1].style.borderLeft = "none"
+            navMenu[1].style.color = "rgba(26, 24, 24, 0.4)"
+            navMenu[1].style.padding = "0"
+
+            navMenu[1].style.borderLeft = "none"
+            navMenu[1].style.color = "rgba(26, 24, 24, 0.4)"
+            navMenu[1].style.padding = "0"
+
+            navMenu[3].style.borderLeft = "none"
+            navMenu[3].style.color = "rgba(26, 24, 24, 0.4)"
+            navMenu[3].style.padding = "0"
+
+            navMenu[0].style.borderLeft = "solid 3px rgba(246, 130, 31, 1)";
+            navMenu[0].style.paddingLeft = "8px"
+            navMenu[0].style.color = "black"
+
+            endereco.style.display = "none";
+            instrucao.style.display = "none";
+            situacional.style.display = "none";
+
+            pessoais.style.display = "";
+        }
+
+        function exibirTelaEndereco(){
+            let endereco = document.getElementById("grupo-input-endereco")
+            let instrucao = document.getElementById("grupo-input-instrucao")
+            let situacional = document.getElementById("grupo-input-sitacional")
+            let pessoais = document.getElementById("grupo-input-pessoais")
+
+            let titulo = document.getElementById("titulox")
+            titulo.innerText = "Endereço";
+            
+            let navMenu = document.getElementsByTagName("li");
+            navMenu[0].style.borderLeft = "none"
+            navMenu[0].style.color = "rgba(26, 24, 24, 0.4)"
+            navMenu[0].style.padding = "0"
+
+            navMenu[2].style.borderLeft = "none"
+            navMenu[2].style.color = "rgba(26, 24, 24, 0.4)"
+            navMenu[2].style.padding = "0"
+
+            navMenu[3].style.borderLeft = "none"
+            navMenu[3].style.color = "rgba(26, 24, 24, 0.4)"
+            navMenu[3].style.padding = "0"
+
+            navMenu[1].style.borderLeft = "solid 3px rgba(246, 130, 31, 1)";
+            navMenu[1].style.paddingLeft = "8px"
+            navMenu[1].style.color = "black"
+
+            endereco.style.display = "";
+            instrucao.style.display = "none";
+            situacional.style.display = "none";
+
+            pessoais.style.display = "none"
+        }
+
+        function exibirTelaInstrucao(){
+            let endereco = document.getElementById("grupo-input-endereco")
+            let instrucao = document.getElementById("grupo-input-instrucao")
+            let situacional = document.getElementById("grupo-input-sitacional")
+            let pessoais = document.getElementById("grupo-input-pessoais")
+
+            let titulo = document.getElementById("titulox").innerText = "Instrução"
+
+            let navMenu = document.getElementsByTagName("li");
+            navMenu[1].style.borderLeft = "none"
+            navMenu[1].style.color = "rgba(26, 24, 24, 0.4)"
+            navMenu[1].style.padding = "0"
+
+            navMenu[0].style.borderLeft = "none"
+            navMenu[0].style.color = "rgba(26, 24, 24, 0.4)"
+            navMenu[0].style.padding = "0"
+
+            navMenu[3].style.borderLeft = "none"
+            navMenu[3].style.color = "rgba(26, 24, 24, 0.4)"
+            navMenu[3].style.padding = "0"
+
+            navMenu[2].style.borderLeft = "solid 3px rgba(246, 130, 31, 1)";
+            navMenu[2].style.paddingLeft = "8px"
+            navMenu[2].style.color = "black"
+
+            endereco.style.display = "none";
+            instrucao.style.display = "";
+            situacional.style.display = "none";
+
+            pessoais.style.display = "none"
+        }
+
+        function exibirTelaSituacional(){
+            let endereco = document.getElementById("grupo-input-endereco")
+            let instrucao = document.getElementById("grupo-input-instrucao")
+            let situacional = document.getElementById("grupo-input-sitacional")
+            let pessoais = document.getElementById("grupo-input-pessoais")
+
+            let titulo = document.getElementById("titulox").innerText = "Situacional"
+
+
+            let navMenu = document.getElementsByTagName("li");
+            navMenu[0].style.borderLeft = "none"
+            navMenu[0].style.color = "rgba(26, 24, 24, 0.4)"
+            navMenu[0].style.padding = "0"
+
+            navMenu[1].style.borderLeft = "none"
+            navMenu[1].style.color = "rgba(26, 24, 24, 0.4)"
+            navMenu[1].style.padding = "0"
+
+            navMenu[2].style.borderLeft = "none"
+            navMenu[2].style.color = "rgba(26, 24, 24, 0.4)"
+            navMenu[2].style.padding = "0"
+
+            navMenu[3].style.borderLeft = "solid 3px rgba(246, 130, 31, 1)";
+            navMenu[3].style.paddingLeft = "8px"
+            navMenu[3].style.color = "black"
+
+            endereco.style.display = "none";
+            instrucao.style.display = "none";
+            situacional.style.display = "";
+
+            pessoais.style.display = "none"
+        }
+
+        
+    </script>
+    <title>Layout padrão</title>
+</head>
+<body onload="exibirTelaInicial()">
+    <main>
         <nav id="menu-lateral">
+            <img src="logoRD.png" alt="">
             <ul>
-                <li class="topicos" id="dadosPessoais">Dados pessoais</li>
-                <li class="topicos" id="endereco">Endereço</li>
-                <li class="topicos" id="instrucao">Instrução</li>
-                <li class="topicos" id="situacional">Situacional</li>
+                <li onclick="exibirTelaInicial()" id="DadosPessoais" class="topico-menu">Dados pessoais</li>
+                <li onclick="exibirTelaEndereco()" id="endereco" class="topico-menu">Endereco</li>
+                <li onclick="exibirTelaInstrucao()" id="instrucao" class="topico-menu">Instrução</li>
+                <li onclick="exibirTelaSituacional()" id="situacional" class="topico-menu">Situacional</li>    
             </ul>
         </nav>
+            <section>
 
-        <!--seria o equivalente a primeira tela do protótipo-->
-        <section id="conteudo-formulario">
-            <form action="">
-
-                <div id="Cabeçalho-form">
-                    <h1>Dados Pessoais</h1>
+             <form action="">
+                <div id="titulo">
+                    <h1 id="titulox">TÍTULO</h1>
                 </div>
 
-                <div class="input-box">
-                    <input type="text" id="nome" required = "required">
-                    <span>Nome completo</span>
-                    <!--dependendo do estilo de input que vamos desenvolver ficaria
-                    mais facil usar o "span" no lugar do label-->
-                </div>
-    
-                <div>
-                    <label for="data">Data de nascimento</label>
-                    <input type="date" id="data">
-                </div>
+                <div id="container-inputs">
+                    <div id="grupo-input-instrucao">
+                        <!--INSIRA O INPUTS ABAIXO-->
+        
+                            <!--cada input e label/span devem está dentro de uma div-->
+                            <div  id="escolaridade">
+                                <label for="">Escolaridade</label>
+                                <input list="lista-escolaridades" id="escolaridades" placeholder="Selecione o grau de escolaridade">
+                                <datalist id="lista-escolaridades">
+                                    <option value="Ensino fundamental incompleto">
+                                    <option value="Ensino fundamental completo">
+                                    <option value="Ensino médio incompleto">
+                                    <option value="Ensino médio completo">
+                                    <option value="Ensino superior incompleto">
+                                    <option value="Ensino superior completo">
+                                </datalist>  
+                            </div>
+        
+                            <div class="input-normal" id="cursos">
+                                <label for="curso">Curso 1</label>
+                                <input type="text" id="curso">
+                            </div>
+        
+                            <div id="perfil">
+                                <label for="perfil">Perfil</label>
+                                <textarea name="perfil" id="perfil" cols="30" rows="10"></textarea>
+                            </div>
 
-                <div class="input-box">
-                    <input type="text" id="cpf" required = "required">
-                    <span>CPF</span> 
+                            <div id="restricao">
+                                <div id="radios">
+                                    <input type="radio" id="sim">
+                                    <label for="sim">Sim</label>
+                                    <input type="radio" id="nao">
+                                    <LAbel id="nao">Não</LAbel>
+                                </div>
+                                <textarea name="" id="" cols="30" rows="10" placeholder="Descreva a restrição"></textarea>
+                            </div>
+
+                            <div id="prioridade">
+                                <label for="prioridades">Qual é o grau da prioridade</label>
+                                <input type="range" name="" id="prioridades">
+                            </div>
+
+                            <div id="habilidade">
+                                <label for="habilidades">Habilidade</label>
+                                <input type="text" id="habilidades">
+                            </div>
+
+                            <div id="arquivos">
+                                <label for="arquivo">Selecione os arquivos</label>
+                                <input type="file" id="arquivo">
+                            </div>
+                    
+                    </div>
+                    <!------------------------------------------>
+                    <div id="grupo-input-pessoais" >
+                        <div id="nome" class="input-normal">
+                            <input type="text"  id="nome" required = "required">
+                            <label for="nome">Nome completo</label>
+                        </div>
+
+                        <div id="Cpf-inputbox" class="input-normal">
+                            <input type="number"  id="cpf" required ="required">
+                            <label for="cpf">CPF</label>
+                        </div>
+
+                        <div id="telefone-input" class="input-normal">
+                            <input type="tel" id="telefone" required = "required">
+                            <label for="telefone">Telefone</label>
+                        </div>
+
+                        <div id="telefone2-inpubox" class="input-normal">
+                            <input type="tel" id="telefone2" required = "required">
+                            <label for="telefone2">2° Telefone</label>
+                        </div>
+
+                        <div id="telefone3-inpubox" class="input-normal">
+                            <input type="tel" id="telefone3" required = "required">
+                            <label for="telefone3"> 3° Telefone</label>
+                        </div>
+
+                        <div id="email-inputbox" class="input-normal">
+                            <input type="email" id="email" required = "required">
+                            <label for="email">E-mail</label>
+                        </div>
+
+                        <div id="dataNascimento-inputbox">
+                            <label for="dataNascimeto">Data de nascimento</label>
+                            <input type="date" id="dataNascimeto">
+                        </div>
+
+                        <div id="cnh-inputbox">
+                            <label for="cnh" id="cnhTipo">CHN tipo:</label>
+                            <div id="cnh">
+                                <label for="categoriaA">A</label>
+                                <input type="checkbox" id="categoriaA">
+                                
+                                <label for="categoriaB">B</label>
+                                <input type="checkbox" id="categoriaB">
+                                
+                                <label for="categoriaC">C</label>
+                                <input type="checkbox" id="categoriaC">
+                                
+                                <label for="categoriaD">D</label>
+                                <input type="checkbox" id="categoriaD">
+                                
+                                <label for="categoriaE">E</label>
+                                <input type="checkbox" id="categoriaE">
+                            </div>
+                        </div>
+
+                        <div id="seco-biologico-inputbox" class="input-normal">
+                            <span>Sexo biológico</span>
+                            <input  list="opcoesSexo" type="text" id="" placeholder="Selecione o biológico">
+                            <datalist id="opcoesSexo">
+                                <option value="Masculino">
+                                <option value="Feminino">
+                            </datalist>
+                        </div>
+
+                        <div id="orientacaoSexual-inputbox" class="input-normal">
+                            <span>Orientacão sexual</span>
+                            <input  list="listaOrientacao" type="text" id="" placeholder="Selecione o biológico">
+                            <datalist id="listaOrientacao">
+                                <option value="Heterossexual">
+                                <option value="Homossexual">
+                                <option value="Bissexual">
+                                <option value="Assexual">
+                                <option value="Pansexual">
+                            </datalist>
+                        </div>
+
+
+                    
+                   
+                    </div>
+
+                    <div id="grupo-input-endereco" >
+
+
+                        <div id="rua" class="input-comum">
+                            <input type="text" id="rua" class="form-input" required = "required">
+                            <label for="rua">Rua</label>
+                        </div>
+
+                        
+                        <div id="container-inputcep" class="input-comum">
+                            <div id="cep-numero" class="input-comum">
+                                <label for="cep">CEP</label>
+                                <input type="number" id="cep" required = "required">
+                            </div>
+                            
+                            <div id="cep-numero" class="input-comum">
+                                <label for="NumeroCasa">Número</label>
+                                <input type="number" id="NumeroCasa" required = "required"> 
+                            </div>
+                        </div>
+
+                        <div id="bairro-input" class="input-comum">
+                            <input type="text" id="bairro" class="form-input" required = "required">
+                            <label for="bairro">Bairro</label>
+                        </div>
+
+                        <div id="bairro-input" class="input-comum">
+                            <input type="text" id="cidade" class="form-input" required = "required">
+                            <label for="cidade">Cidade</label>
+                        </div>
+
+                        <div id="complemento-input" class="input-comum">
+                            <input type="text" id="complemento" class="form-input" required = "required">
+                            <label for="complemento">Complemento</label>
+                        </div>
+
+                        <div id="estado-input" class="input-comum">
+                            <input type="text" id="estado" class="form-input" required = "required">
+                            <label for="estado">Estado</label>
+                        </div>
+                    </div>
+                     <!------------------------------------------------------------>
+                    <div id="grupo-input-sitacional" >
+                        <div id="numeroProcesso-input" class="input-comum">
+                            <input type="number" id="numeroProcesso" required = "required">
+                            <label for="numeroProcesso">Número do processo</label>
+                            
+                        </div>
+
+                        <div id="artigo-input" class="input-comum">
+                            <input type="number" id="artigo" required = "required">
+                            <label for="artigo">Artigo</label>
+                        </div>
+
+                        <div id="terminoPena-input">
+                            <label for="terminoPena">Termino Pena</label>
+                            <input type="date" id="terminoPena">
+                        </div>
+
+                        <div id="prioridade">
+                            <p>Prioridade</p>
+                            <div id="prioridades">
+                                <label for="alta">Alta:</label>
+                                <input type="radio" name="" id="alta"> <br>
+                                <label for="Médio">Média:</label>
+                                <input type="radio" name="" id="media"> <br>
+                                <label for="baixa">Baixa:</label>
+                                <input type="radio" name="" id="baixa"> <br>
+                                </div>
+                        </div>
+
+                        
+                    </div>
+                    
                 </div>
-
-                <div class="input-box">  
-                    <input type="text" id="email" required = "required">
-                    <span>E-mail</span>
-                </div>
-
-                <div >
-                    <label for="telefone">Telefone</label>
-                    <input type="number" id="telefone">
-                </div>
-
-                <div>
-                    <label for="cnh">CNH</label>
-                    <input type="number" id="cnh">
-                </div>
-
-                <div>
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email">
-                </div>
-
-                <div>
-                    <label for="sexo-bio">Sexo biologico</label>
-                    <input type="text" id="sexo-bio" list="opcoes" placeholder="Sexo biologico">
-                    <datalist id="opcoes">
-                        <option value="Masculino">
-                        <option value="Feminino">
-                    </datalist>
-                </div>
-
-                <div>
-                    <label for="sexo-bio">Orientação sexual</label>
-                    <input type="text" id="sexo-bio" list="opcoes2" placeholder="Orientação sexual">
-                    <datalist id="opcoes2">
-                        <option value="Heterossexual">
-                        <option value="Homossexual">
-                        <option value="Bissexual"></option>
-                        <option value="Assexual"></option>
-                        <option value="Pansexual"></option>
-                    </datalist>
-                </div>
-
-                <div>
-                    <label for="estadoCivil">Estado civil</label>
-                    <input type="text" id="estadoCivil" list="opcoes3" placeholder="Estado civil">
-                    <datalist id="opcoes3">
-                        <option value="Solteiro">
-                        <option value="Casado">
-                        <option value="Divorciado"></option>
-                    </datalist>
-                </div>
-
-                <div>
-                    <label for="filhos">filhos</label>
-                    <input type="number" id="filhos" list="opcoes4" placeholder="filhos">
-                    <datalist id="opcoes4">
-                       <option value="1"></option>
-                       <option value="2"></option>
-                       <option value="3"></option>
-                       <option value="4"></option>
-                       <option value="mais"></option>
-                    </datalist>
-                </div>
-            </form>
-
-        </section>
-
+                     <!------------------------------------------------------->
+                    
+                <div id="botao-proximo">
+                    <button>Proximo</button>
+                    
+                </div>  
+                           
+             </form>   
+                 
+            </section>
+       
     </main>
+    
 </body>
-
 </html>
