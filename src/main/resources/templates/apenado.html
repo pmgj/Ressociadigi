@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles\style.css">
     <script>
         function exibirTelaInicial(){
             let endereco = document.getElementById("grupo-input-endereco")
@@ -19,9 +19,9 @@
             navMenu[1].style.color = "rgba(26, 24, 24, 0.4)"
             navMenu[1].style.padding = "0"
 
-            navMenu[1].style.borderLeft = "none"
-            navMenu[1].style.color = "rgba(26, 24, 24, 0.4)"
-            navMenu[1].style.padding = "0"
+            navMenu[2].style.borderLeft = "none"
+            navMenu[2].style.color = "rgba(26, 24, 24, 0.4)"
+            navMenu[2].style.padding = "0"
 
             navMenu[3].style.borderLeft = "none"
             navMenu[3].style.color = "rgba(26, 24, 24, 0.4)"
@@ -46,7 +46,7 @@
 
             let titulo = document.getElementById("titulox")
             titulo.innerText = "Endereço";
-            
+
             let navMenu = document.getElementsByTagName("li");
             navMenu[0].style.borderLeft = "none"
             navMenu[0].style.color = "rgba(26, 24, 24, 0.4)"
@@ -136,7 +136,7 @@
             pessoais.style.display = "none"
         }
 
-        
+
     </script>
     <title>Layout padrão</title>
 </head>
@@ -146,7 +146,7 @@
             <img src="logoRD.png" alt="">
             <ul>
                 <li onclick="exibirTelaInicial()" id="DadosPessoais" class="topico-menu">Dados pessoais</li>
-                <li onclick="exibirTelaEndereco()" id="endereco" class="topico-menu">Endereco</li>
+                <li onclick="exibirTelaEndereco()" id="endereco" class="topico-menu">Endereço</li>
                 <li onclick="exibirTelaInstrucao()" id="instrucao" class="topico-menu">Instrução</li>
                 <li onclick="exibirTelaSituacional()" id="situacional" class="topico-menu">Situacional</li>    
             </ul>
@@ -161,56 +161,49 @@
                 <div id="container-inputs">
                     <div id="grupo-input-instrucao">
                         <!--INSIRA O INPUTS ABAIXO-->
-        
+
                             <!--cada input e label/span devem está dentro de uma div-->
-                            <div  id="escolaridade">
-                                <label for="">Escolaridade</label>
-                                <input list="lista-escolaridades" id="escolaridades" placeholder="Selecione o grau de escolaridade">
-                                <datalist id="lista-escolaridades">
-                                    <option value="Ensino fundamental incompleto">
-                                    <option value="Ensino fundamental completo">
-                                    <option value="Ensino médio incompleto">
-                                    <option value="Ensino médio completo">
-                                    <option value="Ensino superior incompleto">
-                                    <option value="Ensino superior completo">
-                                </datalist>  
+                            <div id="instrucao">
+                                <label for="escolaridade">Escolaridade</label>
+                                <select name="" id="escolaridade">
+                                    <option value="valor0">Nenhum</option>
+                                    <option value="valor1">Ensino fundamental incompleto</option>
+                                    <option value="valor2">Ensino fundamental completo</option>
+                                    <option value="valor3">Ensino medio incompleto</option>
+                                    <option value="valor4">Ensino medio completo</option>
+                                    <option value="valor5">Ensino superior incompleto</option>
+                                    <option value="valor6">Ensino superior completo</option>
+                                </select>
+
                             </div>
-        
-                            <div class="input-normal" id="cursos">
-                                <label for="curso">Curso 1</label>
-                                <input type="text" id="curso">
+
+                            <div id="cursos" class="input-comum">
+                                <input type="text" required = "required">
+                                <label for="cursos">cursos</label>
                             </div>
-        
+
                             <div id="perfil">
-                                <label for="perfil">Perfil</label>
-                                <textarea name="perfil" id="perfil" cols="30" rows="10"></textarea>
+                                <label for="area-perfil">Perfil</label>
+                                <textarea name="" id="area-perfil" cols="30" rows="10"></textarea>
                             </div>
 
                             <div id="restricao">
-                                <div id="radios">
-                                    <input type="radio" id="sim">
-                                    <label for="sim">Sim</label>
-                                    <input type="radio" id="nao">
-                                    <LAbel id="nao">Não</LAbel>
+                                <div id="radio-restricao">
+                                    <p>Existe alguma restrição?:</p>
+                                    <div>
+                                        <input type="radio" id="nao" checked>
+                                        <label for="nao">Não</label>
+                                    </div>
+                                  
+                                    <div>
+                                        <input type="radio" id="sim" name="drone" value="dewey">
+                                        <label for="sim">Sim</label>
+                                    </div>
                                 </div>
-                                <textarea name="" id="" cols="30" rows="10" placeholder="Descreva a restrição"></textarea>
+                                <textarea name="" id="area-restricao" cols="10" rows="6"></textarea>
                             </div>
 
-                            <div id="prioridade">
-                                <label for="prioridades">Qual é o grau da prioridade</label>
-                                <input type="range" name="" id="prioridades">
-                            </div>
-
-                            <div id="habilidade">
-                                <label for="habilidades">Habilidade</label>
-                                <input type="text" id="habilidades">
-                            </div>
-
-                            <div id="arquivos">
-                                <label for="arquivo">Selecione os arquivos</label>
-                                <input type="file" id="arquivo">
-                            </div>
-                    
+                            
                     </div>
                     <!------------------------------------------>
                     <div id="grupo-input-pessoais" >
@@ -254,16 +247,16 @@
                             <div id="cnh">
                                 <label for="categoriaA">A</label>
                                 <input type="checkbox" id="categoriaA">
-                                
+
                                 <label for="categoriaB">B</label>
                                 <input type="checkbox" id="categoriaB">
-                                
+
                                 <label for="categoriaC">C</label>
                                 <input type="checkbox" id="categoriaC">
-                                
+
                                 <label for="categoriaD">D</label>
                                 <input type="checkbox" id="categoriaD">
-                                
+
                                 <label for="categoriaE">E</label>
                                 <input type="checkbox" id="categoriaE">
                             </div>
@@ -291,10 +284,10 @@
                         </div>
 
 
-                    
-                   
-                    </div>
 
+
+                    </div>
+                    <!---------------------------------------------------------->
                     <div id="grupo-input-endereco" >
 
 
@@ -303,13 +296,13 @@
                             <label for="rua">Rua</label>
                         </div>
 
-                        
+
                         <div id="container-inputcep" class="input-comum">
                             <div id="cep-numero" class="input-comum">
                                 <label for="cep">CEP</label>
                                 <input type="number" id="cep" required = "required">
                             </div>
-                            
+
                             <div id="cep-numero" class="input-comum">
                                 <label for="NumeroCasa">Número</label>
                                 <input type="number" id="NumeroCasa" required = "required"> 
@@ -341,7 +334,7 @@
                         <div id="numeroProcesso-input" class="input-comum">
                             <input type="number" id="numeroProcesso" required = "required">
                             <label for="numeroProcesso">Número do processo</label>
-                            
+
                         </div>
 
                         <div id="artigo-input" class="input-comum">
@@ -366,22 +359,22 @@
                                 </div>
                         </div>
 
-                        
+
                     </div>
-                    
+
                 </div>
                      <!------------------------------------------------------->
-                    
+
                 <div id="botao-proximo">
                     <button>Proximo</button>
-                    
+
                 </div>  
-                           
+
              </form>   
-                 
+
             </section>
-       
+
     </main>
-    
+
 </body>
 </html>
