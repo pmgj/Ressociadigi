@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>Ressociadigi</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>Ressociadigi</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>

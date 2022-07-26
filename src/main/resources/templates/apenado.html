@@ -4,9 +4,245 @@
 <head>
     <title>Cadastro de Apenado</title>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <script defer="defer" th:src="@{/js/apenado.js}"></script>
 </head>
 
 <body>
+    <main>
+        <nav id="menu-lateral">
+            <img th:src="@{/imgs/logoRD.png}" alt="" />
+            <ul>
+                <li id="DadosPessoais" class="topico-menu">Dados pessoais</li>
+                <li id="endereco" class="topico-menu">Endereço</li>
+                <li id="instrucao" class="topico-menu">Instrução</li>
+                <li id="situacional" class="topico-menu">Situacional</li>
+            </ul>
+        </nav>
+        <section>
+
+            <form action="">
+                <div id="titulo">
+                    <h1 id="titulox">TÍTULO</h1>
+                </div>
+
+                <div id="container-inputs">
+                    <!------------------------------------------>
+                    <div id="grupo-input-pessoais">
+                        <div id="nome" class="input-normal">
+                            <input type="text" id="nome" required="required">
+                            <label for="nome">Nome completo</label>
+                        </div>
+
+                        <div id="Cpf-inputbox" class="input-normal">
+                            <input type="number" id="cpf" required="required">
+                            <label for="cpf">CPF</label>
+                        </div>
+
+                        <div id="telefone-input" class="input-normal">
+                            <input type="tel" id="telefone" required="required">
+                            <label for="telefone">Telefone</label>
+                        </div>
+
+                        <div id="telefone2-inpubox" class="input-normal">
+                            <input type="tel" id="telefone2" required="required">
+                            <label for="telefone2">2° Telefone</label>
+                        </div>
+
+                        <div id="telefone3-inpubox" class="input-normal">
+                            <input type="tel" id="telefone3" required="required">
+                            <label for="telefone3"> 3° Telefone</label>
+                        </div>
+
+                        <div id="email-inputbox" class="input-normal">
+                            <input type="email" id="email" required="required">
+                            <label for="email">E-mail</label>
+                        </div>
+
+                        <div id="dataNascimento-inputbox">
+                            <label for="dataNascimeto">Data de nascimento</label>
+                            <input type="date" id="dataNascimeto">
+                        </div>
+
+                        <div id="cnh-inputbox">
+                            <label for="cnh" id="cnhTipo">CHN tipo:</label>
+                            <div id="cnh">
+                                <label for="categoriaA">A</label>
+                                <input type="checkbox" id="categoriaA">
+
+                                <label for="categoriaB">B</label>
+                                <input type="checkbox" id="categoriaB">
+
+                                <label for="categoriaC">C</label>
+                                <input type="checkbox" id="categoriaC">
+
+                                <label for="categoriaD">D</label>
+                                <input type="checkbox" id="categoriaD">
+
+                                <label for="categoriaE">E</label>
+                                <input type="checkbox" id="categoriaE">
+                            </div>
+                        </div>
+
+                        <div id="seco-biologico-inputbox" class="input-normal">
+                            <span>Sexo biológico</span>
+                            <input list="opcoesSexo" type="text" id="" placeholder="Selecione o biológico">
+                            <datalist id="opcoesSexo">
+                                <option value="Masculino">
+                                <option value="Feminino">
+                            </datalist>
+                        </div>
+
+                        <div id="orientacaoSexual-inputbox" class="input-normal">
+                            <span>Orientacão sexual</span>
+                            <input list="listaOrientacao" type="text" id="" placeholder="Selecione o biológico">
+                            <datalist id="listaOrientacao">
+                                <option value="Heterossexual">
+                                <option value="Homossexual">
+                                <option value="Bissexual">
+                                <option value="Assexual">
+                                <option value="Pansexual">
+                            </datalist>
+                        </div>
+                    </div>
+                    <!---------------------------------------------------------->
+                    <div id="grupo-input-endereco">
+
+                        <div id="rua" class="input-comum">
+                            <input type="text" id="rua" class="form-input" required="required">
+                            <label for="rua">Rua</label>
+                        </div>
+
+
+                        <div id="container-inputcep" class="input-comum">
+                            <div id="cep-numero" class="input-comum">
+                                <label for="cep">CEP</label>
+                                <input type="number" id="cep" required="required">
+                            </div>
+
+                            <div id="cep-numero" class="input-comum">
+                                <label for="NumeroCasa">Número</label>
+                                <input type="number" id="NumeroCasa" required="required">
+                            </div>
+                        </div>
+
+                        <div id="bairro-input" class="input-comum">
+                            <input type="text" id="bairro" class="form-input" required="required">
+                            <label for="bairro">Bairro</label>
+                        </div>
+
+                        <div id="bairro-input" class="input-comum">
+                            <input type="text" id="cidade" class="form-input" required="required">
+                            <label for="cidade">Cidade</label>
+                        </div>
+
+                        <div id="complemento-input" class="input-comum">
+                            <input type="text" id="complemento" class="form-input" required="required">
+                            <label for="complemento">Complemento</label>
+                        </div>
+
+                        <div id="estado-input" class="input-comum">
+                            <input type="text" id="estado" class="form-input" required="required">
+                            <label for="estado">Estado</label>
+                        </div>
+                    </div>
+
+                    <div id="grupo-input-instrucao">
+                        <!--INSIRA O INPUTS ABAIXO-->
+
+                        <!--cada input e label/span devem está dentro de uma div-->
+                        <div id="instrucao">
+                            <label for="escolaridade">Escolaridade</label>
+                            <select name="" id="escolaridade">
+                                <option value="valor0">Nenhum</option>
+                                <option value="valor1">Ensino fundamental incompleto</option>
+                                <option value="valor2">Ensino fundamental completo</option>
+                                <option value="valor3">Ensino medio incompleto</option>
+                                <option value="valor4">Ensino medio completo</option>
+                                <option value="valor5">Ensino superior incompleto</option>
+                                <option value="valor6">Ensino superior completo</option>
+                            </select>
+
+                        </div>
+
+                        <div id="cursos" class="input-comum">
+                            <input type="text" required="required">
+                            <label for="cursos">cursos</label>
+                        </div>
+
+                        <div id="perfil">
+                            <label for="area-perfil">Perfil</label>
+                            <textarea name="" id="area-perfil" cols="30" rows="10"></textarea>
+                        </div>
+
+                        <div id="restricao">
+                            <div id="radio-restricao">
+                                <p>Existe alguma restrição?:</p>
+                                <div>
+                                    <input type="radio" id="nao" checked>
+                                    <label for="nao">Não</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" id="sim" name="drone" value="dewey">
+                                    <label for="sim">Sim</label>
+                                </div>
+                            </div>
+                            <textarea name="" id="area-restricao" cols="10" rows="6"></textarea>
+                        </div>
+
+                    </div>
+                    <!------------------------------------------------------------>
+                    <div id="grupo-input-situacional">
+                        <div id="numeroProcesso-input" class="input-comum">
+                            <input type="number" id="numeroProcesso" required="required">
+                            <label for="numeroProcesso">Número do processo</label>
+
+                        </div>
+
+                        <div id="artigo-input" class="input-comum">
+                            <input type="number" id="artigo" required="required">
+                            <label for="artigo">Artigo</label>
+                        </div>
+
+                        <div id="terminoPena-input">
+                            <label for="terminoPena">Termino Pena</label>
+                            <input type="date" id="terminoPena">
+                        </div>
+
+                        <div id="prioridade">
+                            <p>Prioridade</p>
+                            <div id="prioridades">
+                                <label for="alta">Alta:</label>
+                                <input type="radio" name="" id="alta"> <br>
+                                <label for="Médio">Média:</label>
+                                <input type="radio" name="" id="media"> <br>
+                                <label for="baixa">Baixa:</label>
+                                <input type="radio" name="" id="baixa"> <br>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <!------------------------------------------------------->
+
+                <div id="botao-proximo">
+                    <button>Proximo</button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+</body>
+
+<!-- <body>
     <h1>Apenado</h1>
     <form action="#" th:action="@{/armazenarApenado}" th:object="${apenado}" method="post">
         <table>
@@ -31,6 +267,6 @@
         </table>
         <p><a th:href="@{/listarApenados}">Voltar para a lista</a></p>
     </form>
-</body>
+</body> -->
 
 </html>
