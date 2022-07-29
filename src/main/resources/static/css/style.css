@@ -11,6 +11,8 @@
     box-sizing: border-box;
 }
 
+
+
 body {
     width: 100%;
     height: 100vh;
@@ -217,7 +219,7 @@ textarea {
     font-size: 22px;
     transition: 0.5s;
     color: rgb(106, 101, 101);
-    font-family: 'Volkhov', serif;
+    /*font-family: 'Volkhov', serif;*/
 }
 
 .input-normal input {

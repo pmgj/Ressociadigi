@@ -21,47 +21,53 @@
         </nav>
         <section>
 
-            <form action="">
-                <div id="titulo">
+            <form action="#" th:action="@{/armazenarApenado}" th:object="${apenado}" method="post">
+            	<div id="titulo">
                     <h1 id="titulox">TÍTULO</h1>
                 </div>
-
                 <div id="container-inputs">
-                    <!------------------------------------------>
+                    <!-----------------------SEÇÃO DADOS PESSOAIS------------------------------>
                     <div id="grupo-input-pessoais">
                         <div id="nome" class="input-normal">
-                            <input type="text" id="nome" required="required">
+                            <input type="text" th:field="*{nome}" id="nome" required="required">
                             <label for="nome">Nome completo</label>
+                            <label th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Erro no nome</label>
                         </div>
 
                         <div id="Cpf-inputbox" class="input-normal">
-                            <input type="number" id="cpf" required="required">
+                            <input type="number" th:field="*{cpf}" id="cpf" required="required">
                             <label for="cpf">CPF</label>
+                            <label th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}">Erro no CPF</label>
                         </div>
 
                         <div id="telefone-input" class="input-normal">
-                            <input type="tel" id="telefone" required="required">
+                            <input type="text" th:field="*{telefone}" id="telefone" required="required">
                             <label for="telefone">Telefone</label>
+                            <label th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}">Erro no Telefone</label>
                         </div>
 
                         <div id="telefone2-inpubox" class="input-normal">
-                            <input type="tel" id="telefone2" required="required">
+                            <input type="text" th:field="*{telefone2}" id="telefone2">
                             <label for="telefone2">2° Telefone</label>
+                            <label th:if="${#fields.hasErrors('telefone2')}" th:errors="*{telefone2}">Erro no Telefone 2</label>
                         </div>
 
                         <div id="telefone3-inpubox" class="input-normal">
-                            <input type="tel" id="telefone3" required="required">
+                            <input type="text" th:field="*{telefone3}" id="telefone3">
                             <label for="telefone3"> 3° Telefone</label>
+                            <label th:if="${#fields.hasErrors('telefone3')}" th:errors="*{telefone3}">Erro no Telefone 3</label>
                         </div>
 
                         <div id="email-inputbox" class="input-normal">
-                            <input type="email" id="email" required="required">
+                            <input type="text" th:field="*{email}" id="email" required="required">
                             <label for="email">E-mail</label>
+                            <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Erro no Email</label>
                         </div>
 
                         <div id="dataNascimento-inputbox">
                             <label for="dataNascimeto">Data de nascimento</label>
-                            <input type="date" id="dataNascimeto">
+                            <input type="date" th:field="*{dataNascimento}" id="dataNascimeto">
+                            <label th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}">Erro na Data de Nascimento</label>
                         </div>
 
                         <div id="cnh-inputbox">
@@ -105,52 +111,57 @@
                             </datalist>
                         </div>
                     </div>
-                    <!---------------------------------------------------------->
+                    <!-----------------------SEÇÃO ENDEREÇO------------------------------>
                     <div id="grupo-input-endereco">
 
                         <div id="rua" class="input-comum">
-                            <input type="text" id="rua" class="form-input" required="required">
+                            <input type="text" th:field="*{rua}" id="rua" class="form-input" required="required">
                             <label for="rua">Rua</label>
+                            <label th:if="${#fields.hasErrors('rua')}" th:errors="*{rua}">Erro na Rua</label>
                         </div>
 
 
                         <div id="container-inputcep" class="input-comum">
                             <div id="cep-numero" class="input-comum">
                                 <label for="cep">CEP</label>
-                                <input type="number" id="cep" required="required">
+                                <input type="number" th:field="*{cep}" id="cep" required="required">
+                                <label th:if="${#fields.hasErrors('cep')}" th:errors="*{cep}">Erro no CEP</label>
                             </div>
 
                             <div id="cep-numero" class="input-comum">
                                 <label for="NumeroCasa">Número</label>
-                                <input type="number" id="NumeroCasa" required="required">
+                                <input type="number" th:field="*{numeroDaCasa}" id="NumeroCasa" required="required">
+                                <label th:if="${#fields.hasErrors('numeroDaCasa')}" th:errors="*{numeroDaCasa}">Erro no Num da casa</label>
                             </div>
                         </div>
 
                         <div id="bairro-input" class="input-comum">
-                            <input type="text" id="bairro" class="form-input" required="required">
+                            <input type="text" th:field="*{bairro}" id="bairro" class="form-input" required="required">
                             <label for="bairro">Bairro</label>
+                            <label th:if="${#fields.hasErrors('bairro')}" th:errors="*{bairro}">Erro no Bairro</label>
                         </div>
 
                         <div id="bairro-input" class="input-comum">
-                            <input type="text" id="cidade" class="form-input" required="required">
+                            <input type="text" th:field="*{cidade}" id="cidade" class="form-input" required="required">
                             <label for="cidade">Cidade</label>
+                            <label th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}">Erro na Cidade</label>
                         </div>
 
                         <div id="complemento-input" class="input-comum">
-                            <input type="text" id="complemento" class="form-input" required="required">
+                            <input type="text" th:field="*{complemento}" id="complemento" class="form-input" required="required">
                             <label for="complemento">Complemento</label>
+                            <label th:if="${#fields.hasErrors('complemento')}" th:errors="*{complemento}">Erro no Complemento</label>
                         </div>
 
                         <div id="estado-input" class="input-comum">
-                            <input type="text" id="estado" class="form-input" required="required">
+                            <input type="text" th:field="*{estado} "id="estado" class="form-input" required="required">
                             <label for="estado">Estado</label>
+                            <label th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}">Erro no Estado</label>
                         </div>
                     </div>
-
-                    <div id="grupo-input-instrucao">
-                        <!--INSIRA O INPUTS ABAIXO-->
-
-                        <!--cada input e label/span devem está dentro de uma div-->
+					<!-----------------------SEÇÃO INSTRUÇÃO------------------------------>
+					<div id="grupo-input-instrucao">
+                       
                         <div id="instrucao">
                             <label for="escolaridade">Escolaridade</label>
                             <select name="" id="escolaridade">
@@ -166,20 +177,22 @@
                         </div>
 
                         <div id="cursos" class="input-comum">
-                            <input type="text" required="required">
+                            <input type="text" th:field="*{curso}" required="required">
                             <label for="cursos">cursos</label>
+                            <label th:if="${#fields.hasErrors('curso')}" th:errors="*{curso}">Erro no Curso</label>
                         </div>
 
                         <div id="perfil">
                             <label for="area-perfil">Perfil</label>
-                            <textarea name="" id="area-perfil" cols="30" rows="10"></textarea>
+                            <textarea name="" th:field="*{perfil}" id="area-perfil" cols="30" rows="10"></textarea>
+                            <label th:if="${#fields.hasErrors('perfil')}" th:errors="*{perfil}">Erro no Perfil</label>
                         </div>
 
                         <div id="restricao">
                             <div id="radio-restricao">
                                 <p>Existe alguma restrição?:</p>
                                 <div>
-                                    <input type="radio" id="nao" checked>
+                                    <input type="radio" id="nao" name="drone" checked>
                                     <label for="nao">Não</label>
                                 </div>
 
@@ -192,46 +205,50 @@
                         </div>
 
                     </div>
-                    <!------------------------------------------------------------>
+                    <!-----------------------SEÇÃO SITUACIONAL------------------------------>
                     <div id="grupo-input-situacional">
                         <div id="numeroProcesso-input" class="input-comum">
-                            <input type="number" id="numeroProcesso" required="required">
+                            <input type="text" th:field="*{numeroProcesso}" id="numeroProcesso" required="required">
                             <label for="numeroProcesso">Número do processo</label>
+                            <label th:if="${#fields.hasErrors('numeroProcesso')}" th:errors="*{numeroProcesso}">Erro no Numero do Processo</label>
 
                         </div>
 
                         <div id="artigo-input" class="input-comum">
-                            <input type="number" id="artigo" required="required">
-                            <label for="artigo">Artigo</label>
+                            <input type="text" th:field="*{artigos}" id="artigo" required="required">
+                            <label for="artigo">Artigo(s)</label>
+                            <label th:if="${#fields.hasErrors('artigos')}" th:errors="*{artigos}">Erro no Artigo</label>
                         </div>
 
                         <div id="terminoPena-input">
                             <label for="terminoPena">Termino Pena</label>
-                            <input type="date" id="terminoPena">
+                            <input type="date" th:field="*{dataTerminoPena}" id="terminoPena">
+                            <label th:if="${#fields.hasErrors('dataTerminoPena')}" th:errors="*{dataTerminoPena}">Erro no Termino de Pena</label>
                         </div>
 
                         <div id="prioridade">
                             <p>Prioridade</p>
                             <div id="prioridades">
                                 <label for="alta">Alta:</label>
-                                <input type="radio" name="" id="alta"> <br>
+                                <input type="radio" name="prioridade" id="alta"> <br>
                                 <label for="Médio">Média:</label>
-                                <input type="radio" name="" id="media"> <br>
+                                <input type="radio" name="prioridade" id="media"> <br>
                                 <label for="baixa">Baixa:</label>
-                                <input type="radio" name="" id="baixa"> <br>
+                                <input type="radio" name="prioridade" id="baixa"> <br>
                             </div>
                         </div>
-
-
+						
+						<div id="botao-proximo">
+                    		<button type="submit">Cadastrar</button>
+                		</div>
                     </div>
 
                 </div>
 
-                <!------------------------------------------------------->
+                <!-----------------------FIM DAS SEÇÕES------------------------------>
 
                 <div id="botao-proximo">
                     <button>Proximo</button>
-
                 </div>
 
             </form>

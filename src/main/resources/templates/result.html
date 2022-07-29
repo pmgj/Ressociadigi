@@ -15,6 +15,22 @@
                 <th>CPF</th>
                 <th>Nome</th>
                 <th>Data de Nascimento</th>
+                
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Telefone2</th>
+                <th>Telefone3</th>
+                <th>Estado</th>
+                <th>Cidade</th>
+                <th>Rua</th>
+                <th>CEP</th>
+                <th>Nº da Casa</th>
+                <th>Complemento</th>
+                <th>Cursos</th>
+                <th>Perfil</th>
+                <th>Número do Processo</th>
+                <th>Artigos</th>
+                <th>Data de Término da Pena</th>
             </tr>
         </thead>
         <tbody>
@@ -29,6 +45,22 @@
                 <td><span th:text="${item.cpf}">CPF</span></td>
                 <td><span th:text="${item.nome}">Nome</span></td>
                 <td><span th:text="${item.dataNascimento}">Data de Nascimento</span></td>
+                
+                <td><span th:text="${item.email}">Email</span></td>
+                <td><span th:text="${item.telefone}">Telefone</span></td>
+                <td><span th:text="${item.telefone2}">Telefone 2</span></td>
+                <td><span th:text="${item.telefone3}">Telefone 3</span></td>
+                <td><span th:text="${item.estado}">Estado</span></td>
+                <td><span th:text="${item.cidade}">Cidade</span></td>
+                <td><span th:text="${item.rua}">Rua</span></td>
+                <td><span th:text="${item.cep}">CEP</span></td>
+                <td><span th:text="${item.numeroDaCasa}">Nº da Casa</span></td>
+                <td><span th:text="${item.complemento}">Complemento</span></td>
+                <td><span th:text="${item.curso}">Cursos</span></td>
+                <td><span th:text="${item.perfil}">Perfil</span></td>
+                <td><span th:text="${item.numeroProcesso}">Número do Processo</span></td>
+                <td><span th:text="${item.artigos}">Artigos</span></td>
+                <td><span th:text="${item.dataTerminoPena}">Data de Término da Pena</span></td>
             </tr>
         </tbody>
     </table>
