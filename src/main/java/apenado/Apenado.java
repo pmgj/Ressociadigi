@@ -34,13 +34,13 @@ public class Apenado {
     
     @NotNull(message = "Este campo não pode ser nulo")
     @NotEmpty(message = "Este campo não pode estar vazio.")
-    @Pattern(regexp = "[0-9]{11}", message = "O número de telefone deve conter no máximo 11 dígitos(DDD+TELEFONE).")
+    @Pattern(regexp = "[0-9]{11}", message = "O número de telefone deve conter no mínimo 11 dígitos(DDD+TELEFONE).")
     private String telefone;
     
-    @Pattern(regexp = "[0-9]{11}", message = "O número de telefone deve conter no máximo 11 dígitos(DDD+TELEFONE).")
+    @Pattern(regexp = "[0-9]{11}", message = "O número de telefone deve conter no mínimo 11 dígitos(DDD+TELEFONE).")
     private String telefone2;
     
-    @Pattern(regexp = "[0-9]{11}", message = "O número de telefone deve conter no máximo 11 dígitos(DDD+TELEFONE).")
+    @Pattern(regexp = "[0-9]{11}", message = "O número de telefone deve conter no mínimo 11 dígitos(DDD+TELEFONE).")
     private String telefone3;
     
     @NotNull(message = "Este campo não pode ser nulo")
@@ -67,7 +67,7 @@ public class Apenado {
 
     @NotNull(message = "Este campo não pode ser nulo")
     @NotEmpty(message = "Este campo não pode estar vazio.")
-    @Pattern(regexp = "[0-9]{8}", message = "O CEP não pode conter mais do que oito dígitos.")
+    @Pattern(regexp = "[0-9]{8}", message = "O CEP deve possuir oito dígitos.")
     private String cep;
 
     @NotNull(message = "Este campo não pode ser nulo")
