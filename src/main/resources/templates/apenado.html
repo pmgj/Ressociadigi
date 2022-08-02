@@ -145,7 +145,7 @@
         <nav id="menu-lateral">
             <img src="logoRD.png" alt="">
             <ul>
-                <li onclick="exibirTelaInicial()" id="DadosPessoais" class="topico-menu">Dados pessoais</li>
+                <li onclick="exibirTelaInicial()" id="DadosPessoais" class="topico-menu">Dados</li>
                 <li onclick="exibirTelaEndereco()" id="endereco" class="topico-menu">Endereço</li>
                 <li onclick="exibirTelaInstrucao()" id="instrucao" class="topico-menu">Instrução</li>
                 <li onclick="exibirTelaSituacional()" id="situacional" class="topico-menu">Situacional</li>    
@@ -163,7 +163,7 @@
                         <!--INSIRA O INPUTS ABAIXO-->
 
                             <!--cada input e label/span devem está dentro de uma div-->
-                            <div id="instrucao">
+                            <div id="instrucao" class="input-normal">
                                 <label for="escolaridade">Escolaridade</label>
                                 <select name="" id="escolaridade">
                                     <option value="valor0">Nenhum</option>
@@ -177,9 +177,9 @@
 
                             </div>
 
-                            <div id="cursos" class="input-comum">
-                                <input type="text" required = "required">
+                            <div id="cursos" class="input-normal">
                                 <label for="cursos">cursos</label>
+                                <input type="text" required = "required">
                             </div>
 
                             <div id="perfil">
@@ -208,33 +208,33 @@
                     <!------------------------------------------>
                     <div id="grupo-input-pessoais" >
                         <div id="nome" class="input-normal">
+                            <label for="nome">Nome completo*</label>
                             <input type="text"  id="nome" required = "required">
-                            <label for="nome">Nome completo</label>
                         </div>
 
                         <div id="Cpf-inputbox" class="input-normal">
+                            <label for="cpf">CPF*</label>
                             <input type="number"  id="cpf" required ="required">
-                            <label for="cpf">CPF</label>
                         </div>
 
                         <div id="telefone-input" class="input-normal">
-                            <input type="tel" id="telefone" required = "required">
-                            <label for="telefone">Telefone</label>
+                            <label for="nomemae">nome da mãe</label>
+                            <input type="text" id="nomemae" required = "required">
                         </div>
 
                         <div id="telefone2-inpubox" class="input-normal">
+                            <label for="telefone2">Telefone</label>
                             <input type="tel" id="telefone2" required = "required">
-                            <label for="telefone2">2° Telefone</label>
                         </div>
 
                         <div id="telefone3-inpubox" class="input-normal">
+                            <label for="telefone3"> 2° Telefone</label>
                             <input type="tel" id="telefone3" required = "required">
-                            <label for="telefone3"> 3° Telefone</label>
                         </div>
 
                         <div id="email-inputbox" class="input-normal">
-                            <input type="email" id="email" required = "required">
                             <label for="email">E-mail</label>
+                            <input type="email" id="email" required = "required">
                         </div>
 
                         <div id="dataNascimento-inputbox">
@@ -262,87 +262,92 @@
                             </div>
                         </div>
 
-                        <div id="seco-biologico-inputbox" class="input-normal">
-                            <span>Sexo biológico</span>
-                            <input  list="opcoesSexo" type="text" id="" placeholder="Selecione o biológico">
-                            <datalist id="opcoesSexo">
-                                <option value="Masculino">
-                                <option value="Feminino">
-                            </datalist>
+                        <div id="sexo-biologico-inputbox" class="input-normal">
+                            <label>Sexo biológico</label>
+                            <select name="sexobio" id="sexobio">
+                                <option value="masculino">Masculino</option>
+                                <option value="feminino">Feminino</option>
+                                <option value="nao-binario">Não-binario</option>
+                            </select>
+                            
+                             
                         </div>
 
                         <div id="orientacaoSexual-inputbox" class="input-normal">
-                            <span>Orientacão sexual</span>
-                            <input  list="listaOrientacao" type="text" id="" placeholder="Selecione o biológico">
-                            <datalist id="listaOrientacao">
-                                <option value="Heterossexual">
-                                <option value="Homossexual">
-                                <option value="Bissexual">
-                                <option value="Assexual">
-                                <option value="Pansexual">
-                            </datalist>
+                            <label for="">orientação sexual</label>
+                           <select name="opcoesSexo" id="opcoesSexo">
+                                <option value="nenhum" selected>Nenhum</option>
+                                <option value="Heterosexual">Heterosexual</option>
+                                <option value="Homossexual">Homossexual</option>
+                                <option value="Bissexual">Bissexual</option>
+                                <option value="Assexual">Assexual</option>
+                                <option value="Pansexual">Pansexual</option>
+                           </select>
                         </div>
 
-
-
-
+                        <footer>
+                            <button>Proximo</button>
+                        </footer>
                     </div>
                     <!---------------------------------------------------------->
                     <div id="grupo-input-endereco" >
 
 
-                        <div id="rua" class="input-comum">
-                            <input type="text" id="rua" class="form-input" required = "required">
+                        <div id="rua" class="input-normal">
                             <label for="rua">Rua</label>
+                            <input type="text" id="rua" class="form-input" required = "required">  
                         </div>
 
 
-                        <div id="container-inputcep" class="input-comum">
-                            <div id="cep-numero" class="input-comum">
+                        <div id="container-inputcep" class="input-normal">
+                            <div id="cep-numero" class="input-normal">
                                 <label for="cep">CEP</label>
-                                <input type="number" id="cep" required = "required">
+                                <input type="text" id="cep" required = "required">
                             </div>
 
-                            <div id="cep-numero" class="input-comum">
+                            <div id="cep-numero" class="input-normal">
                                 <label for="NumeroCasa">Número</label>
                                 <input type="number" id="NumeroCasa" required = "required"> 
                             </div>
                         </div>
 
-                        <div id="bairro-input" class="input-comum">
-                            <input type="text" id="bairro" class="form-input" required = "required">
+                        <div id="bairro-input" class="input-normal">
                             <label for="bairro">Bairro</label>
+                            <input type="text" id="bairro" class="form-input" required = "required">
                         </div>
 
-                        <div id="bairro-input" class="input-comum">
-                            <input type="text" id="cidade" class="form-input" required = "required">
+                        <div id="bairro-input" class="input-normal">
                             <label for="cidade">Cidade</label>
+                            <input type="text" id="cidade" class="form-input" required = "required">
                         </div>
 
-                        <div id="complemento-input" class="input-comum">
-                            <input type="text" id="complemento" class="form-input" required = "required">
+                        <div id="complemento-input" class="input-normal">
                             <label for="complemento">Complemento</label>
+                            <input type="text" id="complemento" class="form-input" required = "required">  
                         </div>
 
-                        <div id="estado-input" class="input-comum">
-                            <input type="text" id="estado" class="form-input" required = "required">
+                        <div id="estado-input" class="input-normal">
                             <label for="estado">Estado</label>
+                            <input type="text" id="estado" class="form-input" required = "required">
+                            
                         </div>
+
+                        <button>Próximo</button>
                     </div>
                      <!------------------------------------------------------------>
                     <div id="grupo-input-sitacional" >
-                        <div id="numeroProcesso-input" class="input-comum">
-                            <input type="number" id="numeroProcesso" required = "required">
+                        <div id="numeroProcesso-input" class="input-normal">
                             <label for="numeroProcesso">Número do processo</label>
-
+                            <input type="number" id="numeroProcesso" required = "required">
                         </div>
 
-                        <div id="artigo-input" class="input-comum">
-                            <input type="number" id="artigo" required = "required">
+                        <div id="artigo-input" class="input-normal">
                             <label for="artigo">Artigo</label>
+                            <input type="number" id="artigo" required = "required">
+                            
                         </div>
 
-                        <div id="terminoPena-input">
+                        <div id="terminoPena-input" class="input-normal">
                             <label for="terminoPena">Termino Pena</label>
                             <input type="date" id="terminoPena">
                         </div>
@@ -351,11 +356,11 @@
                             <p>Prioridade</p>
                             <div id="prioridades">
                                 <label for="alta">Alta:</label>
-                                <input type="radio" name="" id="alta"> <br>
+                                <input type="radio" name="alta" id="alta"> <br>
                                 <label for="Médio">Média:</label>
-                                <input type="radio" name="" id="media"> <br>
+                                <input type="radio" name="media" id="media"> <br>
                                 <label for="baixa">Baixa:</label>
-                                <input type="radio" name="" id="baixa"> <br>
+                                <input type="radio" name="baixa" id="baixa"> <br>
                                 </div>
                         </div>
 

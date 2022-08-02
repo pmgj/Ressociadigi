@@ -1,10 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Vollkorn&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Volkhov&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
 *{
     padding: 0;
     margin: 0;
@@ -17,7 +11,6 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-   
     background-color: rgba(222, 222, 222, 1);
 
 
@@ -29,28 +22,31 @@ main{
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 70%;
-    height: 90%;
+    width: 80rem;
+    height: 50rem;
+    background-color: black;
+    border-radius: 9px;
 }
 
 section{
-    width: 75%;
-    height: 100%;
+   /*  width: 80%;
+    height: 100%; */
+    width: 60rem;
+    height: 45rem;
     background: #FFFFFF;
     box-shadow: 9px 9px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
+    
 
 }
 nav{
-    background-color: red;
-    width: 25%;
-    height: 100%;
-    margin-right: 10px;
+    
+    width: 20rem;
+    height: 45rem;
     padding: 5px;
     background-color: rgba(222, 222, 222, 1);
+    border-radius: 5px;
    
-    
-    
 }
 
 nav ul li, .topico-menu{
@@ -70,24 +66,26 @@ form{
     height: 100%;
     width: 100%;
     /* background-color: aqua; */
+    
 }
 #titulo{
-    height:100%;
-    height: 20%;
+    
+    height: 9rem;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-bottom: 40px;
+    
+    border-bottom: black 8px;
+    /* margin-bottom: 40px; */
 }
 
 #titulo h1{
     font-family: 'Anton', sans-serif;
     letter-spacing: 2px;
-    width: 100%;
-
-    padding: 20px;
+    width: 65rem;
+    padding: 1.2rem;
     border-bottom: solid 4px rgba(0, 0, 0, 0.15);
-   
+    
     font-size: 2em;
 
 }
@@ -99,6 +97,8 @@ nav ul li{
     font-family: 'Anton', sans-serif;
 
 }
+
+
 
 #botao-proximo button{
     background: rgba(246, 130, 31, 1);
@@ -130,6 +130,62 @@ nav ul li #endereco, #situacional, #instrucao, #endereco{
 
 }
 
+/*************************RESPONSIVIDADE***************************************/
+
+@media (max-width: 600px){
+    main {
+        flex-direction: column;
+    }
+    nav{
+        width: 90vh;
+        overflow-x: auto;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        column-gap: 20px;
+        
+        overflow: auto;
+        
+    }
+
+    ul li .topico-menu{
+        font-size: 5px;
+    }
+
+    section #grupo-input-pessoais{
+        display: flex;
+        flex-direction: column;
+    }
+
+    section #grupo-input-endereco{
+        display: flex;
+        flex-direction: column;
+    }
+    section #grupo-input-sitacional{
+        display: flex;
+        flex-direction: column;
+    }
+    section #grupo-input-instrucao{
+        display: flex;
+        flex-direction: column;
+    }
+    main{
+        height: 100vh;
+        width: 100vh;
+        
+    }
+
+    #titulo{
+        display: none;
+    }
+
+   
+}
+
 /**************************************************/
 #container-inputs{
     display: flex;
@@ -152,12 +208,7 @@ nav ul li #endereco, #situacional, #instrucao, #endereco{
     grid-template-columns: auto auto;
 }
 
-#instrucao{
-    display: flex;
-    flex-direction: column;
-    width: 20rem;
-    row-gap: 3px; 
-}
+
 
 
 select{
@@ -197,173 +248,66 @@ textarea {
     column-gap: 5px;
 }
 
-#botao-proximo {
-    display: flex;
-    align-items: flex-end;
-    justify-content: end;
-}
 
-/*************************************************************/
-#grupo-input-pessoais{
+
+/*************************DADOS PESSOAIS************************************/
+#grupo-input-pessoais {
     /* background-color: aqua; */
-
     display: grid;
     grid-template-columns: auto auto;
-    column-gap: 15px;
+    column-gap: 3rem;
     row-gap: 30px;
-
-
 }
 
 .input-normal{
     display: flex;
-    width: 20rem;
     flex-direction: column;
-    position: relative;
-}
-
-.input-normal label{
-    position: absolute;
-    left: 0;
-    bottom: 65%;
-    top: 35%;
-    right: 13%;
-    font-size: 22px;
-    transition: 0.5s;
-    color: rgb(106, 101, 101);
-    font-family: 'Koulen', cursive;
-    font-family: 'Vollkorn', serif;
-    font-family: 'Volkhov', serif;
-
 }
 
 .input-normal input{
-    padding: 5px;
-    cursor: pointer;
-    width: 100%;
-    height: 3em;
-/*background-color: brown; */
-    border: 0;
-    border-bottom: solid 3px rgb(200, 200, 200);
-    outline: 0;
-    font-size: 15px;
-
-    font-family: 'Koulen', cursive;
+    width: 18rem;
+    height: 2.5rem;
+    border-radius: 5px;
 }
 
-.input-normal input #nome:focus{  
-    border-bottom: solid 2px cornflowerblue;   
-}
-
-.input-normal input:focus ~ label,
-.input-normal input:valid ~ label {
-    transform: translateY(-28px);
-    transition: 0.5s;
-    font-size: 12px;
-    color: cornflowerblue;
-    font-family: 'Koulen', cursive;
+.input-normal label {
     text-transform: uppercase;
+    font-family: 'Anton', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.8px;
 
 }
-
 #dataNascimento-inputbox{
     display: flex;
     flex-direction: column;
-    row-gap: 10px;
-}
-
-#dataNascimento-inputbox label{
-    font-family: 'Varela Round', sans-serif;
 
 }
 #dataNascimento-inputbox input{
-    width: 15rem;
+    width: 10rem;
     height: 3rem;
-    font-size: 20px;
-    padding: 3px;
-
+    font-size: x-large;
+    padding: 5px;
 }
-
-#cnh-inputbox{
+#dataNascimento-inputbox label{
+    text-transform: uppercase;
+    font-family: 'Anton', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.8px;
+}
+footer{
     display: flex;
-    flex-direction: column;
-    row-gap: 10px;
+    justify-content: end;
 }
-#cnh-inputbox #cnhTipo{
-    font-size: 25px;
-}
-#cnh{
-    display: flex;
-    gap: 10px;
 
-    ;
-}
 
 /**************************ENDEREÇO*************************************************/
 
 #grupo-input-endereco{
-
-
     display: grid;
     grid-template-columns: auto auto;
     column-gap: 15px;
     row-gap: 60px;
-
-
-
 } 
-
-.input-comum{
-    position: relative;
-    width: 20rem;
-    height: 3rem;
-
-}
-
-.input-comum label{
-    position: absolute;
-    top: 0.5rem;
-    left: 1rem;
-    padding: 0 0.1rem;
-    color: rgb(108, 105, 105);
-    font-size: 1.5rem;
-
-
-}
-
-.input-comum input{
-    width: 100%;
-    height: 100%;
-    border: solid 2px rgb(142, 131, 131);
-    border-radius: 5px;
-    color: black;
-    outline: none;
-    padding: 1.3rem;
-    background: none;
-    cursor: text;
-    transition: top 200ms ease-in,
-    left 200ms ease-in, font-size 200ms ease-in;
-}
-
-.input-comum input:focus,
-.input-comum input:valid{
-
-    font-size: 1.4rem;
-} 
-
-.input-comum input:focus ~  label,
-.input-comum input:valid ~  label {
-    transform: translateY(-1.1rem);
-    font-size: 0.8rem;
-    background-color: #FFFFFF;
-    color: cornflowerblue;
-    padding: 0px 4px 0px 4px;
-    border-right: solid 1px cornflowerblue;
-    border-left: solid 1px cornflowerblue;
-    transition: 0.5s;
-    text-transform: uppercase;
-
-}
 
 #NumeroCasa{
 
@@ -377,7 +321,7 @@ textarea {
 #container-inputcep{
     display: flex;
     flex-direction: row;
-    column-gap: 8px;
+    column-gap: 5px;
 }
 
 /***********************************SITUACIONAL**********************************************************/
@@ -395,10 +339,7 @@ display: flex;
 flex-direction: column;
 row-gap: 5px;
 }
-#terminoPena-input label{
-    font-size: 1.3em;
 
-}
 #terminoPena{
     width: 15rem;
     height: 3rem;
@@ -406,7 +347,11 @@ row-gap: 5px;
     padding: 5px;
 }
 #prioridade p{
-    font-size: 1.5rem;;
+    text-transform: uppercase;
+    font-family: 'Anton', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.8px;
+
 }
 #prioridades{
     display: flex;
@@ -417,3 +362,5 @@ row-gap: 5px;
 #prioridades input{
 
 }
+
+
