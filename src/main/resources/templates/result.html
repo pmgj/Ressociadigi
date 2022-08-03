@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>Mostrando Dados</title>
+    <meta charset="UTF-8" />
+</head>
+
+<body>
+    <table border="1">
+        <caption>Banco de Talentos</caption>
+        <thead>
+            <tr>
+                <th><a th:href="@{/inserirApenadoForm}">Incluir</a></th>
+                <th>CPF</th>
+                <th>Nome</th>
+                <th>Data de Nascimento</th>
+                
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Telefone2</th>
+                <th>Telefone3</th>
+                <th>Estado</th>
+                <th>Cidade</th>
+                <th>Rua</th>
+                <th>CEP</th>
+                <th>Nº da Casa</th>
+                <th>Complemento</th>
+                <th>Cursos</th>
+                <th>Perfil</th>
+                <th>Número do Processo</th>
+                <th>Artigos</th>
+                <th>Data de Término da Pena</th>
+                
+                <th>Número da Conta</th>
+                <th>Agência</th>
+                <th>Banco</th>
+                <th>Operação</th>
+                
+                <th>Sexo Biológico</th>
+                <th>Orientação Sexual</th>
+                <th>CNH</th>
+                
+                <th>Escolaridade</th>
+                
+                <th>Restrição</th>
+                <th>Prioridade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${lista.empty}">
+                <td colspan="4">Nenhum registro armazenado.</td>
+            </tr>
+            <tr th:each="item : ${lista}">
+                <td>
+                    <a th:href="@{/alterarApenadoForm(cpf=${item.cpf})}">Atualizar</a>
+                    <a th:href="@{/removerApenado(cpf=${item.cpf})}">Remover</a>
+                </td>
+                <td><span th:text="${item.cpf}">CPF</span></td>
+                <td><span th:text="${item.nome}">Nome</span></td>
+                <td><span th:text="${item.dataNascimento}">Data de Nascimento</span></td>
+                
+                <td><span th:text="${item.email}">Email</span></td>
+                <td><span th:text="${item.telefone}">Telefone</span></td>
+                <td><span th:text="${item.telefone2}">Telefone 2</span></td>
+                <td><span th:text="${item.telefone3}">Telefone 3</span></td>
+                <td><span th:text="${item.estado}">Estado</span></td>
+                <td><span th:text="${item.cidade}">Cidade</span></td>
+                <td><span th:text="${item.rua}">Rua</span></td>
+                <td><span th:text="${item.cep}">CEP</span></td>
+                <td><span th:text="${item.numeroDaCasa}">Nº da Casa</span></td>
+                <td><span th:text="${item.complemento}">Complemento</span></td>
+                <td><span th:text="${item.curso}">Cursos</span></td>
+                <td><span th:text="${item.perfil}">Perfil</span></td>
+                <td><span th:text="${item.numeroProcesso}">Número do Processo</span></td>
+                <td><span th:text="${item.artigos}">Artigos</span></td>
+                <td><span th:text="${item.dataTerminoPena}">Data de Término da Pena</span></td>
+
+                <td><span th:text="${item.numConta}">Número da Conta</span></td>
+                <td><span th:text="${item.agencia}">Agência</span></td>
+                <td><span th:text="${item.banco}">Banco</span></td>
+                <td><span th:text="${item.operacao}">Operação</span></td>
+                
+                <td><span th:text="${item.sexoBiologico}">Sexo Biológico</span></td>
+                <td><span th:text="${item.orientacaoSexual}">Orientação Sexual</span></td>
+                
+                <td><span th:text="${item.cnh}">CNH</span></td>
+                
+                <td><span th:text="${item.escolaridade}">Escolaridade</span></td>
+                <td><span th:text="${item.restricao}">Restrição</span></td>
+                <td><span th:text="${item.prioridade}">Prioridade</span></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
