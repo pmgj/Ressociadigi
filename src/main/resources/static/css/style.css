@@ -180,16 +180,18 @@ nav ul li #endereco, #situacional, #instrucao, #endereco{
     }
 
     #titulo{
-        display: block;
+        display: none;
     }
 
    
 }
 
-/*************************grupo*************************/
+/**************************************************/
 #container-inputs{
-   display: grid;
-   grid-template-columns: auto auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #grupo-input-instrucao{
@@ -205,9 +207,6 @@ nav ul li #endereco, #situacional, #instrucao, #endereco{
     display: grid;
     grid-template-columns: auto auto;
 }
-
-
-
 
 select{
    width: 100%;
@@ -250,8 +249,11 @@ textarea {
 
 /*************************DADOS PESSOAIS************************************/
 #grupo-input-pessoais {
- display: flex;
- flex-direction: column-reverse;
+    /* background-color: aqua; */
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 3rem;
+    row-gap: 30px;
 }
 
 .input-normal{
@@ -321,17 +323,6 @@ footer{
 
 /***********************************SITUACIONAL**********************************************************/
 
-
-#grupo-input-situacional{
-    display: flex;
-    flex-direction: row;
-    background-color: aqua;
-}
-
-
-
-
-/*
 #grupo-input-sitacional{
     display: grid;
     grid-template-columns: auto auto;
@@ -368,5 +359,5 @@ row-gap: 5px;
 #prioridades input{
 
 }
-*/
+
 

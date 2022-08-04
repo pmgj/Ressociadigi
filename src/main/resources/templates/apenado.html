@@ -29,38 +29,38 @@
                     <!-----------------------SEÇÃO DADOS PESSOAIS------------------------------>
                     <div id="grupo-input-pessoais">
                         <div id="nome" class="input-normal">
+                        	<label for="nome">Nome completo</label>
                             <input type="text" th:field="*{nome}" id="nome" required="required">
-                            <label for="nome">Nome completo</label>
                             <label th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Erro no nome</label>
                         </div>
 
                         <div id="Cpf-inputbox" class="input-normal">
+                        	<label for="cpf">CPF</label>
                             <input type="number" th:field="*{cpf}" id="cpf" required="required">
-                            <label for="cpf">CPF</label>
                             <label th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}">Erro no CPF</label>
                         </div>
 
                         <div id="telefone-input" class="input-normal">
+                        	<label for="telefone">Telefone</label>
                             <input type="text" th:field="*{telefone}" id="telefone" required="required">
-                            <label for="telefone">Telefone</label>
                             <label th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}">Erro no Telefone</label>
                         </div>
 
                         <div id="telefone2-inpubox" class="input-normal">
+                        	<label for="telefone2">2° Telefone</label>
                             <input type="text" th:field="*{telefone2}" id="telefone2">
-                            <label for="telefone2">2° Telefone</label>
                             <label th:if="${#fields.hasErrors('telefone2')}" th:errors="*{telefone2}">Erro no Telefone 2</label>
                         </div>
 
                         <div id="telefone3-inpubox" class="input-normal">
+                        	<label for="telefone3"> 3° Telefone</label>
                             <input type="text" th:field="*{telefone3}" id="telefone3">
-                            <label for="telefone3"> 3° Telefone</label>
                             <label th:if="${#fields.hasErrors('telefone3')}" th:errors="*{telefone3}">Erro no Telefone 3</label>
                         </div>
 
                         <div id="email-inputbox" class="input-normal">
+                        	<label for="email">E-mail</label>
                             <input type="text" th:field="*{email}" id="email" required="required">
-                            <label for="email">E-mail</label>
                             <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Erro no Email</label>
                         </div>
 
@@ -117,8 +117,8 @@
                     <div id="grupo-input-endereco">
 
                         <div id="rua" class="input-comum">
+                        	<label for="rua">Rua</label>
                             <input type="text" th:field="*{rua}" id="rua" class="form-input" required="required">
-                            <label for="rua">Rua</label>
                             <label th:if="${#fields.hasErrors('rua')}" th:errors="*{rua}">Erro na Rua</label>
                         </div>
 
@@ -138,26 +138,26 @@
                         </div>
 
                         <div id="bairro-input" class="input-comum">
-                            <input type="text" th:field="*{bairro}" id="bairro" class="form-input" required="required">
                             <label for="bairro">Bairro</label>
+                            <input type="text" th:field="*{bairro}" id="bairro" class="form-input" required="required">
                             <label th:if="${#fields.hasErrors('bairro')}" th:errors="*{bairro}">Erro no Bairro</label>
                         </div>
 
                         <div id="bairro-input" class="input-comum">
-                            <input type="text" th:field="*{cidade}" id="cidade" class="form-input" required="required">
                             <label for="cidade">Cidade</label>
+                            <input type="text" th:field="*{cidade}" id="cidade" class="form-input" required="required">
                             <label th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}">Erro na Cidade</label>
                         </div>
 
                         <div id="complemento-input" class="input-comum">
-                            <input type="text" th:field="*{complemento}" id="complemento" class="form-input" required="required">
                             <label for="complemento">Complemento</label>
+                            <input type="text" th:field="*{complemento}" id="complemento" class="form-input" required="required">
                             <label th:if="${#fields.hasErrors('complemento')}" th:errors="*{complemento}">Erro no Complemento</label>
                         </div>
 
                         <div id="estado-input" class="input-comum">
-                            <input type="text" th:field="*{estado} "id="estado" class="form-input" required="required">
                             <label for="estado">Estado</label>
+                            <input type="text" th:field="*{estado} "id="estado" class="form-input" required="required">
                             <label th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}">Erro no Estado</label>
                         </div>
                     </div>
@@ -179,8 +179,8 @@
                         </div>
 
                         <div id="cursos" class="input-comum">
+                        	<label for="cursos">cursos</label>
                             <input type="text" th:field="*{curso}" required="required">
-                            <label for="cursos">cursos</label>
                             <label th:if="${#fields.hasErrors('curso')}" th:errors="*{curso}">Erro no Curso</label>
                         </div>
 
@@ -194,13 +194,13 @@
                             <div id="radio-restricao">
                                 <p>Existe alguma restrição?:</p>
                                 <div>
+                                	<label for="nao">Não</label>
                                     <input type="radio" id="radiobtn-restricao-nao" name="drone" value="Não" checked onclick="areaRestricaoBehavior()">
-                                    <label for="nao">Não</label>
                                 </div>
 
                                 <div>
-                                    <input type="radio" id="radiobtn-restricao-sim" name="drone" value="Sim" onclick="areaRestricaoBehavior()">
                                     <label for="sim">Sim</label>
+                                    <input type="radio" id="radiobtn-restricao-sim" name="drone" value="Sim" onclick="areaRestricaoBehavior()">
                                 </div>
                             </div>
                             <textarea id="area-restricao" disabled name="restricao" cols="10" rows="6"></textarea>
@@ -210,15 +210,15 @@
                     <!-----------------------SEÇÃO SITUACIONAL------------------------------>
                     <div id="grupo-input-situacional">
                         <div id="numeroProcesso-input" class="input-comum">
+                        	<label for="numeroProcesso">Número do processo</label>
                             <input type="text" th:field="*{numeroProcesso}" id="numeroProcesso" required="required">
-                            <label for="numeroProcesso">Número do processo</label>
                             <label th:if="${#fields.hasErrors('numeroProcesso')}" th:errors="*{numeroProcesso}">Erro no Numero do Processo</label>
 
                         </div>
 
                         <div id="artigo-input" class="input-comum">
+                        	<label for="artigo">Artigo(s)</label>
                             <input type="text" th:field="*{artigos}" id="artigo" required="required">
-                            <label for="artigo">Artigo(s)</label>
                             <label th:if="${#fields.hasErrors('artigos')}" th:errors="*{artigos}">Erro no Artigo</label>
                         </div>
 
