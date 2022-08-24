@@ -43,25 +43,17 @@ public class Apenado {
 
     
     private String nomeDaMae;
-//    @Pattern(regexp = "\\(\\d{2}\\)\\s\\d{5}\\-\\d{4}", message = "O número de telefone deve seguir o padrão: (DDD) Dígito+Número de Telefone.")
-//    private String telefone3;
-    
-//    @NotNull(message = "Este campo não pode ser nulo")
-//    @NotEmpty(message = "Este campo não pode estar vazio.")
+
     private String email;
         
-//    @NotEmpty(message = "Este campo não pode estar vazio.")
     private String sexoBiologico;
     
-//    @NotEmpty(message = "Este campo não pode estar vazio.")
     private String orientacaoSexual;
     
     private String cnh;
     
     //Atributos relacionados à seção de Endereço.
 
-//    @NotNull(message = "Este campo não pode ser nulo")
-//    @NotEmpty(message = "Este campo não pode estar vazio.")
     private String estado;
     
     @NotNull(message = "Este campo não pode ser nulo")
@@ -76,9 +68,6 @@ public class Apenado {
     @NotEmpty(message = "Este campo não pode estar vazio.")
     private String rua;
 
-//    @NotNull(message = "Este campo não pode ser nulo")
-//    @NotEmpty(message = "Este campo não pode estar vazio.")
-//    @Pattern(regexp = "[0-9]{8}", message = "O CEP deve possuir oito dígitos.")
     private String cep;
 
     @NotNull(message = "Este campo não pode ser nulo")
@@ -88,7 +77,6 @@ public class Apenado {
     
     //Atributos relacionados à seção de Instrução.
     
-//    @NotEmpty(message = "Este campo não pode estar vazio.")
     private String escolaridade;
     
     private String restricao;
@@ -114,15 +102,12 @@ public class Apenado {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dataTerminoPena;
 
-//	@Pattern(regexp="[0-9]{9}", message="O número da conta deve conter 9 dígitos.")
 	private String numConta;
 	
-//	@Pattern(regexp="[0-9]{4}", message="A agência deve conter 4 dígitos.")
 	private String agencia;
 	
 	private String banco;
 	
-//	@Pattern(regexp="[0-9]{3}", message="A operação deve conter 3 dígitos.")
 	private String operacao;
         
     //Métodos Getters e Setters
@@ -166,16 +151,6 @@ public class Apenado {
 	public void setTelefone2(String telefone2) {
 		this.telefone2 = telefone2;
 	}
-
-	
-	
-//	public String getTelefone3() {
-//		return telefone3;
-//	}
-//
-//	public void setTelefone3(String telefone3) {
-//		this.telefone3 = telefone3;
-//	}
 
 	public String getNomeDaMae() {
 		return nomeDaMae;
