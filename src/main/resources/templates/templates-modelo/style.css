@@ -1,0 +1,96 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.letra{
+    color:  orange;
+}
+header{
+    width: 100%;
+    position: static;
+    height: 6rem;
+    border: solid 2px rgba(121, 117, 117, 0.736);
+    font-size: 3rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-left: 50px;
+    font-family: 'Rubik Dirt', cursive;
+    
+}
+section{
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+    column-gap: 20px;
+}
+.left{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+
+.t1{
+    font-size: 4.5rem;
+    font-family: 'Kanit', sans-serif;
+    
+   
+}
+.t1 span{
+    text-decoration: underline;
+}
+
+p{
+    font-size: x-large;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+article{
+    margin-top: 3rem;
+   /*  border: solid 4px ; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+   
+}
+.servicos{
+   
+    width: 82.5rem;
+    height: 40rem;
+    background-color: aqua;
+    background: rgb(255,255,255);
+background: linear-gradient(0deg, rgba(255,255,255,1) 55%, rgba(0,112,255,1) 55%);
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px; 
+    
+}
+
+.servicos p{
+    margin-bottom: 20px;
+    color: aliceblue;
+    letter-spacing: 2px;
+}
+.card-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.card{
+    width: 20rem;
+    height: 30rem;
+    border: solid 2px;
+}

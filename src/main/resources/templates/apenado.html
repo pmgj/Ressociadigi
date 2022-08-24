@@ -1,0 +1,369 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>Cadastro de Apenado</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <script defer="defer" th:src="@{/js/apenado.js}"></script>
+</head>
+
+<body>
+    <main>
+        <nav id="menu-lateral">
+            <img th:src="@{/imgs/logoRD.png}" alt="" />
+            <ul>
+                <li id="dp">Dados pessoais</li>
+                <li id="ende">Endereço</li>
+                <li id="inst">Instrução</li>
+                <li id="situ">Situacional</li>
+            </ul>
+        </nav>
+        <section>
+
+            <form action="#" th:action="@{/armazenarApenado}" th:object="${apenado}" method="post">
+                <div id="titulo">
+                    <h1 onclick="mudarTitulo()" id="titulox">Dados Pessoais</h1>
+                    <div id="div-sinalizacao">Os dados que contém a sinalização <a id="sinal">(*)</a> são obrigatórios!</div>
+                </div>
+                <div id="container-inputs">
+                    <!-----------------------SEÇÃO DADOS PESSOAIS------------------------------>
+                    <div id="grupo-input-pessoais">
+                        <div id="nome" class="input-normal">
+                            <label for="nome">Nome completo <a id="sinal">*</a></label>
+                            <input type="text" th:field="*{nome}" id="nome" required>
+                            <label id="labelError" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Erro no nome</label>
+                        </div>
+
+                        <div id="Cpf-inputbox" class="input-normal">
+                            <label for="cpf">CPF <a id="sinal">*</a></label>
+                            <input type="text" th:field="*{cpf}" id="cpf" required>
+                            <label id="labelError" th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}">Erro no CPF</label>
+                        </div>
+
+                        <div id="telefone-input" class="input-normal">
+                            <label for="telefone">Telefone <a id="sinal">*</a></label>
+                            <input type="text" th:field="*{telefone}" id="telefone" maxlength="15" required>
+                            <label id="labelError" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}">Erro no
+                                Telefone</label>
+                        </div>
+
+                        <div id="telefone2-inpubox" class="input-normal">
+                            <label for="telefone2">2° Telefone</label>
+                            <input type="text" th:field="*{telefone2}" id="telefone2" maxlength="15" >
+                            <label id="labelError" th:if="${#fields.hasErrors('telefone2')}" th:errors="*{telefone2}">Erro no Telefone
+                                2</label>
+                        </div>
+
+                        <div id="nomeMae" class="input-normal">
+                            <label for="nomeMae">Nome da mãe</label>
+                            <input type="text" th:field="*{nomeDaMae}" id="nomeDaMae" >
+                            <label id="labelError" th:if="${#fields.hasErrors('nomeDaMae')}" th:errors="*{nomeDaMae}">Erro no Telefone
+                                3</label>
+                        </div>
+
+                        <div id="email-inputbox" class="input-normal">
+                            <label for="email">E-mail</label>
+                            <input type="text" th:field="*{email}" id="email">
+                            <label id="labelError" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Erro no Email</label>
+                        </div>
+
+                        <div id="dataNascimento-inputbox" class="input-normal">
+                            <label for="dataNascimeto">Data de Nascimento <a id="sinal">*</a></label>
+                            <input type="date" th:field="*{dataNascimento}" id="dataNascimento" required>
+                            <label id="labelError" th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}">Erro na
+                                Data de Nascimento</label>
+                        </div>
+
+                        <div id="cnh-inputbox">
+                            <label for="cnh" id="cnhTipo">CHN tipo:</label>
+                            <div id="cnh">
+                                <label for="categoriaA">A</label>
+                                <input type="checkbox" name="cnh" id="categoriaA" value="A">
+
+                                <label for="categoriaB">B</label>
+                                <input type="checkbox" name="cnh" id="categoriaB" value="B">
+
+                                <label for="categoriaC">C</label>
+                                <input type="checkbox" name="cnh" id="categoriaC" value="C">
+
+                                <label for="categoriaD">D</label>
+                                <input type="checkbox" name="cnh" id="categoriaD" value="D">
+
+                                <label for="categoriaE">E</label>
+                                <input type="checkbox" name="cnh" id="categoriaE" value="E">
+                            </div>
+                        </div>
+
+                        <!--Novos inputs-->
+                        <div id="sexo-biologico-inputbox" class="input-normal">
+                            <label>Sexo Biológico <a id="sinal">*</a></label>
+                            <select name="sexoBiologico" th:field="*{sexoBiologico}" id="sexoBiologico" required>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Feminino">Feminino</option>
+                                <option value="Não-binário">Não-binario</option>
+                            </select>
+                            <label id="labelError" th:if="${#fields.hasErrors('sexoBiologico')}" th:errors="*{sexoBiologico}">Erro no Sexo Biológico</label>
+                        </div>
+
+                        <div id="orientacaoSexual-inputbox" class="input-normal">
+                            <label for="">Orientação Sexual <a id="sinal">*</a></label>
+                            <select name="orientacaoSexual" th:field="*{orientacaoSexual}" id="orientacaoSexual" required>
+                                <option value="Nenhum" selected>Nenhum</option>
+                                <option value="Heterossexual">Heterossexual</option>
+                                <option value="Homossexual">Homossexual</option>
+                                <option value="Bissexual">Bissexual</option>
+                                <option value="Assexual">Assexual</option>
+                                <option value="Pansexual">Pansexual</option>
+                            </select>
+                            <label id="labelError" th:if="${#fields.hasErrors('orientacaoSexual')}" th:errors="*{orientacaoSexual}">Erro no Orientação Sexual</label>
+                        </div>
+
+                    </div>
+                    <!-----------------------SEÇÃO ENDEREÇO------------------------------>
+                    <div id="grupo-input-endereco">
+
+                        <div id="rua" class="input-normal">
+                            <label for="rua">Rua <a id="sinal">*</a></label>
+                            <input type="text" th:field="*{rua}" id="rua" class="form-input" required>
+                            <label id="labelError" th:if="${#fields.hasErrors('rua')}" th:errors="*{rua}">Erro na Rua</label>
+                        </div>
+
+
+                        <div id="cep-numero" class="input-normal">
+                            <label for="cep">CEP <a id="sinal">*</a></label>
+                            <input type="text" th:field="*{cep}" id="cep" required>
+                            <label id="labelError" th:if="${#fields.hasErrors('cep')}" th:errors="*{cep}">Erro no CEP</label>
+                        </div>
+
+                        <div id="cep-numero" class="input-normal">
+                            <label for="NumeroCasa">Número <a id="sinal">*</a></label>
+                            <input type="text" th:field="*{numeroDaCasa}" id="NumeroCasa" required>
+                            <label id="labelError" th:if="${#fields.hasErrors('numeroDaCasa')}" th:errors="*{numeroDaCasa}">Erro no Num
+                                da casa</label>
+                        </div>
+
+                        <div id="bairro-input" class="input-normal">
+                            <label for="bairro">Bairro <a id="sinal">*</a></label>
+                            <input type="text" th:field="*{bairro}" id="bairro" class="form-input" required>
+                            <label id="labelError" th:if="${#fields.hasErrors('bairro')}" th:errors="*{bairro}">Erro no Bairro</label>
+                        </div>
+
+                        <div id="bairro-input" class="input-normal">
+                            <label for="cidade">Cidade <a id="sinal">*</a></label>
+                            <input type="text" th:field="*{cidade}" id="cidade" class="form-input" required>
+                            <label id="labelError" th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}">Erro na Cidade</label>
+                        </div>
+
+                        <div id="complemento-input" class="input-normal">
+                            <label for="complemento">Complemento</label>
+                            <input type="text" th:field="*{complemento}" id="complemento" class="form-input">
+                            <label id="labelError" th:if="${#fields.hasErrors('complemento')}" th:errors="*{complemento}">Erro no
+                                Complemento</label>
+                        </div>
+
+                        <div id="estado-input" class="input-normal">
+                            <label for="estado">Estado <a id="sinal">*</a></label>
+                            <!-- <input type="text" th:field="*{estado} " id="estado" class="form-input" required> -->
+                            <select id="estado" th:field="*{estado}" name="estado" required>
+                                <option value="Default" selected>Nenhum</option>
+							    <option value="Acre">Acre</option>
+							    <option value="Alagoas">Alagoas</option>
+							    <option value="Amapá">Amapá</option>
+							    <option value="Amazonas">Amazonas</option>
+							    <option value="Bahia">Bahia</option>
+							    <option value="Ceará">Ceará</option>
+							    <option value="Distrito Federal">Distrito Federal</option>
+							    <option value="Espírito Santo">Espírito Santo</option>
+							    <option value="Goiás">Goiás</option>
+							    <option value="Maranhão">Maranhão</option>
+							    <option value="Mato Grosso">Mato Grosso</option>
+							    <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+							    <option value="Minas Gerais">Minas Gerais</option>
+							    <option value="Pará">Pará</option>
+							    <option value="Paraíba">Paraíba</option>
+							    <option value="Paraná">Paraná</option>
+							    <option value="Pernambuco">Pernambuco</option>
+							    <option value="Piauí">Piauí</option>
+							    <option value="Rio de Janeiro">Rio de Janeiro</option>
+							    <option value="Rio Grande do Norte">Rio Grande do Norte</option>
+							    <option value="Rio Grande do Sul">Rio Grande do Sul</option>
+							    <option value="Rondônia">Rondônia</option>
+							    <option value="Roraima">Roraima</option>
+							    <option value="Santa Catarina">Santa Catarina</option>
+							    <option value="São Paulo">São Paulo</option>
+							    <option value="Sergipe">Sergipe</option>
+							    <option value="Tocantins">Tocantins</option>
+							</select>
+                            <label id="labelError" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}">Erro no Estado</label>
+                        </div>
+                    </div>
+                    <!-----------------------SEÇÃO INSTRUÇÃO------------------------------>
+                    <div id="grupo-input-instrucao">
+
+                        <div id="instrucao" class="input-normal">
+                            <label for="escolaridade">Escolaridade <a id="sinal">*</a></label>
+                            <select name="escolaridade" th:field="*{escolaridade}" id="escolaridade" required>
+                                <option value="Nenhum">Nenhum</option>
+                                <option value="Ensino fundamental incompleto">Ensino fundamental incompleto</option>
+                                <option value="Ensino fundamental completo">Ensino fundamental completo</option>
+                                <option value="Ensino medio incompleto">Ensino medio incompleto</option>
+                                <option value="Ensino medio completo">Ensino medio completo</option>
+                                <option value="Ensino superior incompleto">Ensino superior incompleto</option>
+                                <option value="Ensino superior completo">Ensino superior completo</option>
+                            </select>
+							<label id="labelError" th:if="${#fields.hasErrors('escolaridade')}" th:errors="*{escolaridade}">Erro na Escolaridade</label>
+                        </div>
+
+                        <div id="cursos" class="input-normal">
+                            <label for="cursos">Cursos</label>
+                            <input type="text" th:field="*{curso}">
+                            <label id="labelError" th:if="${#fields.hasErrors('curso')}" th:errors="*{curso}">Erro no Curso</label>
+                        </div>
+
+                        <div id="perfil" class="input-normal">
+                            <label for="area-perfil">Perfil</label>
+                            <textarea name="" th:field="*{perfil}" id="area-perfil" cols="30" rows="10"></textarea>
+                            <label id="labelError" th:if="${#fields.hasErrors('perfil')}" th:errors="*{perfil}">Erro no Perfil</label>
+                        </div>
+
+                        <div id="restricao">
+                            <div id="radio-restricao">
+                                <label>Existe alguma restrição?: <a id="sinal">*</a></label>
+                                <div>
+                                    <label for="nao">Não</label>
+                                    <input type="radio" id="radiobtn-restricao-nao" name="drone" value="Não" checked
+                                        onclick="areaRestricaoBehavior()">
+                                </div>
+
+                                <div>
+                                    <label for="sim">Sim</label>
+                                    <input type="radio" id="radiobtn-restricao-sim" name="drone" value="Sim"
+                                        onclick="areaRestricaoBehavior()">
+                                </div>
+                            </div>
+                            <textarea id="area-restricao" disabled th:field="*{restricao}" name="restricao" cols="10" rows="6"></textarea>
+                            <label id="labelError" th:if="${#fields.hasErrors('restricao')}" th:errors="*{restricao}">Erro na Restrição</label>
+                        </div>
+
+                    </div>
+                    <!-----------------------SEÇÃO SITUACIONAL------------------------------>
+                    <div id="grupo-input-situacional">
+                        <div id="numeroProcesso-input" class="input-normal">
+                            <label for="numeroProcesso">Número do processo <a id="sinal">*</a></label>
+                            <input type="text" th:field="*{numeroProcesso}" id="numeroProcesso" required>
+                            <label id="labelError" th:if="${#fields.hasErrors('numeroProcesso')}" th:errors="*{numeroProcesso}">Erro no
+                                Numero do Processo</label>
+
+                        </div>
+
+                        <div id="artigo-input" class="input-normal">
+                            <label for="artigo">Artigo(s) <a id="sinal">*</a></label>
+                            <input type="text" th:field="*{artigos}" id="artigo" required>
+                            <label id="labelError" th:if="${#fields.hasErrors('artigos')}" th:errors="*{artigos}">Erro no Artigo</label>
+                        </div>
+
+                        <div id="terminoPena-input" class="input-normal">
+                            <label for="terminoPena">Termino Pena <a id="sinal">*</a></label>
+                            <input type="date" th:field="*{dataTerminoPena}" id="terminoPena" required>
+                            <label id="labelError" th:if="${#fields.hasErrors('dataTerminoPena')}" th:errors="*{dataTerminoPena}">Erro
+                                no Termino de Pena</label>
+                        </div>
+
+                        <div id="prioridade">
+                            <p>Prioridade <a id="sinal">*</a></p>
+                            <div id="prioridades">
+                                <label for="alta">Alta:</label>
+                                <input type="radio" name="prioridade" value="Alta" id="alta"> <br>
+                                <label for="Médio">Média:</label>
+                                <input type="radio" name="prioridade" value="Média" id="media"> <br>
+                                <label for="baixa">Baixa:</label>
+                                <input type="radio" name="prioridade" value="Baixa" id="baixa" checked> <br>
+                            </div>
+                            <label id="labelError" th:if="${#fields.hasErrors('prioridade')}" th:errors="*{prioridade}">Erro na Prioridade</label>
+                        </div>
+						
+						<fieldset class="fieldset-dados-bancarios">
+						<legend><h1> Dados Bancários</h1></legend>
+						
+						<div id="div-numeroConta" class="input-normal-dados-bancarios">
+                            <label for="numeroDaConta">Número da Conta</label>
+                            <input type="text" th:field="*{numConta}" name="numConta" id="numeroDaConta">
+                             <label id="labelError" th:if="${#fields.hasErrors('numConta')}" th:errors="*{numConta}">Erro no Número da
+                                Conta</label> 
+                            <!--<label>Label de teste!</label>-->
+                        </div>
+
+                        <div id="div-agencia" class="input-normal-dados-bancarios">
+                            <label for="agencia">Agência</label>
+                            <input type="text" th:field="*{agencia}" name="agencia" id="agencia">
+                             <label id="labelError" th:if="${#fields.hasErrors('agencia')}" th:errors="*{agencia}">Erro no Número da
+                                Agência</label> 
+                            <!-- <label>Label de teste!</label>-->
+                        </div>
+
+                        <div id="div-banco" class="input-normal-dados-bancarios">
+                            <label for="banco">Banco</label>
+                            <input type="text" th:field="*{banco}" name="banco" id="banco">
+                             <label id="labelError" th:if="${#fields.hasErrors('banco')}" th:errors="*{banco}">Erro no nome do
+                                Banco</label> 
+                            <!--<label>Label de teste!</label>-->
+                        </div>
+
+                        <div id="div-operacao" class="input-normal-dados-bancarios">
+                            <label for="operacao">Operação</label>
+                            <input type="text" th:field="*{operacao}" name="operacao" id="operacao">
+                             <label id="labelError" th:if="${#fields.hasErrors('operacao')}" th:errors="*{operacao}">Erro na
+                                Operação</label>
+                            <!--<label>Label de teste!</label> -->
+                        </div>						
+						</fieldset>
+                        <div></div>
+                        
+
+
+                        <div id="botao-cadastrar">
+                            <button type="submit">Cadastrar</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-----------------------FIM DAS SEÇÕES------------------------------>
+
+            </form>
+
+        </section>
+
+    </main>
+
+</body>
+
+<!-- <body>
+    <h1>Apenado</h1>
+    <form action="#" th:action="@{/armazenarApenado}" th:object="${apenado}" method="post">
+        <table>
+            <tr>
+                <td>CPF:</td>
+                <td><input type="text" th:field="*{cpf}" /></td>
+                <td th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}">Erro no CPF</td>
+            </tr>
+            <tr>
+                <td>Nome:</td>
+                <td><input type="text" th:field="*{nome}" /></td>
+                <td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Erro no Nome</td>
+            </tr>
+            <tr>
+                <td>Data de Nascimento:</td>
+                <td><input type="date" th:field="*{dataNascimento}" /></td>
+                <td th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}">Erro na Data de Nascimento</td>
+            </tr>
+            <tr>
+                <td><button type="submit">Submit</button><input type="reset" value="Reset" /></td>
+            </tr>
+        </table>
+        <p><a th:href="@{/listarApenados}">Voltar para a lista</a></p>
+    </form>
+</body> -->
+
+</html>

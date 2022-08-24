@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>Mostrando Dados</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/result-style.css}" />
+    <script defer="defer" th:src="@{/js/result.js}"></script>
+</head>
+
+<body>
+	<div class="title">
+		<img th:src="@{/imgs/logoRD.png}" width="10%" height="10%" alt="" />
+		<!-- <h1>RESSOCIADIGI</h1> -->
+	</div>
+	<div class="top-layer">
+		<legend>TODOS</legend>
+	</div>
+
+	<div class="table">
+		<div class="table-header">
+			<a id="adicionarButton" th:href="@{/inserirApenadoForm}"><img th:src="@{/imgs/icone-adicionar.png}" /></a>
+			<button class="filtrar">Buscar</button>
+	        <input type="text" placeholder="Buscar">
+		</div>
+		
+		<div class="table-section">
+			<table>
+		        <thead>
+		            <tr>
+		                <th><input id="selectAll-checkbox" type="checkbox" onchange="handleCheckbox(this)"></th>
+		                <th>NOME</th>
+		                <th>CPF</th>
+		                <th>DATA DE NASCIMENTO</th>
+		                <th>NOME DA MÃE</th>
+		                <th>CONTATO</th>
+		                <th>AÇÕES</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		            <tr th:if="${lista.empty}">
+		                <td colspan="4">Nenhum registro armazenado.</td>
+		            </tr>
+		            <tr th:each="item : ${lista}">
+		                <td><input id="individual-checkbox" type="checkbox"></td>
+		                <td><span th:text="${item.nome}">Nome</span></td>
+		                <td><span th:text="${item.cpf}">CPF</span></td>
+		                <td><span th:text="${item.dataNascimento}">Data de Nascimento</span></td>
+		                <td><span th:text="${item.nomeDaMae}">Nome da Mãe</span></td>
+		                <td><span th:text="${item.telefone}">Contato</span></td>
+		                <td>
+		                	<a th:href="@{/alterarApenadoForm(cpf=${item.cpf})}"><img th:src="@{/imgs/icone-editar.png}" alt="Editar"/></a>
+		                	<a th:href="@{/removerApenado(cpf=${item.cpf})}"><img th:src="@{/imgs/icone-excluir.png}" alt="Excluir"/></a>
+		                </td>
+		            </tr>
+		        </tbody>
+		        <tfoot>
+		        	<tr>
+		        		<td></td>
+		        		<td></td>
+		        		<td></td>
+		        		<td></td>
+		        		<td></td>
+		        		<td>Página X de X</td>
+		        		<td id="previousAndNextButtons"><a th:href="@{#}">&lt;&lt;</a><a th:href="@{#}">&gt;&gt;</a></td>
+		        	</tr>
+		        </tfoot>
+	   		</table>
+		</div>
+	</div>
+</body>
+</html>

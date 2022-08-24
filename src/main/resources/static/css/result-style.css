@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face{
+	src: url(fonts/Inter_Font.ttf);
+	font-family: 'Inter';
+	font-weight: normal;
+}
+
+body{
+    display: flex;
+   	overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title{
+    display: flex;
+    justify-content: left;
+    width: 90rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    
+}
+.title h1{
+    font-family: 'Fjalla One', sans-serif;
+    letter-spacing: 2px;
+}
+
+.top-layer{
+    width: 90rem;
+    border-bottom: 4px solid orange;
+    margin-bottom: 1rem;
+}
+.top-layer legend{
+    font-size: 1.3rem;
+    font-family: "Inter";
+    border-bottom: solid black 5px;
+    border-top: none;
+    width: 5rem;
+}
+
+.table{
+ 	/* width:60%; */
+    width: 90rem;
+ 	font-family: 'Inter';
+ 	box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.25);
+ 	border-radius: 10px;
+}
+
+.table-header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(222, 222, 222, 1);
+    height: 70px;
+    border-top-left-radius: 10px; 
+    border-top-right-radius: 10px;
+}
+
+.filtrar{
+    padding: 10px 20px;
+    color: aliceblue;
+    background-color: rgb(65, 65, 120);
+    box-shadow: 3px 3px 1.5px rgba(65, 65, 120, 0.25);
+    outline: none;
+    border: none ;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 88px;
+    height: 40px;
+
+}
+
+.table-header input{
+    padding: 10px 20px;
+    margin: 0 10px;
+    outline: none;
+    border: 2px solid rgba(246, 130, 31, 0.4);
+    position: absolute;
+    width: 392px;
+    height: 40px;
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+    background: #F4F2FF;
+    border-radius: 6px;
+}
+.table-section{
+    height: 650px;
+    overflow: hidden;
+}
+
+.table-section table{
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+
+}
+
+.table-section tfoot {
+	background-color: #ffddbd;
+    height: 2rem;
+}
+
+thead th{
+    position: sticky;
+    top: 0;
+    background-color: #ffddbd;
+    border-bottom: 1px solid rgba(217, 222, 255, 1);
+    border-top: 1px solid rgba(217, 222, 255, 1);
+    color: black;
+    width: 36px;
+    height: 45px;
+
+}
+
+th, td{
+    border-bottom: 1px solid #dddd;
+    word-break: break-all;
+    text-align: center;
+}
+
+tbody tr td{
+    background-color: rgba(255, 255, 255, 1);
+    height: 61px;
+    font-size: large;
+}
+
+#previousAndNextButtons a{
+	text-decoration: none;
+	font-size: large;
+	font-weight: bold;
+	color: black;	
+	background-color: orange;
+	border: 1px solid rgba(0, 0, 0, 0.5);
+	border-radius: 10px;
+	margin-left: 10px;
+	padding: 3px;
+}
