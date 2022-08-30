@@ -60,7 +60,7 @@
 		        		<td></td>
 		        		<td></td>
 		        		<td></td>
-		        		<td></td>
+		        		<td>r5</td>
 		        		<td>Página X de X</td>
 		        		<td id="previousAndNextButtons"><a th:href="@{#}">&lt;&lt;</a><a th:href="@{#}">&gt;&gt;</a></td>
 		        	</tr>
@@ -68,5 +68,37 @@
 	   		</table>
 		</div>
 	</div>
+
+	<div id="modal" class="modal-container">
+		<div id="modal-conteudo">
+			<button class="fechar">X</button>
+			<form action="">
+				<h3>Confirmação</h3>
+				<p>
+				Você tem certeza que deseja excluir o registro definitivamente?
+				</p>
+				<div class="botoes-confimacao">
+					<button class="botao-sim">Sim</button>
+					<button class="botao-nao">Não</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- <script>
+		function setModal(modalId){
+			const modal = document.getElementById(modalId);
+			modal.classList.add("mostrar");
+			modal.addEventListener("click", (e) => {
+				if(e.target.id == modalId || e.target.className == "fechar"){
+					modal.classList.remove("mostrar")
+				}
+			})
+		}
+		const excluir = document.querySelector(".filtrar")
+		excluir.addEventListener("click", function(){
+			setModal("modal");
+		})
+	</script> -->
 </body>
 </html>
