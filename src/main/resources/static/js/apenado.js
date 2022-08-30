@@ -44,24 +44,22 @@ exibirTela();
 let menuItems = document.querySelectorAll("#menu-lateral li");
 menuItems.forEach(i => i.onclick = exibirTela);
 
-function mudarTitulo(){
+
+function mudarTitulo (){
+    let menus = document.getElementsByTagName("li");
     let title = document.getElementById("titulox");
-    let dp = document.getElementById("dp");
-    let ende = document.getElementById("ende");
-    let inst = document.getElementById("inst");
-    let situ = document.getElementById("situ");
-    dp.addEventListener("click", function(){
+    let menusArray = Array.from(menus);
+   menusArray[0].addEventListener("click", ()=>{
         title.innerText = "Dados Pessoais"
     })
-    ende.addEventListener("click", function(){
+    menusArray[1].addEventListener("click", ()=>{
         title.innerText = "Endereço"
     })
-    inst.addEventListener("click", function(){
+    menusArray[2].addEventListener("click", ()=>{
         title.innerText = "Instrução"
     })
-    situ.addEventListener("click", function(){
+    menusArray[3].addEventListener("click", ()=>{
         title.innerText = "Situacional"
     })
-
 }
-mudarTitulo()
+mudarTitulo ()
