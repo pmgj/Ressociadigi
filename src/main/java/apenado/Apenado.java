@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.swing.text.MaskFormatter;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -13,8 +14,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Apenado {
-	
-	
 	//Atributos relacionados à seção de Dados Pessoais.
 	
     @Id
@@ -35,10 +34,10 @@ public class Apenado {
     
     @NotNull(message = "Este campo não pode ser nulo")
     @NotEmpty(message = "Este campo não pode estar vazio.")
-    @Pattern(regexp = "\\(\\d{2}\\)\\s\\d{5}\\-\\d{4}", message = "O número de telefone deve seguir o padrão: (DDD) Dígito+Número de Telefone.")
+    //@Pattern(regexp = "\\(\\d{2}\\)\\s\\d{5}\\-\\d{4}", message = "O número de telefone deve seguir o padrão: (DDD) Dígito+Número de Telefone.")
     private String telefone;
     
-    @Pattern(regexp = "\\(\\d{2}\\)\\s\\d{5}\\-\\d{4}", message = "O número de telefone deve seguir o padrão: (DDD) Dígito+Número de Telefone.")
+    //@Pattern(regexp = "\\(\\d{2}\\)\\s\\d{5}\\-\\d{4}", message = "O número de telefone deve seguir o padrão: (DDD) Dígito+Número de Telefone.")
     private String telefone2;
 
     
@@ -109,7 +108,27 @@ public class Apenado {
 	private String banco;
 	
 	private String operacao;
-        
+    
+	//Métodos comuns
+	public String formataTelefone(String numTelefone, int tipoFormatacao) {
+		//Tipo 1 indica remoção de máscara.
+		//Tipo 2 indica inserção de máscara.
+		try {
+			if(tipoFormatacao == 1) {
+				return numTelefone.replaceAll("[^0-9]+", "");
+			} else if(tipoFormatacao == 2) {
+				MaskFormatter maskFormatter = new MaskFormatter("(##) #####-####");
+				maskFormatter.setValueContainsLiteralCharacters(false);
+				return (String)maskFormatter.valueToString(numTelefone);
+			} else {
+				return numTelefone;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
     //Métodos Getters e Setters
 	
     public String getCpf() {
@@ -137,19 +156,29 @@ public class Apenado {
     }
     
 	public String getTelefone() {
-		return telefone;
+//		return telefone;
+		if(telefone == null) {
+			return telefone;
+		} else {
+			return formataTelefone(telefone, 2);
+		}
 	}
 
 	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+		this.telefone = formataTelefone(telefone, 1);
 	}
 
 	public String getTelefone2() {
-		return telefone2;
+//		return telefone2;
+		if(telefone == null) {
+			return telefone;
+		} else {
+			return formataTelefone(telefone2, 2);
+		}
 	}
 
 	public void setTelefone2(String telefone2) {
-		this.telefone2 = telefone2;
+		this.telefone2 = formataTelefone(telefone2, 1);
 	}
 
 	public String getNomeDaMae() {
