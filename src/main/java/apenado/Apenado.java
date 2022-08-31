@@ -30,23 +30,14 @@ public class Apenado {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dataNascimento;
     
-    //OBS: Todas as patterns referentes a Telefone estão conflitando com a máscara implementada no JS. #RESOLVER
-    
     @NotNull(message = "Este campo não pode ser nulo")
     @NotEmpty(message = "Este campo não pode estar vazio.")
-    //@Pattern(regexp = "\\(\\d{2}\\)\\s\\d{5}\\-\\d{4}", message = "O número de telefone deve seguir o padrão: (DDD) Dígito+Número de Telefone.")
     private String telefone;
     
-    //@Pattern(regexp = "\\(\\d{2}\\)\\s\\d{5}\\-\\d{4}", message = "O número de telefone deve seguir o padrão: (DDD) Dígito+Número de Telefone.")
     private String telefone2;
-
-    
     private String nomeDaMae;
-
     private String email;
-        
     private String sexoBiologico;
-    
     private String orientacaoSexual;
     
     private String cnh;
@@ -76,8 +67,7 @@ public class Apenado {
     
     //Atributos relacionados à seção de Instrução.
     
-    private String escolaridade;
-    
+    private String escolaridade;    
     private String restricao;
         
     private String curso; //Revisar como será a dinâmica de uso desse atributo, dado que poderão ser diversos cursos.
@@ -101,12 +91,9 @@ public class Apenado {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dataTerminoPena;
 
-	private String numConta;
-	
-	private String agencia;
-	
-	private String banco;
-	
+	private String numConta;	
+	private String agencia;	
+	private String banco;	
 	private String operacao;
     
 	//Métodos comuns
@@ -348,10 +335,11 @@ public class Apenado {
 	public void setCnh(String cnh) {
 		this.cnh = cnh;
 	}
-
+	
 	public String getEscolaridade() {
 		return escolaridade;
 	}
+
 
 	public void setEscolaridade(String escolaridade) {
 		this.escolaridade = escolaridade;

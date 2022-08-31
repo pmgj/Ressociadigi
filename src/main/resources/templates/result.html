@@ -33,6 +33,7 @@
 		                <th>CPF</th>
 		                <th>DATA DE NASCIMENTO</th>
 		                <th>NOME DA MÃE</th>
+		                <th>CNH</th>
 		                <th>CONTATO</th>
 		                <th>AÇÕES</th>
 		            </tr>
@@ -47,10 +48,11 @@
 		                <td><span th:text="${item.cpf}">CPF</span></td>
 		                <td><span th:text="${item.dataNascimento}">Data de Nascimento</span></td>
 		                <td><span th:text="${item.nomeDaMae}">Nome da Mãe</span></td>
+		                <td><span th:text="${item.cnh}">CNH</span></td>
 		                <td><span th:text="${item.telefone}">Contato</span></td>
 		                <td>
 		                	<a th:href="@{/alterarApenadoForm(cpf=${item.cpf})}"><img th:src="@{/imgs/icone-editar.png}" alt="Editar"/></a>
-		                	<a th:href="@{/removerApenado(cpf=${item.cpf})}"><img th:src="@{/imgs/icone-excluir.png}" alt="Excluir"/></a>
+		                	<a class="botao-excluir" th:href="@{/removerApenado(cpf=${item.cpf})}"><img th:src="@{/imgs/icone-excluir.png}" alt="Excluir"/></a>
 		                </td>
 		            </tr>
 		        </tbody>

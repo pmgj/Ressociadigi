@@ -75,6 +75,7 @@
                                 Data de Nascimento</label>
                         </div>
 
+						  
                         <div id="cnh-inputbox">
                             <label for="cnh" id="cnhTipo">CHN tipo:</label>
                             <div id="cnh">
@@ -107,7 +108,7 @@
                         </div>
 
                         <div id="orientacaoSexual-inputbox" class="input-normal">
-                            <label for="">Orientação Sexual <a id="sinal">*</a></label>
+                            <label for="">Orientação Sexual</label>
                             <select name="orientacaoSexual" th:field="*{orientacaoSexual}" id="orientacaoSexual" required>
                                 <option value="Nenhum" selected>Nenhum</option>
                                 <option value="Heterossexual">Heterossexual</option>
@@ -202,7 +203,7 @@
                     <div id="grupo-input-instrucao">
 
                         <div id="instrucao" class="input-normal">
-                            <label for="escolaridade">Escolaridade <a id="sinal">*</a></label>
+                            <label for="escolaridade">Escolaridade</label>
                             <select name="escolaridade" th:field="*{escolaridade}" id="escolaridade" required>
                                 <option value="Nenhum">Nenhum</option>
                                 <option value="Ensino fundamental incompleto">Ensino fundamental incompleto</option>
@@ -229,10 +230,10 @@
 
                         <div id="restricao">
                             <div id="radio-restricao">
-                                <label>Existe alguma restrição?: <a id="sinal">*</a></label>
+                                <label>Existe alguma restrição?:</label>
                                 <div>
                                     <label for="nao">Não</label>
-                                    <input type="radio" id="radiobtn-restricao-nao" name="drone" value="Não" checked
+                                    <input type="radio" id="radiobtn-restricao-nao" name="drone" value="Não"
                                         onclick="areaRestricaoBehavior()">
                                 </div>
 

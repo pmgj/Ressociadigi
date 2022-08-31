@@ -19,7 +19,7 @@ function setModal(modalId){
 	})
 }
 //tem que trocar o ".filtrar" por classe/id que tu colocar na imagem de lixeira
-const excluir = document.querySelector(".filtrar")
+const excluir = document.querySelector(".botao-excluir")
 excluir.addEventListener("click", function(){
 	setModal("modal");
 })
