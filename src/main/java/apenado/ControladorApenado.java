@@ -1,5 +1,8 @@
 package apenado;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ControladorApenado {
@@ -22,10 +27,27 @@ public class ControladorApenado {
         return "result";
     }
 
+    @ModelAttribute("cnhsList")
+    public List<CNH> cnhsList() {
+        return Arrays.asList(CNH.values());
+    }
+
+    @ModelAttribute("restricoes")
+    public List<Restricao> restricoes() {
+        return Arrays.asList(Restricao.values());
+    }
+
+    @ModelAttribute("prioridades")
+    public List<Prioridade> prioridades() {
+        return Arrays.asList(Prioridade.values());
+    }
+
     @GetMapping("/inserirApenadoForm")
-    public String inserirApenadoForm(Model model) {
-        model.addAttribute("apenado", new Apenado());
-        return "apenado";
+    public ModelAndView inserirApenadoForm() {
+        Apenado apenado = new Apenado();
+        ModelAndView mav = new ModelAndView("apenado");
+        mav.addObject("apenado", apenado);
+        return mav;
     }
 
     @PostMapping("/armazenarApenado")
@@ -40,7 +62,7 @@ public class ControladorApenado {
     @GetMapping("/alterarApenadoForm")
     public String alterarApenadoForm(@RequestParam String cpf, Model model) {
         Apenado apenado = service.findById(cpf).get();
-		model.addAttribute("apenado", apenado);
+        model.addAttribute("apenado", apenado);
         return "apenado";
     }
 

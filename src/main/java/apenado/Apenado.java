@@ -1,8 +1,13 @@
 package apenado;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.swing.text.MaskFormatter;
 import javax.validation.constraints.NotEmpty;
@@ -14,99 +19,102 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Apenado {
-	//Atributos relacionados à seção de Dados Pessoais.
-	
-    @Id
-    @NotNull(message = "Este campo não pode ser nulo")
-    @NotEmpty(message = "Este campo não pode estar vazio")
-    @Pattern(regexp = "[0-9]{11}", message = "CPF deve possuir 11 dígitos")
-    private String cpf;
 
-    @NotNull(message = "Este campo não pode ser nulo")
-    @NotEmpty(message = "Este campo não pode estar vazio")
-    private String nome;
+	// Atributos relacionados à seção de Dados Pessoais.
 
-    @Past
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private LocalDate dataNascimento;
-    
-    @NotNull(message = "Este campo não pode ser nulo")
-    @NotEmpty(message = "Este campo não pode estar vazio.")
-    private String telefone;
-    
-    private String telefone2;
-    private String nomeDaMae;
-    private String email;
-    private String sexoBiologico;
-    private String orientacaoSexual;
-    
-    private String cnh;
-    
-    //Atributos relacionados à seção de Endereço.
+	@Id
+	@NotNull(message = "Este campo não pode ser nulo")
+	@NotEmpty(message = "Este campo não pode estar vazio")
+	@Pattern(regexp = "[0-9]{11}", message = "CPF deve possuir 11 dígitos")
+	private String cpf;
 
-    private String estado;
-    
-    @NotNull(message = "Este campo não pode ser nulo")
-    @NotEmpty(message = "Este campo não pode estar vazio.")
-    private String cidade;
-    
-    @NotNull(message = "Este campo não pode ser nulo")
-    @NotEmpty(message = "Este campo não pode estar vazio.")
-    private String bairro;
-    
-    @NotNull(message = "Este campo não pode ser nulo")
-    @NotEmpty(message = "Este campo não pode estar vazio.")
-    private String rua;
+	@NotNull(message = "Este campo não pode ser nulo")
+	@NotEmpty(message = "Este campo não pode estar vazio")
+	private String nome;
 
-    private String cep;
+	@Past
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	private LocalDate dataNascimento;
 
-    @NotNull(message = "Este campo não pode ser nulo")
-    private String numeroDaCasa;
-        
-    private String complemento;
-    
-    //Atributos relacionados à seção de Instrução.
-    
-    private String escolaridade;    
-    private String restricao;
-        
-    private String curso; //Revisar como será a dinâmica de uso desse atributo, dado que poderão ser diversos cursos.
-    
-    private String perfil;
-    
-    //Atributos relacionados à seção de Situacional.
-    
-    @NotEmpty(message="Este campo não pode estar vazio.")
-    private String prioridade;
-    
-    @NotNull(message = "Este campo não pode ser nulo")
-    @NotEmpty(message = "Este campo não pode estar vazio.")
-    private String numeroProcesso;
-    
-    @NotNull(message = "Este campo não pode ser nulo")
-    @NotEmpty(message = "Este campo não pode estar vazio.")
-    private String artigos;
-    
-    @NotNull(message = "Este campo não pode ser nulo")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private LocalDate dataTerminoPena;
+	// @NotNull(message = "Este campo não pode ser nulo")
+	// @NotEmpty(message = "Este campo não pode estar vazio.")
+	private String telefone;
 
-	private String numConta;	
-	private String agencia;	
-	private String banco;	
+	private String telefone2;
+	private String nomeDaMae;
+	private String email;
+	private String sexoBiologico;
+	private String orientacaoSexual;
+
+	@ElementCollection
+	@Enumerated(EnumType.STRING)
+	private List<CNH> cnhs = new ArrayList<>();
+	// Atributos relacionados à seção de Endereço.
+
+	private String estado;
+
+	// @NotNull(message = "Este campo não pode ser nulo")
+	// @NotEmpty(message = "Este campo não pode estar vazio.")
+	private String cidade;
+
+	// @NotNull(message = "Este campo não pode ser nulo")
+	// @NotEmpty(message = "Este campo não pode estar vazio.")
+	private String bairro;
+
+	// @NotNull(message = "Este campo não pode ser nulo")
+	// @NotEmpty(message = "Este campo não pode estar vazio.")
+	private String rua;
+
+	private String cep;
+
+	// @NotNull(message = "Este campo não pode ser nulo")
+	private String numeroDaCasa;
+
+	private String complemento;
+
+	// Atributos relacionados à seção de Instrução.
+
+	private String escolaridade;
+	private Restricao restricao = Restricao.NAO;
+	private String textoRestricao;
+
+	private String curso; // Revisar como será a dinâmica de uso desse atributo, dado que poderão ser
+							// diversos cursos.
+
+	private String perfil;
+
+	// Atributos relacionados à seção de Situacional.
+
+	private Prioridade prioridade = Prioridade.BAIXA;
+
+	// @NotNull(message = "Este campo não pode ser nulo")
+	// @NotEmpty(message = "Este campo não pode estar vazio.")
+	private String numeroProcesso;
+
+	// @NotNull(message = "Este campo não pode ser nulo")
+	// @NotEmpty(message = "Este campo não pode estar vazio.")
+	private String artigos;
+
+	// @NotNull(message = "Este campo não pode ser nulo")
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	private LocalDate dataTerminoPena = LocalDate.now();
+
+	private String numConta;
+	private String agencia;
+	private String banco;
 	private String operacao;
-    
-	//Métodos comuns
+
+	// Métodos comuns
 	public String formataTelefone(String numTelefone, int tipoFormatacao) {
-		//Tipo 1 indica remoção de máscara.
-		//Tipo 2 indica inserção de máscara.
+		// Tipo 1 indica remoção de máscara.
+		// Tipo 2 indica inserção de máscara.
 		try {
-			if(tipoFormatacao == 1) {
+			if (tipoFormatacao == 1) {
 				return numTelefone.replaceAll("[^0-9]+", "");
-			} else if(tipoFormatacao == 2) {
+			} else if (tipoFormatacao == 2) {
 				MaskFormatter maskFormatter = new MaskFormatter("(##) #####-####");
 				maskFormatter.setValueContainsLiteralCharacters(false);
-				return (String)maskFormatter.valueToString(numTelefone);
+				return (String) maskFormatter.valueToString(numTelefone);
 			} else {
 				return numTelefone;
 			}
@@ -115,36 +123,36 @@ public class Apenado {
 		}
 		return null;
 	}
-	
-    //Métodos Getters e Setters
-	
-    public String getCpf() {
-        return cpf;
-    }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
+	// Métodos Getters e Setters
 
-    public String getNome() {
-        return nome;
-    }
+	public String getCpf() {
+		return cpf;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public void setDataNascimento(LocalDate dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-    
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
 	public String getTelefone() {
-//		return telefone;
-		if(telefone == null) {
+		// return telefone;
+		if (telefone == null) {
 			return telefone;
 		} else {
 			return formataTelefone(telefone, 2);
@@ -156,8 +164,8 @@ public class Apenado {
 	}
 
 	public String getTelefone2() {
-//		return telefone2;
-		if(telefone == null) {
+		// return telefone2;
+		if (telefone == null) {
 			return telefone;
 		} else {
 			return formataTelefone(telefone2, 2);
@@ -328,37 +336,44 @@ public class Apenado {
 		this.orientacaoSexual = orientacaoSexual;
 	}
 
-	public String getCnh() {
-		return cnh;
+	public List<CNH> getCnhs() {
+		return cnhs;
 	}
 
-	public void setCnh(String cnh) {
-		this.cnh = cnh;
+	public void setCnhs(List<CNH> cnhs) {
+		this.cnhs = cnhs;
 	}
-	
+
 	public String getEscolaridade() {
 		return escolaridade;
 	}
-
 
 	public void setEscolaridade(String escolaridade) {
 		this.escolaridade = escolaridade;
 	}
 
-	public String getRestricao() {
-		return restricao;
-	}
-
-	public void setRestricao(String restricao) {
-		this.restricao = restricao;
-	}
-
-	public String getPrioridade() {
+	public Prioridade getPrioridade() {
 		return prioridade;
 	}
 
-	public void setPrioridade(String prioridade) {
+	public void setPrioridade(Prioridade prioridade) {
 		this.prioridade = prioridade;
 	}
-	
+
+	public String getTextoRestricao() {
+		return textoRestricao;
+	}
+
+	public void setTextoRestricao(String textoRestricao) {
+		this.textoRestricao = textoRestricao;
+	}
+
+	public Restricao getRestricao() {
+		return restricao;
+	}
+
+	public void setRestricao(Restricao restricao) {
+		this.restricao = restricao;
+	}
+
 }
