@@ -75,3 +75,39 @@ function mudarTitulo() {
     })
 }
 mudarTitulo();
+
+let clicado = false;
+function mostrarDisplayHabilidade() {
+    
+if (clicado == false){
+    
+    let habilidases = document.querySelector(".container-habilidades");
+    let maisHabilidade = document.createElement("button");
+    maisHabilidade.innerText = "Adicionar"
+    maisHabilidade.setAttribute("class", "adicionarhablidade")
+    habilidases.append(maisHabilidade)
+    let sectionInputs = document.createElement("section")
+    sectionInputs.setAttribute("class", "sectionInputs")
+    habilidases.append(sectionInputs)
+    let inputHabilidadeBox = document.createElement("div")
+    inputHabilidadeBox.setAttribute("class", "container-habilidades-input")
+    sectionInputs.prepend(inputHabilidadeBox)
+
+    maisHabilidade.addEventListener("click", function () {
+        let labelinputHabilidade = document.createElement("label")
+        labelinputHabilidade.innerText = "Habilidade"
+        labelinputHabilidade.setAttribute("for", "inputHabilidade")
+        let inputHabilidade = document.createElement("input");
+        inputHabilidade.setAttribute("class", "inputHabilidade");
+        inputHabilidade.setAttribute("id", "inputHabilidade");
+
+        let container = document.createElement("div");
+        container.setAttribute("class", "addBox")
+        container.append(labelinputHabilidade)
+        container.append(inputHabilidade)
+
+        inputHabilidadeBox.prepend(container)
+    })
+    clicado = true
+}
+}
