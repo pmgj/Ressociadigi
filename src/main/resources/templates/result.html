@@ -33,7 +33,6 @@
 		                <th>CPF</th>
 		                <th>DATA DE NASCIMENTO</th>
 		                <th>NOME DA MÃE</th>
-		                <th>CNH</th>
 		                <th>CONTATO</th>
 		                <th>AÇÕES</th>
 		            </tr>
@@ -48,13 +47,12 @@
 		                <td><span th:text="${item.cpf}">CPF</span></td>
 		                <td><span th:text="${item.dataNascimento}">Data de Nascimento</span></td>
 		                <td><span th:text="${item.nomeDaMae}">Nome da Mãe</span></td>
-		                <!-- <td><span th:text="${item.cnhs}">CNH</span></td> -->
-						<td><span th:each="cnh : ${item.cnhs}"><span th:text="${cnh}"></span>&nbsp;</span></td>
 		                <td><span th:text="${item.telefone}">Contato</span></td>
 		                <td>
 		                	<a th:href="@{/alterarApenadoForm(cpf=${item.cpf})}"><img th:src="@{/imgs/icone-editar.png}" alt="Editar"/></a>
-		                	<a class="botao-excluir" th:href="@{/removerApenado(cpf=${item.cpf})}"><img th:src="@{/imgs/icone-excluir.png}" alt="Excluir"/></a>
+		                	<a class="botao-excluir" th:href="@{/removerApenado(cpf=${item.cpf})}" th:attr="data-nome=${item.nome}, data-cpf=${item.cpf}" ><img th:src="@{/imgs/icone-excluir.png}" alt="Excluir"/></a>
 		                </td>
+		                <!-- th:href="@{/removerApenado(cpf=${item.cpf})}" -->
 		            </tr>
 		        </tbody>
 		        <tfoot>
@@ -63,7 +61,7 @@
 		        		<td></td>
 		        		<td></td>
 		        		<td></td>
-		        		<td>r5</td>
+		        		<td></td>
 		        		<td>Página X de X</td>
 		        		<td id="previousAndNextButtons"><a th:href="@{#}">&lt;&lt;</a><a th:href="@{#}">&gt;&gt;</a></td>
 		        	</tr>
@@ -77,31 +75,16 @@
 			<button class="fechar">X</button>
 			<form action="">
 				<h3>Confirmação</h3>
-				<p>
+				<p id="mensagem-de-confirmacao">
 				Você tem certeza que deseja excluir o registro definitivamente?
 				</p>
 				<div class="botoes-confimacao">
-					<button class="botao-sim">Sim</button>
+					<button class="botao-sim" onclick="teste()">Sim</button>
 					<button class="botao-nao">Não</button>
 				</div>
 			</form>
 		</div>
 	</div>
-
-	<!-- <script>
-		function setModal(modalId){
-			const modal = document.getElementById(modalId);
-			modal.classList.add("mostrar");
-			modal.addEventListener("click", (e) => {
-				if(e.target.id == modalId || e.target.className == "fechar"){
-					modal.classList.remove("mostrar")
-				}
-			})
-		}
-		const excluir = document.querySelector(".filtrar")
-		excluir.addEventListener("click", function(){
-			setModal("modal");
-		})
-	</script> -->
+	<!-- <td><span th:each="cnh : ${item.cnhs}"><span th:text="${cnh}"></span>&nbsp;</span></td> -->
 </body>
 </html>

@@ -36,8 +36,8 @@ public class Apenado {
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate dataNascimento;
 
-	// @NotNull(message = "Este campo não pode ser nulo")
-	// @NotEmpty(message = "Este campo não pode estar vazio.")
+	@NotNull(message = "Este campo não pode ser nulo")
+	@NotEmpty(message = "Este campo não pode estar vazio.")
 	private String telefone;
 
 	private String telefone2;
@@ -49,27 +49,15 @@ public class Apenado {
 	@ElementCollection
 	@Enumerated(EnumType.STRING)
 	private List<CNH> cnhs = new ArrayList<>();
+	
 	// Atributos relacionados à seção de Endereço.
 
 	private String estado;
-
-	// @NotNull(message = "Este campo não pode ser nulo")
-	// @NotEmpty(message = "Este campo não pode estar vazio.")
 	private String cidade;
-
-	// @NotNull(message = "Este campo não pode ser nulo")
-	// @NotEmpty(message = "Este campo não pode estar vazio.")
 	private String bairro;
-
-	// @NotNull(message = "Este campo não pode ser nulo")
-	// @NotEmpty(message = "Este campo não pode estar vazio.")
 	private String rua;
-
 	private String cep;
-
-	// @NotNull(message = "Este campo não pode ser nulo")
 	private String numeroDaCasa;
-
 	private String complemento;
 
 	// Atributos relacionados à seção de Instrução.
@@ -77,28 +65,18 @@ public class Apenado {
 	private String escolaridade;
 	private Restricao restricao = Restricao.NAO;
 	private String textoRestricao;
-
 	private String curso; // Revisar como será a dinâmica de uso desse atributo, dado que poderão ser
 							// diversos cursos.
-
 	private String perfil;
 
 	// Atributos relacionados à seção de Situacional.
 
 	private Prioridade prioridade = Prioridade.BAIXA;
-
-	// @NotNull(message = "Este campo não pode ser nulo")
-	// @NotEmpty(message = "Este campo não pode estar vazio.")
 	private String numeroProcesso;
-
-	// @NotNull(message = "Este campo não pode ser nulo")
-	// @NotEmpty(message = "Este campo não pode estar vazio.")
 	private String artigos;
 
-	// @NotNull(message = "Este campo não pode ser nulo")
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate dataTerminoPena;
-
 	private String numConta;
 	private String agencia;
 	private String banco;
@@ -151,7 +129,6 @@ public class Apenado {
 	}
 
 	public String getTelefone() {
-		// return telefone;
 		if (telefone == null) {
 			return telefone;
 		} else {
@@ -164,7 +141,6 @@ public class Apenado {
 	}
 
 	public String getTelefone2() {
-		// return telefone2;
 		if (telefone == null) {
 			return telefone;
 		} else {

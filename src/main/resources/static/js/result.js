@@ -9,17 +9,26 @@ function handleCheckbox(chbx){
 
 
 //FUNCAO QUE MOSTRA O MODAL
-function setModal(modalId){
+function setModal(modalId, nomeDoApenado, cpfApenado){
 	const modal = document.getElementById(modalId);
+	document.getElementById("mensagem-de-confirmacao").innerText = `Você tem certeza que deseja excluir o registro de ${nomeDoApenado} definitivamente?`;
 	modal.classList.add("mostrar");
 	modal.addEventListener("click", (e) => {
-		if(e.target.id == modalId || e.target.className == "fechar"){
+		if(e.target.id == modalId || e.target.className == "fechar" || e.target.className == "botao-nao"){
 			modal.classList.remove("mostrar")
+		} else if(e.target.className == "botao-sim"){
+			window.location.assign("www.google.com");
 		}
 	})
 }
+
+
 //tem que trocar o ".filtrar" por classe/id que tu colocar na imagem de lixeira
-const excluir = document.querySelector(".botao-excluir")
-excluir.addEventListener("click", function(){
-	setModal("modal");
+const excluir = document.querySelectorAll()
+excluir.forEach((i) => {
+	i.addEventListener("click", function(){
+		let nomeDoApenado = i.getAttribute("data-nome");
+		let cpfApenado = i.getAttribute("data-cpf");
+		setModal("modal", nomeDoApenado, cpfApenado);
+	})
 })

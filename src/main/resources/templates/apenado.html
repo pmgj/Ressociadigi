@@ -125,7 +125,7 @@
                     <div id="grupo-input-endereco">
 
                         <div id="rua" class="input-normal">
-                            <label for="rua">Rua <a id="sinal">*</a></label>
+                            <label for="rua">Rua</label>
                             <input type="text" th:field="*{rua}" id="rua" class="form-input">
                             <label id="labelError" th:if="${#fields.hasErrors('rua')}" th:errors="*{rua}">Erro na
                                 Rua</label>
@@ -133,14 +133,14 @@
 
 
                         <div id="cep-numero" class="input-normal">
-                            <label for="cep">CEP <a id="sinal">*</a></label>
+                            <label for="cep">CEP</label>
                             <input type="text" th:field="*{cep}" id="cep">
                             <label id="labelError" th:if="${#fields.hasErrors('cep')}" th:errors="*{cep}">Erro no
                                 CEP</label>
                         </div>
 
                         <div id="cep-numero" class="input-normal">
-                            <label for="NumeroCasa">Número <a id="sinal">*</a></label>
+                            <label for="NumeroCasa">Número</label>
                             <input type="text" th:field="*{numeroDaCasa}" id="NumeroCasa">
                             <label id="labelError" th:if="${#fields.hasErrors('numeroDaCasa')}"
                                 th:errors="*{numeroDaCasa}">Erro no Num
@@ -148,7 +148,7 @@
                         </div>
 
                         <div id="bairro-input" class="input-normal">
-                            <label for="bairro">Bairro <a id="sinal">*</a></label>
+                            <label for="bairro">Bairro</label>
                             <input type="text" th:field="*{bairro}" id="bairro" class="form-input">
                             <label id="labelError" th:if="${#fields.hasErrors('bairro')}" th:errors="*{bairro}">Erro
                                 no
@@ -156,7 +156,7 @@
                         </div>
 
                         <div id="bairro-input" class="input-normal">
-                            <label for="cidade">Cidade <a id="sinal">*</a></label>
+                            <label for="cidade">Cidade</label>
                             <input type="text" th:field="*{cidade}" id="cidade" class="form-input">
                             <label id="labelError" th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}">Erro
                                 na
@@ -172,7 +172,7 @@
                         </div>
 
                         <div id="estado-input" class="input-normal">
-                            <label for="estado">Estado <a id="sinal">*</a></label>
+                            <label for="estado">Estado</label>
                             <select id="estado" th:field="*{estado}" name="estado">
                                 <option value="Default" selected>Nenhum</option>
                                 <option value="Acre">Acre</option>
@@ -264,7 +264,7 @@
                     <!-----------------------SEÇÃO SITUACIONAL------------------------------>
                     <div id="grupo-input-situacional">
                         <div id="numeroProcesso-input" class="input-normal">
-                            <label for="numeroProcesso">Número do processo <a id="sinal">*</a></label>
+                            <label for="numeroProcesso">Número do processo</label>
                             <input type="text" th:field="*{numeroProcesso}" id="numeroProcesso">
                             <label id="labelError" th:if="${#fields.hasErrors('numeroProcesso')}"
                                 th:errors="*{numeroProcesso}">Erro no
@@ -273,14 +273,14 @@
                         </div>
 
                         <div id="artigo-input" class="input-normal">
-                            <label for="artigo">Artigo(s) <a id="sinal">*</a></label>
+                            <label for="artigo">Artigo(s)</label>
                             <input type="text" th:field="*{artigos}" id="artigo">
                             <label id="labelError" th:if="${#fields.hasErrors('artigos')}" th:errors="*{artigos}">Erro
                                 no Artigo</label>
                         </div>
 
                         <div id="terminoPena-input" class="input-normal">
-                            <label for="terminoPena">Termino Pena <a id="sinal">*</a></label>
+                            <label for="terminoPena">Termino Pena</label>
                             <input type="date" th:field="*{dataTerminoPena}" id="terminoPena">
                             <label id="labelError" th:if="${#fields.hasErrors('dataTerminoPena')}"
                                 th:errors="*{dataTerminoPena}">Erro
@@ -288,7 +288,7 @@
                         </div>
 
                         <div id="prioridade">
-                            <p>Prioridade <a id="sinal">*</a></p>
+                            <p>Prioridade</p>
                             <div id="prioridades">
                                 <input type="radio" th:each="p : ${prioridades}" th:value="${p}"
                                 th:text="${p.texto}" th:checked="${apenado.getPrioridade() == p}"
@@ -309,7 +309,6 @@
                                 <label id="labelError" th:if="${#fields.hasErrors('numConta')}"
                                     th:errors="*{numConta}">Erro no Número da
                                     Conta</label>
-                                <!--<label>Label de teste!</label>-->
                             </div>
 
                             <div id="div-agencia" class="input-normal-dados-bancarios">
@@ -318,7 +317,6 @@
                                 <label id="labelError" th:if="${#fields.hasErrors('agencia')}"
                                     th:errors="*{agencia}">Erro no Número da
                                     Agência</label>
-                                <!-- <label>Label de teste!</label>-->
                             </div>
 
                             <div id="div-banco" class="input-normal-dados-bancarios">
@@ -327,7 +325,6 @@
                                 <label id="labelError" th:if="${#fields.hasErrors('banco')}" th:errors="*{banco}">Erro
                                     no nome do
                                     Banco</label>
-                                <!--<label>Label de teste!</label>-->
                             </div>
 
                             <div id="div-operacao" class="input-normal-dados-bancarios">
@@ -336,7 +333,6 @@
                                 <label id="labelError" th:if="${#fields.hasErrors('operacao')}"
                                     th:errors="*{operacao}">Erro na
                                     Operação</label>
-                                <!--<label>Label de teste!</label> -->
                             </div>
                         </fieldset>
                         <div></div>
