@@ -97,7 +97,7 @@ public class Apenado {
 
 	// @NotNull(message = "Este campo não pode ser nulo")
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	private LocalDate dataTerminoPena = LocalDate.now();
+	private LocalDate dataTerminoPena;
 
 	private String numConta;
 	private String agencia;
