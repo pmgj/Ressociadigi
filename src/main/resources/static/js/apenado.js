@@ -76,7 +76,9 @@ function mudarTitulo() {
 }
 mudarTitulo();
 
-let clicado = false;
+
+
+/* let clicado = false;
 function mostrarDisplayHabilidade() {
     
 if (clicado == false){
@@ -111,3 +113,4 @@ if (clicado == false){
     clicado = true
 }
 }
+ */
