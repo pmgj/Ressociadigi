@@ -5,118 +5,67 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="vagas.css">
-    <title>Document</title>
+    <title>Cadastro de vaga</title>
 </head>
 <body>
-    <main>
-        <form>
-            <h1>Cadastrar Vaga</h1>
-        
-            <div class="container-aplicacao">
+   <main>
+    <nav>
+        <img src="" alt="">
+    </nav>
 
-                <div class="container-input">
+    <section>
+        <form action="">
+            <div id="titulo">
+                <h1>Cadastro de Vaga</h1>
+            </div>
 
-                    <div class="input-container-dados">
-                        <div id="empresa-input input" class="input">
-                            <label for="empresa">nome da Empresa</label>
-                            <input type="text" id="empresa">
-                        </div>
-                        <div id="responsavel-input" class="input">
-                            <label for="responsavel">responsavel</label>
-                            <input type="text" id="responsavel">
-                        </div>
-                        <div id="tipo-input" class="input">
-                            <label for="tipo">Tipo</label>
-                            <input type="text" id="tipo">
-                        </div>
-                        <div id="qtd-input" class="input">
-                            <label for="qtd">Quantidade</label>
-                            <input type="number" id="qtd">
-                        </div>
-                        <div  class="input">
-                            <label for="dataDeSolicitacao">telefone</label>
-                            <input type="text" id="telefone">
-                        </div>
-                        <div class="input">
-                            <label for="dataDeAtendimento">2° telefone</label>
-                            <input type="text" id="dataDeAtendimento">
-                        </div>
-                        <div id="carga-input" class="input">
-                            <label for="cargaHoraria">carga horária</label>
-                            <input type="text" name="" id="cargaHoraria">
-                        </div>
-        
-                        <div id="contato-input" class="input">
-                            <label for="contato">interlocutor</label>
-                            <input type="text" id="contato">
-                        </div>
-        
-                        <div id="Perfil" class="input">
-                            <label for="perfil">procura por:</label>
-                            <textarea name="" id="perfil" cols="30" rows="10"></textarea>
-                        </div>
-        
-                        <div id="restricao" class="input">
-                            <label for="restricao">restrição:</label>
-                            <textarea name="" id="restricao" cols="30" rows="10"></textarea>
-                        </div>
-    
-                     <!-- ----------------------------------------- -->
-                     <div class="input">
-                        <label for="estado">Estado</label>
-                        <input type="text">
+            <div class="container-input-vagas">
+                <div class="input-normal" id="nomeEmpresa">
+                    <label for="empresaSelect">selecione a empresa</label>
+                    <select name="empresaSelect" id="empresaSelect">
+                        <!-- <option value="">empresa x</option>
+                        <option value="">empresa x</option> -->
+                    </select>
+                </div>
+                <div class="input-normal">
+                    <label for="interlocutor">interlocutor</label>
+                    <input type="text" id="interlocutor">
+                </div>
+                <div class="input-normal">
+                    <label for="qtdMasculina">número de vagas masculinas</label>
+                    <input type="number" id="qtdMasculina">
+                </div>
+                <div class="input-normal">
+                    <label for="qtdFeminino">número de vagas femininas</label>
+                    <input type="number" id="qtdFeminino">
+                </div>
+                <div class="input-normal">
+                    <label for="tipo">tipo</label>
+                    <input type="text" id="tipo">
+                </div>
+                <div class="input-normal">
+                    <label for="cargaHoraria">carga horária</label>
+                    <input type="text" id="cargaHoraria">
+                </div>
+
+                <div class="input-normal">
+                    <label for="procura">procura por:</label>
+                    <textarea name="procura" id="procura" cols="34" rows="8"></textarea>
+                </div>
+                <div class="input-normal">
+                    <label for="restricao">restrição:</label>
+                    <textarea name="procura" id="procura" cols="34" rows="8"></textarea>
+                </div>
+                <div class="tap">
+                    <div class="container-botao">
+                        <button id="voltar">Voltar</button>
+                        <button id="enviar"> enviar</button>
                     </div>
-                    <div class="input">
-                        <label for="cidade">cidade</label>
-                        <input type="text">
-                    </div>
-    
-                    <div class="input">
-                        <label for="bairro">bairro</label>
-                        <input type="text">
-                    </div>
-    
-                    <div class="input">
-                        <label for="rua">Estado</label>
-                        <input type="text">
-                    </div>
-    
-                    <div id="containerCep" >
-                        <div class="cep input">
-                            <label for="cep">cep</label>
-                            <input type="text" id="cep">
-                        </div>
-    
-                        <div class="numero input">
-                            <label for="numero">NÚMERO</label>
-                            <input type="text" id="numero">
-                        </div>
-                    </div>
-    
-                    <div class="input">
-                        <label for="complemento">
-                            complemento
-                        </label>
-                        <input type="text" id="complemento">
-                    </div>
-        
-                    </div>
-        
-                   
                 </div>
             </div>
-            
-
-             <footer>
-                
-                <button id="botao-voltar">Voltar</button>
-                <button id="botao-enviar">Enviar</button>
-            </footer>
-
-            <!-- <button>Enviar</button> -->
-        
         </form>
-    </main>
+    </section>
+   </main>
     
 </body>
 </html>

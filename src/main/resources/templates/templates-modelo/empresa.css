@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Abyssinica+SIL&display=swap');
 *{
     box-sizing: border-box;
     padding: 0;
@@ -59,7 +58,7 @@ nav {
     font-weight:bolder ;
 }
 
-.container-input-vagas{
+.container-input-empresa{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 3rem;
@@ -80,52 +79,50 @@ nav {
     font-size: 0.9rem;
     font-weight: 700;
     display: block;
-    
+    letter-spacing: 1px;
 }
 .input-normal input{
     font-size: 1.1em;
     padding: 10px;
 }
-textarea{
-    padding: 10px 0px 0px 10px;
-    font-size: 20px;
-    max-width: 18rem;
-    max-height: 10rem;
-    font-family: 'Abyssinica SIL', serif;
-    
-}
-.tap{
-    grid-column-start: 1;
-    grid-column-end: 3;
-   
-    
-}
-.container-botao{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-.container-botao #enviar{
-    width: 8rem;
-    height: 2.5rem;
-    outline: none;
-    cursor: pointer;
-    border: none;
-    border-radius: 6px;
-    font-size: 1.5em;
-    background-color: rgb(194, 100, 34);
-    color: #FFFFFF;
 
-    margin-right: 4rem;
+.cep, .numero{
+    display: flex;
+    flex-direction: column;
 }
-.container-botao #voltar{
+
+.cep input{
+    width: 8rem;
+}
+.numero input{
+    width: 8rem;
+}
+
+#containerCep{
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+}
+
+.cep, .numero{
+    display: flex;
+    flex-direction: column;
+}
+
+.cep input{
     width: 8rem;
     height: 2.5rem;
-    outline: none;
-    cursor: pointer;
-    border: none;
+    padding: 10px;
     border-radius: 6px;
-    font-size: 1.5em;
-    background-color: rgb(111, 105, 105);
-    color: #FFFFFF;
 }
+.numero input{
+    width: 8rem;
+    height: 2.5rem;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+div >label{
+    font-weight: 900;
+}
+
