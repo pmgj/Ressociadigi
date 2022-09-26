@@ -12,10 +12,10 @@ public class Empresa {
 	@Id
 	@NotNull(message = "Null not allowed")
 	@NotEmpty(message = "Empty not allowed")
-	private String cnpj;
-	
+	private String cnpj;	
 	private String nome;
 	private String responsavel;
+	private String email;
 	private String telefone;
 	private String telefone2;
 	private String interlocutor;
@@ -50,6 +50,12 @@ public class Empresa {
 	}
 	public void setResponsavel(String responsavel) {
 		this.responsavel = responsavel;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getTelefone() {
 		return telefone;
