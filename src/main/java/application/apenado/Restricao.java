@@ -1,4 +1,4 @@
-package apenado;
+package application.apenado;
 
 public enum Restricao {
     SIM("Sim"), NAO("Não");

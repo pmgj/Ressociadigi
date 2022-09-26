@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Listando Empresas</title>
+</head>
+<body>
+	<table border="1">
+		<thead>
+			<tr>
+				<td>CNPJ</td>
+				<td>Nome da Empresa</td>
+				<td>Responsável</td>
+				<td>Interlocutor</td>
+				<td>Telefone</td>
+				<td>Cidade</td>
+				<td>Estado</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${listaEmpresas.empty}"><td colspan="7">Nenhuma empresa cadastrada no sistema!</td></tr>
+			<tr th:each="empresa : ${listaEmpresas}">
+				<td><span th:text="${empresa.cnpj}"></span></td>
+				<td><span th:text="${empresa.nome}"></span></td>
+				<td><span th:text="${empresa.responsavel}"></span></td>
+				<td><span th:text="${empresa.interlocutor}"></span></td>
+				<td><span th:text="${empresa.telefone}"></span></td>
+				<td><span th:text="${empresa.cidade}"></span></td>
+				<td><span th:text="${empresa.estado}"></span></td>
+			</tr>		
+	
+		</tbody>
+	</table>
+</body>
+</html>

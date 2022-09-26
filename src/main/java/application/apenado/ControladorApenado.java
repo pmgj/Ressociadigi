@@ -1,4 +1,4 @@
-package apenado;
+package application.apenado;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,7 +20,7 @@ public class ControladorApenado {
 
     @Autowired
     private RepositorioApenado service;
-
+        
     @GetMapping("/listarApenados")
     public String listarApenados(Model model) {
         model.addAttribute("lista", service.findAll());

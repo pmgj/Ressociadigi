@@ -1,104 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="vagas.css">
-    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/empresa.css}">
+    <script defer="defer" th:src="@{/js/empresa.js}"></script>
+    <title>Cadastro de Empresas</title>
 </head>
 <body>
     <main>
-        <form>
-            <h1>Cadastrar Vaga</h1>
+    	<nav id="menu-lateral">
+            <img th:src="@{/imgs/logoRD.png}" alt="" />
+            <ul>
+                <li id="dp">Dados iniciais</li>
+                <li id="ende">Endereço</li>
+            </ul>
+        </nav>
+        <form action="#" th:action="@{/armazenarEmpresa}" th:object="${empresa}" method="post">
+            <h1>Cadastrar Empresa</h1>
         
             <div class="container-aplicacao">
 
                 <div class="container-input">
-
+					<!-- -------------SEÇÃO REFERENTE A DADOS GERAIS-------------- -->
                     <div class="input-container-dados">
                         <div id="empresa-input input" class="input">
-                            <label for="empresa">nome da Empresa</label>
-                            <input type="text" id="empresa">
+                            <label for="empresa">Nome da Empresa</label>
+                            <input type="text" th:field="*{nome}" id="empresa">
+                        </div>
+                        <div id="cnpj-input" class="input">
+                            <label for="cnpj">CNPJ</label>
+                            <input type="text" th:field="*{cnpj}" id="cnpj">
                         </div>
                         <div id="responsavel-input" class="input">
-                            <label for="responsavel">responsavel</label>
-                            <input type="text" id="responsavel">
+                            <label for="responsavel">Responsável</label>
+                            <input type="text" th:field="*{responsavel}" id="responsavel">
                         </div>
-                        <div id="tipo-input" class="input">
-                            <label for="tipo">Tipo</label>
-                            <input type="text" id="tipo">
+                        
+                        <div id="interlocutor-input" class="input">
+                            <label for="contato">Interlocutor</label>
+                            <input type="text" th:field="*{interlocutor}" id="interlocutor">
                         </div>
-                        <div id="qtd-input" class="input">
-                            <label for="qtd">Quantidade</label>
-                            <input type="number" id="qtd">
+                        
+                        <div id="telefone-input" class="input">
+                            <label for="telefone">Telefone</label>
+                            <input type="text" th:field="*{telefone}" id="telefone">
                         </div>
-                        <div  class="input">
-                            <label for="dataDeSolicitacao">telefone</label>
-                            <input type="text" id="telefone">
+        				
+        				<div id="telefone2-input" class="input">
+                            <label for="telefone2">Telefone 2</label>
+                            <input type="text" th:field="*{telefone2}" id="telefone2">
                         </div>
-                        <div class="input">
-                            <label for="dataDeAtendimento">2° telefone</label>
-                            <input type="text" id="dataDeAtendimento">
-                        </div>
-                        <div id="carga-input" class="input">
-                            <label for="cargaHoraria">carga horária</label>
-                            <input type="text" name="" id="cargaHoraria">
-                        </div>
-        
-                        <div id="contato-input" class="input">
-                            <label for="contato">interlocutor</label>
-                            <input type="text" id="contato">
-                        </div>
-        
-                        <div id="Perfil" class="input">
-                            <label for="perfil">procura por:</label>
-                            <textarea name="" id="perfil" cols="30" rows="10"></textarea>
-                        </div>
-        
-                        <div id="restricao" class="input">
-                            <label for="restricao">restrição:</label>
-                            <textarea name="" id="restricao" cols="30" rows="10"></textarea>
-                        </div>
-    
-                     <!-- ----------------------------------------- -->
-                     <div class="input">
-                        <label for="estado">Estado</label>
-                        <input type="text">
-                    </div>
-                    <div class="input">
-                        <label for="cidade">cidade</label>
-                        <input type="text">
-                    </div>
-    
-                    <div class="input">
-                        <label for="bairro">bairro</label>
-                        <input type="text">
-                    </div>
-    
-                    <div class="input">
-                        <label for="rua">Estado</label>
-                        <input type="text">
-                    </div>
-    
-                    <div id="containerCep" >
-                        <div class="cep input">
-                            <label for="cep">cep</label>
-                            <input type="text" id="cep">
-                        </div>
-    
-                        <div class="numero input">
-                            <label for="numero">NÚMERO</label>
-                            <input type="text" id="numero">
-                        </div>
-                    </div>
-    
-                    <div class="input">
-                        <label for="complemento">
-                            complemento
-                        </label>
-                        <input type="text" id="complemento">
-                    </div>
+                     <!-- -------------SEÇÃO REFERENTE A ENDEREÇO-------------- -->
+	                    <div class="input">
+	                        <label for="estado">Estado</label>
+	                        <input  type="text" th:field="*{estado}">
+	                    </div>
+	                    <div class="input">
+	                        <label for="cidade">Cidade</label>
+	                        <input type="text" th:field="*{cidade}">
+	                    </div>
+	    
+	                    <div class="input">
+	                        <label for="bairro">Bairro</label>
+	                        <input type="text" th:field="*{bairro}" >
+	                    </div>
+	   
+	                    <div class="input">
+	                        <label for="rua">Rua</label>
+	                        <input type="text" th:field="*{rua}" >
+	                    </div>
+	    
+	                    <div id="containerCep" >
+	                        <div class="cep input">
+	                            <label for="cep">CEP</label>
+	                            <input type="text" id="cep" th:field="*{cep}" >
+	                        </div>
+	    
+	                        <div class="numero input">
+	                            <label for="numero">Número</label>
+	                            <input type="text" id="numero" th:field="*{numero}" >
+	                        </div>
+	                    </div>
+	    
+	                    <div class="input">
+	                        <label for="complemento">Complemento</label>
+	                        <input type="text" id="complemento" th:field="*{complemento}">
+	                    </div>
         
                     </div>
         
@@ -108,15 +97,48 @@
             
 
              <footer>
-                
                 <button id="botao-voltar">Voltar</button>
-                <button id="botao-enviar">Enviar</button>
+                <button type="submit" id="botao-enviar">Enviar</button>
             </footer>
-
-            <!-- <button>Enviar</button> -->
-        
         </form>
     </main>
     
 </body>
 </html>
+
+<!-- Possivelmente será utilizado em vaga.html:
+
+<div id="tipo-input" class="input">
+                            <label for="tipo">Tipo</label>
+                            <input type="text" id="tipo">
+                        </div>
+                        
+                        <div id="qtd-input" class="input">
+                            <label for="qtd">Quantidade</label>
+                            <input type="number" id="qtd">
+                        </div>
+                         
+                        <div  class="input">
+                            <label for="dataDeSolicitacao">Telefone</label>
+                            <input type="text" id="telefone">
+                        </div>
+                        <div class="input">
+                            <label for="dataDeAtendimento">2° telefone</label>
+                            <input type="text" id="dataDeAtendimento">
+                        </div>
+                        
+                        <div id="carga-input" class="input">
+                            <label for="cargaHoraria">carga horária</label>
+                            <input type="text" name="" id="cargaHoraria">
+                        </div>
+                        
+                        <div id="Perfil" class="input">
+                            <label for="perfil">Perfil do Candidato</label>
+                            <textarea name="" id="perfil" cols="30" rows="10"></textarea>
+                        </div>
+        				
+                        <div id="restricao" class="input">
+                            <label for="restricao">restrição:</label>
+                            <textarea name="" id="restricao" cols="30" rows="10"></textarea>
+                        </div>
+ -->

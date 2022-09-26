@@ -1,4 +1,4 @@
-package apenado;
+package application.apenado;
 
 public enum Prioridade {
     ALTA("Alta"), MEDIA("Média"), BAIXA("Baixa");
