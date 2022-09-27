@@ -1,39 +1,95 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Listando Empresas</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/listarEmpresas.css">
+    <title>Document</title>
 </head>
+
 <body>
-	<table border="1">
-		<thead>
-			<tr>
-				<td>CNPJ</td>
-				<td>Nome da Empresa</td>
-				<td>Respons�vel</td>
-				<td>Interlocutor</td>
-				<td>Telefone</td>
-				<td>Telefone 2</td>
-				<td>Email</td>
-				<td>Cidade</td>
-				<td>Estado</td>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:if="${listaEmpresas.empty}"><td colspan="9">Nenhuma empresa cadastrada no sistema!</td></tr>
-			<tr th:each="empresa : ${listaEmpresas}">
-				<td><span th:text="${empresa.cnpj}"></span></td>
-				<td><span th:text="${empresa.nome}"></span></td>
-				<td><span th:text="${empresa.responsavel}"></span></td>
-				<td><span th:text="${empresa.interlocutor}"></span></td>
-				<td><span th:text="${empresa.telefone}"></span></td>
-				<td><span th:text="${empresa.telefone2}"></span></td>
-				<td><span th:text="${empresa.email}"></span></td>
-				<td><span th:text="${empresa.cidade}"></span></td>
-				<td><span th:text="${empresa.estado}"></span></td>
-			</tr>		
-	
-		</tbody>
-	</table>
+
+    <main>
+        <div class="header-tabela">
+            <div class="buscador">
+                <input type="search" placeholder="Buscar">
+                <button id="buscar">Buscar</button>
+            </div>
+
+            <button class="AdicionarEmpresa">+</button>
+
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Cnpj</th>
+                    <th>Nome da empresa</th>
+                    <th>Responsavel</th>
+                    <th>interlocutor</th>
+                    <th>Telefone</th>
+                    <th>2° Telefone</th>
+                    <th>Email</th>
+                    <th>Cidade</th>
+                    <th>Estado</th>
+                    <th></th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="Cnpj">43245555565476</td>
+                    <td data-label="Nome da empresa">IFPE</td>
+                    <td data-label="Responsavel">Paulo abadie</td>
+                    <td data-label="Interlocutor">registro da silva</td>
+                    <td data-label="Telefone">81 99999999</td>
+                    <td data-label="2° Telefone">81 99999998</td>
+                    <td data-label="email">emailx@gmail.com</td>
+                    <td data-label="Cidade">recife</td>
+                    <td data-label="Estado">Pernambuco</td>
+                    <td>
+                        <button>Editar</button>
+                    </td>
+                </tr>
+                <tr>
+                <tr>
+                    <td data-label="Cnpj">43245555565476</td>
+                    <td data-label="Nome da empresa">IFPE</td>
+                    <td data-label="Responsavel">Paulo abadie</td>
+                    <td data-label="Interlocutor">registro da silva</td>
+                    <td data-label="Telefone">81 99999999</td>
+                    <td data-label="2° Telefone">81 99999998</td>
+                    <td data-label="email">emailx@gmail.com</td>
+                    <td data-label="Cidade">recife</td>
+                    <td data-label="Estado">Pernambuco</td>
+                    <td id="bot">
+                        <button>Editar</button>
+                        
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td data-label="Cnpj">43245555565476</td>
+                    <td data-label="Nome da empresa">IFPE</td>
+                    <td data-label="Responsavel">Paulo abadie</td>
+                    <td data-label="Interlocutor">registro da silva</td>
+                    <td data-label="Telefone">81 99999999</td>
+                    <td data-label="2° Telefone">81 99999998</td>
+                    <td data-label="email">emailx@gmail.com</td>
+                    <td data-label="Cidade">recife</td>
+                    <td data-label="Estado">Pernambuco</td>
+                    <td id="bot">
+                        <button>Editar</button>
+                        
+                    </td>
+                    
+                </tr>
+                
+            </tbody>
+        </table>
+    </main>
+
 </body>
+
 </html>
