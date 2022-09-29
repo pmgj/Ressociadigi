@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/listarEmpresas.css">
-    <title>Document</title>
+    <link rel="stylesheet" th:href="@{css/listarEmpresas.css}" />
+    <title>Lista de Empresas</title>
 </head>
 
 <body>
@@ -15,78 +15,63 @@
         <div class="header-tabela">
             <div class="buscador">
                 <input type="search" placeholder="Buscar">
-                <button id="buscar">Buscar</button>
+                <!-- Funcionalidade de busca ainda em teste!! -->
+                <a th:href="@{/buscarEmpresa(nome=Nu)}"><button id="buscar">Buscar</button></a>
             </div>
 
-            <button class="AdicionarEmpresa">+</button>
-
+            <a th:href="@{/inserirEmpresaForm}"><button class="AdicionarEmpresa">+</button></a>
+			
         </div>
         <table>
             <thead>
                 <tr>
-                    <th>Cnpj</th>
-                    <th>Nome da empresa</th>
-                    <th>Responsavel</th>
-                    <th>interlocutor</th>
-                    <th>Telefone</th>
-                    <th>2° Telefone</th>
-                    <th>Email</th>
-                    <th>Cidade</th>
-                    <th>Estado</th>
-                    <th></th>
-                    
+                    <th>CNPJ</th>
+                    <th>NOME DA EMPRESA</th>
+                    <th>RESPONSÁVEL</th>
+                    <th>INTERLOCUTOR</th>
+                    <th>TELEFONE</th>
+                    <th>2º TELEFONE</th>
+                    <th>EMAIL</th>
+                    <th>CIDADE</th>
+                    <th>ESTADO</th>
+                    <th>AÇÕES</th>
                 </tr>
             </thead>
+            
             <tbody>
-                <tr>
-                    <td data-label="Cnpj">43245555565476</td>
-                    <td data-label="Nome da empresa">IFPE</td>
-                    <td data-label="Responsavel">Paulo abadie</td>
-                    <td data-label="Interlocutor">registro da silva</td>
-                    <td data-label="Telefone">81 99999999</td>
-                    <td data-label="2° Telefone">81 99999998</td>
-                    <td data-label="email">emailx@gmail.com</td>
-                    <td data-label="Cidade">recife</td>
-                    <td data-label="Estado">Pernambuco</td>
+            	<tr th:if="${listaEmpresas.empty}">
+            		<td colspan="10">Não há empresas registradas no sistema.</td>
+            	</tr>
+                <tr th:each="empresa : ${listaEmpresas}">
+                    <td><span th:text="${empresa.cnpj}">CNPJ</span></td>
+                    <td><span th:text="${empresa.nome}">Nome</span></td>
+                    <td><span th:text="${empresa.responsavel}">Responsável</span></td>
+                    <td><span th:text="${empresa.interlocutor}">Interlocutor</span></td>
+                    <td><span th:text="${empresa.telefone}">Telefone</span></td>
+                    <td><span th:text="${empresa.telefone2}">2º Telefone</span></td>
+                    <td><span th:text="${empresa.email}">Email</span></td>
+                    <td><span th:text="${empresa.cidade}">Cidade</span></td>
+                    <td><span th:text="${empresa.estado}">Estado</span></td>
                     <td>
-                        <button>Editar</button>
+                        <a th:href="@{/alterarEmpresaForm(cnpj=${empresa.cnpj})}"><button>Editar</button></a>
+                        <a th:href="@{/removerEmpresa(cnpj=${empresa.cnpj})}"><button>Remover</button></a>
                     </td>
                 </tr>
-                <tr>
-                <tr>
-                    <td data-label="Cnpj">43245555565476</td>
-                    <td data-label="Nome da empresa">IFPE</td>
-                    <td data-label="Responsavel">Paulo abadie</td>
-                    <td data-label="Interlocutor">registro da silva</td>
-                    <td data-label="Telefone">81 99999999</td>
-                    <td data-label="2° Telefone">81 99999998</td>
-                    <td data-label="email">emailx@gmail.com</td>
-                    <td data-label="Cidade">recife</td>
-                    <td data-label="Estado">Pernambuco</td>
-                    <td id="bot">
-                        <button>Editar</button>
-                        
-                    </td>
-                    
-                </tr>
-                <tr>
-                    <td data-label="Cnpj">43245555565476</td>
-                    <td data-label="Nome da empresa">IFPE</td>
-                    <td data-label="Responsavel">Paulo abadie</td>
-                    <td data-label="Interlocutor">registro da silva</td>
-                    <td data-label="Telefone">81 99999999</td>
-                    <td data-label="2° Telefone">81 99999998</td>
-                    <td data-label="email">emailx@gmail.com</td>
-                    <td data-label="Cidade">recife</td>
-                    <td data-label="Estado">Pernambuco</td>
-                    <td id="bot">
-                        <button>Editar</button>
-                        
-                    </td>
-                    
-                </tr>
-                
-            </tbody>
+          	</tbody>
+          	<tfoot>
+	        	<tr>
+	        		<td></td>
+	        		<td></td>
+	        		<td></td>
+	        		<td></td>
+	        		<td></td>
+	        		<td></td>
+	        		<td></td>
+	        		<td></td>
+	        		<td>Página X de X</td>
+	        		<td id="previousAndNextButtons"><a th:href="@{#}">&lt;&lt;</a><a th:href="@{#}">&gt;&gt;</a></td>
+	        	</tr>
+		    </tfoot>          	
         </table>
     </main>
 

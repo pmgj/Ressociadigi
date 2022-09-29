@@ -1,3 +1,9 @@
+@font-face{
+	src: url(fonts/Inter_Font.ttf);
+	font-family: 'Inter';
+	font-weight: normal;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -14,7 +20,6 @@ body {
     padding: 30px;
     width: 100vw;
     background-color: rgba(222, 222, 222, 1);
-    
 }
 /****** Styles *******/
 .header-tabela{
@@ -76,11 +81,12 @@ main{
     width: 75rem;
     display: flex;
     flex-direction: column;
+    font-family: "Inter";
 }
+
 table {
     font-weight: 400;
     min-width: 420px;
-
 }
 table thead {
     display: none;
@@ -124,6 +130,24 @@ table tbody tr td button:hover, table tbody tr td button:focus {
     background: #a795fe;
     cursor: pointer;
 }
+
+tfoot {
+	background-color: #ffddbd;
+    height: 2rem;
+}
+
+#previousAndNextButtons a{
+	text-decoration: none;
+	font-size: large;
+	font-weight: bold;
+	color: black;	
+	background-color: orange;
+	border: 1px solid rgba(0, 0, 0, 0.5);
+	border-radius: 10px;
+	margin-left: 10px;
+	padding: 3px;
+}
+
 table tbody tr td:before {
     color: #8a8a87;
     content: attr(data-label);

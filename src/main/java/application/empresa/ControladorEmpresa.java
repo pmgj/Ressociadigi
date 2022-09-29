@@ -1,6 +1,8 @@
 package application.empresa;
 
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
 
 
 @Controller
@@ -42,5 +46,30 @@ public class ControladorEmpresa {
 		return "listarEmpresas";
 	}
 	
+	@GetMapping("/alterarEmpresaForm")
+	public String alterarEmpresaForm(@RequestParam String cnpj, Model model) {
+		Empresa empresa = service.findById(cnpj).get();
+		model.addAttribute("empresa", empresa);
+		return "empresa";
+	}
 	
+	@GetMapping("/removerEmpresa")
+	public String removerEmpresa(@RequestParam String cnpj) {
+		Empresa empresa = service.findById(cnpj).get();
+		service.delete(empresa);
+		return "redirect:/listarEmpresas";
+	}
+	
+	
+	//Ainda em teste!!
+	@GetMapping("/buscarEmpresa")
+	public String buscarEmpresa(@RequestParam String nome, Model model) {
+		List<Empresa> empresasComNomeX = service.findAll()
+				.stream()
+				.filter(e -> e.getNome().toUpperCase().contains(nome.toUpperCase()))
+				.toList(); 
+		model.addAttribute("listaEmpresas", empresasComNomeX);
+		
+		return "listarEmpresas";
+	}
 }
