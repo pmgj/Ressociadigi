@@ -78,39 +78,54 @@ mudarTitulo();
 
 
 
-/* let clicado = false;
-function mostrarDisplayHabilidade() {
+
+let numeroDeclicks = 1;
+let formIntrucao = document.getElementById("grupo-input-instrucao");
+let habilidadeBotao = document.querySelector(".btn-habilidade")
+let div = document.createElement("div")
+let contador = 1;
+let Input = document.getElementById("habilidade");
+habilidadeBotao.addEventListener("click", function(){
     
-if (clicado == false){
+    if(contador <= 5 && !Input.value==""){
+        let valorInput = Input.value;
+    let span = document.createElement("span");
+    let botaoDeleteHabilidade = document.createElement("button");
+    botaoDeleteHabilidade.className = "botaoDeleteHabilidade"
+    botaoDeleteHabilidade.innerHTML = "--"
+    span.className = "cardHabilidade"
+    span.append(valorInput);
     
-    let habilidases = document.querySelector(".container-habilidades");
-    let maisHabilidade = document.createElement("button");
-    maisHabilidade.innerText = "Adicionar"
-    maisHabilidade.setAttribute("class", "adicionarhablidade")
-    habilidases.append(maisHabilidade)
-    let sectionInputs = document.createElement("section")
-    sectionInputs.setAttribute("class", "sectionInputs")
-    habilidases.append(sectionInputs)
-    let inputHabilidadeBox = document.createElement("div")
-    inputHabilidadeBox.setAttribute("class", "container-habilidades-input")
-    sectionInputs.prepend(inputHabilidadeBox)
+    let divContainer = document.createElement("div")
+    divContainer.append(span)
+    divContainer.append(botaoDeleteHabilidade)
+    divContainer.className = "divContainer"
+    formIntrucao.append(divContainer);
+    Input.value = ""
+    
+    }
+    contador++ 
+})
 
-    maisHabilidade.addEventListener("click", function () {
-        let labelinputHabilidade = document.createElement("label")
-        labelinputHabilidade.innerText = "Habilidade"
-        labelinputHabilidade.setAttribute("for", "inputHabilidade")
-        let inputHabilidade = document.createElement("input");
-        inputHabilidade.setAttribute("class", "inputHabilidade");
-        inputHabilidade.setAttribute("id", "inputHabilidade");
 
-        let container = document.createElement("div");
-        container.setAttribute("class", "addBox")
-        container.append(labelinputHabilidade)
-        container.append(inputHabilidade)
+/* habilidadeBotao.addEventListener("click", function(){
+    if(numeroDeclicks <= 5){
 
-        inputHabilidadeBox.prepend(container)
-    })
-    clicado = true
-}
-}
- */
+        let label = document.createElement("label")
+        label.setAttribute("for", "habilidade"+contador++);
+        label.textContent="Habilidade"
+
+        let input = document.createElement("input");
+        input.setAttribute("id", "habilidade"+contador++)
+
+        div.setAttribute("class", "input-normal");
+        div.appendChild(label)
+        div.appendChild(input)
+
+
+        formIntrucao.appendChild(div);
+        numeroDeclicks++
+
+        
+    }
+}) */
