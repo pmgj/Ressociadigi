@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sarabun&display=swap');
 *{
     box-sizing: border-box;
     padding: 0;
@@ -14,6 +16,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: rgba(222, 222, 222, 1);
+    
 }
 
 main {
@@ -28,7 +31,7 @@ main {
 
 section {
     width: 60rem;
-    height: 45rem;
+    height: 55rem;
     background: #FFFFFF;
     box-shadow: 9px 9px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
@@ -54,8 +57,13 @@ nav {
     border-bottom: solid 4px rgba(0, 0, 0, 0.15);
     font-size: 2em;
     /* font-family: 'Alfa Slab One', cursive; */
-    font-family: 'Righteous', cursive;
-    font-weight:bolder ;
+    /* font-family: 'Righteous', cursive;
+    font-weight:bolder ; */
+
+    letter-spacing: 2px;
+    padding: 1.2rem;
+    border-bottom: solid 4px rgba(0, 0, 0, 0.15);
+    font-size: 2em;
 }
 
 .container-input-empresa{
@@ -77,7 +85,7 @@ nav {
 .input-normal>label {
     text-transform: uppercase;
     font-size: 0.9rem;
-    font-weight: 700;
+    /* font-weight: 700; */
     display: block;
     letter-spacing: 1px;
 }
@@ -123,6 +131,41 @@ nav {
 }
 
 div >label{
-    font-weight: 900;
+    /* font-weight: 900; */
 }
 
+footer{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin-left: 7em;
+}
+
+#botao-enviar{
+    border: none;
+    outline: none;
+    width: 6rem;
+    border-radius: 6px;
+    height: 3rem;
+    background-color: rgb(149, 107, 29);
+    color: white;
+    font-size: x-large;
+    cursor: pointer;
+}
+
+#botao-voltar{
+    border: none;
+    outline: none;
+    width: 6rem;
+    border-radius: 6px;
+    height: 3rem;
+    background-color: rgb(99, 96, 96);
+    color: white;
+    font-size: x-large;
+    cursor: pointer;
+}
+
+input {
+    outline: rgb(203, 139, 19);
+}

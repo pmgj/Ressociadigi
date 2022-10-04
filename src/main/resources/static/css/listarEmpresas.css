@@ -19,13 +19,13 @@ body {
     justify-content: center;
     padding: 30px;
     width: 100vw;
-    background-color: rgba(222, 222, 222, 1);
 }
 /****** Styles *******/
 .header-tabela{
     width: 100%;
-    background-color: #a795fe;
+    background-color: rgba(222, 222, 222, 1);
     padding: 20px;
+    
 }
 .buscador{
     display: flex;
@@ -87,6 +87,7 @@ main{
 table {
     font-weight: 400;
     min-width: 420px;
+    max-width: 80rem;
 }
 table thead {
     display: none;
@@ -198,5 +199,22 @@ table tbody tr td:before {
     table tbody tr td:last-child {
         text-align: right;
    }
+
    
+}
+
+#Btn-remove-edit{
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-layer{
+    
+    border-bottom: 4px solid orange;
+    margin-bottom: 1rem;
+}
+
+img{
+    height: 4em;
+    margin-bottom: 30px;
 }

@@ -12,6 +12,13 @@
 <body>
 
     <main>
+        <div class="title">
+            <img th:src="@{/imgs/logoRD.png}" width="10%" height="10%" alt="" />
+            <!-- <h1>RESSOCIADIGI</h1> -->
+        </div>
+        <div class="top-layer">
+            <legend>TODOS</legend>
+        </div>
         <div class="header-tabela">
             <div class="buscador">
                 <input type="search" placeholder="Buscar">
@@ -52,7 +59,7 @@
                     <td><span th:text="${empresa.email}">Email</span></td>
                     <td><span th:text="${empresa.cidade}">Cidade</span></td>
                     <td><span th:text="${empresa.estado}">Estado</span></td>
-                    <td>
+                    <td id="Btn-remove-edit">
                         <a th:href="@{/alterarEmpresaForm(cnpj=${empresa.cnpj})}"><button>Editar</button></a>
                         <a th:href="@{/removerEmpresa(cnpj=${empresa.cnpj})}"><button>Remover</button></a>
                     </td>

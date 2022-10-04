@@ -87,7 +87,7 @@ let contador = 1;
 let Input = document.getElementById("habilidade");
 habilidadeBotao.addEventListener("click", function(){
     
-    if(contador <= 5 && !Input.value==""){
+    if(contador <= 5 || !Input.value===""){
         let valorInput = Input.value;
     let span = document.createElement("span");
     let botaoDeleteHabilidade = document.createElement("button");
@@ -108,24 +108,3 @@ habilidadeBotao.addEventListener("click", function(){
 })
 
 
-/* habilidadeBotao.addEventListener("click", function(){
-    if(numeroDeclicks <= 5){
-
-        let label = document.createElement("label")
-        label.setAttribute("for", "habilidade"+contador++);
-        label.textContent="Habilidade"
-
-        let input = document.createElement("input");
-        input.setAttribute("id", "habilidade"+contador++)
-
-        div.setAttribute("class", "input-normal");
-        div.appendChild(label)
-        div.appendChild(input)
-
-
-        formIntrucao.appendChild(div);
-        numeroDeclicks++
-
-        
-    }
-}) */
