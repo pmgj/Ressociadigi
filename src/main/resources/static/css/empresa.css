@@ -130,10 +130,6 @@ nav {
     border-radius: 6px;
 }
 
-div >label{
-    /* font-weight: 900; */
-}
-
 footer{
     margin-top: 20px;
     display: flex;
@@ -143,7 +139,7 @@ footer{
 }
 
 #botao-enviar{
-    border: none;
+    /*border: none;
     outline: none;
     width: 6rem;
     border-radius: 6px;
@@ -151,11 +147,25 @@ footer{
     background-color: rgb(149, 107, 29);
     color: white;
     font-size: x-large;
-    cursor: pointer;
+    cursor: pointer;*/
+    
+    background-color: rgba(246, 130, 31, 1);
+    color: white;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
+    text-transform: uppercase;
+    width: 9rem;
+    height: 3rem;
+    font-family: 'Arial';
+    font-style: normal;
+    font-size: 1.2rem;
+    line-height: 29px;
+    letter-spacing: 0.08em;
+    border: none;
+    border-radius: 5px;
 }
 
 #botao-voltar{
-    border: none;
+   /*border: none;
     outline: none;
     width: 6rem;
     border-radius: 6px;
@@ -163,7 +173,21 @@ footer{
     background-color: rgb(99, 96, 96);
     color: white;
     font-size: x-large;
-    cursor: pointer;
+    cursor: pointer; */
+    
+    background-color: rgba(99, 96, 96, 1);
+    color: white;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
+    text-transform: uppercase;
+    width: 9rem;
+    height: 3rem;
+    font-family: 'Arial';
+    font-style: normal;
+    font-size: 1.2rem;
+    line-height: 29px;
+    letter-spacing: 0.08em;
+    border: none;
+    border-radius: 5px;
 }
 
 input {

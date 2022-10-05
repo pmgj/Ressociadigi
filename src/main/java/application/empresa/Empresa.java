@@ -10,8 +10,8 @@ public class Empresa {
 	
 	//Dados Gerais
 	@Id
-	@NotNull(message = "Null not allowed")
-	@NotEmpty(message = "Empty not allowed")
+	@NotNull(message = "Este campo não pode ser nulo")
+	@NotEmpty(message = "Este campo não pode estar vazio")
 	private String cnpj;	
 	private String nome;
 	private String responsavel;

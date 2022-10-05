@@ -9,8 +9,9 @@
     <title>Cadastro de empresa</title>
 </head>
 <body>
-   <main>
-    
+   
+   <main> 
+   	
     <section>
         <form action="#" th:action="@{/armazenarEmpresa}" th:object="${empresa}" method="post">
             <div id="titulo">
@@ -140,7 +141,7 @@
             </div>
             
             <footer>
-                <button id="botao-voltar">Voltar</button>
+                <a th:href="@{#}"><button id="botao-voltar">Voltar</button></a>
                 <button type="submit" id="botao-enviar">Enviar</button>
             </footer>
         </form>
