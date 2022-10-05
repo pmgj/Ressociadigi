@@ -9,7 +9,7 @@
 
 
 body {
-	font-family: 'Anton', sans-serif;
+    font-family: 'Anton', sans-serif;
     width: 100%;
     height: 100vh;
     display: flex;
@@ -82,7 +82,7 @@ img {
     grid-template-columns: auto auto;
     row-gap: 1.2rem;
     column-gap: 1rem;
-   /*  position: relative;
+    /*  position: relative;
     left: 150px; */
 }
 
@@ -232,143 +232,145 @@ textarea {
     column-gap: 10px;
 }
 
-input[type="checkbox"], input[type="radio"] {
+input[type="checkbox"],
+input[type="radio"] {
     margin: 0 0.5em;
 }
 
-.botoesHalibidade{
+.botoesHalibidade {
 
     width: 100%;
-     display: flex;
-     justify-content: center;
-     column-gap: 6rem;
-     padding: 20px;
-     background-color: rgb(161, 161, 161);
-    }
-    .container-habilidades{
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        /* border: solid 2px; */
-        position: relative;
-        left: 9.5rem;
-        width: 30rem;
-    }
-    .botoesHalibidade button{
-        width: 3rem;
-        height: 3rem;
-        border-radius: 50%;
-        outline: none;
-        border: none;
-        background-color: rgb(144, 132, 132);
-        color: #FFFFFF;
-        font-size: xx-large;
-    }
-    .adicionarhablidade{
-        border: none;
-        border-radius: 6px;
-        margin-top: 10px;
-        padding: 2px;
-        width: 100px;
-        outline: none;
-        background: rgb(90, 183, 66);
-        color: white;
-        
-    }
-    .sectionInputs{
-        width: 100%;
-        height: 100%;
-       /*  border: solid 2px blue; */
-        margin-top: 10px;
-        padding: 4px;
-        display: grid;
-        grid-template-columns: auto auto;
-    
-    }
-    
-    .container-habilidades-input{
-        width: 100%;
-       /*  background-color: aqua; */
-        display: grid;
-        grid-template-columns: auto auto;
-        column-gap: 2rem;
-        padding: 10px;
-    }
-    .addBox{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-color: #fffaf0
-        
-    }
-    .inputHabilidade{
-       height: 2rem;
-       border-radius: 6px;
-       outline: none;
-       border: none;
-       background-color: rgb(232, 232, 232);
-    }
-    
-    #grupo-input-instrucao{
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: auto auto;
-        column-gap: 3rem;
-        row-gap: 2em;
-        width: 80%;
-        margin: 0 auto;
-    }
+    display: flex;
+    justify-content: center;
+    column-gap: 6rem;
+    padding: 20px;
+    background-color: rgb(161, 161, 161);
+}
 
-    .box-input input{
-        height: 2.50rem;
-        width: 16rem;
-        border-radius: 6px;
-        padding: 15px;
-    }
+.container-habilidades {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    /* border: solid 2px; */
+    position: relative;
+    left: 9.5rem;
+    width: 30rem;
+}
 
-    .btn-habilidade{
-        width: 2.5rem;
-        height: 2.5rem;
-        border-radius: 50%;
-        color: white;
-        font-size: xx-large;
-        background-color: lightgreen;
-        border: none;
-        cursor: pointer;
-    }
+.botoesHalibidade button {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    outline: none;
+    border: none;
+    background-color: rgb(144, 132, 132);
+    color: #FFFFFF;
+    font-size: xx-large;
+}
 
-    
-    #grupo-input-instrucao{
-        
-    }
+.adicionarhablidade {
+    border: none;
+    border-radius: 6px;
+    margin-top: 10px;
+    padding: 2px;
+    width: 100px;
+    outline: none;
+    background: rgb(90, 183, 66);
+    color: white;
 
-    .cardHabilidade{
-        height: 3rem;
-        width: 17rem;
-        border: rgba(54, 53, 53, 0.498) 2px solid;
-        padding: 20px;
-        border-radius: 10px 0px 0px 10px;
-        display: flex;
-        align-items: center;
-    }
-    .botaoDeleteHabilidade{
-        height: 2em;
-        width: 2em;
-        background-color: rgba(221, 44, 44, 0.862);
-        color: #fffaf0;
-        font-size: x-large;
-        border: none;
-        border-radius: 0px 10px 10px 0px;
-    }
+}
 
-    .divContainer{
-        width: 17rem;
-        height: 2rem;
-        
-        display: flex;
-        justify-content: space-between;
-        margin-top: 20px;
-        border-radius: 10px;
-    }
+.sectionInputs {
+    width: 100%;
+    height: 100%;
+    /*  border: solid 2px blue; */
+    margin-top: 10px;
+    padding: 4px;
+    display: grid;
+    grid-template-columns: auto auto;
+
+}
+
+.container-habilidades-input {
+    width: 100%;
+    /*  background-color: aqua; */
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 2rem;
+    padding: 10px;
+}
+
+.addBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fffaf0
+}
+
+.inputHabilidade {
+    height: 2rem;
+    border-radius: 6px;
+    outline: none;
+    border: none;
+    background-color: rgb(232, 232, 232);
+}
+
+#grupo-input-instrucao {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: 3rem;
+    row-gap: 2em;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.box-input input {
+    height: 2.50rem;
+    width: 16rem;
+    border-radius: 6px;
+    padding: 15px;
+}
+
+.btn-habilidade {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    color: white;
+    font-size: xx-large;
+    background-color: lightgreen;
+    border: none;
+    cursor: pointer;
+}
+
+.cardHabilidade {
+    height: 3rem;
+    width: 17rem;
+    border: rgba(54, 53, 53, 0.498) 2px solid;
+    padding: 20px;
+    border-radius: 10px 0px 0px 10px;
+    display: flex;
+    align-items: center;
+}
+
+.botaoDeleteHabilidade {
+    height: 2em;
+    width: 2em;
+    background-color: rgba(221, 44, 44, 0.862);
+    color: #fffaf0;
+    font-size: x-large;
+    border: none;
+    border-radius: 0px 10px 10px 0px;
+}
+
+.divContainer {
+    width: 17rem;
+    height: 2rem;
+
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    border-radius: 10px;
+}

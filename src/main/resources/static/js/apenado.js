@@ -11,14 +11,12 @@ function formatarTelefone(e) {
 }
 //Fim da Implementação da Máscara
 
-
-
 //Implementação do campo dinâmico da Área de Restrição
 function areaRestricaoBehavior(evt) {
     let checkedRadio = () => {
         const restricaoRadioButtons = document.querySelectorAll("#restricao input[type='radio']");
-        for(let button of restricaoRadioButtons) {
-            if(button.checked) {
+        for (let button of restricaoRadioButtons) {
+            if (button.checked) {
                 return button;
             }
         }
@@ -85,26 +83,24 @@ let habilidadeBotao = document.querySelector(".btn-habilidade")
 let div = document.createElement("div")
 let contador = 1;
 let Input = document.getElementById("habilidade");
-habilidadeBotao.addEventListener("click", function(){
-    
-    if(contador <= 5 || !Input.value===""){
+habilidadeBotao.addEventListener("click", function () {
+
+    if (contador <= 5 || !Input.value === "") {
         let valorInput = Input.value;
-    let span = document.createElement("span");
-    let botaoDeleteHabilidade = document.createElement("button");
-    botaoDeleteHabilidade.className = "botaoDeleteHabilidade"
-    botaoDeleteHabilidade.innerHTML = "--"
-    span.className = "cardHabilidade"
-    span.append(valorInput);
-    
-    let divContainer = document.createElement("div")
-    divContainer.append(span)
-    divContainer.append(botaoDeleteHabilidade)
-    divContainer.className = "divContainer"
-    formIntrucao.append(divContainer);
-    Input.value = ""
-    
+        let span = document.createElement("span");
+        let botaoDeleteHabilidade = document.createElement("button");
+        botaoDeleteHabilidade.className = "botaoDeleteHabilidade"
+        botaoDeleteHabilidade.innerHTML = "--"
+        span.className = "cardHabilidade"
+        span.append(valorInput);
+
+        let divContainer = document.createElement("div")
+        divContainer.append(span)
+        divContainer.append(botaoDeleteHabilidade)
+        divContainer.className = "divContainer"
+        formIntrucao.append(divContainer);
+        Input.value = ""
+
     }
-    contador++ 
-})
-
-
+    contador++
+});
