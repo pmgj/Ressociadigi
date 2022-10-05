@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{css/listarEmpresas.css}" />
+    <link rel="icon" th:href="@{/imgs/logoRD.png}">
     <title>Lista de Empresas</title>
 </head>
 
@@ -26,7 +27,7 @@
                 <a th:href="@{/buscarEmpresa(nome=Nu)}"><button id="buscar">Buscar</button></a>
             </div>
 
-            <a th:href="@{/inserirEmpresaForm}"><button class="AdicionarEmpresa">+</button></a>
+            <a th:href="@{/inserirEmpresa}"><button class="AdicionarEmpresa">+</button></a>
 			
         </div>
         <table>

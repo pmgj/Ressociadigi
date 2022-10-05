@@ -1,7 +1,7 @@
 package application.empresa;
 
-
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -14,16 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-
-
 @Controller
 public class ControladorEmpresa {
 	
 	@Autowired
 	private RepositorioEmpresa service;
-	
-	
-	@GetMapping("/inserirEmpresaForm")
+		
+	@GetMapping("/inserirEmpresa")
 	public ModelAndView inserirVagaForm() {
 		Empresa empresa = new Empresa();
 		ModelAndView mav = new ModelAndView("empresa");
@@ -46,7 +43,7 @@ public class ControladorEmpresa {
 		return "listarEmpresas";
 	}
 	
-	@GetMapping("/alterarEmpresaForm")
+	@GetMapping("/alterarEmpresa")
 	public String alterarEmpresaForm(@RequestParam String cnpj, Model model) {
 		Empresa empresa = service.findById(cnpj).get();
 		model.addAttribute("empresa", empresa);
@@ -59,15 +56,14 @@ public class ControladorEmpresa {
 		service.delete(empresa);
 		return "redirect:/listarEmpresas";
 	}
-	
-	
+		
 	//Ainda em teste!!
 	@GetMapping("/buscarEmpresa")
 	public String buscarEmpresa(@RequestParam String nome, Model model) {
 		List<Empresa> empresasComNomeX = service.findAll()
 				.stream()
 				.filter(e -> e.getNome().toUpperCase().contains(nome.toUpperCase()))
-				.toList(); 
+				.collect(Collectors.toList());
 		model.addAttribute("listaEmpresas", empresasComNomeX);
 		
 		return "listarEmpresas";

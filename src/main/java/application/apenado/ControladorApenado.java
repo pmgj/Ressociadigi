@@ -24,7 +24,7 @@ public class ControladorApenado {
     @GetMapping("/listarApenados")
     public String listarApenados(Model model) {
         model.addAttribute("lista", service.findAll());
-        return "result";
+        return "listarApenados";
     }
 
     @ModelAttribute("cnhsList")
@@ -42,7 +42,7 @@ public class ControladorApenado {
         return Arrays.asList(Prioridade.values());
     }
 
-    @GetMapping("/inserirApenadoForm")
+    @GetMapping("/inserirApenado")
     public ModelAndView inserirApenadoForm() {
         Apenado apenado = new Apenado();
         ModelAndView mav = new ModelAndView("apenado");
@@ -59,7 +59,7 @@ public class ControladorApenado {
         return "redirect:/listarApenados";
     }
 
-    @GetMapping("/alterarApenadoForm")
+    @GetMapping("/alterarApenado")
     public String alterarApenadoForm(@RequestParam String cpf, Model model) {
         Apenado apenado = service.findById(cpf).get();
         model.addAttribute("apenado", apenado);
