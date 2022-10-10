@@ -75,32 +75,26 @@ function mudarTitulo() {
 mudarTitulo();
 
 
-
-
-let numeroDeclicks = 1;
-let formIntrucao = document.getElementById("grupo-input-instrucao");
 let habilidadeBotao = document.querySelector(".btn-habilidade")
-let div = document.createElement("div")
-let contador = 1;
-let Input = document.getElementById("habilidade");
-habilidadeBotao.addEventListener("click", function () {
+habilidadeBotao.addEventListener("click", function (){
 
-    if (contador <= 5 || !Input.value === "") {
-        let valorInput = Input.value;
-        let span = document.createElement("span");
-        let botaoDeleteHabilidade = document.createElement("button");
-        botaoDeleteHabilidade.className = "botaoDeleteHabilidade"
-        botaoDeleteHabilidade.innerHTML = "--"
-        span.className = "cardHabilidade"
-        span.append(valorInput);
+    let inputValor = document.getElementById("habilidade").value;
+    let lista = document.getElementById("listaHabilidade");
+    let adicionar = true;
+    let opt = document.createElement("option");
 
-        let divContainer = document.createElement("div")
-        divContainer.append(span)
-        divContainer.append(botaoDeleteHabilidade)
-        divContainer.className = "divContainer"
-        formIntrucao.append(divContainer);
-        Input.value = ""
-
+    for (let i = 0; i < lista.options.lenght; i++){
+        if (inputValor = lista.option[i].text){
+            adicionar = false;
+        }
     }
-    contador++
-});
+
+    if(adicionar == true){
+        opt.text= inputValor;
+        lista.appendChild(opt)
+        inputValor = ""
+    }
+    
+
+})
+

@@ -374,3 +374,21 @@ input[type="radio"] {
     margin-top: 20px;
     border-radius: 10px;
 }
+
+.listaHablidade-box select{
+    width: 15rem;
+    height: 2.5em;
+    border-radius: 6px;
+}
+
+.listaHablidade-box button{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    color: white;
+    font-size: x-large;
+    background-color: rgb(222, 88, 88);
+    border: none;
+    cursor: pointer;
+    margin: auto 0;
+}
