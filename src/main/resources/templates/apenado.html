@@ -253,32 +253,28 @@
                             <label id="labelError" th:if="${#fields.hasErrors('textoRestricao')}"
                                 th:errors="*{textoRestricao}">Erro na Restrição</label>
                         </div>
-
-                        <div class="input-normal">
-                            <label for="habilidade">habilidade</label>
-                            <div class="box-input">
-                                <input type="text" id="habilidade">
-                                <button class="btn-habilidade">+</button>
-                            </div>
+						
+						<fieldset id="fieldset-habilidades">
+							<legend>Habilidades</legend>
+							<div class="container-input-habilidade input-normal">
+	                            <label for="habilidade">Nome da Habilidade</label>
+	                            <div class="box-input">
+	                                <input type="text" id="habilidade">
+	                                <button type="button" class="buttonAdicionarHabilidade">+</button>
+	                            </div>
+	                        </div>
+	
+	                        <div class="container-select-habilidade input-normal">
+	                            <label for="listaHabilidade">lista de habilidades</label>
+	                            <div class="listaHablidade-box">
+	                                 <select name="listaHabilidade" id="listaHabilidade">
+	                                    <option id="NENHUMA" selected>NENHUMA</option>
+	                                 </select>
+	                                <button type="button" class="buttonRemoverHabilidade">X</button>
+	                            </div>
+	                        </div>
+                        </fieldset>
                         </div>
-
-                        <div class="input-normal">
-                            <label for="listaHabilidade">lista de habilidades</label>
-                            <div class="listaHablidade-box">
-                                 <select name="listaHabilidade" id="listaHabilidade">
-                                    <option value="" selected>NENHUM</option>
-                                 </select>
-                                <button>x</button>
-                            </div>
-                        </div>
-                       <!--  <div class="container-habilidades">
-                            <div class="botoesHalibidade">
-                                <button onclick="mostrarDisplayHabilidade()">&#8744;</button>
-                                <button>	&#8743;</button>
-                            </div>
-                        </div> -->
-
-                    </div>
                     <!-----------------------SEÇÃO SITUACIONAL------------------------------>
                     <div id="grupo-input-situacional">
                         <div id="numeroProcesso-input" class="input-normal">

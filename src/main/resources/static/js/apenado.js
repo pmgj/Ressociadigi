@@ -74,27 +74,50 @@ function mudarTitulo() {
 }
 mudarTitulo();
 
+/*********************************************************/
+/****************MECANISMO DE HABILIDADES*****************/
+/*********************************************************/
 
-let habilidadeBotao = document.querySelector(".btn-habilidade")
-habilidadeBotao.addEventListener("click", function (){
+let buttonAdicionarHabilidade = document.querySelector(".buttonAdicionarHabilidade")
+buttonAdicionarHabilidade.addEventListener("click", function (){
 
     let inputValor = document.getElementById("habilidade").value;
-    let lista = document.getElementById("listaHabilidade");
-    let adicionar = true;
-    let opt = document.createElement("option");
-
-    for (let i = 0; i < lista.options.lenght; i++){
-        if (inputValor = lista.option[i].text){
-            adicionar = false;
-        }
+    let selectListaHabilidade = document.getElementById("listaHabilidade");
+    let isValidAdd = true;
+    let elementOption = document.createElement("option");
+	
+	for(let option of selectListaHabilidade.options){
+		if(option.text == inputValor || inputValor.trim() === ""){
+			isValidAdd = false;
+		}
+	}
+	
+	if(isValidAdd){
+        elementOption.text = inputValor;
+        elementOption.id = inputValor;
+        selectListaHabilidade.appendChild(elementOption);
+        inputValor = "";
     }
+})
 
-    if(adicionar == true){
-        opt.text= inputValor;
-        lista.appendChild(opt)
-        inputValor = ""
-    }
-    
+let selectCurrentOptionID = "";
+let selectListaHabilidade = document.getElementById("listaHabilidade");
 
+// A ideia desse EventListener é perceber a mudança de option selecionado no Select.
+// Quando há a mudança, uma variável global(selectCurrentOptionID) pega o ID desse option no Select e guarda.
+selectListaHabilidade.addEventListener("change", function(){
+	selectCurrentOptionID = selectListaHabilidade.options[selectListaHabilidade.selectedIndex].id;	
+})
+
+// Utilizando a variável global(selectCurrentOptionID) inicializada através do "change" do EventListener acima(linha 108)
+// Nós utilizaremos ela para comparar com o ID de cada Option. Quando encontrarmos esse Option, removeremos ele...
+// Utilizando o método remove().
+let buttonRemoverHabilidade = document.querySelector(".buttonRemoverHabilidade");
+buttonRemoverHabilidade.addEventListener("click", function (){
+	for(let option of selectListaHabilidade.options){
+		if(option.id == selectCurrentOptionID){
+			selectListaHabilidade.remove(option.index);
+		}
+	}
 })
 

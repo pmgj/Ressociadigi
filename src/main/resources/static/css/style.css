@@ -58,6 +58,27 @@ img {
     background-size: cover;
 }
 
+#fieldset-habilidades{
+	/*
+	width: 18rem;
+    height: 2.5rem;
+    border-radius: 6px;
+	*/
+	border: 1px #000000 solid;
+  	border-radius: 6px;
+	padding: 10px;
+	width: 18rem;
+}
+
+#habilidade, #listaHabilidade {
+	width: 13rem;
+	height: 2rem;
+}
+
+.container-select-habilidade{
+	margin-top: 10px;
+}
+
 #titulo {
     height: 9rem;
     border-bottom: black 8px;
@@ -334,7 +355,7 @@ input[type="radio"] {
     padding: 15px;
 }
 
-.btn-habilidade {
+.buttonAdicionarHabilidade {
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
