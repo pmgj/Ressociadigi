@@ -51,22 +51,22 @@
             		<td colspan="10">Não há empresas registradas no sistema.</td>
             	</tr>
                 <tr th:each="empresa : ${listaEmpresas}">
-                    <td><span th:text="${empresa.cnpj}">CNPJ</span></td>
-                    <td><span th:text="${empresa.nome}">Nome</span></td>
-                    <td><span th:text="${empresa.responsavel}">Responsável</span></td>
-                    <td><span th:text="${empresa.interlocutor}">Interlocutor</span></td>
-                    <td><span th:text="${empresa.telefone}">Telefone</span></td>
-                    <td><span th:text="${empresa.telefone2}">2º Telefone</span></td>
-                    <td><span th:text="${empresa.email}">Email</span></td>
-                    <td><span th:text="${empresa.cidade}">Cidade</span></td>
-                    <td><span th:text="${empresa.estado}">Estado</span></td>
+                    <td data-label="CNPJ"><span th:text="${empresa.cnpj}">CNPJ</span></td>
+                    <td data-label="NOME DA EMPRESA"><span th:text="${empresa.nome}">Nome</span></td>
+                    <td data-label="RESPONSÁVEL"><span th:text="${empresa.responsavel}">Responsável</span></td>
+                    <td data-label="INTERLOCUTOR"><span th:text="${empresa.interlocutor}">Interlocutor</span></td>
+                    <td data-label="TELEFONE"><span th:text="${empresa.telefone}">Telefone</span></td>
+                    <td data-label="2°TELEFONE"><span th:text="${empresa.telefone2}">2º Telefone</span></td>
+                    <td data-label="E-MAIL"><span th:text="${empresa.email}">Email</span></td>
+                    <td data-label="CIDADE"><span th:text="${empresa.cidade}">Cidade</span></td>
+                    <td data-label="ESTADO"><span th:text="${empresa.estado}">Estado</span></td>
                     <td id="Btn-remove-edit">
                         <a th:href="@{/alterarEmpresaForm(cnpj=${empresa.cnpj})}"><button>Editar</button></a>
                         <a th:href="@{/removerEmpresa(cnpj=${empresa.cnpj})}"><button>Remover</button></a>
                     </td>
                 </tr>
           	</tbody>
-          	<tfoot>
+          	<!-- <tfoot>
 	        	<tr>
 	        		<td></td>
 	        		<td></td>
@@ -79,7 +79,7 @@
 	        		<td>Página X de X</td>
 	        		<td id="previousAndNextButtons"><a th:href="@{#}">&lt;&lt;</a><a th:href="@{#}">&gt;&gt;</a></td>
 	        	</tr>
-		    </tfoot>          	
+		    </tfoot> -->          	
         </table>
     </main>
 
