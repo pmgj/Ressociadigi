@@ -32,6 +32,14 @@ body {
     justify-content: space-between;
     width: 20rem;
 }
+
+#select-tipoBusca {
+	height: 2rem;
+    border-radius: 6px;
+    width: 15rem;
+    outline: none;
+}
+
 .buscador input{
     height: 2rem;
     border-radius: 6px;

@@ -21,12 +21,24 @@
             <legend>TODOS</legend>
         </div>
         <div class="header-tabela">
-            <div class="buscador">
-                <input type="search" placeholder="Buscar">
-                <!-- Funcionalidade de busca ainda em teste!! -->
-                <a th:href="@{/buscarEmpresa(nome=Nu)}"><button id="buscar">Buscar</button></a>
-            </div>
-
+        	<form action="#" th:action="@{/buscarEmpresa}" th:object="${busca}" method="post">
+	            <div class="buscador">
+	            	<select id="select-tipoBusca" th:field="*{tipoBusca}">
+	            		<option value="CNPJ">CNPJ</option>
+	            		<option value="NOME DA EMPRESA">NOME DA EMPRESA</option>
+	            		<option value="RESPONSÁVEL">RESPONSÁVEL</option>
+	            		<option value="INTERLOCUTOR">INTERLOCUTOR</option>
+	            		<option value="TELEFONE">TELEFONE</option>
+	            		<option value="EMAIL">EMAIL</option>
+	            		<option value="CIDADE">CIDADE</option>
+	            		<option value="ESTADO">ESTADO</option>
+	            	</select>
+	                <input type="search" placeholder="Buscar" id="nome" th:field="*{valorBusca}" />
+	                <!-- Funcionalidade de busca ainda em teste!! -->
+	                <a><button id="buscar">Buscar</button></a>
+	            
+	        	</div>
+			</form>
             <a th:href="@{/inserirEmpresa}"><button class="AdicionarEmpresa">+</button></a>
 			
         </div>

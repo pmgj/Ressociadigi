@@ -1,5 +1,6 @@
 package application.empresa;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,6 +40,7 @@ public class ControladorEmpresa {
 	
 	@GetMapping("/listarEmpresas")
 	public String listarEmpresas(Model m) {
+		m.addAttribute("busca", new Busca());
 		m.addAttribute("listaEmpresas", service.findAll());
 		return "listarEmpresas";
 	}
@@ -58,13 +60,48 @@ public class ControladorEmpresa {
 	}
 		
 	//Ainda em teste!!
-	@GetMapping("/buscarEmpresa")
-	public String buscarEmpresa(@RequestParam String nome, Model model) {
-		List<Empresa> empresasComNomeX = service.findAll()
-				.stream()
-				.filter(e -> e.getNome().toUpperCase().contains(nome.toUpperCase()))
-				.collect(Collectors.toList());
-		model.addAttribute("listaEmpresas", empresasComNomeX);
+	@PostMapping("/buscarEmpresa")
+	public String buscarEmpresa(@Valid Busca buscaObject, BindingResult brs, Model model) {
+		
+		List<Empresa> resultadoBuscaList = new ArrayList<>();
+		String valorBusca = buscaObject.getValorBusca();
+		String tipoBusca = buscaObject.getTipoBusca();
+		
+		if(tipoBusca.equals("CNPJ")) {
+			resultadoBuscaList = service.findAll()
+					.stream()
+					.filter(e -> e.getCnpj().contains(valorBusca)).collect(Collectors.toList());
+		} else if(tipoBusca.equals("NOME DA EMPRESA")) {
+			resultadoBuscaList = service.findAll()
+					.stream()
+					.filter(e -> e.getNome().contains(valorBusca)).collect(Collectors.toList());
+		} else if(tipoBusca.equals("RESPONSÁVEL")) {
+			resultadoBuscaList = service.findAll()
+					.stream()
+					.filter(e -> e.getResponsavel().contains(valorBusca)).collect(Collectors.toList());
+		} else if(tipoBusca.equals("INTERLOCUTOR")) {
+			resultadoBuscaList = service.findAll()
+					.stream()
+					.filter(e -> e.getInterlocutor().contains(valorBusca)).collect(Collectors.toList());
+		} else if(tipoBusca.equals("TELEFONE")) {
+			resultadoBuscaList = service.findAll()
+					.stream()
+					.filter(e -> e.getTelefone().contains(valorBusca)).collect(Collectors.toList());
+		} else if(tipoBusca.equals("EMAIL")) {
+			resultadoBuscaList = service.findAll()
+					.stream()
+					.filter(e -> e.getEmail().contains(valorBusca)).collect(Collectors.toList());
+		} else if(tipoBusca.equals("CIDADE")) {
+			resultadoBuscaList = service.findAll()
+					.stream()
+					.filter(e -> e.getCidade().contains(valorBusca)).collect(Collectors.toList());
+		} else if(tipoBusca.equals("ESTADO")) {
+			resultadoBuscaList = service.findAll()
+					.stream()
+					.filter(e -> e.getEstado().contains(valorBusca)).collect(Collectors.toList());
+		} 
+		
+		model.addAttribute("listaEmpresas", resultadoBuscaList);
 		
 		return "listarEmpresas";
 	}
