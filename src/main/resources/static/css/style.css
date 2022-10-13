@@ -146,54 +146,6 @@ img {
 }
 
 
-@media (max-width: 600px) {
-    main {
-        flex-direction: column;
-    }
-
-    nav {
-        width: 90vh;
-        overflow-x: auto;
-    }
-
-    ul {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        column-gap: 20px;
-        overflow: auto;
-    }
-
-    ul li .topico-menu {
-        font-size: 5px;
-    }
-
-    section #grupo-input-pessoais {
-        display: flex;
-        flex-direction: column;
-    }
-
-    section #grupo-input-endereco {
-        display: flex;
-        flex-direction: column;
-    }
-
-    section #grupo-input-sitacional {
-        display: flex;
-        flex-direction: column;
-    }
-
-    section #grupo-input-instrucao {
-        display: flex;
-        flex-direction: column;
-    }
-
-    main {
-        height: 100vh;
-        width: 100vh;
-    }
-}
 
 select:hover {
     cursor: pointer;
@@ -413,3 +365,106 @@ input[type="radio"] {
     cursor: pointer;
     margin: auto 0;
 }
+
+
+
+@media (max-width: 800px) {
+    main {
+        flex-direction: column;
+        height: 100vh;
+        width: auto;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        
+    }
+    h1{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        margin: none;
+    }
+    img{
+        display: none;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        column-gap: 20px;
+        overflow: auto;
+        width: 100%;
+        
+    }
+    
+    ul li .topico-menu {
+        font-size: 5px;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        /* height: 100%; */
+        
+    }
+    #restricao{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #container-inputs{
+        display: grid;
+        grid-template-columns: auto;
+    }
+    section #grupo-input-pessoais {
+        display: flex;
+        flex-direction: column;
+    }
+    section{
+        height: auto;
+    }
+    #grupo-input-pessoais, #grupo-input-endereco, #grupo-input-sitacional, #grupo-input-instrucao{
+     display: grid;
+    grid-template-columns: auto;
+    column-gap: 3rem; 
+    display: flex;
+    flex-direction: column;
+    row-gap: 2em;
+    width: 800px;
+    
+    display: none;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+}
+
+#div-sinalizacao{
+    display: none;
+}
+
+    
+}
+
+
+/* form{
+    background-color: aqua;
+}
+h1{
+    background-color: blueviolet;
+}
+nav{
+        background-color: bisque;
+}
+section{
+    background-color: brown;
+}
+img{
+    background-color: cadetblue;
+}
+ */
