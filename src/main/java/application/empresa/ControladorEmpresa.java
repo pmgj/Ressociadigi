@@ -7,6 +7,9 @@ import java.util.stream.Collectors;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,14 +23,15 @@ public class ControladorEmpresa {
 	
 	@Autowired
 	private RepositorioEmpresa service;
+	
 		
 	@GetMapping("/inserirEmpresa")
 	public ModelAndView inserirVagaForm() {
 		Empresa empresa = new Empresa();
 		ModelAndView mav = new ModelAndView("empresa");
 		mav.addObject("empresa", empresa);
-		return mav;
-	}
+		return mav;   
+	} 	
 	
 	@PostMapping("/armazenarEmpresa")
 	public String armazenarEmpresa(@Valid Empresa empresa, BindingResult brs, Model m) {
@@ -39,9 +43,15 @@ public class ControladorEmpresa {
 	}
 	
 	@GetMapping("/listarEmpresas")
-	public String listarEmpresas(Model m) {
+	public String listarEmpresas(Model m, @PageableDefault(page = 0, size = 5) Pageable pageable) {
+		Page<Empresa> pgEmpresa = service.findAll(pageable);
+		int numPaginaAtual = pageable.getPageNumber() + 1;
+		int numTotalPaginas = pgEmpresa.getTotalPages();
 		m.addAttribute("busca", new Busca());
-		m.addAttribute("listaEmpresas", service.findAll());
+		m.addAttribute("pageCounter", "Página " + numPaginaAtual + " de " + numTotalPaginas);
+		m.addAttribute("quantidadePaginas", numTotalPaginas);
+		m.addAttribute("listaEmpresas", pgEmpresa);
+		
 		return "listarEmpresas";
 	}
 	
@@ -59,47 +69,53 @@ public class ControladorEmpresa {
 		return "redirect:/listarEmpresas";
 	}
 		
-	//Ainda em teste!!
+	//Resolver convertendo para Pageable funcional
 	@PostMapping("/buscarEmpresa")
-	public String buscarEmpresa(@Valid Busca buscaObject, BindingResult brs, Model model) {
+	public String buscarEmpresa(@Valid Busca buscaObject, BindingResult brs, Model model, Pageable pageable) {
 		
 		List<Empresa> resultadoBuscaList = new ArrayList<>();
 		String valorBusca = buscaObject.getValorBusca();
 		String tipoBusca = buscaObject.getTipoBusca();
 		
 		if(tipoBusca.equals("CNPJ")) {
-			resultadoBuscaList = service.findAll()
+			resultadoBuscaList = service.findAll(pageable)
 					.stream()
 					.filter(e -> e.getCnpj().contains(valorBusca)).collect(Collectors.toList());
 		} else if(tipoBusca.equals("NOME DA EMPRESA")) {
-			resultadoBuscaList = service.findAll()
+			resultadoBuscaList = service.findAll(pageable)
 					.stream()
 					.filter(e -> e.getNome().contains(valorBusca)).collect(Collectors.toList());
 		} else if(tipoBusca.equals("RESPONSÁVEL")) {
-			resultadoBuscaList = service.findAll()
+			resultadoBuscaList = service.findAll(pageable)
 					.stream()
 					.filter(e -> e.getResponsavel().contains(valorBusca)).collect(Collectors.toList());
 		} else if(tipoBusca.equals("INTERLOCUTOR")) {
-			resultadoBuscaList = service.findAll()
+			resultadoBuscaList = service.findAll(pageable)
 					.stream()
 					.filter(e -> e.getInterlocutor().contains(valorBusca)).collect(Collectors.toList());
 		} else if(tipoBusca.equals("TELEFONE")) {
-			resultadoBuscaList = service.findAll()
+			resultadoBuscaList = service.findAll(pageable)
 					.stream()
 					.filter(e -> e.getTelefone().contains(valorBusca)).collect(Collectors.toList());
 		} else if(tipoBusca.equals("EMAIL")) {
-			resultadoBuscaList = service.findAll()
+			resultadoBuscaList = service.findAll(pageable)
 					.stream()
 					.filter(e -> e.getEmail().contains(valorBusca)).collect(Collectors.toList());
 		} else if(tipoBusca.equals("CIDADE")) {
-			resultadoBuscaList = service.findAll()
+			resultadoBuscaList = service.findAll(pageable)
 					.stream()
 					.filter(e -> e.getCidade().contains(valorBusca)).collect(Collectors.toList());
 		} else if(tipoBusca.equals("ESTADO")) {
-			resultadoBuscaList = service.findAll()
+			resultadoBuscaList = service.findAll(pageable)
 					.stream()
 					.filter(e -> e.getEstado().contains(valorBusca)).collect(Collectors.toList());
 		} 
+		
+		int numPaginaAtual = pageable.getPageNumber() + 1;
+		int numTotalPaginas = 2;
+		model.addAttribute("pageCounter", "Página " + numPaginaAtual + " de " + numTotalPaginas);
+		model.addAttribute("quantidadePaginas", numTotalPaginas);
+		
 		
 		model.addAttribute("listaEmpresas", resultadoBuscaList);
 		

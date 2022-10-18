@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{css/listarEmpresas.css}" />
+    <script defer="defer" th:src="@{/js/empresa.js}"></script> 
     <link rel="icon" th:href="@{/imgs/logoRD.png}">
     <title>Lista de Empresas</title>
-</head>
+   </head>
 
 <body>
 
@@ -59,6 +60,7 @@
             </thead>
             
             <tbody>
+             
             	<tr th:if="${listaEmpresas.empty}">
             		<td colspan="10">Não há empresas registradas no sistema.</td>
             	</tr>
@@ -73,28 +75,37 @@
                     <td data-label="CIDADE"><span th:text="${empresa.cidade}">Cidade</span></td>
                     <td data-label="ESTADO"><span th:text="${empresa.estado}">Estado</span></td>
                     <td id="Btn-remove-edit">
-                        <a th:href="@{/alterarEmpresaForm(cnpj=${empresa.cnpj})}"><button>Editar</button></a>
+                        <a th:href="@{/alterarEmpresa(cnpj=${empresa.cnpj})}"><button>Editar</button></a>
                         <a th:href="@{/removerEmpresa(cnpj=${empresa.cnpj})}"><button>Remover</button></a>
                     </td>
                 </tr>
           	</tbody>
-          	<!-- <tfoot>
+          	<tfoot>
 	        	<tr>
-	        		<td></td>
-	        		<td></td>
-	        		<td></td>
-	        		<td></td>
-	        		<td></td>
-	        		<td></td>
-	        		<td></td>
-	        		<td></td>
-	        		<td>Página X de X</td>
-	        		<td id="previousAndNextButtons"><a th:href="@{#}">&lt;&lt;</a><a th:href="@{#}">&gt;&gt;</a></td>
+	        		<td colspan="8"></td>
+	        		<td><span id="spanQtdPaginas" th:text="${pageCounter}"></span></td>
+	        		<td id="previousAndNextButtons">
+	        		</td>
 	        	</tr>
-		    </tfoot> -->          	
+		    </tfoot>          	
         </table>
     </main>
-
 </body>
-
+	<script defer="defer">
+    	let tdPreviousAndNextButtons = document.querySelector("#previousAndNextButtons");
+    	let spanQtdPaginas = document.querySelector("#spanQtdPaginas");
+		let quantidadePaginas = "[[${quantidadePaginas}]]";
+		function createElements(){
+			for(let i = 1; i <= quantidadePaginas; i++){
+				let a = document.createElement("a");
+				a.text=i
+				a.id=i
+				a.href="?page=" + (i-1)
+					
+				tdPreviousAndNextButtons.appendChild(a);
+			}
+		}
+		
+		createElements();
+	</script>
 </html>
