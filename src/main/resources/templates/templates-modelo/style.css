@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap');
@@ -80,6 +80,7 @@ background: linear-gradient(0deg, rgba(255,255,255,1) 55%, rgba(0,112,255,1) 55%
     margin-bottom: 20px;
     color: aliceblue;
     letter-spacing: 2px;
+    font-weight: 900;
 }
 .card-container{
     display: flex;
@@ -90,7 +91,26 @@ background: linear-gradient(0deg, rgba(255,255,255,1) 55%, rgba(0,112,255,1) 55%
 }
 
 .card{
-    width: 20rem;
+    width: 22rem;
     height: 30rem;
     border: solid 2px;
+    background-color: #ffff;
+}
+
+.superior-card{
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    background: rgb(238,235,230);
+
+background: linear-gradient(to right, #33ccff 0%, #ff99cc 100%);
+}
+h4{
+    font-size: 1.7rem;
+    padding: 20px;
+    font-family: 'Josefin Sans', sans-serif;
+}
+h4:hover{
+    text-decoration: underline;
+
 }

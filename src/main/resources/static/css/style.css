@@ -165,6 +165,11 @@ textarea {
     border-radius: 5px 5px 5px 5px;
     width: 18rem;
     height: 6.5rem;
+    width: 18rem;
+    padding: 10px;
+    font-size: 20px;
+    max-height: 6.5rem;
+    border-radius: 4px;
 }
 
 #grupo-input-pessoais,
