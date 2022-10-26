@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{css/listarEmpresas.css}" />
+    <script defer="defer" th:src="@{/js/*}"></script> 
+    <link rel="icon" th:href="@{/imgs/logoRD.png}">
+    <title>Lista de Vagas</title>
+   </head>
+
+<body>
+
+    <main>
+        <div class="title">
+            <img th:src="@{/imgs/logoRD.png}" width="10%" height="10%" alt="" />
+            <!-- <h1>RESSOCIADIGI</h1> -->
+        </div>
+        <div class="top-layer">
+            <legend>TODOS</legend>
+        </div>
+        <div class="header-tabela">
+        	</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>NOME DA EMPRESA</th>
+                    <th>TIPO</th>
+                    <th>INTERLOCUTOR</th>
+                    <th>VAGAS MASCULINAS</th>
+                    <th>VAGAS FEMININAS</th>
+                    <th>CARGA HORÁRIA</th>
+                    <th>OPERAÇÕES</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+             
+            	<tr th:if="${listaVagas.empty}">
+            		<td colspan="6">Não há vagas registradas no sistema.</td>
+            	</tr>
+                <tr th:each="vaga : ${listaVagas}">
+                    <td data-label="NOME DA EMPRESA"><span th:text="${vaga.nomeEmpresa}">NOME DA EMPRESA</span></td>
+                    <td data-label="TIPO"><span th:text="${vaga.tipo}">TIPO</span></td>
+                    <td data-label="INTERLOCUTOR"><span th:text="${vaga.interlocutor}">INTERLOCUTOR</span></td>
+                    <td data-label="VAGAS MASCULINAS"><span th:text="${vaga.quantidadeVagasMasculinas}">VAGAS MASCULINAS</span></td>
+                    <td data-label="VAGAS FEMININAS"><span th:text="${vaga.quantidadeVagasFemininas}">VAGAS FEMININAS</span></td>
+                    <td data-label="CARGA HORÁRIA"><span th:text="${vaga.cargaHoraria}">CARGA HORÁRIA</span></td>
+                    <td id="Btn-remove-edit">
+                        <a th:href="@{#}"><button>Editar</button></a>
+                        <a th:href="@{#}"><button>Remover</button></a>
+                    </td>
+                </tr>
+          	</tbody>
+          	<tfoot>
+	        	<tr>
+	        		<td colspan="6"></td>
+	        		<td><span id="spanQtdPaginas"></span></td>
+	        		<td id="previousAndNextButtons">
+	        		</td>
+	        	</tr>
+		    </tfoot>     
+             <tfoot>
+                
+             </tfoot>  
+        </table>
+    </main>
+</body>
+
+</html>

@@ -15,7 +15,7 @@
     </nav>
 
     <section>
-        <form action="">
+        <form action="#" th:action="@{/armazenarVaga}" th:object="${vaga}" method="post">
             <div id="titulo">
                 <h1>Cadastro de Vaga</h1>
             </div>
@@ -23,44 +23,45 @@
             <div class="container-input-vagas">
                 <div class="input-normal" id="nomeEmpresa">
                     <label for="empresaSelect">selecione a empresa</label>
-                    <select name="empresaSelect" id="empresaSelect">
+                    <select th:field="*{nomeEmpresa}" name="empresaSelect" id="empresaSelect">
+                        <option th:each="empresa : ${listaEmpresas}" th:value="${empresa.getNome()}" th:text="${empresa.getNome()}"></option>
                         <!-- <option value="">empresa x</option>
                         <option value="">empresa x</option> -->
                     </select>
                 </div>
                 <div class="input-normal">
                     <label for="interlocutor">interlocutor</label>
-                    <input type="text" id="interlocutor">
+                    <input type="text" th:field="*{interlocutor}" id="interlocutor">
                 </div>
                 <div class="input-normal">
                     <label for="qtdMasculina">número de vagas masculinas</label>
-                    <input type="number" id="qtdMasculina">
+                    <input type="number" th:field="*{quantidadeVagasMasculinas}" id="qtdMasculina">
                 </div>
                 <div class="input-normal">
                     <label for="qtdFeminino">número de vagas femininas</label>
-                    <input type="number" id="qtdFeminino">
+                    <input type="number" th:field="*{quantidadeVagasFemininas}" id="qtdFeminino">
                 </div>
                 <div class="input-normal">
                     <label for="tipo">tipo</label>
-                    <input type="text" id="tipo">
+                    <input type="text" th:field="*{tipo}" id="tipo">
                 </div>
                 <div class="input-normal">
                     <label for="cargaHoraria">carga horária</label>
-                    <input type="text" id="cargaHoraria">
+                    <input type="text" th:field="*{cargaHoraria}" id="cargaHoraria">
                 </div>
 
                 <div class="input-normal">
                     <label for="procura">procura por:</label>
-                    <textarea name="procura" id="procura" cols="34" rows="8"></textarea>
+                    <textarea name="procura" th:field="*{procuraPor}" id="procura" cols="34" rows="8"></textarea>
                 </div>
                 <div class="input-normal">
                     <label for="restricao">restrição:</label>
-                    <textarea name="procura" id="procura" cols="34" rows="8"></textarea>
+                    <textarea name="procura"  th:field="*{restricao}" id="procura" cols="34" rows="8"></textarea>
                 </div>
                 <div class="tap">
                     <div class="container-botao">
                         <button id="botao-voltar">Voltar</button>
-                        <button id="botao-enviar"> enviar</button>
+                        <button id="botao-enviar">Enviar</button>
                     </div>
                 </div>
             </div>
