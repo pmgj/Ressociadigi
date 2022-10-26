@@ -103,15 +103,12 @@ buttonAdicionarHabilidade.addEventListener("click", function (){
 let selectCurrentOptionID = "";
 let selectListaHabilidade = document.getElementById("listaHabilidade");
 
-// A ideia desse EventListener é perceber a mudança de option selecionado no Select.
-// Quando há a mudança, uma variável global(selectCurrentOptionID) pega o ID desse option no Select e guarda.
+
 selectListaHabilidade.addEventListener("change", function(){
 	selectCurrentOptionID = selectListaHabilidade.options[selectListaHabilidade.selectedIndex].id;	
 })
 
-// Utilizando a variável global(selectCurrentOptionID) inicializada através do "change" do EventListener acima(linha 108)
-// Nós utilizaremos ela para comparar com o ID de cada Option. Quando encontrarmos esse Option, removeremos ele...
-// Utilizando o método remove().
+
 let buttonRemoverHabilidade = document.querySelector(".buttonRemoverHabilidade");
 buttonRemoverHabilidade.addEventListener("click", function (){
 	for(let option of selectListaHabilidade.options){
@@ -119,5 +116,20 @@ buttonRemoverHabilidade.addEventListener("click", function (){
 			selectListaHabilidade.remove(option.index);
 		}
 	}
-})
+}) 
 
+function multiInputs(btnAdicinar){
+    return{
+
+
+
+    }
+
+}
+
+// A ideia desse EventListener é perceber a mudança de option selecionado no Select.
+// Quando há a mudança, uma variável global(selectCurrentOptionID) pega o ID desse option no Select e guarda.
+
+// Utilizando a variável global(selectCurrentOptionID) inicializada através do "change" do EventListener acima(linha 108)
+// Nós utilizaremos ela para comparar com o ID de cada Option. Quando encontrarmos esse Option, removeremos ele...
+// Utilizando o método remove().

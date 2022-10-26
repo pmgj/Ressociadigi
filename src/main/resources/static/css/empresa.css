@@ -11,15 +11,17 @@
 body {
     font-family: 'Anton', sans-serif;
     width: 100%;
-    height: 100vh;
+    height: 100%; 
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgba(222, 222, 222, 1);
-    
+    padding: 30px;
+   
 }
 
 main {
+    margin-top: 50px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -27,6 +29,8 @@ main {
     width: 80rem;
     height: 50rem;
     border-radius: 9px;
+    margin-bottom: 30px;
+    
 }
 
 section {
@@ -192,4 +196,24 @@ footer{
 
 input {
     outline: rgb(203, 139, 19);
+}
+.container-input{
+    background-color: aqua;
+}
+
+/*res*/
+@media (max-width:600px){
+    h1{
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        
+    }
+    .container-aplicacao{
+        background-color: black;
+    }
+    .container-input-empresa{
+        background-color: aqua;
+    }
+
 }

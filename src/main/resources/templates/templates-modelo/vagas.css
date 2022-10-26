@@ -149,3 +149,59 @@ form{
     border: none;
     border-radius: 5px;
 }
+
+#titulo{
+    
+}
+.container-input-vagas{
+   
+}
+/*res*/
+@media (max-width: 700px){
+    #titulo{
+        width: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+}
+
+@media (max-width:600px){
+    .container-input-vagas{
+       /*  background-color: aliceblue; */
+
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+    }
+    .tap{ 
+        display: flex;
+        width: 100vh;
+        justify-content: space-between;
+        padding: 10px 60px 30px 50px;
+    }
+    section{
+        
+    border: none;
+    background: #FFFFFF;
+    box-shadow: 0;
+    border-radius: 0px;
+    overflow: scroll;
+    overflow-y: scroll;
+    }
+
+    #titulo h1{
+        
+    }
+    #titulo{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+ 
+
+}

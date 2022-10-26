@@ -2,6 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -14,15 +17,54 @@
 header{
     width: 100%;
     position: static;
-    height: 6rem;
-    border: solid 2px rgba(121, 117, 117, 0.736);
+    height: 4rem;
+    border-bottom: solid 1px rgba(121, 117, 117, 0.736);
     font-size: 3rem;
     display: flex;
     justify-content: start;
     align-items: center;
     padding-left: 50px;
     font-family: 'Rubik Dirt', cursive;
+    display: flex;
+    justify-content: space-between;
     
+}
+header .logo{
+    font-size: 40px;
+    
+}
+
+.login-btn{
+    display: flex;
+    justify-content: space-between;
+    width: 16rem;
+   
+}
+.entrar{
+    width: 5rem;
+    outline: none;
+    border: none;
+    height: 2rem;
+    background-color: rgb(64, 207, 28);
+    color: white;
+    border-radius: 6px;
+    font-family: 'Mukta', sans-serif;
+    font-size: 17px;
+    cursor: pointer;
+}
+.registrar{
+    width: 8rem;
+    outline: none;
+    border: none;
+    height: 2rem;
+    background-color: rgb(196, 146, 28);
+    color: white;
+    margin-right: 20px;
+    border-radius: 6px;
+    font-family: 'Mukta', sans-serif;
+    font-size: 17px;
+    background-color: none; 
+    cursor: pointer;
 }
 section{
     display: flex;
@@ -40,14 +82,13 @@ section{
 .t1{
     font-size: 4.5rem;
     font-family: 'Kanit', sans-serif;
-    
    
 }
 .t1 span{
     text-decoration: underline;
 }
 
-p{
+ .texto-infomativo{
     font-size: x-large;
     font-family: 'Yanone Kaffeesatz', sans-serif;
 }
@@ -63,7 +104,7 @@ article{
 .servicos{
    
     width: 82.5rem;
-    height: 40rem;
+    height: 80rem;
     background-color: aqua;
     background: rgb(255,255,255);
 background: linear-gradient(0deg, rgba(255,255,255,1) 55%, rgba(0,112,255,1) 55%);
@@ -78,16 +119,19 @@ background: linear-gradient(0deg, rgba(255,255,255,1) 55%, rgba(0,112,255,1) 55%
 
 .servicos p{
     margin-bottom: 20px;
-    color: aliceblue;
     letter-spacing: 2px;
     font-weight: 900;
 }
 .card-container{
-    display: flex;
+   /*  display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    column-gap: 10px; */
+    display: grid;
+    grid-template-columns: auto auto auto;
     column-gap: 10px;
+    row-gap: 10px;
 }
 
 .card{
@@ -102,15 +146,104 @@ background: linear-gradient(0deg, rgba(255,255,255,1) 55%, rgba(0,112,255,1) 55%
     justify-content: center;
     padding: 30px;
     background: rgb(238,235,230);
-
-background: linear-gradient(to right, #33ccff 0%, #ff99cc 100%);
+    background: linear-gradient(to right, #33ccff 0%, #ff99cc 100%);
 }
 h4{
     font-size: 1.7rem;
-    padding: 20px;
+    padding: 20px; 
     font-family: 'Josefin Sans', sans-serif;
+    padding-bottom: 5px;
+    
 }
 h4:hover{
     text-decoration: underline;
+
+}
+.servicos-logo{
+    font-family: 'Oswald', sans-serif;
+    color: white;
+   letter-spacing: 1px;
+
+}
+.imagem-card{
+    background-size: 290%;
+}
+
+.descricao-card{
+    padding: 15px; 
+    font-family: 'Heebo', sans-serif;
+    color: rgba(0, 0, 0, 0.666);
+    
+
+}
+
+/*res*/
+@media(max-width: 1200px){
+  .imagem {
+    display: none;
+  }
+
+  .left{
+    width: 100vh;
+    padding: 20px;
+}
+}
+
+@media (max-width: 1025px){
+    .imagem{
+        display: none;
+    }
+    .left{
+        width: 100vh;
+        padding: 20px;
+    }
+    .t1{
+        font-size: xx-large;
+    }
+    .logo div {
+        font-size: x-large;
+    }
+    header{
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        /* background-color: #33ccff; */
+        height: 10rem;
+        justify-content: center;
+        row-gap: 20px;
+       
+    }    
+    section{
+        margin-top: 20px;
+    }
+    
+    .card-container{
+        display: grid;
+        grid-template-columns: auto auto;
+        column-gap: 30px;
+        row-gap: 30px;
+        
+    }
+    article .servicos{
+        background-color: #ff99cc;
+        height: auto;
+        
+    }
+    .servicos-logo{
+        
+        padding: 20px;
+        
+    } 
+}
+
+@media (max-width: 750px){
+    .card-container{
+        display: grid;
+        grid-template-columns: auto;
+    }
+    .card{
+        width: 26rem;
+    }
+    
 
 }

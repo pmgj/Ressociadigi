@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Trispace&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    height: 40rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(222, 222, 222, 1);
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.container-imagem img{
+    background-size: 100%;
+}
+.login{
+    background-color: white;
+    width: 31rem;
+    height: 31.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+legend{
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 900;
+    font-size: x-large;
+    border-bottom: 4px rgb(223, 148, 10) solid;
+    width: 4.5rem;
+
+}
+.container-input{
+    margin-top: 25px;
+    row-gap: 15px;
+}
+.input-login{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px; 
+    
+}
+.input-login label{
+    font-family: 'Trispace', sans-serif;
+    color: rgba(79, 74, 74, 0.798);
+}
+.input-login input{
+    height: 2rem;
+    width: 15rem;
+    padding: 7px;
+    outline: none;
+    border: 1px solid;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+.checkbox-lembre{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    column-gap: 5px;
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 600;
+}
+
+.button-entrar button{
+    height: 2rem;
+    width: 15rem;
+    padding: 7px;
+    outline: none;
+    background-color: rgb(218, 146, 13);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 800;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+.aviso{
+    margin-top: 20px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 0.8rem;
+}
+.aviso button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.aviso span{
+    color: rgb(255, 169, 8);
+    font-family: 'Kanit', sans-serif;
+    font-weight: 900;
+
+}
