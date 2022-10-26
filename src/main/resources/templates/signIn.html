@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="signIn.css">
-    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/signIn.css}">
+    <link rel="icon" th:href="@{/imgs/logoRD.png}">
+    <title>Página de Login</title>
 </head>
 <body>
     <main>
         <div class="container-imagem">
-            <img src="patronado.png" alt="" width="500px" height="500px">
+            <img th:src="@{/imgs/patronado.png}" alt="" width="500px" height="500px">
 
         </div>
         <div class="login">
@@ -31,10 +32,10 @@
                     <label for="Lembra-me ">Lembra-me</label>
                 </div>
                 <div class="button-entrar">
-                    <button>Entrar</button>
+                    <button ><a th:href="@{/mainPage}" style="text-decoration:none">Entrar</a></button>
                 </div>
                 <div class="aviso">
-                        Ainda não possui uma conta? <button class="cadastrar"><span>Cadastra-se</span></button>
+                        Ainda não possui uma conta? <button class="cadastrar"><span>Cadastre-se</span></button>
                     
                 </div>
             </form>

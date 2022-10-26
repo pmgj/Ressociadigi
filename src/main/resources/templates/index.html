@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/index-style.css}" />
+    <link rel="icon" th:href="@{/imgs/logoRD.png}">
+    <title>Página Principal</title>
 </head>
 <body>
     <main>
         <header>
             <div class="logo"><span>R</span>essocia<span>D</span>igi</div>
             <div class="login-btn">
-                <button class="entrar">Entrar</button>
-                <button class="registrar">Registrar-se</button>
+                <button class="sair" ><a th:href="@{/signIn}" style="text-decoration:none">Sair</a></button>
             </div>    
         </header>
         <section>
@@ -28,7 +28,7 @@
             </p>
            </div>
             <div class="imagem">
-                <img src="image.jpeg" alt="">
+                <img th:src="@{/imgs/image.jpeg}" alt="">
             </div>
         </section>
 
@@ -38,27 +38,27 @@
                 <DIV class="card-container">
                     <div class="card">
                         <div class="superior-card">
-                            <img src="res.png" alt="" width="260px" >
+                            <img th:src="@{/imgs/res.png}" alt="" width="260px" >
                         </div>
-                        <h4>Cadastrar Apenado</h4>
+                        <a th:href="@{/inserirApenado}" style="text-decoration:none"><h4>Cadastrar Apenado</h4></a>
                         <p class="descricao-card">
                             Cadastre e armazene os dados de um determinado apenado.
                         </p>
                     </div>
                     <div class="card">
                         <div class="superior-card">
-                            <img src="empre.png" alt="" width="200px"  >
+                            <img th:src="@{/imgs/empre.png}" alt="" width="200px"  >
                         </div>
-                        <h4>Cadastrar Empresa</h4>
+                        <a th:href="@{/inserirEmpresa}" style="text-decoration:none"><h4>Cadastrar Empresa</h4></a>
                         <p class="descricao-card">
                             Cadastre e armazene os dados de um determinado empresa.
                         </p>
                     </div>
                     <div class="card">
                         <div class="superior-card">
-                            <img class="imagem-card" src="vagas.png" alt="" width="212px"  >
+                            <img class="imagem-card" th:src="@{/imgs/vagas.png}" alt="" width="212px"  >
                         </div>
-                        <h4>Cadastrar Vaga</h4>
+                        <a th:href="@{#}" style="text-decoration:none"><h4>Cadastrar Vaga</h4></a>
                         <p class="descricao-card">
                             Cadastre e armazene os dados de um determinado vaga.
                         </p>
@@ -67,33 +67,33 @@
 
                     <div class="card">
                         <div class="superior-card">
-                            <img src="listaEmp.png" alt="" width="200px"  >
+                            <img th:src="@{/imgs/listaEmp.png}" alt="" width="200px"  >
                         </div>
-                        <h4>Lista de apenados</h4>
+                        <a th:href="@{/listarApenados}" style="text-decoration:none"><h4>Lista de apenados</h4></a>
                         <p class="descricao-card">
-                            Pesquise, filtrer, edite e mostre a lista de todos os apenados
+                            Pesquise, filtre, edite e mostre a lista de todos os apenados
                             cadastrados.
                         </p>
                     </div>
 
                     <div class="card">
                         <div class="superior-card">
-                            <img src="empre.png" alt="" width="200px"  >
+                            <img th:src="@{/imgs/empre.png}" alt="" width="200px"  >
                         </div>
-                        <h4>Lista de Empresas</h4>
+                        <a th:href="@{/listarEmpresas}" style="text-decoration:none"><h4>Lista de Empresas</h4></a>
                         <p class="descricao-card">
-                            Pesquise, filtrer, edite e mostre a lista de todos as empresas 
+                            Pesquise, filtre, edite e mostre a lista de todos as empresas 
                             cadastradas.
                         </p>
                     </div>
 
                     <div class="card">
                         <div class="superior-card">
-                            <img src="empre.png" alt="" width="200px"  >
+                            <img th:src="@{/imgs/empre.png}" alt="" width="200px"  >
                         </div>
-                        <h4>Listar Apenado</h4>
+                        <h4>Listar Vagas</h4>
                         <p class="descricao-card">
-                            Pesquise, filtrer, edite e mostre a lista de todos os apenados.
+                            Pesquise, filtre, edite e mostre a lista de todos os apenados.
 
                         </p>
                     </div>

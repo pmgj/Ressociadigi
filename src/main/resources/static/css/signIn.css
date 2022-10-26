@@ -22,8 +22,13 @@ main{
     flex-direction: row;
 }
 
+.container-imagem {
+	height: 31.25rem;
+}
+
 .container-imagem img{
-    background-size: 100%;
+	background-size: 100%;
+    border-radius: 20px 0px 0px 20px;
 }
 .login{
     background-color: white;
@@ -31,6 +36,7 @@ main{
     height: 31.25rem;
     display: flex;
     justify-content: center;
+    border-radius: 0px 20px 20px 0px;
     align-items: center;
 }
 legend{

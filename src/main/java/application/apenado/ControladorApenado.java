@@ -20,7 +20,17 @@ public class ControladorApenado {
 
     @Autowired
     private RepositorioApenado service;
-        
+    
+    @GetMapping("/mainPage")
+    public String mainPage(Model model) {
+    	return "index";
+    }
+    
+    @GetMapping("/signIn")
+    public String loginPage(Model model) {
+    	return "signIn";
+    }
+    
     @GetMapping("/listarApenados")
     public String listarApenados(Model model) {
         model.addAttribute("lista", service.findAll());

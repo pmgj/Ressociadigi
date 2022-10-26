@@ -40,12 +40,12 @@ header .logo{
     width: 16rem;
    
 }
-.entrar{
+.sair{
     width: 5rem;
     outline: none;
     border: none;
     height: 2rem;
-    background-color: rgb(64, 207, 28);
+    background-color: rgb(255, 0, 0);
     color: white;
     border-radius: 6px;
     font-family: 'Mukta', sans-serif;
