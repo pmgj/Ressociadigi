@@ -32,7 +32,6 @@
 	            		<option value="TELEFONE">TELEFONE</option>
 	            		<option value="EMAIL">EMAIL</option>
 	            		<option value="CIDADE">CIDADE</option>
-	            		<option value="ESTADO">ESTADO</option>
 	            	</select>
 	                <input type="search" placeholder="Buscar" id="nome" th:field="*{valorBusca}" />
 	                <!-- Funcionalidade de busca ainda em teste!! -->
@@ -70,7 +69,7 @@
                     <td data-label="TELEFONE"><span th:text="${empresa.telefone}">Telefone</span></td>
                     <td data-label="E-MAIL"><span th:text="${empresa.email}">Email</span></td>
                     <td data-label="CIDADE"><span th:text="${empresa.cidade}">Cidade</span></td>
-                    <td id="Btn-remove-edit">
+                    <td id="Btn-remove-edit" width="180">
                         <a th:href="@{/alterarEmpresa(cnpj=${empresa.cnpj})}"><button>Editar</button></a>
                         <a th:href="@{/removerEmpresa(cnpj=${empresa.cnpj})}"><button>Remover</button></a>
                     </td>
@@ -81,32 +80,14 @@
 	        		<td colspan="6"></td>
 	        		<td><span id="spanQtdPaginas" th:text="${pageCounter}"></span></td>
 	        		<td id="previousAndNextButtons">
+	        			<a href="?page=0">&lt;&lt;</a>
+	        			<a th:href="@{?page={contador} (contador = ${contador - 1})}">&lt;</a>
+	        			<a th:href="@{?page={contador} (contador = ${contador + 1})}">&gt;</a>
+	        			<a th:href="@{?page={page}(page = ${quantidadePaginas - 1})}">&gt;&gt;</a>
 	        		</td>
 	        	</tr>
-		    </tfoot>     
-             <tfoot>
-                
-             </tfoot>  
+		    </tfoot>    
         </table>
     </main>
 </body>
-	<script defer="defer">
-    	let tdPreviousAndNextButtons = document.querySelector("#previousAndNextButtons");
-    	let spanQtdPaginas = document.querySelector("#spanQtdPaginas");
-		let quantidadePaginas = "[[${quantidadePaginas}]]";
-		function createElements(){
-			for(let i = 1; i <= quantidadePaginas; i++){
-				let a = document.createElement("a");
-				a.text=i
-				a.id=i
-				a.href="?page=" + (i-1)
-					
-				tdPreviousAndNextButtons.appendChild(a);
-			}
-		}
-		
-		createElements();
-	</script> 
-
-   
 </html>

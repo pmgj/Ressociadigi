@@ -4,15 +4,91 @@
 <head>
     <title>Lista de Apenados</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" th:href="@{/css/result-style.css}" />
+    <link rel="stylesheet" th:href="@{css/listarEmpresas.css}" />
+    <!-- <link rel="stylesheet" th:href="@{/css/result-style.css}" /> -->
     <script defer="defer" th:src="@{/js/result.js}"></script>
     <link rel="icon" th:href="@{/imgs/logoRD.png}">
 </head>
 
 <body>
+	
+	<main>
+        <div class="title">
+            <img th:src="@{/imgs/logoRD.png}" width="10%" height="10%" alt="" />
+        </div>
+        <div class="top-layer">
+            <legend>TODOS</legend>
+        </div>
+        <div class="header-tabela">
+        	
+        	<!-- <form action="#" th:action="@{/buscarEmpresa}" th:object="${busca}" method="post"> -->
+	            <div class="buscador">
+	            	<select id="select-tipoBusca" >
+	            		<option value="NOME">NOME</option>
+	            		<option value="CPF">CPF</option>
+	            		<option value="DATA DE NASCIMENTO">DATA DE NASCIMENTO</option>
+	            		<option value="NOME DA MÃE">NOME DA MÃE</option>
+	            		<option value="CONTATO">CONTATO</option>
+	            	</select>
+	                <input type="search" placeholder="Buscar" id="nome" />
+	                
+	                <a><button id="buscar">Buscar</button></a>
+	            
+	        	</div>
+			<!-- </form>-->
+			 
+            <a th:href="@{/inserirApenado}"><button class="AdicionarEmpresa">+</button></a>
+			
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th><input id="selectAll-checkbox" type="checkbox" onchange="handleCheckbox(this)"></th>
+	                <th>NOME</th>
+	                <th>CPF</th>
+	                <th>DATA DE NASCIMENTO</th>
+	                <th>NOME DA MÃE</th>
+	                <th>CONTATO</th>
+	                <th>AÇÕES</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+             
+            		<tr th:if="${lista.empty}">
+		                <td colspan="8">Nenhum registro armazenado.</td>
+		            </tr>
+		            <tr th:each="item : ${lista}">
+		                <td><input id="individual-checkbox" type="checkbox"></td>
+		                <td><span th:text="${item.nome}">Nome</span></td>
+		                <td><span th:text="${item.cpf}">CPF</span></td>
+		                <td><span th:text="${item.dataNascimento}">Data de Nascimento</span></td>
+		                <td><span th:text="${item.nomeDaMae}">Nome da Mãe</span></td>
+		                <td><span th:text="${item.telefone}">Contato</span></td>
+                    <td id="Btn-remove-edit" width="180">
+                        <a th:href="@{/alterarApenado(cpf=${item.cpf})}"><button>Editar</button></a>
+                        <a th:href="@{/removerApenado(cpf=${item.cpf})}" th:attr="data-nome=${item.nome}, data-cpf=${item.cpf}"><button>Remover</button></a>
+                    </td>
+                	</tr>
+          	</tbody>
+          	<tfoot>
+	        	<tr>
+	        		<td colspan="5"></td>
+	        		<td><span id="spanQtdPaginas" th:text="${pageCounter}"></span></td>
+	        		<td id="previousAndNextButtons">
+	        			<a href="">&lt;&lt;</a>
+	        			<a th:href="@{#}">&lt;</a>
+	        			<a th:href="@{#}">&gt;</a>
+	        			<a th:href="@{#}">&gt;&gt;</a>
+	        		</td>
+	        	</tr>
+		    </tfoot>    
+        </table>
+    </main>
+	
+	<!--  ESTE É O TEMPLATE ANTIGO
 	<div class="title">
 		<img th:src="@{/imgs/logoRD.png}" width="10%" height="10%" alt="" />
-		<!-- <h1>RESSOCIADIGI</h1> -->
 	</div>
 	<div class="top-layer">
 		<legend>TODOS</legend>
@@ -53,7 +129,6 @@
 		                	<a th:href="@{/alterarApenadoForm(cpf=${item.cpf})}"><img th:src="@{/imgs/icone-editar.png}" alt="Editar"/></a>
 		                	<a class="botao-excluir" th:href="@{/removerApenado(cpf=${item.cpf})}" th:attr="data-nome=${item.nome}, data-cpf=${item.cpf}" ><img th:src="@{/imgs/icone-excluir.png}" alt="Excluir"/></a>
 		                </td>
-		                <!-- th:href="@{/removerApenado(cpf=${item.cpf})}" -->
 		            </tr>
 		        </tbody>
 		        <tfoot>
@@ -86,6 +161,6 @@
 			</form>
 		</div>
 	</div>
-	<!-- <td><span th:each="cnh : ${item.cnhs}"><span th:text="${cnh}"></span>&nbsp;</span></td> -->
+	-->
 </body>
 </html>

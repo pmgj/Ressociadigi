@@ -23,40 +23,46 @@
             <div class="container-input-vagas">
                 <div class="input-normal" id="nomeEmpresa">
                     <label for="empresaSelect">selecione a empresa</label>
-                    <select th:field="*{nomeEmpresa}" name="empresaSelect" id="empresaSelect">
-                        <option th:each="empresa : ${listaEmpresas}" th:value="${empresa.getNome()}" th:text="${empresa.getNome()}"></option>
-                        <!-- <option value="">empresa x</option>
-                        <option value="">empresa x</option> -->
+                    <select th:field="*{empresa}" name="empresaSelect" id="empresaSelect">
+                        <option th:each="empresa : ${listaEmpresas}" th:value="${empresa.getCnpj()}" th:text="${empresa.getNome() + ' | CNPJ: ' + empresa.getCnpj()}"></option>
                     </select>
+                    <label id="labelError" th:if="${#fields.hasErrors('empresa')}" th:errors="*{empresa}">Erro na Empresa</label>
                 </div>
                 <div class="input-normal">
                     <label for="interlocutor">interlocutor</label>
                     <input type="text" th:field="*{interlocutor}" id="interlocutor">
+                    <label id="labelError" th:if="${#fields.hasErrors('interlocutor')}" th:errors="*{interlocutor}">Erro no Interlocutor</label>
                 </div>
                 <div class="input-normal">
                     <label for="qtdMasculina">número de vagas masculinas</label>
                     <input type="number" th:field="*{quantidadeVagasMasculinas}" id="qtdMasculina">
+                    <label id="labelError" th:if="${#fields.hasErrors('quantidadeVagasMasculinas')}" th:errors="*{quantidadeVagasMasculinas}">Erro na número de vagas masculinas</label>
                 </div>
                 <div class="input-normal">
                     <label for="qtdFeminino">número de vagas femininas</label>
                     <input type="number" th:field="*{quantidadeVagasFemininas}" id="qtdFeminino">
+                    <label id="labelError" th:if="${#fields.hasErrors('quantidadeVagasFemininas')}" th:errors="*{quantidadeVagasFemininas}">Erro no número de vagas femininas</label>
                 </div>
                 <div class="input-normal">
                     <label for="tipo">tipo</label>
                     <input type="text" th:field="*{tipo}" id="tipo">
+                    <label id="labelError" th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}">Erro no tipo</label>
                 </div>
                 <div class="input-normal">
                     <label for="cargaHoraria">carga horária</label>
                     <input type="text" th:field="*{cargaHoraria}" id="cargaHoraria">
+                    <label id="labelError" th:if="${#fields.hasErrors('cargaHoraria')}" th:errors="*{cargaHoraria}">Erro na carga horária</label>
                 </div>
 
                 <div class="input-normal">
                     <label for="procura">procura por:</label>
                     <textarea name="procura" th:field="*{procuraPor}" id="procura" cols="34" rows="8"></textarea>
+                    <label id="labelError" th:if="${#fields.hasErrors('procuraPor')}" th:errors="*{procuraPor}">Erro na preferência de procura.</label>
                 </div>
                 <div class="input-normal">
                     <label for="restricao">restrição:</label>
-                    <textarea name="procura"  th:field="*{restricao}" id="procura" cols="34" rows="8"></textarea>
+                    <textarea name="restricao"  th:field="*{restricao}" id="restricao" cols="34" rows="8"></textarea>
+                    <label id="labelError" th:if="${#fields.hasErrors('restricao')}" th:errors="*{restricao}">Erro na restricao</label>
                 </div>
                 <div class="tap">
                     <div class="container-botao">

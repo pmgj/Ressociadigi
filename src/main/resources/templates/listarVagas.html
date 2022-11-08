@@ -22,7 +22,25 @@
             <legend>TODOS</legend>
         </div>
         <div class="header-tabela">
-        	</div>
+        	<!-- <form action="#" th:action="@{/buscarEmpresa}" th:object="${busca}" method="post"> -->
+	            <div class="buscador">
+	            	<select id="select-tipoBusca" >
+	            		<option value="NOME DA EMPRESA">NOME DA EMPRESA</option>
+	            		<option value="TIPO">TIPO</option>
+	            		<option value="INTERLOCUTOR">INTERLOCUTOR</option>
+	            		<option value="VAGAS MASCULINAS">VAGAS MASCULINAS</option>
+	            		<option value="VAGAS FEMININAS">VAGAS FEMININAS</option>
+	            		<option value="CARGA HORÁRIA">CARGA HORÁRIA</option>
+	            		<option value="OPERAÇÕES">OPERAÇÕES</option>
+	            	</select>
+	                <input type="search" placeholder="Buscar" id="nome" />
+	                
+	                <a><button id="buscar">Buscar</button></a>
+	            
+	        	</div>
+			<!-- </form>-->
+			<a th:href="@{/inserirVaga}"><button class="AdicionarEmpresa">+</button></a>
+        </div>
         <table>
             <thead>
                 <tr>
@@ -39,32 +57,33 @@
             <tbody>
              
             	<tr th:if="${listaVagas.empty}">
-            		<td colspan="6">Não há vagas registradas no sistema.</td>
+            		<td colspan="7">Não há vagas registradas no sistema.</td>
             	</tr>
                 <tr th:each="vaga : ${listaVagas}">
-                    <td data-label="NOME DA EMPRESA"><span th:text="${vaga.nomeEmpresa}">NOME DA EMPRESA</span></td>
+                    <td data-label="NOME DA EMPRESA"><span th:text="${vaga.empresa.nome}">NOME DA EMPRESA</span></td>
                     <td data-label="TIPO"><span th:text="${vaga.tipo}">TIPO</span></td>
                     <td data-label="INTERLOCUTOR"><span th:text="${vaga.interlocutor}">INTERLOCUTOR</span></td>
                     <td data-label="VAGAS MASCULINAS"><span th:text="${vaga.quantidadeVagasMasculinas}">VAGAS MASCULINAS</span></td>
                     <td data-label="VAGAS FEMININAS"><span th:text="${vaga.quantidadeVagasFemininas}">VAGAS FEMININAS</span></td>
                     <td data-label="CARGA HORÁRIA"><span th:text="${vaga.cargaHoraria}">CARGA HORÁRIA</span></td>
-                    <td id="Btn-remove-edit">
-                        <a th:href="@{#}"><button>Editar</button></a>
-                        <a th:href="@{#}"><button>Remover</button></a>
+                    <td id="Btn-remove-edit" width="180">
+                        <a th:href="@{/alterarVaga(id=${vaga.getId()})}"><button>Editar</button></a>
+                        <a th:href="@{/removerVaga(id=${vaga.getId()})}"><button>Remover</button></a>
                     </td>
                 </tr>
           	</tbody>
           	<tfoot>
 	        	<tr>
-	        		<td colspan="6"></td>
-	        		<td><span id="spanQtdPaginas"></span></td>
+	        		<td colspan="5"></td>
+	        		<td><span id="spanQtdPaginas" th:text="${pageCounter}"></span></td>
 	        		<td id="previousAndNextButtons">
+	        			<a href="">&lt;&lt;</a>
+	        			<a th:href="@{#}">&lt;</a>
+	        			<a th:href="@{#}">&gt;</a>
+	        			<a th:href="@{#}">&gt;&gt;</a>
 	        		</td>
 	        	</tr>
 		    </tfoot>     
-             <tfoot>
-                
-             </tfoot>  
         </table>
     </main>
 </body>
