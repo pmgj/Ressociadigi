@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <link rel="stylesheet" th:href="@{/css/vagas.css}" />
 <link rel="icon" th:href="@{/imgs/logoRD.png}">
 <title>Alocar vaga ao Apenado</title>
@@ -19,16 +19,7 @@
 				</div>
 
 				<div class="container-input-vagas">
-					 
-					<!--<div class="input-normal" id="nomeEmpresa">
-						<label for="empresaSelect">Selecione a empresa</label> 
-						<select name="empresaSelect" id="empresaSelect"> th:field="*{empresa}" 
-							<option th:each="empresa : ${listaEmpresas}" th:value="${empresa.getCnpj()}" th:text="${empresa.getNome()}"></option>
-						</select>
-						<label id="labelError" th:if="${#fields.hasErrors('empresa')}" th:errors="*{empresa}">Erro na empresa</label>
-					</div>
-					-->
-					<div class="input-normal" id="nomeVaga">
+					 <div class="input-normal" id="nomeVaga">
 						<label for="vagaSelect">Selecione a vaga</label> 
 						<select th:field="*{vaga}" name="vagaSelect" id="vagaSelect">
 							<option th:each="vaga : ${listaVagas}" th:value="${vaga.getId()}" th:text="${vaga.getTipo() + ' | H: ' + vaga.getQuantidadeVagasMasculinas()
@@ -48,6 +39,12 @@
 						<label for="tipo">Data de Inicio</label> <input type="date"
 							th:field="*{dataInicio}" id="dataNascimento">
 					</div>
+					
+					<div class="input-normal">
+						<label for="tipo">Data de Término</label> <input type="date"
+							th:field="*{dataFim}" id="dataNascimento">
+					</div>
+					
 					<div class="tap">
 						<div class="container-botao">
 							<input type="button" id="botao-voltar" value="Voltar"/>
