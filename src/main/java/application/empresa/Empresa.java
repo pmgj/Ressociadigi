@@ -1,9 +1,18 @@
 package application.empresa;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+
+import application.vaga.Vaga;
+import application.vaga.VagaPreenchida;
 
 @Entity
 public class Empresa {
@@ -12,7 +21,7 @@ public class Empresa {
 	@Id
 	@NotNull(message = "Este campo não pode ser nulo")
 	@NotEmpty(message = "Este campo não pode estar vazio")
-	private String cnpj;	
+	private String cnpj;	 
 	private String nome;
 	private String responsavel;
 	private String email;
@@ -32,7 +41,16 @@ public class Empresa {
 	private String complemento;
 	
 	
+	@OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
+	private List<Vaga> vagas;
 	
+	
+	public List<Vaga> getVagas() {
+		return vagas;
+	}
+	public void setVagas(List<Vaga> vagas) {
+		this.vagas = vagas;
+	}
 	public String getCnpj() {
 		return cnpj;
 	}

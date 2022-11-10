@@ -49,6 +49,7 @@ public class ControladorEmpresa {
 		int numTotalPaginas = pgEmpresa.getTotalPages();
 		m.addAttribute("busca", new Busca());
 		m.addAttribute("pageCounter", "Página " + numPaginaAtual + " de " + numTotalPaginas);
+		m.addAttribute("contador", 0);
 		m.addAttribute("quantidadePaginas", numTotalPaginas);
 		m.addAttribute("listaEmpresas", pgEmpresa);
 		

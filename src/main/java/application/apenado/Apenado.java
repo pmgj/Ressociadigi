@@ -4,11 +4,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.swing.text.MaskFormatter;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -16,6 +18,8 @@ import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import application.vaga.VagaPreenchida;
 
 @Entity
 public class Apenado {
@@ -81,6 +85,10 @@ public class Apenado {
 	private String agencia;
 	private String banco;
 	private String operacao;
+	
+	@OneToOne(mappedBy = "apenado", cascade = CascadeType.ALL)
+	private VagaPreenchida vagaPreenchida;
+	
 
 	// Métodos comuns
 	public String formataTelefone(String numTelefone, int tipoFormatacao) {
@@ -104,8 +112,18 @@ public class Apenado {
 
 	// Métodos Getters e Setters
 
+	
+	
 	public String getCpf() {
 		return cpf;
+	}
+
+	public VagaPreenchida getVagaPreenchida() {
+		return vagaPreenchida;
+	}
+
+	public void setVagaPreenchida(VagaPreenchida vagaPreenchida) {
+		this.vagaPreenchida = vagaPreenchida;
 	}
 
 	public void setCpf(String cpf) {

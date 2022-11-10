@@ -1,29 +1,60 @@
 package application.vaga;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
+
+import application.empresa.Empresa;
 
 @Entity
 public class Vaga {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@NotNull(message = "Este campo não pode ser nulo!")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VAGA_SEQUENCE")
 	private int id;
-	private String nomeEmpresa;
 	private String interlocutor;
-	private int quantidadeVagasMasculinas;
-	private int quantidadeVagasFemininas;
+	private Integer quantidadeVagasMasculinas;
+	private Integer quantidadeVagasFemininas;
 	private String tipo;
-	private int cargaHoraria;
+	private Integer cargaHoraria;
 	private String procuraPor;
 	private String restricao;
+	@ManyToOne
+	@NotNull
+	private Empresa empresa;
 	
-	public String getNomeEmpresa() {
-		return nomeEmpresa;
+	@OneToMany(mappedBy = "vaga", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<VagaPreenchida> vagasPreenchidas;
+	
+	
+	
+	public List<VagaPreenchida> getVagasPreenchidas() {
+		return vagasPreenchidas;
 	}
-	public void setNomeEmpresa(String nomeEmpresa) {
-		this.nomeEmpresa = nomeEmpresa;
+	public void setVagasPreenchidas(List<VagaPreenchida> vagasPreenchidas) {
+		this.vagasPreenchidas = vagasPreenchidas;
+	}
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getInterlocutor() {
 		return interlocutor;
@@ -31,13 +62,13 @@ public class Vaga {
 	public void setInterlocutor(String interlocutor) {
 		this.interlocutor = interlocutor;
 	}
-	public int getQuantidadeVagasMasculinas() {
+	public Integer getQuantidadeVagasMasculinas() {
 		return quantidadeVagasMasculinas;
 	}
 	public void setQuantidadeVagasMasculinas(int quantidadeVagasMasculinas) {
 		this.quantidadeVagasMasculinas = quantidadeVagasMasculinas;
 	}
-	public int getQuantidadeVagasFemininas() {
+	public Integer getQuantidadeVagasFemininas() {
 		return quantidadeVagasFemininas;
 	}
 	public void setQuantidadeVagasFemininas(int quantidadeVagasFemininas) {
@@ -49,7 +80,7 @@ public class Vaga {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	public int getCargaHoraria() {
+	public Integer getCargaHoraria() {
 		return cargaHoraria;
 	}
 	public void setCargaHoraria(int cargaHoraria) {

@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import application.apenado.RepositorioApenado;
 import application.empresa.RepositorioEmpresa;
 
 @Controller
@@ -21,6 +23,62 @@ public class ControladorVaga {
 	@Autowired
 	private RepositorioEmpresa repEmpresa;
 	
+	@Autowired
+	private RepositorioVagaPreenchida repVagaPreenchida;
+	
+	@Autowired
+	private RepositorioApenado repApenado;
+	
+	
+	//Seção de Vagas Preenchidas
+	@GetMapping("/listarVagasPreenchidas")
+	public String listarVagasPreenchidas(Model model) {
+		model.addAttribute("listaVagasPreenchidas", repVagaPreenchida.findAll());
+		
+		return "listarVagasPreenchidas";
+	}
+	
+	@GetMapping("/preencherVaga")
+	public ModelAndView preencherVaga(Model model) {
+		VagaPreenchida vagaPreenchida = new VagaPreenchida();
+		model.addAttribute("listaApenados", repApenado.findAll());
+		model.addAttribute("listaVagas", service.findAll());
+		model.addAttribute("listaEmpresas", repEmpresa.findAll());
+		ModelAndView mav = new ModelAndView("alocarVagaApenado");
+		mav.addObject("vagaPreenchida", vagaPreenchida);
+		return mav;
+	}
+	
+	@PostMapping("/armazenarVagaPreenchida")
+	public String armazenarVagaPreenchida(@Valid VagaPreenchida vagaPreenchida, BindingResult bindingResult, Model model) {
+		if(bindingResult.hasErrors()) {
+			return "alocarVagaApenado";
+		}
+		try {
+			repVagaPreenchida.save(vagaPreenchida);
+		} catch(Exception e) {
+			System.err.print(e.getMessage());
+			return "redirect:/preencherVaga";
+		}		
+		return "redirect:/listarVagasPreenchidas";
+	}
+	
+	@GetMapping("/alterarVagaPreenchida")
+	public String alterarVagaPreenchida(@RequestParam int id, Model model) {
+		model.addAttribute("vagaPreenchida", repVagaPreenchida.findById(id).get());
+		model.addAttribute("listaVagas", service.findById(repVagaPreenchida.findById(id).get().getVaga().getId()).get());//listaVagas
+		model.addAttribute("listaApenados", repApenado.findById(repVagaPreenchida.findById(id).get().getApenado().getCpf()).get());//listaApenados
+		return "alocarVagaApenado";
+	}
+	
+	@GetMapping("/removerVagaPreenchida")
+	public String removerVagaPreenchida(@RequestParam int id, Model model) {
+		VagaPreenchida vagaPreenchida = repVagaPreenchida.findById(id).get();
+		repVagaPreenchida.delete(vagaPreenchida);
+		return "redirect:/listarVagasPreenchidas";
+	}
+	
+	//Seção de Vagas
     @GetMapping("/inserirVaga")
     public ModelAndView inserirVaga(Model model) {
     	Vaga vaga = new Vaga();
@@ -43,5 +101,19 @@ public class ControladorVaga {
     public String listarVagas(Model model) {
     	model.addAttribute("listaVagas", service.findAll());
     	return "listarVagas";
+    }
+    
+    @GetMapping("/alterarVaga")
+    public String alterarVaga(@RequestParam int id, Model model) {
+    	model.addAttribute("vaga", service.findById(id));
+    	model.addAttribute("listaEmpresas", repEmpresa.findById(service.findById(id).get().getEmpresa().getCnpj()).get());
+    	return "vagas";
+    }
+    
+    @GetMapping("/removerVaga")
+    public String removerVaga(@RequestParam int id) {
+    	Vaga vaga = service.findById(id).get();
+    	service.delete(vaga);
+    	return "redirect:/listarVagas";
     }
 }
