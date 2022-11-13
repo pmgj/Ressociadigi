@@ -19,14 +19,14 @@
             <!-- <h1>RESSOCIADIGI</h1> -->
         </div>
         <div class="top-layer">
-            <legend>TODOS</legend>
+            <legend class="legenda">TODOS</legend>
         </div>
         <div class="header-tabela">
         	<form action="#" th:action="@{/buscarEmpresa}" th:object="${busca}" method="post">
 	            <div class="buscador">
 	            	<select id="select-tipoBusca" th:field="*{tipoBusca}">
 	            		<option value="CNPJ">CNPJ</option>
-	            		<option value="NOME DA EMPRESA">NOME DA EMPRESA</option>
+	            		<option value="NOME DA EMPRESA" onclick="mudaLegada()">NOME DA EMPRESA</option>
 	            		<option value="RESPONSÁVEL">RESPONSÁVEL</option>
 	            		<option value="INTERLOCUTOR">INTERLOCUTOR</option>
 	            		<option value="TELEFONE">TELEFONE</option>
