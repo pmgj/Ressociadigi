@@ -30,22 +30,30 @@ body {
 .buscador{
     display: flex;
     justify-content: space-between;
-    width: 20rem;
+    width: 30rem;
+    
 }
 
+.select-tipoBusca{
+    width: 2rem;
+}
+
+
 #select-tipoBusca {
-	height: 2rem;
+	height: 2.4rem;
     border-radius: 6px;
-    width: 15rem;
+    width: 10rem;
     outline: none;
 }
 
 .buscador input{
-    height: 2rem;
-    border-radius: 6px;
+
     width: 15rem;
     padding: 10px;
     outline: none;
+    height: 2.4rem;
+    border-radius: 6px;
+    border: solid 0.5px;
 }
 .buscador button{
     
@@ -57,7 +65,7 @@ body {
     border-radius: 6px;
     cursor: pointer;
     width: 4rem;
-    height: 2rem;
+    height: 2.4rem;
 
 }
 .buscador input:focus{
@@ -67,9 +75,9 @@ body {
     border-radius: 50%;
     background-color: lightgreen;
     color: white;
-    height: 2rem;
-    width: 2rem;
-    font-size: x-large;
+    height: 2.5rem;
+    width: 2.5rem;
+    font-size: xx-large;
     border: none;
     cursor: pointer;
 }
