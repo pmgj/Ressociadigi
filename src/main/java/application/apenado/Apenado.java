@@ -53,7 +53,7 @@ public class Apenado {
 	@ElementCollection
 	@Enumerated(EnumType.STRING)
 	private List<CNH> cnhs = new ArrayList<>();
-	
+
 	// Atributos relacionados à seção de Endereço.
 
 	private String estado;
@@ -72,6 +72,7 @@ public class Apenado {
 	private String curso; // Revisar como será a dinâmica de uso desse atributo, dado que poderão ser
 							// diversos cursos.
 	private String perfil;
+	private String habilidades;
 
 	// Atributos relacionados à seção de Situacional.
 
@@ -85,10 +86,9 @@ public class Apenado {
 	private String agencia;
 	private String banco;
 	private String operacao;
-	
+
 	@OneToOne(mappedBy = "apenado", cascade = CascadeType.ALL)
 	private VagaPreenchida vagaPreenchida;
-	
 
 	// Métodos comuns
 	public String formataTelefone(String numTelefone, int tipoFormatacao) {
@@ -112,8 +112,6 @@ public class Apenado {
 
 	// Métodos Getters e Setters
 
-	
-	
 	public String getCpf() {
 		return cpf;
 	}
@@ -370,4 +368,11 @@ public class Apenado {
 		this.restricao = restricao;
 	}
 
+	public String getHabilidades() {
+		return habilidades;
+	}
+
+	public void setHabilidades(String habilidades) {
+		this.habilidades = habilidades;
+	}
 }

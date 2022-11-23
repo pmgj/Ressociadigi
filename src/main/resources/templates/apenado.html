@@ -223,8 +223,7 @@
 
                         <div id="cursos" class="input-normal">
                             <label for="selCursos">Cursos</label>
-                            <select name="selCursos" id="selCursos" th:field="*{curso}" multiple="multiple"
-                                size="3"></select>
+                            <select id="selCursos" th:field="*{curso}" multiple="multiple" size="3"></select>
                             <button class="buttonAdicionarHabilidade" data-add="selCursos">+</button>
                             <label id="labelError" th:if="${#fields.hasErrors('curso')}" th:errors="*{curso}">Erro
                                 no Curso</label>
@@ -248,26 +247,14 @@
                                 th:errors="*{textoRestricao}">Erro na Restrição</label>
                         </div>
 
-                        <fieldset id="fieldset-habilidades">
-                            <legend>Habilidades</legend>
-                            <div class="container-input-habilidade input-normal">
-                                <label for="habilidade">Nome da Habilidade</label>
-                                <div class="box-input">
-                                    <input type="text" id="habilidade">
-                                    <button type="button" class="buttonAdicionarHabilidade">+</button>
-                                </div>
-                            </div>
-
-                            <div class="container-select-habilidade input-normal">
-                                <label for="listaHabilidade">lista de habilidades</label>
-                                <div class="listaHablidade-box">
-                                    <select name="listaHabilidade" id="listaHabilidade">
-                                        <option id="NENHUMA" selected>NENHUMA</option>
-                                    </select>
-                                    <button type="button" class="buttonRemoverHabilidade">X</button>
-                                </div>
-                            </div>
-                        </fieldset>
+                        <div id="habilidades" class="input-normal">
+                            <label for="selHabilidade">Habilidades</label>
+                            <select id="selHabilidade" th:field="*{habilidades}" multiple="multiple" size="3"></select>
+                            <button class="buttonAdicionarHabilidade" data-add="selHabilidade">+</button>
+                            <label id="labelError" th:if="${#fields.hasErrors('habilidades')}"
+                                th:errors="*{habilidades}">Erro
+                                nas Habilidades</label>
+                        </div>
                     </div>
                     <!-----------------------SEÇÃO SITUACIONAL------------------------------>
                     <div id="grupo-input-situacional">

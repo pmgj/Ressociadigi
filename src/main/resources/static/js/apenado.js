@@ -141,6 +141,7 @@ function dialogClose() {
     let mainSelect = document.getElementById(hidden.value);
     let dSelect = document.querySelector("#dialogSelect");
     mainSelect.innerHTML = dSelect.innerHTML;
+    dSelect.innerHTML = "";
     let dialog = document.querySelector("dialog");
     dialog.close();
 }
