@@ -43,13 +43,16 @@ public class ControladorEmpresa {
 	}
 	
 	@GetMapping("/listarEmpresas")
-	public String listarEmpresas(Model m, @PageableDefault(page = 0, size = 5) Pageable pageable) {
+	public String listarEmpresas(Model m, @PageableDefault(page = 0, size = 2) Pageable pageable) {
 		Page<Empresa> pgEmpresa = service.findAll(pageable);
 		int numPaginaAtual = pageable.getPageNumber() + 1;
 		int numTotalPaginas = pgEmpresa.getTotalPages();
 		m.addAttribute("busca", new Busca());
 		m.addAttribute("pageCounter", "Página " + numPaginaAtual + " de " + numTotalPaginas);
-		m.addAttribute("contador", 0);
+		m.addAttribute("nextPage", ((pageable.getPageNumber() + 1) > numTotalPaginas - 1) 
+				? pageable.getPageNumber() 
+						: pageable.getPageNumber() + 1 );
+		m.addAttribute("previousPage", pageable.getPageNumber() - 1);
 		m.addAttribute("quantidadePaginas", numTotalPaginas);
 		m.addAttribute("listaEmpresas", pgEmpresa);
 		

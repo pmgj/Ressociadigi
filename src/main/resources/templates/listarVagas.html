@@ -77,10 +77,10 @@
 	        		<td colspan="5"></td>
 	        		<td><span id="spanQtdPaginas" th:text="${pageCounter}"></span></td>
 	        		<td id="previousAndNextButtons">
-	        			<a href="">&lt;&lt;</a>
-	        			<a th:href="@{#}">&lt;</a>
-	        			<a th:href="@{#}">&gt;</a>
-	        			<a th:href="@{#}">&gt;&gt;</a>
+	        			<a href="?page=0">&lt;&lt;</a>
+	        			<a th:href="@{?page={contador} (contador = ${previousPage})}">&lt;</a>
+	        			<a th:href="@{?page={contador} (contador = ${nextPage})}">&gt;</a>
+	        			<a th:href="@{?page={page}(page = ${quantidadePaginas - 1})}">&gt;&gt;</a>
 	        		</td>
 	        	</tr>
 		    </tfoot>     

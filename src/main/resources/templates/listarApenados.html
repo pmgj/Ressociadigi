@@ -21,21 +21,20 @@
         </div>
         <div class="header-tabela">
         	
-        	<!-- <form action="#" th:action="@{/buscarEmpresa}" th:object="${busca}" method="post"> -->
+        	<form action="#" th:action="@{/listarApenados}" method="post">
 	            <div class="buscador">
-	            	<select id="select-tipoBusca" >
+	            	<select id="searchBy" name="searchBy">
 	            		<option value="NOME">NOME</option>
 	            		<option value="CPF">CPF</option>
 	            		<option value="DATA DE NASCIMENTO">DATA DE NASCIMENTO</option>
 	            		<option value="NOME DA MÃE">NOME DA MÃE</option>
 	            		<option value="CONTATO">CONTATO</option>
 	            	</select>
-	                <input type="search" placeholder="Buscar" id="nome" />
+	                <input type="search" placeholder="Buscar" name="value" id="value" />
 	                
 	                <a><button id="buscar">Buscar</button></a>
-	            
 	        	</div>
-			<!-- </form>-->
+			 </form>
 			 
             <a th:href="@{/inserirApenado}"><button class="AdicionarEmpresa">+</button></a>
 			
@@ -74,10 +73,10 @@
 	        		<td colspan="4"></td>
 	        		<td><span id="spanQtdPaginas" th:text="${pageCounter}"></span></td>
 	        		<td id="previousAndNextButtons">
-	        			<a href="">&lt;&lt;</a>
-	        			<a th:href="@{#}">&lt;</a>
-	        			<a th:href="@{#}">&gt;</a>
-	        			<a th:href="@{#}">&gt;&gt;</a>
+	        			<a href="?page=0">&lt;&lt;</a>
+	        			<a th:href="@{?page={contador} (contador = ${previousPage})}">&lt;</a>
+	        			<a th:href="@{?page={contador} (contador = ${nextPage})}">&gt;</a>
+	        			<a th:href="@{?page={page}(page = ${quantidadePaginas - 1})}">&gt;&gt;</a>
 	        		</td>
 	        	</tr>
 		    </tfoot>    
