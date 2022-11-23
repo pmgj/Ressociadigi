@@ -86,7 +86,6 @@
                                 Data de Nascimento</label>
                         </div>
 
-
                         <div id="cnh-inputbox">
                             <label for="cnh" id="cnhTipo">CHN tipo:</label>
                             <div id="cnh">
@@ -144,32 +143,28 @@
                             <label for="NumeroCasa">Número</label>
                             <input type="text" th:field="*{numeroDaCasa}" id="NumeroCasa">
                             <label id="labelError" th:if="${#fields.hasErrors('numeroDaCasa')}"
-                                th:errors="*{numeroDaCasa}">Erro no Num
-                                da casa</label>
+                                th:errors="*{numeroDaCasa}">Erro no Num da casa</label>
                         </div>
 
                         <div id="bairro-input" class="input-normal">
                             <label for="bairro">Bairro</label>
                             <input type="text" th:field="*{bairro}" id="bairro" class="form-input">
                             <label id="labelError" th:if="${#fields.hasErrors('bairro')}" th:errors="*{bairro}">Erro
-                                no
-                                Bairro</label>
+                                no Bairro</label>
                         </div>
 
                         <div id="bairro-input" class="input-normal">
                             <label for="cidade">Cidade</label>
                             <input type="text" th:field="*{cidade}" id="cidade" class="form-input">
                             <label id="labelError" th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}">Erro
-                                na
-                                Cidade</label>
+                                na Cidade</label>
                         </div>
 
                         <div id="complemento-input" class="input-normal">
                             <label for="complemento">Complemento</label>
                             <input type="text" th:field="*{complemento}" id="complemento" class="form-input">
                             <label id="labelError" th:if="${#fields.hasErrors('complemento')}"
-                                th:errors="*{complemento}">Erro no
-                                Complemento</label>
+                                th:errors="*{complemento}">Erro no Complemento</label>
                         </div>
 
                         <div id="estado-input" class="input-normal">
@@ -205,8 +200,7 @@
                                 <option value="Tocantins">Tocantins</option>
                             </select>
                             <label id="labelError" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}">Erro
-                                no
-                                Estado</label>
+                                no Estado</label>
                         </div>
                     </div>
                     <!-----------------------SEÇÃO INSTRUÇÃO------------------------------>
@@ -228,19 +222,19 @@
                         </div>
 
                         <div id="cursos" class="input-normal">
-                            <label for="cursos">Cursos</label>
-                            <input type="text" th:field="*{curso}">
+                            <label for="selCursos">Cursos</label>
+                            <select name="selCursos" id="selCursos" th:field="*{curso}" multiple="multiple"
+                                size="3"></select>
+                            <button class="buttonAdicionarHabilidade" data-add="selCursos">+</button>
                             <label id="labelError" th:if="${#fields.hasErrors('curso')}" th:errors="*{curso}">Erro
-                                no
-                                Curso</label>
+                                no Curso</label>
                         </div>
 
                         <div id="perfil" class="input-normal">
                             <label for="area-perfil">Perfil</label>
                             <textarea name="" th:field="*{perfil}" id="area-perfil" cols="30" rows="10"></textarea>
                             <label id="labelError" th:if="${#fields.hasErrors('perfil')}" th:errors="*{perfil}">Erro
-                                no
-                                Perfil</label>
+                                no Perfil</label>
                         </div>
 
                         <div id="restricao">
@@ -253,36 +247,35 @@
                             <label id="labelError" th:if="${#fields.hasErrors('textoRestricao')}"
                                 th:errors="*{textoRestricao}">Erro na Restrição</label>
                         </div>
-						
-						<fieldset id="fieldset-habilidades">
-							<legend>Habilidades</legend>
-							<div class="container-input-habilidade input-normal">
-	                            <label for="habilidade">Nome da Habilidade</label>
-	                            <div class="box-input">
-	                                <input type="text" id="habilidade">
-	                                <button type="button" class="buttonAdicionarHabilidade">+</button>
-	                            </div>
-	                        </div>
-	
-	                        <div class="container-select-habilidade input-normal">
-	                            <label for="listaHabilidade">lista de habilidades</label>
-	                            <div class="listaHablidade-box">
-	                                 <select name="listaHabilidade" id="listaHabilidade">
-	                                    <option id="NENHUMA" selected>NENHUMA</option>
-	                                 </select>
-	                                <button type="button" class="buttonRemoverHabilidade">X</button>
-	                            </div>
-	                        </div>
+
+                        <fieldset id="fieldset-habilidades">
+                            <legend>Habilidades</legend>
+                            <div class="container-input-habilidade input-normal">
+                                <label for="habilidade">Nome da Habilidade</label>
+                                <div class="box-input">
+                                    <input type="text" id="habilidade">
+                                    <button type="button" class="buttonAdicionarHabilidade">+</button>
+                                </div>
+                            </div>
+
+                            <div class="container-select-habilidade input-normal">
+                                <label for="listaHabilidade">lista de habilidades</label>
+                                <div class="listaHablidade-box">
+                                    <select name="listaHabilidade" id="listaHabilidade">
+                                        <option id="NENHUMA" selected>NENHUMA</option>
+                                    </select>
+                                    <button type="button" class="buttonRemoverHabilidade">X</button>
+                                </div>
+                            </div>
                         </fieldset>
-                        </div>
+                    </div>
                     <!-----------------------SEÇÃO SITUACIONAL------------------------------>
                     <div id="grupo-input-situacional">
                         <div id="numeroProcesso-input" class="input-normal">
                             <label for="numeroProcesso">Número do processo</label>
                             <input type="text" th:field="*{numeroProcesso}" id="numeroProcesso">
                             <label id="labelError" th:if="${#fields.hasErrors('numeroProcesso')}"
-                                th:errors="*{numeroProcesso}">Erro no
-                                Numero do Processo</label>
+                                th:errors="*{numeroProcesso}">Erro no Numero do Processo</label>
 
                         </div>
 
@@ -297,16 +290,14 @@
                             <label for="terminoPena">Termino Pena</label>
                             <input type="date" th:field="*{dataTerminoPena}" id="terminoPena">
                             <label id="labelError" th:if="${#fields.hasErrors('dataTerminoPena')}"
-                                th:errors="*{dataTerminoPena}">Erro
-                                no Termino de Pena</label>
+                                th:errors="*{dataTerminoPena}">Erro no Termino de Pena</label>
                         </div>
 
                         <div id="prioridade">
                             <p>Prioridade</p>
                             <div id="prioridades">
-                                <input type="radio" th:each="p : ${prioridades}" th:value="${p}"
-                                th:text="${p.texto}" th:checked="${apenado.getPrioridade() == p}"
-                                th:field="*{prioridade}" />
+                                <input type="radio" th:each="p : ${prioridades}" th:value="${p}" th:text="${p.texto}"
+                                    th:checked="${apenado.getPrioridade() == p}" th:field="*{prioridade}" />
                             </div>
                             <label id="labelError" th:if="${#fields.hasErrors('prioridade')}"
                                 th:errors="*{prioridade}">Erro na Prioridade</label>
@@ -321,8 +312,7 @@
                                 <label for="numeroDaConta">Número da Conta</label>
                                 <input type="text" th:field="*{numConta}" name="numConta" id="numeroDaConta">
                                 <label id="labelError" th:if="${#fields.hasErrors('numConta')}"
-                                    th:errors="*{numConta}">Erro no Número da
-                                    Conta</label>
+                                    th:errors="*{numConta}">Erro no Número da Conta</label>
                             </div>
 
                             <div id="div-agencia" class="input-normal-dados-bancarios">
@@ -349,26 +339,26 @@
                                     Operação</label>
                             </div>
                         </fieldset>
-                        
+
                         <fieldset id="fieldset-habilidades">
-							<legend>Artirgos criminais</legend>
-							<div class="container-input-habilidade input-normal">
-	                            <label for="habilidade">Nome da Habilidade</label>
-	                            <div class="box-input">
-	                                <input type="text" id="habilidade">
-	                                <button type="button" class="buttonAdicionarHabilidade">+</button>
-	                            </div>
-	                        </div>
-	
-	                        <div class="container-select-habilidade input-normal">
-	                            <label for="listaHabilidade">lista de habilidades</label>
-	                            <div class="listaHablidade-box">
-	                                 <select name="listaHabilidade" id="listaHabilidade">
-	                                    <option id="NENHUMA" selected>NENHUMA</option>
-	                                 </select>
-	                                <button type="button" class="buttonRemoverHabilidade">X</button>
-	                            </div>
-	                        </div>
+                            <legend>Artigos criminais</legend>
+                            <div class="container-input-habilidade input-normal">
+                                <label for="habilidade">Nome da Habilidade</label>
+                                <div class="box-input">
+                                    <input type="text" id="habilidade">
+                                    <button type="button" class="buttonAdicionarHabilidade">+</button>
+                                </div>
+                            </div>
+
+                            <div class="container-select-habilidade input-normal">
+                                <label for="listaHabilidade">lista de habilidades</label>
+                                <div class="listaHablidade-box">
+                                    <select name="listaHabilidade" id="listaHabilidade">
+                                        <option id="NENHUMA" selected>NENHUMA</option>
+                                    </select>
+                                    <button type="button" class="buttonRemoverHabilidade">X</button>
+                                </div>
+                            </div>
                         </fieldset>
 
 
@@ -387,6 +377,15 @@
         </section>
 
     </main>
+
+    <dialog class="input-normal">
+        <input type="hidden" id="dialogHidden" />
+        <input type="text" id="dialogValue">
+        <button class="buttonAdicionarHabilidade" id="dialogAdd">+</button>
+        <select id="dialogSelect" multiple="multiple" size="3"></select>
+        <button class="buttonRemoverHabilidade" id="dialogDel">X</button>
+        <button id="dialogClose">Close</button>
+    </dialog>
 
 </body>
 

@@ -49,11 +49,9 @@ function exibirTela(evt) {
         }
     });
 }
-
 exibirTela();
 let menuItems = document.querySelectorAll("#menu-lateral li");
 menuItems.forEach(i => i.onclick = exibirTela);
-
 
 function mudarTitulo() {
     let menus = document.getElementsByTagName("li");
@@ -79,53 +77,77 @@ mudarTitulo();
 /*********************************************************/
 
 let buttonAdicionarHabilidade = document.querySelector(".buttonAdicionarHabilidade")
-buttonAdicionarHabilidade.addEventListener("click", function (){
-
+buttonAdicionarHabilidade.addEventListener("click", function () {
     let inputValor = document.getElementById("habilidade").value;
     let selectListaHabilidade = document.getElementById("listaHabilidade");
     let isValidAdd = true;
     let elementOption = document.createElement("option");
-	
-	for(let option of selectListaHabilidade.options){
-		if(option.text == inputValor || inputValor.trim() === ""){
-			isValidAdd = false;
-		}
-	}
-	
-	if(isValidAdd){
+
+    for (let option of selectListaHabilidade.options) {
+        if (option.text == inputValor || inputValor.trim() === "") {
+            isValidAdd = false;
+        }
+    }
+
+    if (isValidAdd) {
         elementOption.text = inputValor;
         elementOption.id = inputValor;
         selectListaHabilidade.appendChild(elementOption);
         inputValor = "";
     }
-})
+});
 
 let selectCurrentOptionID = "";
 let selectListaHabilidade = document.getElementById("listaHabilidade");
-
-
-selectListaHabilidade.addEventListener("change", function(){
-	selectCurrentOptionID = selectListaHabilidade.options[selectListaHabilidade.selectedIndex].id;	
-})
-
-
+selectListaHabilidade.addEventListener("change", function () {
+    selectCurrentOptionID = selectListaHabilidade.options[selectListaHabilidade.selectedIndex].id;
+});
 let buttonRemoverHabilidade = document.querySelector(".buttonRemoverHabilidade");
-buttonRemoverHabilidade.addEventListener("click", function (){
-	for(let option of selectListaHabilidade.options){
-		if(option.id == selectCurrentOptionID){
-			selectListaHabilidade.remove(option.index);
-		}
-	}
-}) 
-
-function multiInputs(btnAdicinar){
-    return{
-
-
-
+buttonRemoverHabilidade.addEventListener("click", function () {
+    for (let option of selectListaHabilidade.options) {
+        if (option.id == selectCurrentOptionID) {
+            selectListaHabilidade.remove(option.index);
+        }
     }
+});
 
+function showDialog(id) {
+    let hidden = document.querySelector("#dialogHidden");
+    hidden.value = id;
+    let dialog = document.querySelector("dialog");
+    dialog.showModal();
+    let dAdd = document.querySelector("#dialogAdd");
+    dAdd.onclick = dialogAdd;
+    let dDel = document.querySelector("#dialogDel");
+    dDel.onclick = dialogDel;
+    let dClose = document.querySelector("#dialogClose");
+    dClose.onclick = dialogClose;
 }
+function dialogAdd() {
+    let dialogValue = document.querySelector("#dialogValue");
+    let value = dialogValue.value;
+    let select = document.querySelector("#dialogSelect");
+    let option = document.createElement("option");
+    option.text = value;
+    select.add(option);
+    dialogValue.value = "";
+}
+function dialogDel() {
+    let select = document.querySelector("#dialogSelect");
+    select.remove(select.selectedIndex);
+}
+function dialogClose() {
+    let hidden = document.querySelector("#dialogHidden");
+    let mainSelect = document.getElementById(hidden.value);
+    let dSelect = document.querySelector("#dialogSelect");
+    mainSelect.innerHTML = dSelect.innerHTML;
+    let dialog = document.querySelector("dialog");
+    dialog.close();
+}
+let botoesAdd = document.querySelectorAll("button[data-add]");
+botoesAdd.forEach(b => {
+    b.onclick = () => showDialog(b.dataset.add);
+});
 
 // A ideia desse EventListener é perceber a mudança de option selecionado no Select.
 // Quando há a mudança, uma variável global(selectCurrentOptionID) pega o ID desse option no Select e guarda.

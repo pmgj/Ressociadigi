@@ -58,25 +58,26 @@ img {
     background-size: cover;
 }
 
-#fieldset-habilidades{
-	/*
+#fieldset-habilidades {
+    /*
 	width: 18rem;
     height: 2.5rem;
     border-radius: 6px;
 	*/
-	border: 1px #000000 solid;
-  	border-radius: 6px;
-	padding: 10px;
-	width: 18rem;
+    border: 1px #000000 solid;
+    border-radius: 6px;
+    padding: 10px;
+    width: 18rem;
 }
 
-#habilidade, #listaHabilidade {
-	width: 13rem;
-	height: 2rem;
+#habilidade,
+#listaHabilidade {
+    width: 13rem;
+    height: 2rem;
 }
 
-.container-select-habilidade{
-	margin-top: 10px;
+.container-select-habilidade {
+    margin-top: 10px;
 }
 
 #titulo {
@@ -144,8 +145,6 @@ img {
     border: none;
     border-radius: 5px;
 }
-
-
 
 select:hover {
     cursor: pointer;
@@ -215,7 +214,6 @@ input[type="radio"] {
 }
 
 .botoesHalibidade {
-
     width: 100%;
     display: flex;
     justify-content: center;
@@ -246,32 +244,17 @@ input[type="radio"] {
     font-size: xx-large;
 }
 
-.adicionarhablidade {
-    border: none;
-    border-radius: 6px;
-    margin-top: 10px;
-    padding: 2px;
-    width: 100px;
-    outline: none;
-    background: rgb(90, 183, 66);
-    color: white;
-
-}
-
 .sectionInputs {
     width: 100%;
     height: 100%;
-    /*  border: solid 2px blue; */
     margin-top: 10px;
     padding: 4px;
     display: grid;
     grid-template-columns: auto auto;
-
 }
 
 .container-habilidades-input {
     width: 100%;
-    /*  background-color: aqua; */
     display: grid;
     grid-template-columns: auto auto;
     column-gap: 2rem;
@@ -332,45 +315,39 @@ input[type="radio"] {
     align-items: center;
 }
 
-.botaoDeleteHabilidade {
-    height: 2em;
-    width: 2em;
-    background-color: rgba(221, 44, 44, 0.862);
-    color: #fffaf0;
-    font-size: x-large;
-    border: none;
-    border-radius: 0px 10px 10px 0px;
-}
-
-.divContainer {
-    width: 17rem;
-    height: 2rem;
-
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    border-radius: 10px;
-}
-
-.listaHablidade-box select{
-    width: 15rem;
-    height: 2.5em;
-    border-radius: 6px;
-}
-
-.listaHablidade-box button{
+.buttonRemoverHabilidade {
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
     color: white;
-    font-size: x-large;
+    font-size: xx-large;
     background-color: rgb(222, 88, 88);
     border: none;
     cursor: pointer;
     margin: auto 0;
 }
 
+.divContainer {
+    width: 17rem;
+    height: 2rem;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    border-radius: 10px;
+}
 
+.listaHablidade-box select {
+    width: 15rem;
+    height: 2.5em;
+    border-radius: 6px;
+}
+
+dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 @media (max-width: 800px) {
     main {
@@ -382,16 +359,16 @@ input[type="radio"] {
     nav {
         display: flex;
         flex-direction: column;
-        
     }
-    h1{
+
+    h1 {
         display: flex;
         justify-content: center;
         align-items: center;
-        
         margin: none;
     }
-    img{
+
+    img {
         display: none;
     }
 
@@ -403,72 +380,57 @@ input[type="radio"] {
         column-gap: 20px;
         overflow: auto;
         width: 100%;
-        
     }
-    
+
     ul li .topico-menu {
         font-size: 5px;
     }
-    form{
+
+    form {
         display: flex;
         flex-direction: column;
-        /* height: 100%; */
-        
     }
-    #restricao{
+
+    #restricao {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-    #container-inputs{
+
+    #container-inputs {
         display: grid;
         grid-template-columns: auto;
     }
+
     section #grupo-input-pessoais {
         display: flex;
         flex-direction: column;
     }
-    section{
+
+    section {
         height: auto;
     }
-    #grupo-input-pessoais, #grupo-input-endereco, #grupo-input-sitacional, #grupo-input-instrucao{
-     display: grid;
-    grid-template-columns: auto;
-    column-gap: 3rem; 
-    display: flex;
-    flex-direction: column;
-    row-gap: 2em;
-    width: 800px;
-    
-    display: none;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    align-items: center;
-}
 
-#div-sinalizacao{
-    display: none;
-}
+    #grupo-input-pessoais,
+    #grupo-input-endereco,
+    #grupo-input-sitacional,
+    #grupo-input-instrucao {
+        display: grid;
+        grid-template-columns: auto;
+        column-gap: 3rem;
+        display: flex;
+        flex-direction: column;
+        row-gap: 2em;
+        width: 800px;
+        display: none;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        align-items: center;
+    }
 
-    
+    #div-sinalizacao {
+        display: none;
+    }
 }
-
-
-/* form{
-    background-color: aqua;
-}
-h1{
-    background-color: blueviolet;
-}
-nav{
-        background-color: bisque;
-}
-section{
-    background-color: brown;
-}
-img{
-    background-color: cadetblue;
-}
- */
