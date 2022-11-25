@@ -34,14 +34,14 @@
                     <div id="grupo-input-pessoais">
                         <div id="nome" class="input-normal">
                             <label for="nome">Nome completo <a id="sinal">*</a></label>
-                            <input type="text" th:field="*{nome}" id="nome" required>
+                            <input type="text" th:field="*{nome}" id="nome">
                             <label id="labelError" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Erro no
                                 nome</label>
                         </div>
 
                         <div id="Cpf-inputbox" class="input-normal">
                             <label for="cpf">CPF <a id="sinal">*</a></label>
-                            <input type="text" th:field="*{cpf}" id="cpf" required>
+                            <input type="text" th:field="*{cpf}" id="cpf">
                             <label id="labelError" th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}">Erro no
                                 CPF</label>
                         </div>
@@ -87,7 +87,7 @@
                         </div>
 
                         <div id="cnh-inputbox">
-                            <label for="cnh" id="cnhTipo">CHN tipo:</label>
+                            <label for="cnh" id="cnhTipo">CNH tipo:</label>
                             <div id="cnh">
                                 <input type="checkbox" th:each="cnh : ${cnhsList}" th:text="${cnh}" th:value="${cnh}"
                                     th:checked="${apenado.getCnhs().contains(cnh)}" th:field="*{cnhs}" />
@@ -224,7 +224,7 @@
                         <div id="cursos" class="input-normal">
                             <label for="selCursos">Cursos</label>
                             <select id="selCursos" th:field="*{curso}" multiple="multiple" size="3"></select>
-                            <button class="buttonAdicionarHabilidade" data-add="selCursos">+</button>
+                            <button type="button" class="buttonAdicionarHabilidade" data-add="selCursos">+</button>
                             <label id="labelError" th:if="${#fields.hasErrors('curso')}" th:errors="*{curso}">Erro
                                 no Curso</label>
                         </div>
@@ -250,7 +250,7 @@
                         <div id="habilidades" class="input-normal">
                             <label for="selHabilidade">Habilidades</label>
                             <select id="selHabilidade" th:field="*{habilidades}" multiple="multiple" size="3"></select>
-                            <button class="buttonAdicionarHabilidade" data-add="selHabilidade">+</button>
+                            <button type="button" class="buttonAdicionarHabilidade" data-add="selHabilidade">+</button>
                             <label id="labelError" th:if="${#fields.hasErrors('habilidades')}"
                                 th:errors="*{habilidades}">Erro
                                 nas Habilidades</label>
@@ -326,7 +326,8 @@
                                     Operação</label>
                             </div>
                         </fieldset>
-
+						
+						
                         <fieldset id="fieldset-habilidades">
                             <legend>Artigos criminais</legend>
                             <div class="container-input-habilidade input-normal">
@@ -336,7 +337,7 @@
                                     <button type="button" class="buttonAdicionarHabilidade">+</button>
                                 </div>
                             </div>
-
+ 
                             <div class="container-select-habilidade input-normal">
                                 <label for="listaHabilidade">lista de habilidades</label>
                                 <div class="listaHablidade-box">
@@ -349,7 +350,7 @@
                         </fieldset>
 
 
-
+						
                         <div id="botao-cadastrar">
                             <button type="submit">Cadastrar</button>
                         </div>

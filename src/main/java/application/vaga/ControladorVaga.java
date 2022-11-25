@@ -1,10 +1,15 @@
 package application.vaga;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import application.apenado.Apenado;
 import application.apenado.RepositorioApenado;
 import application.empresa.RepositorioEmpresa;
 
@@ -54,8 +60,9 @@ public class ControladorVaga {
 	@GetMapping("/preencherVaga")
 	public ModelAndView preencherVaga(Model model) {
 		VagaPreenchida vagaPreenchida = new VagaPreenchida();
-		model.addAttribute("listaApenados", repApenado.findAll());
-		model.addAttribute("listaVagas", service.findAll());
+		
+		model.addAttribute("listaApenados", repApenado.findAll(Sort.by(Sort.Direction.ASC, "nome")));
+		model.addAttribute("listaVagas", service.findAll(Sort.by(Sort.Direction.ASC, "tipo")));
 		model.addAttribute("listaEmpresas", repEmpresa.findAll());
 		ModelAndView mav = new ModelAndView("alocarVagaApenado");
 		mav.addObject("vagaPreenchida", vagaPreenchida);
@@ -104,7 +111,7 @@ public class ControladorVaga {
 		Vaga vaga = new Vaga();
 		ModelAndView mav = new ModelAndView("vagas");
 		mav.addObject("vaga", vaga);
-		model.addAttribute("listaEmpresas", repEmpresa.findAll());
+		model.addAttribute("listaEmpresas", repEmpresa.findAll(Sort.by(Sort.Direction.ASC, "nome")));
 		return mav;
 	}
 
