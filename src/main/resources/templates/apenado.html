@@ -368,11 +368,25 @@
 
     <dialog class="input-normal">
         <input type="hidden" id="dialogHidden" />
-        <input type="text" id="dialogValue">
-        <button class="buttonAdicionarHabilidade" id="dialogAdd">+</button>
-        <select id="dialogSelect" multiple="multiple" size="3"></select>
-        <button class="buttonRemoverHabilidade" id="dialogDel">X</button>
-        <button id="dialogClose">Close</button>
+        <header class="headModal">
+            <legend class="modalHabilidadeLabel">HABILIDADES</legend>
+            <button id="dialogClose">X</button>
+        </header>
+        <div class="addInputBox">
+            <label for="dialogValue" class="labelAddHabilidade">Adicione uma habilidade</label>
+            <div class="inputAddHabilidade">
+                <input type="text" id="dialogValue">
+                 <button class="buttonAdicionarHabilidade" id="dialogAdd">+</button>
+            </div>
+        </div>
+        <div class="removeInputBox">
+            <label for="dialogSelect" class="labelAddHabilidade">Remova uma instrução</label>
+            <div class="inputRemoveHabilidade">
+                <select id="dialogSelect" multiple="multiple" size="6"></select>
+                <button class="buttonRemoverHabilidade" id="dialogDel">Delete</button>
+            </div>
+        </div>
+        
     </dialog>
 
 </body>
