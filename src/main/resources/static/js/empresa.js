@@ -1,6 +1,7 @@
 
 //mudar leganda
 
+/*
 let legenda = document.querySelector('.legenda')
 let select = document.querySelector('#select-tipoBusca')
 
@@ -14,5 +15,5 @@ function teste (){
 
 } 
 teste() 
-
+*/
 
