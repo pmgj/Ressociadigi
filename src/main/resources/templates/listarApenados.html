@@ -73,10 +73,12 @@
 	        		<td colspan="4"></td>
 	        		<td><span id="spanQtdPaginas" th:text="${pageCounter}"></span></td>
 	        		<td id="previousAndNextButtons">
-	        			<a href="?page=0">&lt;&lt;</a>
-	        			<a th:href="@{?page={contador} (contador = ${previousPage})}">&lt;</a>
-	        			<a th:href="@{?page={contador} (contador = ${nextPage})}">&gt;</a>
-	        			<a th:href="@{?page={page}(page = ${quantidadePaginas - 1})}">&gt;&gt;</a>
+	        			<form action="#" th:action="@{/listarApenados}" method="post">
+	        				<a href="?page=0">&lt;&lt;</a>
+		        			<a th:href="@{?page={contador} (contador = ${previousPage})}">&lt;</a>
+		        			<a th:href="@{?page={contador} (contador = ${nextPage})}">&gt;</a>
+		        			<a th:href="@{?page={page}(page = ${quantidadePaginas - 1})}">&gt;&gt;</a>
+	        			</form>
 	        		</td>
 	        	</tr>
 		    </tfoot>    

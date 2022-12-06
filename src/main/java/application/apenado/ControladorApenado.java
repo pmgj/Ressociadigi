@@ -36,9 +36,10 @@ public class ControladorApenado {
 
     @GetMapping("/listarApenados")
     public String listarApenados(Model model, @PageableDefault(page = 0, size = 2) Pageable pageable) {
-
-        Page<Apenado> pgApenado = service.findAll(pageable);
-
+    	
+    	Page<Apenado> pgApenado = service.findAll(pageable);
+    	
+    	
         // Manipulação das Páginas
         int numPaginaAtual = pageable.getPageNumber() + 1;
         int numTotalPaginas = pgApenado.getTotalPages();

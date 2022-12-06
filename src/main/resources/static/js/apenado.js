@@ -76,6 +76,7 @@ mudarTitulo();
 /****************MECANISMO DE HABILIDADES*****************/
 /*********************************************************/
 
+/*
 let buttonAdicionarHabilidade = document.querySelector(".buttonAdicionarHabilidade")
 buttonAdicionarHabilidade.addEventListener("click", function () {
     let inputValor = document.getElementById("habilidade").value;
@@ -109,7 +110,7 @@ buttonRemoverHabilidade.addEventListener("click", function () {
             selectListaHabilidade.remove(option.index);
         }
     }
-});
+}); */ 
 
 function showDialog(id) {
     let hidden = document.querySelector("#dialogHidden");
@@ -141,7 +142,6 @@ function dialogClose() {
     let mainSelect = document.getElementById(hidden.value);
     let dSelect = document.querySelector("#dialogSelect");
     mainSelect.innerHTML = dSelect.innerHTML;
-    dSelect.innerHTML = "";
     let dialog = document.querySelector("dialog");
     dialog.close();
 }
