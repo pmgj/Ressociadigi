@@ -112,7 +112,19 @@ buttonRemoverHabilidade.addEventListener("click", function () {
     }
 }); */ 
 
-function showDialog(id) {
+function changeDialogData(button) {
+	const modalTitle = document.querySelector(".modalHabilidadeLabel");
+	const modalAddLabel = document.querySelector(".labelAddHabilidade");
+	const modalRemoveLabel = document.querySelector(".labelRemove");
+	const buttonNameAtt = button.getAttribute('name');
+	
+	modalTitle.innerHTML = `${buttonNameAtt}`;
+	modalAddLabel.innerHTML = `Adicione um(a) ${buttonNameAtt.substring(0, buttonNameAtt.length - 1).toLowerCase()}.`;
+	modalRemoveLabel.innerHTML = `Selecione e remova um(a) ${buttonNameAtt.substring(0, buttonNameAtt.length - 1).toLowerCase()} da lista.`;
+}
+
+function showDialog(id, button) {
+	changeDialogData(button)
     let hidden = document.querySelector("#dialogHidden");
     hidden.value = id;
     let dialog = document.querySelector("dialog");
@@ -147,7 +159,7 @@ function dialogClose() {
 }
 let botoesAdd = document.querySelectorAll("button[data-add]");
 botoesAdd.forEach(b => {
-    b.onclick = () => showDialog(b.dataset.add);
+    b.onclick = () => showDialog(b.dataset.add, b);
 });
 
 // A ideia desse EventListener é perceber a mudança de option selecionado no Select.
