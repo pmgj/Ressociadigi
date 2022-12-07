@@ -205,27 +205,26 @@
                     </div>
                     <!-----------------------SEÇÃO INSTRUÇÃO------------------------------>
                     <div id="grupo-input-instrucao">
-
-                        <div id="instrucao" class="input-normal">
-                            <label for="escolaridade">Escolaridade</label>
-                            <select name="escolaridade" th:field="*{escolaridade}" id="escolaridade">
-                                <option value="Nenhum">Nenhum</option>
-                                <option value="Ensino fundamental incompleto">Ensino fundamental incompleto</option>
-                                <option value="Ensino fundamental completo">Ensino fundamental completo</option>
-                                <option value="Ensino medio incompleto">Ensino medio incompleto</option>
-                                <option value="Ensino medio completo">Ensino medio completo</option>
-                                <option value="Ensino superior incompleto">Ensino superior incompleto</option>
-                                <option value="Ensino superior completo">Ensino superior completo</option>
+						
+						<div id="habilidades" class="input-normal">
+                            <label for="selHabilidade">Habilidades</label>
+                            <select id="selHabilidade" name="habilidades" th:field="*{habilidades}" multiple="multiple" size="3">
+                            	<option th:each="habilidade : ${apenado.getHabilidades()}" th:value="${habilidade}" th:text="${habilidade}"></option>
                             </select>
-                            <label id="labelError" th:if="${#fields.hasErrors('escolaridade')}"
-                                th:errors="*{escolaridade}">Erro na Escolaridade</label>
+                            <button type="button" name="Habilidades" class="buttonAdicionarHabilidade" data-add="selHabilidade">+</button>
+                            <label id="labelError" th:if="${#fields.hasErrors('habilidades')}"
+                                th:errors="*{habilidades}">Erro
+                                nas Habilidades</label>
                         </div>
+                        
 
                         <div id="cursos" class="input-normal">
                             <label for="selCursos">Cursos</label>
-                            <select id="selCursos" th:field="*{curso}" multiple="multiple" size="3"></select>
+                            <select id="selCursos" th:field="*{cursos}" multiple="multiple" size="3">
+                            	<option th:each="curso : ${apenado.getCursos()}" th:value="${curso}" th:text="${curso}"></option>
+                            </select>
                             <button type="button" name="Cursos" class="buttonAdicionarHabilidade" data-add="selCursos">+</button>
-                            <label id="labelError" th:if="${#fields.hasErrors('curso')}" th:errors="*{curso}">Erro
+                            <label id="labelError" th:if="${#fields.hasErrors('cursos')}" th:errors="*{cursos}">Erro
                                 no Curso</label>
                         </div>
 
@@ -246,14 +245,20 @@
                             <label id="labelError" th:if="${#fields.hasErrors('textoRestricao')}"
                                 th:errors="*{textoRestricao}">Erro na Restrição</label>
                         </div>
-
-                        <div id="habilidades" class="input-normal">
-                            <label for="selHabilidade">Habilidades</label>
-                            <select id="selHabilidade" th:field="*{habilidades}" multiple="multiple" size="3"></select>
-                            <button type="button" name="Habilidades" class="buttonAdicionarHabilidade" data-add="selHabilidade">+</button>
-                            <label id="labelError" th:if="${#fields.hasErrors('habilidades')}"
-                                th:errors="*{habilidades}">Erro
-                                nas Habilidades</label>
+						<!-- HABILIDADES FICA AQUI ABAIXO -->
+                        <div id="instrucao" class="input-normal">
+                            <label for="escolaridade">Escolaridade</label>
+                            <select name="escolaridade" th:field="*{escolaridade}" id="escolaridade">
+                                <option value="Nenhum">Nenhum</option>
+                                <option value="Ensino fundamental incompleto">Ensino fundamental incompleto</option>
+                                <option value="Ensino fundamental completo">Ensino fundamental completo</option>
+                                <option value="Ensino medio incompleto">Ensino medio incompleto</option>
+                                <option value="Ensino medio completo">Ensino medio completo</option>
+                                <option value="Ensino superior incompleto">Ensino superior incompleto</option>
+                                <option value="Ensino superior completo">Ensino superior completo</option>
+                            </select>
+                            <label id="labelError" th:if="${#fields.hasErrors('escolaridade')}"
+                                th:errors="*{escolaridade}">Erro na Escolaridade</label>
                         </div>
                     </div>
                     <!-----------------------SEÇÃO SITUACIONAL------------------------------>
@@ -269,7 +274,9 @@
                         <div id="artigo-input" class="input-normal">
                             <label for="artigo">Artigo(s)</label>
                             <!-- <input type="text" th:field="*{artigos}" id="artigo"> -->
-                            <select id="selArtigos" th:field="*{artigos}" multiple="multiple" size="3"></select>
+                            <select id="selArtigos" th:field="*{artigos}" multiple="multiple" size="3">
+                            	<option th:each="artigo : ${apenado.getArtigos()}" th:value="${artigo}" th:text="${artigo}"></option>
+                            </select>
                             <button type="button" name="Artigos" class="buttonAdicionarHabilidade" data-add="selArtigos">+</button>
                             <label id="labelError" th:if="${#fields.hasErrors('artigos')}" th:errors="*{artigos}">Erro
                                 no Artigo</label>

@@ -44,6 +44,9 @@
                 <tr>
                 	<th>NOME</th>
 	                <th>CPF</th>
+	                <th>HABILIDADES</th>
+	                <th>ARTIGOS</th>
+	                <th>CURSOS</th>
 	                <th>DATA DE NASCIMENTO</th>
 	                <th>NOME DA MÃE</th>
 	                <th>CONTATO</th>
@@ -57,11 +60,14 @@
 		                <td colspan="8">Nenhum registro armazenado.</td>
 		            </tr>
 		            <tr th:each="item : ${lista}">
-		                <td><span th:text="${item.nome}">Nome</span></td>
-		                <td><span th:text="${item.cpf}">CPF</span></td>
-		                <td><span th:text="${item.dataNascimento}">Data de Nascimento</span></td>
-		                <td><span th:text="${item.nomeDaMae}">Nome da Mãe</span></td>
-		                <td><span th:text="${item.telefone}">Contato</span></td>
+		                <td><span id="nome" th:text="${item.nome}">Nome</span></td>
+		                <td><span id="cpf" th:text="${item.cpf}">CPF</span></td>
+		                <td><span id="habilidades" th:text="${item.habilidades}">Habilidades</span></td> <!-- Teste -->
+		                <td><span id="artigos" th:text="${item.artigos}">Artigos</span></td> <!-- Teste -->
+		                <td><span id="cursos" th:text="${item.cursos}">Cursos</span></td> <!-- Teste -->
+		                <td><span id="dataNascimento" th:text="${item.dataNascimento}">Data de Nascimento</span></td>
+		                <td><span id="nomeMae" th:text="${item.nomeDaMae}">Nome da Mãe</span></td>
+		                <td><span id="contato" th:text="${item.telefone}">Contato</span></td>
                     <td id="Btn-remove-edit" width="180">
                         <a th:href="@{/alterarApenado(cpf=${item.cpf})}"><button>Editar</button></a>
                         <a th:href="@{/removerApenado(cpf=${item.cpf})}" th:attr="data-nome=${item.nome}, data-cpf=${item.cpf}"><button>Remover</button></a>

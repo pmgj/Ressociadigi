@@ -39,7 +39,6 @@ public class ControladorApenado {
     	
     	Page<Apenado> pgApenado = service.findAll(pageable);
     	
-    	
         // Manipulação das Páginas
         int numPaginaAtual = pageable.getPageNumber() + 1;
         int numTotalPaginas = pgApenado.getTotalPages();

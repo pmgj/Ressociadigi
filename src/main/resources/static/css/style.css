@@ -214,6 +214,18 @@ textarea {
     border-radius: 6px;
 }
 
+::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+}
+::-webkit-scrollbar {
+    width: 5px;
+    background: rgba(246, 130, 31, 1);
+}
+::-webkit-scrollbar-thumb {
+	width: 5px;
+    background: rgba(246, 130, 31, 1);
+}
+
 select[multiple=multiple]{
 	max-width: 15.8em;
     height: 2.5rem;
@@ -221,6 +233,7 @@ select[multiple=multiple]{
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 0px;
     border-top-right-radius: 0px;
+    scrollbar-width: 1px;
 }
 
 .input-normal>label {

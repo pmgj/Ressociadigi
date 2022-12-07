@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -69,16 +70,27 @@ public class Apenado {
 	private String escolaridade;
 	private Restricao restricao = Restricao.NAO;
 	private String textoRestricao;
-	private String curso; // Revisar como será a dinâmica de uso desse atributo, dado que poderão ser
-							// diversos cursos.
+	
+	@ElementCollection
+	@Column(name="cursos")
+	private List<String> cursos = new ArrayList<>();
+//	private String curso; 
 	private String perfil;
-	private String habilidades;
+	
+	@ElementCollection
+	@Column(name="habilidade")
+	private List<String> habilidades = new ArrayList<>();
+//	private String habilidades;
 
 	// Atributos relacionados à seção de Situacional.
 
 	private Prioridade prioridade = Prioridade.BAIXA;
 	private String numeroProcesso;
-	private String artigos;
+	
+	@ElementCollection
+	@Column(name="artigo")
+	private List<String> artigos = new ArrayList<>();
+//	private String artigos;
 
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate dataTerminoPena;
@@ -240,13 +252,13 @@ public class Apenado {
 		this.complemento = complemento;
 	}
 
-	public String getCurso() {
-		return curso;
-	}
-
-	public void setCurso(String curso) {
-		this.curso = curso;
-	}
+//	public String getCurso() {
+//		return curso;
+//	}
+//
+//	public void setCurso(String curso) {
+//		this.curso = curso;
+//	}
 
 	public String getNumeroProcesso() {
 		return numeroProcesso;
@@ -256,13 +268,13 @@ public class Apenado {
 		this.numeroProcesso = numeroProcesso;
 	}
 
-	public String getArtigos() {
-		return artigos;
-	}
-
-	public void setArtigos(String artigos) {
-		this.artigos = artigos;
-	}
+//	public String getArtigos() {
+//		return artigos;
+//	}
+//
+//	public void setArtigos(String artigos) {
+//		this.artigos = artigos;
+//	}
 
 	public LocalDate getDataTerminoPena() {
 		return dataTerminoPena;
@@ -367,12 +379,31 @@ public class Apenado {
 	public void setRestricao(Restricao restricao) {
 		this.restricao = restricao;
 	}
-
-	public String getHabilidades() {
+	
+	public List<String> getHabilidades() {
 		return habilidades;
+		
 	}
 
-	public void setHabilidades(String habilidades) {
+	public void setHabilidades(List<String> habilidades) {
 		this.habilidades = habilidades;
 	}
+
+	public List<String> getCursos() {
+		return cursos;
+	}
+
+	public void setCursos(List<String> cursos) {
+		this.cursos = cursos;
+	}
+
+	public List<String> getArtigos() {
+		return artigos;
+	}
+
+	public void setArtigos(List<String> artigos) {
+		this.artigos = artigos;
+	}
+	
+	
 }

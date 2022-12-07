@@ -11,6 +11,18 @@
     box-sizing: border-box;
 }
 
+::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+}
+::-webkit-scrollbar {
+    width: 5px;
+    background: rgba(246, 130, 31, 1);
+}
+::-webkit-scrollbar-thumb {
+	width: 5px;
+    background: rgba(246, 130, 31, 1);
+}
+
 .letra{
     color:  orange;
 }

@@ -128,6 +128,31 @@ function showDialog(id, button) {
     let hidden = document.querySelector("#dialogHidden");
     hidden.value = id;
     let dialog = document.querySelector("dialog");
+   	
+   	if(id == "selHabilidade") { //Puxa as opções já existentes com ID "selHabilidade" e joga dentro do select do modal
+		let selHabilidade = document.querySelector("#selHabilidade");
+		let optionsSelHabilidade = selHabilidade.querySelectorAll("option");
+		let dialogSelect = dialog.querySelector("#dialogSelect")
+		let optionsDialogSelect = dialogSelect.querySelectorAll("option");
+		optionsDialogSelect.forEach(e => e.remove());
+	   	optionsSelHabilidade.forEach(option => dialogSelect.appendChild(option));
+	   	
+   	} else if(id == "selCursos") {
+		let selCursos = document.querySelector("#selCursos");
+		let optionsSelCursos = selCursos.querySelectorAll("option");
+		let dialogSelect = dialog.querySelector("#dialogSelect")
+		let optionsDialogSelect = dialogSelect.querySelectorAll("option");
+		optionsDialogSelect.forEach(e => e.remove());
+		optionsSelCursos.forEach(option => dialogSelect.appendChild(option));
+	} else if(id == "selArtigos") {
+		let selArtigos = document.querySelector("#selArtigos");
+		let optionsSelArtigos = selArtigos.querySelectorAll("option");
+		let dialogSelect = dialog.querySelector("#dialogSelect")
+		let optionsDialogSelect = dialogSelect.querySelectorAll("option");
+		optionsDialogSelect.forEach(e => e.remove());
+		optionsSelArtigos.forEach(option => dialogSelect.appendChild(option));
+	};
+    
     dialog.showModal();
     let dAdd = document.querySelector("#dialogAdd");
     dAdd.onclick = dialogAdd;
@@ -142,7 +167,11 @@ function dialogAdd() {
     let select = document.querySelector("#dialogSelect");
     let option = document.createElement("option");
     option.text = value;
-    select.add(option);
+    option.setAttribute("selected", true);
+    
+    option.setAttribute("id", "hab"); //
+	
+	select.add(option);
     dialogValue.value = "";
 }
 function dialogDel() {
@@ -155,6 +184,8 @@ function dialogClose() {
     let dSelect = document.querySelector("#dialogSelect");
     mainSelect.innerHTML = dSelect.innerHTML;
     let dialog = document.querySelector("dialog");
+    dSelect.innerHTML = ""; //
+    
     dialog.close();
 }
 let botoesAdd = document.querySelectorAll("button[data-add]");
