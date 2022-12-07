@@ -74,13 +74,11 @@ public class Apenado {
 	@ElementCollection
 	@Column(name="cursos")
 	private List<String> cursos = new ArrayList<>();
-//	private String curso; 
 	private String perfil;
 	
 	@ElementCollection
 	@Column(name="habilidade")
 	private List<String> habilidades = new ArrayList<>();
-//	private String habilidades;
 
 	// Atributos relacionados à seção de Situacional.
 
@@ -252,14 +250,6 @@ public class Apenado {
 		this.complemento = complemento;
 	}
 
-//	public String getCurso() {
-//		return curso;
-//	}
-//
-//	public void setCurso(String curso) {
-//		this.curso = curso;
-//	}
-
 	public String getNumeroProcesso() {
 		return numeroProcesso;
 	}
@@ -267,14 +257,6 @@ public class Apenado {
 	public void setNumeroProcesso(String numeroProcesso) {
 		this.numeroProcesso = numeroProcesso;
 	}
-
-//	public String getArtigos() {
-//		return artigos;
-//	}
-//
-//	public void setArtigos(String artigos) {
-//		this.artigos = artigos;
-//	}
 
 	public LocalDate getDataTerminoPena() {
 		return dataTerminoPena;
