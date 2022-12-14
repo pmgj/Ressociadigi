@@ -76,10 +76,10 @@
           	</tbody>
           	<tfoot>
 	        	<tr>
-	        		<td colspan="4"></td>
+	        		<td colspan="6"></td>
 	        		<td><span id="spanQtdPaginas" th:text="${pageCounter}"></span></td>
 	        		<td id="previousAndNextButtons">
-	        			<form action="#" th:action="@{/listarApenados}" method="post">
+	        			<form class ="containerNavetion"action="#" th:action="@{/listarApenados}" method="post">
 	        				<a href="?page=0">&lt;&lt;</a>
 		        			<a th:href="@{?page={contador} (contador = ${previousPage})}">&lt;</a>
 		        			<a th:href="@{?page={contador} (contador = ${nextPage})}">&gt;</a>

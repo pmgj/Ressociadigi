@@ -160,10 +160,7 @@ table tbody tr td button:hover, table tbody tr td button:focus {
     cursor: pointer;
 }
 
-tfoot {
-	background-color: #ffddbd;
-    height: 2rem;
-}
+
 
 #previousAndNextButtons a{
 	text-decoration: none;
@@ -227,8 +224,28 @@ table tbody tr td:before {
     table tbody tr td:last-child {
         text-align: right;
    }
+
    
-   
+}
+@media(max-width:700px){
+    #select-tipoBusca{
+        display: none;
+       }
+
+    img{
+        display: none;
+    }
+    .buscador{
+        width: 70%;
+        background-color: #20B2AA;
+    }
+    .AdicionarEmpresa{
+        display: none;
+    }
+    
+    tfoot{
+        display: none;
+    }
 }
 
 #Btn-remove-edit{
@@ -296,3 +313,23 @@ img{
     color: #fff;
     background: #20B2AA;
   }
+  tbody{
+    margin-bottom: 10rem;
+  }
+
+  tfoot {
+	background-color: transparent;
+    margin-top: 400px;
+    height: 4rem;
+    border-top: 0.65px solid rgba(65, 65, 65, 0.832);
+    width: 50rem;
+}
+tfoot tr{
+    background-color: transparent;
+    
+}
+
+.containerNavetion{
+
+    width: 10rem;
+}
