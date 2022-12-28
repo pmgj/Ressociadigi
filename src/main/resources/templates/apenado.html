@@ -34,7 +34,7 @@
                     <div id="grupo-input-pessoais">
                         <div id="nome" class="input-normal">
                             <label for="nome">Nome completo <a id="sinal">*</a></label>
-                            <input type="text" th:field="*{nome}" id="nome">
+                            <input maxlength="60" type="text" th:field="*{nome}" id="nome">
                             <label id="labelError" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Erro no
                                 nome</label>
                         </div>

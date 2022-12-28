@@ -103,6 +103,7 @@ form{
     padding: 4px;
 }
 
+
 .input-normal>label {
     text-transform: uppercase;
     font-size: 0.8rem;
@@ -125,16 +126,6 @@ form{
 }
 
 #botao-enviar{
-    /*border: none;
-    outline: none;
-    width: 6rem;
-    border-radius: 6px;
-    height: 3rem;
-    background-color: rgb(149, 107, 29);
-    color: white;
-    font-size: x-large;
-    cursor: pointer;*/
-    
     background-color: rgba(246, 130, 31, 1);
     color: white;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
@@ -150,17 +141,7 @@ form{
     border-radius: 5px;
 }
 
-#botao-voltar{
-   /*border: none;
-    outline: none;
-    width: 6rem;
-    border-radius: 6px;
-    height: 3rem;
-    background-color: rgb(99, 96, 96);
-    color: white;
-    font-size: x-large;
-    cursor: pointer; */
-    
+#botao-voltar{    
     background-color: rgba(99, 96, 96, 1);
     color: white;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
@@ -195,11 +176,8 @@ form{
 
 @media (max-width:600px){
     .container-input-vagas{
-       /*  background-color: aliceblue; */
-
         display: flex;
         flex-direction: column;
-        /* justify-content: center; */
         align-items: center;
     }
     .tap{ 
@@ -218,16 +196,11 @@ form{
     overflow-y: scroll;
     }
 
-    #titulo h1{
-        
-    }
     #titulo{
         display: flex;
         width: 100%;
         align-items: center;
         justify-content: center;
     }
-
- 
 
 }

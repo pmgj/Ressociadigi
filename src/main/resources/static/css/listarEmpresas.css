@@ -49,6 +49,9 @@ body {
 .select-tipoBusca{
     width: 2rem;
 }
+.a{
+    background-color: #20B2AA;
+}
 
 
 #select-tipoBusca {
@@ -237,7 +240,7 @@ table tbody tr td:before {
     }
     .buscador{
         width: 70%;
-        background-color: #20B2AA;
+        column-gap: 20px;
     }
     .AdicionarEmpresa{
         display: none;

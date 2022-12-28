@@ -21,7 +21,6 @@
 	width: 5px;
     background: rgba(246, 130, 31, 1);
 }
-
 body {
     font-family: 'Anton', sans-serif;
     width: 100%;
@@ -33,7 +32,6 @@ body {
     padding: 30px;
    
 }
-
 main {
     margin-top: 50px;
     display: flex;
@@ -46,7 +44,6 @@ main {
     margin-bottom: 30px;
     
 }
-
 section {
     width: 60rem;
     height: 55rem;
@@ -54,7 +51,6 @@ section {
     box-shadow: 9px 9px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
 }
-
 nav {
     width: 20rem;
     height: 45rem;
@@ -63,22 +59,16 @@ nav {
     border-radius: 5px;
 
 }
-
 #titulo {
     height: 9rem;
     border-bottom: black 8px;
     font-family: 'Martian Mono', monospace;
 }
-
 #titulo h1 {
     
     padding: 1.2rem;
     border-bottom: solid 4px rgba(0, 0, 0, 0.15);
     font-size: 2em;
-    /* font-family: 'Alfa Slab One', cursive; */
-    /* font-family: 'Righteous', cursive;
-    font-weight:bolder ; */
-
     letter-spacing: 2px;
     padding: 1.2rem;
     border-bottom: solid 4px rgba(0, 0, 0, 0.15);
@@ -149,7 +139,7 @@ nav {
     border-radius: 6px;
 }
 
-footer{
+.botao-container{
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
@@ -157,17 +147,7 @@ footer{
     margin-left: 7em;
 }
 
-#botao-enviar{
-    /*border: none;
-    outline: none;
-    width: 6rem;
-    border-radius: 6px;
-    height: 3rem;
-    background-color: rgb(149, 107, 29);
-    color: white;
-    font-size: x-large;
-    cursor: pointer;*/
-    
+#botao-enviar{    
     background-color: rgba(246, 130, 31, 1);
     color: white;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
@@ -184,16 +164,6 @@ footer{
 }
 
 #botao-voltar{
-   /*border: none;
-    outline: none;
-    width: 6rem;
-    border-radius: 6px;
-    height: 3rem;
-    background-color: rgb(99, 96, 96);
-    color: white;
-    font-size: x-large;
-    cursor: pointer; */
-    
     background-color: rgba(99, 96, 96, 1);
     color: white;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
@@ -216,19 +186,64 @@ input {
     background-color: aqua;
 }
 
-/*res*/
-@media (max-width:600px){
-    h1{
+@media (max-width: 900px){
+    #titulo{
+        width: 100vh;
         display: flex;
         justify-content: center;
-        margin: 0;
+        align-items: center;
+    }
+    
+}
+/*responsividade*/
+@media (max-width:750px){
+    .container-input-empresa{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        overflow-y: scroll;
+        background-color: white;
         
     }
-    .container-aplicacao{
-        background-color: black;
+    form{
+        height: 100vh;
+        background-color: white;
     }
-    .container-input-empresa{
-        background-color: aqua;
+    .tap{ 
+        display: flex;
+        width: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 60px 30px 50px;
+        
+    }
+    
+    section{  
+    border: none;
+    background: #FFFFFF;
+    box-shadow: 0;
+    border-radius: 0px;
+    /* overflow: scroll;
+    overflow-y: scroll; */
+    
+    }
+
+    #titulo{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+    .botao-container{
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        column-gap: 30px;
+
+
     }
 
 }
+

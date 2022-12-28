@@ -60,14 +60,14 @@
 		                <td colspan="8">Nenhum registro armazenado.</td>
 		            </tr>
 		            <tr th:each="item : ${lista}">
-		                <td><span id="nome" th:text="${item.nome}">Nome</span></td>
-		                <td><span id="cpf" th:text="${item.cpf}">CPF</span></td>
-		                <td><span id="habilidades" th:text="${item.habilidades}">Habilidades</span></td> <!-- Teste -->
-		                <td><span id="artigos" th:text="${item.artigos}">Artigos</span></td> <!-- Teste -->
-		                <td><span id="cursos" th:text="${item.cursos}">Cursos</span></td> <!-- Teste -->
-		                <td><span id="dataNascimento" th:text="${item.dataNascimento}">Data de Nascimento</span></td>
-		                <td><span id="nomeMae" th:text="${item.nomeDaMae}">Nome da Mãe</span></td>
-		                <td><span id="contato" th:text="${item.telefone}">Contato</span></td>
+		                <td data-label="NOME"><span id="nome" th:text="${item.nome}">Nome</span></td>
+		                <td data-label="CPF"><span id="cpf" th:text="${item.cpf}">CPF</span></td>
+		                <td data-label="HABILIDADES"><span id="habilidades" th:text="${item.habilidades}">Habilidades</span></td> <!-- Teste -->
+		                <td data-label="ARTIGOS"><span id="artigos" th:text="${item.artigos}">Artigos</span></td> <!-- Teste -->
+		                <td data-label="CURSOS"><span id="cursos" th:text="${item.cursos}">Cursos</span></td> <!-- Teste -->
+		                <td data-label="DATA DE NASCIMENTO"><span id="dataNascimento" th:text="${item.dataNascimento}">Data de Nascimento</span></td>
+		                <td data-label="NOME MÃE"><span id="nomeMae" th:text="${item.nomeDaMae}">Nome da Mãe</span></td>
+		                <td data-label="CONTATO"><span id="contato" th:text="${item.telefone}">Contato</span></td>
                     <td id="Btn-remove-edit" width="180">
                         <a th:href="@{/alterarApenado(cpf=${item.cpf})}"><button>Editar</button></a>
                         <a th:href="@{/removerApenado(cpf=${item.cpf})}" th:attr="data-nome=${item.nome}, data-cpf=${item.cpf}"><button>Remover</button></a>
@@ -81,7 +81,7 @@
 	        		<td id="previousAndNextButtons">
 	        			<form class ="containerNavetion"action="#" th:action="@{/listarApenados}" method="post">
 	        				<a href="?page=0">&lt;&lt;</a>
-		        			<a th:href="@{?page={contador} (contador = ${previousPage})}">&lt;</a>
+		        			<a class="a" th:href="@{?page={contador} (contador = ${previousPage})}">&lt;</a>
 		        			<a th:href="@{?page={contador} (contador = ${nextPage})}">&gt;</a>
 		        			<a th:href="@{?page={page}(page = ${quantidadePaginas - 1})}">&gt;&gt;</a>
 	        			</form>
