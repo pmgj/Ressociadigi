@@ -1,9 +1,5 @@
 package application.vaga;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import application.apenado.Apenado;
 import application.apenado.RepositorioApenado;
 import application.empresa.RepositorioEmpresa;
 
