@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,6 +26,9 @@ public class ControladorApenado {
 
     @Autowired
     private RepositorioApenado service;
+
+    @Autowired
+    private ServicoApenado service1;
 
     @GetMapping("/mainPage")
     public String mainPage(Model model) {
@@ -51,6 +57,17 @@ public class ControladorApenado {
 
         model.addAttribute("lista", pgApenado);
         return "listarApenados";
+    }
+
+    @GetMapping("/listarApenados2")
+    public ResponseEntity<List<Apenado>> getAllEmployees(
+            @RequestParam(defaultValue = "0") Integer pageNo,
+            @RequestParam(defaultValue = "2") Integer pageSize,
+            @RequestParam(defaultValue = "cpf") String sortBy)
+    {
+        List<Apenado> list = service1.getAllApenados(pageNo, pageSize, sortBy);
+
+        return new ResponseEntity<List<Apenado>>(list, new HttpHeaders(), HttpStatus.OK);
     }
 
     @PostMapping("/listarApenados")
@@ -115,21 +132,28 @@ public class ControladorApenado {
     }
 
     @GetMapping("/inserirApenado")
-    public ModelAndView inserirApenadoForm() {
-        Apenado apenado = new Apenado();
-        ModelAndView mav = new ModelAndView("apenado");
-        mav.addObject("apenado", apenado);
-        return mav;
+        public ModelAndView inserirApenadoForm() {
+            Apenado apenado = new Apenado();
+            ModelAndView mav = new ModelAndView("apenado");
+            mav.addObject("apenado", apenado);
+            return mav;
+        }
+
+        @PostMapping("/armazenarApenado")
+        public String armazenarApenado(@Valid Apenado apenado, BindingResult bindingResult, Model model) {
+            if (bindingResult.hasErrors()) {
+                return "apenado";
+            }
+            service.save(apenado);
+            return "redirect:/listarApenados";
     }
 
-    @PostMapping("/armazenarApenado")
-    public String armazenarApenado(@Valid Apenado apenado, BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
-            return "apenado";
-        }
-        service.save(apenado);
-        return "redirect:/listarApenados";
-    }
+//    @PostMapping("/inserirApenado")
+//    public String inserirApenado(@ModelAttribute Apenado apenado) {
+//        // Set any additional fields on the apenado object if necessary
+//        apenadoRepository.save(apenado);
+//        return "redirect:/listarApenados";
+//    }
 
     @GetMapping("/alterarApenado")
     public String alterarApenadoForm(@RequestParam String cpf, Model model) {

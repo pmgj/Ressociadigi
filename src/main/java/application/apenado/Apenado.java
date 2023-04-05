@@ -18,6 +18,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
+import net.minidev.json.annotate.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import application.vaga.VagaPreenchida;
@@ -97,6 +98,7 @@ public class Apenado {
 	private String banco;
 	private String operacao;
 
+	@JsonIgnore
 	@OneToOne(mappedBy = "apenado", cascade = CascadeType.ALL)
 	private VagaPreenchida vagaPreenchida;
 
