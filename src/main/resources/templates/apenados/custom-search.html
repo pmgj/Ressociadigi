@@ -1,27 +1,20 @@
-<!-- apenados/search.html -->
-<html>
-<head>
-  <!-- head content goes here -->
-</head>
-<body>
-<h1>Search Apenados</h1>
-<form th:action="" method="post">
-  <label for="cpf">CPF:</label>
-  <input type="text" id="cpf" name="cpf" th:value="${cpf}" />
+<!-- Update the form element with the correct method and action -->
+<form method="post" action="/apenados/custom-results">
 
-  <label for="nome">Nome:</label>
-  <input type="text" id="nome" name="nome" th:value="${nome}" />
+  <!-- Remove the hidden input fields for form parameters, as they will be sent as request parameters automatically -->
 
-  <label for="dataNascimento">Data de Nascimento:</label>
-  <input type="date" id="dataNascimento" name="dataNascimento" th:value="${dataNascimento}" />
+  <!-- Add your search form fields here -->
+  <label for="cpf">CPF</label>
+  <input type="text" id="cpf" name="cpf" />
 
-  <label for="telefone">Telefone:</label>
-  <input type="text" id="telefone" name="telefone" th:value="${telefone}" />
+  <label for="nome">Nome</label>
+  <input type="text" id="nome" name="nome"/>
 
-  <label for="nomeDaMae">Nome da Mãe:</label>
-  <input type="text" id="nomeDaMae" name="nomeDaMae" th:value="${nomeDaMae}" />
+  <label for="telefone">Telefone</label>
+  <input type="text" id="telefone" name="telefone"  />
 
-  <input type="submit" value="Search">
+  <label for="nomeDaMae">Nome da Mãe</label>
+  <input type="text" id="nomeDaMae" name="nomeDaMae"  />
+
+  <button type="submit">Search</button>
 </form>
-</body>
-</html>

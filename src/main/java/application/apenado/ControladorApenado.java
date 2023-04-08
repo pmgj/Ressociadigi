@@ -1,5 +1,6 @@
 package application.apenado;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,10 +13,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -23,6 +21,9 @@ public class ControladorApenado {
 
     @Autowired
     private RepositorioApenado service;
+
+    @Autowired
+    private RepositorioApenadoImpl apenadoRepository;
 
     @GetMapping("/mainPage")
     public String mainPage(Model model) {
@@ -97,6 +98,30 @@ public class ControladorApenado {
 
         model.addAttribute("lista", pgApenado);
         return "listarApenados";
+    }
+
+    @GetMapping("/apenados/custom-search")
+    public String showSearchForm(Model model) {
+        // Return the view name for the search form
+        return "apenados/custom-search";
+    }
+
+
+    @PostMapping("/apenados/custom-results") // Use @PostMapping for handling form submission
+    public String searchApenados(@RequestParam(value = "cpf", required = false) String cpf,
+                                 @RequestParam(value = "nome", required = false) String nome,
+                                 @RequestParam(value = "telefone", required = false) String telefone,
+                                 @RequestParam(value = "nomeDaMae", required = false) String nomeDaMae,
+                                 Model model) {
+
+        // Pass form parameters to repository or service for processing and retrieving search results
+        List<Apenado> apenados = apenadoRepository.findApenadoByFilters(cpf, nome, telefone, nomeDaMae);
+
+        // Add search results to the model
+        model.addAttribute("apenados", apenados);
+
+        // Return the view name for displaying the search results
+        return "buscaPorFiltro";
     }
 
     @ModelAttribute("cnhsList")
