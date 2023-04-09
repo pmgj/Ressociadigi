@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -111,11 +112,12 @@ public class ControladorApenado {
     public String searchApenados(@RequestParam(value = "cpf", required = false) String cpf,
                                  @RequestParam(value = "nome", required = false) String nome,
                                  @RequestParam(value = "telefone", required = false) String telefone,
+                                 @RequestParam(value = "dataNascimento", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataNascimento,
                                  @RequestParam(value = "nomeDaMae", required = false) String nomeDaMae,
                                  Model model) {
 
         // Pass form parameters to repository or service for processing and retrieving search results
-        List<Apenado> apenados = apenadoRepository.findApenadoByFilters(cpf, nome, telefone, nomeDaMae);
+        List<Apenado> apenados = apenadoRepository.findApenadoByFilters(cpf, nome, telefone,dataNascimento, nomeDaMae);
 
         // Add search results to the model
         model.addAttribute("apenados", apenados);

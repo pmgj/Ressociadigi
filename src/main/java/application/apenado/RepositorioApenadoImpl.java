@@ -23,8 +23,10 @@ public class RepositorioApenadoImpl implements RepositorioApenadoCustom {
         this.em = emf.createEntityManager();
     }
 
+
+//    Metodo para construcao de querys dinamicas utilizando Criteria API
     @Override
-    public List<Apenado> findApenadoByFilters(String cpf, String nome, String telefone, String nomeDaMae) {
+    public List<Apenado> findApenadoByFilters(String cpf, String nome, String telefone,LocalDate dataNascimento, String nomeDaMae) {
 
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Apenado> cq = cb.createQuery(Apenado.class);
@@ -40,9 +42,9 @@ public class RepositorioApenadoImpl implements RepositorioApenadoCustom {
             predicates.add(cb.equal(apenado.get("nome"), nome));
         }
 
-//        if (dataNascimento != null) {
-//            predicates.add(cb.equal(apenado.get("dataNascimento"), dataNascimento));
-//        }
+        if (dataNascimento != null) {
+            predicates.add(cb.equal(apenado.get("dataNascimento"), dataNascimento));
+        }
 
         if (telefone != null && !telefone.isEmpty()) {
             predicates.add(cb.equal(apenado.get("telefone"), telefone));
