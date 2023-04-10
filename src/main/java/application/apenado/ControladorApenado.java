@@ -126,6 +126,11 @@ public class ControladorApenado {
         return "buscaPorFiltro";
     }
 
+    @GetMapping("/apenados/teste")
+    public String teste(){
+        return "aiaia";
+    }
+
     @ModelAttribute("cnhsList")
     public List<CNH> cnhsList() {
         return Arrays.asList(CNH.values());
