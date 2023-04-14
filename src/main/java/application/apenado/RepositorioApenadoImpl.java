@@ -1,6 +1,7 @@
 package application.apenado;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -26,7 +27,7 @@ public class RepositorioApenadoImpl implements RepositorioApenadoCustom {
 
 //    Metodo para construcao de querys dinamicas utilizando Criteria API
     @Override
-    public List<Apenado> findApenadoByFilters(String cpf, String nome, String telefone,LocalDate dataNascimento, String nomeDaMae) {
+    public Page<Apenado> findApenadoByFilters(String cpf, String nome, String telefone, LocalDate dataNascimento, String nomeDaMae) {
 
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Apenado> cq = cb.createQuery(Apenado.class);
@@ -56,7 +57,7 @@ public class RepositorioApenadoImpl implements RepositorioApenadoCustom {
 
         cq.where(predicates.toArray(new Predicate[0]));
 
-        return em.createQuery(cq).getResultList();
+        return (Page<Apenado>) em.createQuery(cq).getResultList();
     }
 
 }

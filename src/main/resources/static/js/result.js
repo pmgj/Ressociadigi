@@ -1,3 +1,27 @@
+//Funcionamento de modal do icone de filtro
+
+var iconeFiltro = document.querySelector('#icone-filtro');
+
+var modal = document.querySelector('.modal');
+
+var closeBtn = document.querySelector('.close');
+
+// Add click event listener to the image element
+iconeFiltro.addEventListener('click', function() {
+	modal.style.display = 'block';
+});
+
+closeBtn.addEventListener('click', function() {
+	modal.style.display = 'none';
+});
+
+modal.addEventListener('click', function(event) {
+	if (event.target === modal) {
+		modal.style.display = 'none';
+	}
+});
+
+
 function handleCheckbox(chbx){
 	const listaDeCheckboxesIndividuais = document.querySelectorAll("#individual-checkbox")
 	if(chbx.checked == true){
@@ -32,3 +56,5 @@ excluir.forEach((i) => {
 		setModal("modal", nomeDoApenado, cpfApenado);
 	})
 })
+
+

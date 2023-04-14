@@ -108,22 +108,37 @@ public class ControladorApenado {
     }
 
 
-    @PostMapping("/apenados/custom-results") // Use @PostMapping for handling form submission
+    @PostMapping("/listarApenados/teste") // Use @PostMapping for handling form submission
     public String searchApenados(@RequestParam(value = "cpf", required = false) String cpf,
                                  @RequestParam(value = "nome", required = false) String nome,
                                  @RequestParam(value = "telefone", required = false) String telefone,
                                  @RequestParam(value = "dataNascimento", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataNascimento,
                                  @RequestParam(value = "nomeDaMae", required = false) String nomeDaMae,
-                                 Model model) {
+                                 Model model,
+                                 @PageableDefault(page = 0, size = 2) Pageable pageable) {
+
+
+        Page<Apenado> pgApenado = apenadoRepository.findApenadoByFilters(cpf, nome, telefone,dataNascimento, nomeDaMae);;
+
+        int numPaginaAtual = pageable.getPageNumber() + 1;
+        int numTotalPaginas = pgApenado.getTotalPages();
+        model.addAttribute("pageCounter", "Página " + numPaginaAtual + " de " + numTotalPaginas);
+        model.addAttribute("nextPage", ((pageable.getPageNumber() + 1) > numTotalPaginas - 1)
+                ? pageable.getPageNumber()
+                : pageable.getPageNumber() + 1);
+        model.addAttribute("previousPage", pageable.getPageNumber() - 1);
+        model.addAttribute("quantidadePaginas", numTotalPaginas);
+
+        model.addAttribute("lista", pgApenado);
+        return "listarApenados";
 
         // Pass form parameters to repository or service for processing and retrieving search results
-        List<Apenado> apenados = apenadoRepository.findApenadoByFilters(cpf, nome, telefone,dataNascimento, nomeDaMae);
+//        List<Apenado> apenados = apenadoRepository.findApenadoByFilters(cpf, nome, telefone,dataNascimento, nomeDaMae);
 
         // Add search results to the model
-        model.addAttribute("apenados", apenados);
+//        model.addAttribute("apenados", apenados);
 
-        // Return the view name for displaying the search results
-        return "buscaPorFiltro";
+        // Return the view name for displaying the search result
     }
 
     @GetMapping("/apenados/teste")
