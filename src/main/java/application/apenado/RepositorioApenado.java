@@ -5,9 +5,16 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.stereotype.Repository;
+
+import javax.persistence.EntityManager;
+import java.time.LocalDate;
+import java.util.List;
 
 @RepositoryRestResource(collectionResourceRel = "apenados", path = "apenados")
-public interface RepositorioApenado extends JpaRepository<Apenado, String> {
+
+public interface RepositorioApenado extends JpaRepository<Apenado, String>, RepositorioApenadoCustom {
+
 	//Nome
 	@Query(value = "SELECT * FROM Apenado WHERE LOWER(Apenado.NOME) LIKE %:nome%", nativeQuery = true)
 	Page<Apenado> findByNome(String nome, Pageable pageable);
