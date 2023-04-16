@@ -55,51 +55,51 @@ public class ControladorApenado {
         return "listarApenados";
     }
 
-    @PostMapping("/listarApenados")
-    public String listarApenadosFiltering(@RequestParam("searchBy") String searchBy,
-            @RequestParam("value") String value, Model model, @PageableDefault(page = 0, size = 2) Pageable pageable) {
-
-        Page<Apenado> pgApenado;
-
-        // Caso valor seja branco ou vazio, a ideia é que se torne null para evitar
-        // levantar exceção
-        // E consequentemente quebrar a aplicação. Pois a query pode ser feita com null,
-        // mas não com vazio
-        // Ou branco.
-        value = (value.isBlank() || value.isEmpty()) ? null : value.toLowerCase();
-        switch (searchBy) {
-            case "NOME":
-                pgApenado = service.findByNome(value, pageable);
-                break;
-            case "CPF":
-                pgApenado = service.findByCpf(value, pageable);
-                break;
-            case "DATA DE NASCIMENTO":
-                pgApenado = service.findByDataNascimento(value, pageable);
-                break;
-            case "NOME DA MÃE":
-                pgApenado = service.findByNomeDaMae(value, pageable);
-                break;
-            case "CONTATO":
-                pgApenado = service.findByTelefone(value, pageable);
-                break;
-            default:
-                pgApenado = service.findAll(pageable);
-                break;
-        }
-
-        int numPaginaAtual = pageable.getPageNumber() + 1;
-        int numTotalPaginas = pgApenado.getTotalPages();
-        model.addAttribute("pageCounter", "Página " + numPaginaAtual + " de " + numTotalPaginas);
-        model.addAttribute("nextPage", ((pageable.getPageNumber() + 1) > numTotalPaginas - 1)
-                ? pageable.getPageNumber()
-                : pageable.getPageNumber() + 1);
-        model.addAttribute("previousPage", pageable.getPageNumber() - 1);
-        model.addAttribute("quantidadePaginas", numTotalPaginas);
-
-        model.addAttribute("lista", pgApenado);
-        return "listarApenados";
-    }
+//    @PostMapping("/listarApenados")
+//    public String listarApenadosFiltering(@RequestParam("searchBy") String searchBy,
+//            @RequestParam("value") String value, Model model, @PageableDefault(page = 0, size = 2) Pageable pageable) {
+//
+//        Page<Apenado> pgApenado;
+//
+//        // Caso valor seja branco ou vazio, a ideia é que se torne null para evitar
+//        // levantar exceção
+//        // E consequentemente quebrar a aplicação. Pois a query pode ser feita com null,
+//        // mas não com vazio
+//        // Ou branco.
+//        value = (value.isBlank() || value.isEmpty()) ? null : value.toLowerCase();
+//        switch (searchBy) {
+//            case "NOME":
+//                pgApenado = service.findByNome(value, pageable);
+//                break;
+//            case "CPF":
+//                pgApenado = service.findByCpf(value, pageable);
+//                break;
+//            case "DATA DE NASCIMENTO":
+//                pgApenado = service.findByDataNascimento(value, pageable);
+//                break;
+//            case "NOME DA MÃE":
+//                pgApenado = service.findByNomeDaMae(value, pageable);
+//                break;
+//            case "CONTATO":
+//                pgApenado = service.findByTelefone(value, pageable);
+//                break;
+//            default:
+//                pgApenado = service.findAll(pageable);
+//                break;
+//        }
+//
+//        int numPaginaAtual = pageable.getPageNumber() + 1;
+//        int numTotalPaginas = pgApenado.getTotalPages();
+//        model.addAttribute("pageCounter", "Página " + numPaginaAtual + " de " + numTotalPaginas);
+//        model.addAttribute("nextPage", ((pageable.getPageNumber() + 1) > numTotalPaginas - 1)
+//                ? pageable.getPageNumber()
+//                : pageable.getPageNumber() + 1);
+//        model.addAttribute("previousPage", pageable.getPageNumber() - 1);
+//        model.addAttribute("quantidadePaginas", numTotalPaginas);
+//
+//        model.addAttribute("lista", pgApenado);
+//        return "listarApenados";
+//    }
 
     @GetMapping("/apenados/custom-search")
     public String showSearchForm(Model model) {
@@ -107,8 +107,7 @@ public class ControladorApenado {
         return "apenados/custom-search";
     }
 
-
-    @PostMapping("/listarApenados/teste") // Use @PostMapping for handling form submission
+    @PostMapping("/listarApenados")
     public String searchApenados(@RequestParam(value = "cpf", required = false) String cpf,
                                  @RequestParam(value = "nome", required = false) String nome,
                                  @RequestParam(value = "telefone", required = false) String telefone,
@@ -117,8 +116,7 @@ public class ControladorApenado {
                                  Model model,
                                  @PageableDefault(page = 0, size = 2) Pageable pageable) {
 
-
-        Page<Apenado> pgApenado = apenadoRepository.findApenadoByFilters(cpf, nome, telefone,dataNascimento, nomeDaMae);;
+        Page<Apenado> pgApenado = apenadoRepository.findApenadoByFilters(cpf, nome, telefone, dataNascimento, nomeDaMae, pageable);
 
         int numPaginaAtual = pageable.getPageNumber() + 1;
         int numTotalPaginas = pgApenado.getTotalPages();
@@ -131,20 +129,8 @@ public class ControladorApenado {
 
         model.addAttribute("lista", pgApenado);
         return "listarApenados";
-
-        // Pass form parameters to repository or service for processing and retrieving search results
-//        List<Apenado> apenados = apenadoRepository.findApenadoByFilters(cpf, nome, telefone,dataNascimento, nomeDaMae);
-
-        // Add search results to the model
-//        model.addAttribute("apenados", apenados);
-
-        // Return the view name for displaying the search result
     }
 
-    @GetMapping("/apenados/teste")
-    public String teste(){
-        return "aiaia";
-    }
 
     @ModelAttribute("cnhsList")
     public List<CNH> cnhsList() {

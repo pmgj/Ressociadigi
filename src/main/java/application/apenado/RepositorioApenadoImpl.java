@@ -2,10 +2,13 @@ package application.apenado;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -27,12 +30,14 @@ public class RepositorioApenadoImpl implements RepositorioApenadoCustom {
 
 //    Metodo para construcao de querys dinamicas utilizando Criteria API
     @Override
-    public Page<Apenado> findApenadoByFilters(String cpf, String nome, String telefone, LocalDate dataNascimento, String nomeDaMae) {
+    public Page<Apenado> findApenadoByFilters(String cpf, String nome, String telefone, LocalDate dataNascimento, String nomeDaMae, Pageable pageable) {
 
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Apenado> cq = cb.createQuery(Apenado.class);
 
         Root<Apenado> apenado = cq.from(Apenado.class);
+        cq.orderBy(cb.asc(apenado.get("cpf")));
+
         List<Predicate> predicates = new ArrayList<>();
 
         if (cpf != null && !cpf.isEmpty()) {
@@ -57,7 +62,27 @@ public class RepositorioApenadoImpl implements RepositorioApenadoCustom {
 
         cq.where(predicates.toArray(new Predicate[0]));
 
-        return (Page<Apenado>) em.createQuery(cq).getResultList();
-    }
+        TypedQuery<Apenado> query = em.createQuery(cq);
 
+        // Set the pagination parameters
+        int pageNumber = pageable.getPageNumber();
+        int pageSize = pageable.getPageSize();
+        int firstResult = pageNumber * pageSize;
+        query.setFirstResult(firstResult);
+        query.setMaxResults(pageSize);
+
+        // Execute the query to fetch paginated results
+        List<Apenado> resultList = query.getResultList();
+
+        // Count the total number of results without pagination
+        CriteriaQuery<Long> countQuery = cb.createQuery(Long.class);
+        Root<Apenado> countRoot = countQuery.from(Apenado.class);
+        countQuery.select(cb.count(countRoot)).where(predicates.toArray(new Predicate[0]));
+        Long total = em.createQuery(countQuery).getSingleResult();
+
+        // Create a Page object from the fetched results and total count
+        Page<Apenado> page = new PageImpl<>(resultList, pageable, total);
+
+        return page;
+    }
 }
