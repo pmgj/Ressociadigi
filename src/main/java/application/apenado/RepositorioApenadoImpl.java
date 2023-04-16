@@ -64,23 +64,19 @@ public class RepositorioApenadoImpl implements RepositorioApenadoCustom {
 
         TypedQuery<Apenado> query = em.createQuery(cq);
 
-        // Set the pagination parameters
         int pageNumber = pageable.getPageNumber();
         int pageSize = pageable.getPageSize();
         int firstResult = pageNumber * pageSize;
         query.setFirstResult(firstResult);
         query.setMaxResults(pageSize);
 
-        // Execute the query to fetch paginated results
         List<Apenado> resultList = query.getResultList();
 
-        // Count the total number of results without pagination
         CriteriaQuery<Long> countQuery = cb.createQuery(Long.class);
         Root<Apenado> countRoot = countQuery.from(Apenado.class);
         countQuery.select(cb.count(countRoot)).where(predicates.toArray(new Predicate[0]));
         Long total = em.createQuery(countQuery).getSingleResult();
 
-        // Create a Page object from the fetched results and total count
         Page<Apenado> page = new PageImpl<>(resultList, pageable, total);
 
         return page;

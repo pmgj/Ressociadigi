@@ -101,12 +101,6 @@ public class ControladorApenado {
 //        return "listarApenados";
 //    }
 
-    @GetMapping("/apenados/custom-search")
-    public String showSearchForm(Model model) {
-        // Return the view name for the search form
-        return "apenados/custom-search";
-    }
-
     @PostMapping("/listarApenados")
     public String searchApenados(@RequestParam(value = "cpf", required = false) String cpf,
                                  @RequestParam(value = "nome", required = false) String nome,
