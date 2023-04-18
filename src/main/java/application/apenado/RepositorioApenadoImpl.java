@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -80,5 +81,21 @@ public class RepositorioApenadoImpl implements RepositorioApenadoCustom {
         Page<Apenado> page = new PageImpl<>(resultList, pageable, total);
 
         return page;
+    }
+
+    @Override
+    public void gerarModel(Model model, Pageable pageable, Page pgApenado) {
+        // Manipulação das Páginas
+        int numPaginaAtual = pageable.getPageNumber() + 1;
+        int numTotalPaginas = pgApenado.getTotalPages();
+        model.addAttribute("numPaginaAtual", numPaginaAtual);
+        model.addAttribute("numTotalPaginas", numTotalPaginas);
+        model.addAttribute("nextPage", ((pageable.getPageNumber() + 1) > numTotalPaginas - 1)
+                ? pageable.getPageNumber()
+                : pageable.getPageNumber() + 1);
+        model.addAttribute("previousPage", pageable.getPageNumber() - 1);
+        model.addAttribute("quantidadePaginas", numTotalPaginas);
+
+        model.addAttribute("lista", pgApenado);
     }
 }

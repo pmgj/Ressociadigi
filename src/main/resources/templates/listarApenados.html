@@ -131,13 +131,13 @@
           	<tfoot>
 	        	<tr>
 	        		<td colspan="6"></td>
-	        		<td><span id="spanQtdPaginas" th:text="${pageCounter}"></span></td>
+					<td><p th:text="${'Pagina ' + numPaginaAtual + ' de ' + numTotalPaginas}"> </p></td>
 	        		<td id="previousAndNextButtons">
 	        			<form class ="containerNavetion"action="#" th:action="@{/listarApenados}" method="post">
 	        				<a href="?page=0">&lt;&lt;</a>
 		        			<a class="a" th:href="@{?page={contador} (contador = ${previousPage})}">&lt;</a>
 		        			<a th:href="@{?page={contador} (contador = ${nextPage})}">&gt;</a>
-		        			<a th:href="@{?page={page}(page = ${quantidadePaginas - 1})}">&gt;&gt;</a>
+		        			<a th:href="@{?page={page} (page = ${quantidadePaginas - 1})}">&gt;&gt;</a>
 	        			</form>
 	        		</td>
 	        	</tr>
