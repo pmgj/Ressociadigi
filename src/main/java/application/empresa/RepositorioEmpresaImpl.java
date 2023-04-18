@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.ui.Model;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -86,5 +87,21 @@ public class RepositorioEmpresaImpl  implements RepositorioEmpresaCustom{
 
         return page;
 
+    }
+
+    @Override
+    public void gerarModel(Model model, Pageable pageable, Page pgEmpresa) {
+
+        int numPaginaAtual = pageable.getPageNumber() + 1;
+        int numTotalPaginas = pgEmpresa.getTotalPages();
+        model.addAttribute("numPaginaAtual", numPaginaAtual);
+        model.addAttribute("numTotalPaginas", numTotalPaginas);
+        model.addAttribute("pageCounter", "Página " + numPaginaAtual + " de " + numTotalPaginas);
+        model.addAttribute("nextPage", ((pageable.getPageNumber() + 1) > numTotalPaginas - 1)
+                ? pageable.getPageNumber()
+                : pageable.getPageNumber() + 1 );
+        model.addAttribute("previousPage", pageable.getPageNumber() - 1);
+        model.addAttribute("quantidadePaginas", numTotalPaginas);
+        model.addAttribute("listaEmpresas", pgEmpresa);
     }
 }

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{css/listarEmpresas.css}" />
-    <script defer="defer" th:src="@{/js/empresa.js}"></script> 
+    <script defer="defer" th:src="@{/js/empresa.js}"></script>
     <link rel="icon" th:href="@{/imgs/logoRD.png}">
     <title>Lista de Empresas</title>
    </head>
@@ -22,26 +22,76 @@
             <legend class="legenda">TODOS</legend>
         </div>
         <div class="header-tabela">
-        	<form action="#" th:action="@{/buscarEmpresa}" th:object="${busca}" method="post">
-	            <div class="buscador">
-	            	<select id="select-tipoBusca" th:field="*{tipoBusca}">
-	            		<option value="CNPJ">CNPJ</option>
-	            		<option value="NOME DA EMPRESA" onclick="mudaLegada()">NOME DA EMPRESA</option>
-	            		<option value="RESPONSÁVEL">RESPONSÁVEL</option>
-	            		<option value="INTERLOCUTOR">INTERLOCUTOR</option>
-	            		<option value="TELEFONE">TELEFONE</option>
-	            		<option value="EMAIL">EMAIL</option>
-	            		<option value="CIDADE">CIDADE</option>
-	            	</select>
-	                <input type="search" placeholder="Buscar" id="nome" th:field="*{valorBusca}" />
-	                <!-- Funcionalidade de busca ainda em teste!! -->
-	                <a><button id="buscar">Buscar</button></a>
-	            
-	        	</div>
-			</form>
+            <form action="#" th:action="@{/listarEmpresas}" method="post">
+                <div class="buscador">
+
+                    <a> <img id="icone-filtro" th:src="@{/imgs/icone-filtro.png}" width="10%" height="10%" alt="" /> </a>
+                </div>
+            </form>
             <a th:href="@{/inserirEmpresa}"><button class="AdicionarEmpresa">+</button></a>
 			
         </div>
+
+        <div class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <!-- Add your modal content here -->
+                <div id="titleContainer">
+                    <h2>Busca Personalizada</h2>
+                    <h1><span>Preenchimento de todos os filtros não é necessário</span></h1>
+                </div>
+                <!-- Update the form element with the correct method and action -->
+                <div id="containerModalFiltro">
+                    <form method="post" action="/listarEmpresas">
+
+                        <ul class="flex-outer">
+                            <!-- Remove the hidden input fields for form parameters, as they will be sent as request parameters automatically -->
+
+                            <!-- Add your search form fields here -->
+                            <li>
+                                <label for="cnpj">CNPJ</label>
+                                <input type="text" id="cnpj" name="cnpj" />
+                            </li>
+
+                            <li>
+                                <label for="nome">Nome</label>
+                                <input type="text" id="nome" name="nome"/>
+                            </li>
+
+                            <li>
+                                <label for="responsavel">Responsavel</label>
+                                <input type="text" id="responsavel" name="responsavel"  />
+                            </li>
+
+                            <li>
+                                <label for="interlocutor">Interlocutor</label>
+                                <input type="text" id="interlocutor" name="interlocutor"/>
+                            </li>
+
+                            <li>
+                                <label for="telefone">Telefone</label>
+                                <input type="text" id="telefone" name="telefone"  />
+                            </li>
+
+                            <li>
+                                <label for="email">Email</label>
+                                <input type="text" id="email" name="email"  />
+                            </li>
+
+                            <li>
+                                <label for="cidade">Cidade</label>
+                                <input type="text" id="cidade" name="cidade"  />
+                            </li>
+
+                            <li>
+                                <button type="submit">Buscar</button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <table>
             <thead>
                 <tr>
@@ -59,7 +109,7 @@
             <tbody>
              
             	<tr th:if="${listaEmpresas.empty}">
-            		<td colspan="10">Não há empresas registradas no sistema.</td>
+            		<td colspan="10">Nenhum registro armazenado.</td>
             	</tr>
                 <tr th:each="empresa : ${listaEmpresas}">
                     <td data-label="CNPJ"><span th:text="${empresa.cnpj}">CNPJ</span></td>
@@ -75,19 +125,20 @@
                     </td>
                 </tr>
           	</tbody>
-          	<tfoot>
-	        	<tr>
-	        		<td colspan="6"></td>
-	        		<td><span id="spanQtdPaginas" th:text="${pageCounter}"></span></td>
-	        		<td id="previousAndNextButtons">
-	        			<a href="?page=0">&lt;&lt;</a>
-	        			<a th:href="@{?page={contador} (contador = ${previousPage})}">&lt;</a>
-	        			<a th:href="@{?page={contador} (contador = ${nextPage})}">&gt;</a>
-	        			<a th:href="@{?page={page}(page = ${quantidadePaginas - 1})}">&gt;&gt;</a>
-	        		</td>
-	        	</tr>
-		    </tfoot>    
         </table>
+        <div id="footer">
+            <ul>
+                <li id="previousAndNextButtons">
+                    <form class="containerNavegation" th:action="@{/listarEmpresas}" method="post">
+                        <a href="?page=0">&lt;&lt;</a>
+                        <a th:href="@{?page={contador} (contador = ${previousPage})}">&lt;</a>
+                        <a th:href="@{?page={contador} (contador = ${nextPage})}">&gt;</a>
+                        <a th:href="@{?page={page}(page = ${quantidadePaginas - 1})}">&gt;&gt;</a>
+                    </form>
+                </li>
+                <li><p th:text="${'Pagina ' + numPaginaAtual + ' de ' + numTotalPaginas}"> </p></li>
+            </ul>
+        </div>
     </main>
 </body>
 </html>
