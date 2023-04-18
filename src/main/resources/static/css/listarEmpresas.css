@@ -33,12 +33,7 @@ body {
     width: 100vw;
 }
 /****** Styles *******/
-.header-tabela{
-    width: 100%;
-    background-color: rgba(222, 222, 222, 1);
-    padding: 20px;
-    
-}
+
 .buscador{
     display: flex;
     justify-content: space-between;
@@ -92,6 +87,13 @@ body {
     top: 10px;
     right: 20px;
     cursor: pointer;
+}
+
+.modal-content{
+    width: 30%;
+    border-color: rgb(65, 65, 120);
+    border-style: solid;
+    border-radius: 10px;
 }
 
 #containerModalFiltro {
@@ -206,6 +208,10 @@ body {
 .header-tabela{
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    background-color: rgba(222, 222, 222, 1);
+    padding: 20px;
+    height: 10%;
 }
 thead th td {
     display: flex;
@@ -423,23 +429,21 @@ img{
     color: #fff;
     background: #20B2AA;
   }
-  tbody{
-    margin-bottom: 10rem;
-  }
+    tbody{
+        margin-bottom: 10rem;
+    }
 
-  tfoot {
-	background-color: transparent;
-    margin-top: 400px;
-    height: 4rem;
-    border-top: 0.65px solid rgba(65, 65, 65, 0.832);
-    width: 50rem;
-}
-tfoot tr{
-    background-color: transparent;
-    
-}
+    #footer ul {
+        list-style: none;
+        padding: 10px;
+    }
 
-.containerNavetion{
+    #footer ul li{
+        float:right;
+        margin-left: 10px;
 
-    width: 10rem;
-}
+    }
+
+    .containerNavegation{
+        width: 10rem;
+    }
