@@ -23,19 +23,8 @@
         	
         	<form action="#" th:action="@{/listarApenados}" method="post">
 	            <div class="buscador">
-	            	<select id="select-tipoBusca" name="searchBy">
-	            		<option value="NOME">NOME</option>
-	            		<option value="CPF">CPF</option>
-	            		<option value="DATA DE NASCIMENTO">DATA DE NASCIMENTO</option>
-	            		<option value="NOME DA MÃE">NOME DA MÃE</option>
-	            		<option value="CONTATO">CONTATO</option>
-	            	</select>
-	                <input type="search" placeholder="Buscar" name="value" id="value" />
-	                
-	                <a><button id="buscar">Buscar</button></a>
 
 					<a> <img id="icone-filtro" th:src="@{/imgs/icone-filtro.png}" width="10%" height="10%" alt="" /> </a>
-
 	        	</div>
 			 </form>
 			 
@@ -124,25 +113,25 @@
 		                <td data-label="CONTATO"><span id="contato" th:text="${item.telefone}">Contato</span></td>
                     <td id="Btn-remove-edit" width="180">
                         <a th:href="@{/alterarApenado(cpf=${item.cpf})}"><button>Editar</button></a>
-                        <a th:href="@{/removerApenado(cpf=${item.cpf})}" th:attr="data-nome=${item.nome}, data-cpf=${item.cpf}"><button>Remover</button></a>
+                        <a id="botao-remover" th:href="@{/removerApenado(cpf=${item.cpf})}" th:attr="data-nome=${item.nome}, data-cpf=${item.cpf}"><button>Remover</button></a>
                     </td>
                 	</tr>
           	</tbody>
-          	<tfoot>
-	        	<tr>
-	        		<td colspan="6"></td>
-					<td><p th:text="${'Pagina ' + numPaginaAtual + ' de ' + numTotalPaginas}"> </p></td>
-	        		<td id="previousAndNextButtons">
-	        			<form class ="containerNavetion"action="#" th:action="@{/listarApenados}" method="post">
-	        				<a href="?page=0">&lt;&lt;</a>
-		        			<a class="a" th:href="@{?page={contador} (contador = ${previousPage})}">&lt;</a>
-		        			<a th:href="@{?page={contador} (contador = ${nextPage})}">&gt;</a>
-		        			<a th:href="@{?page={page} (page = ${quantidadePaginas - 1})}">&gt;&gt;</a>
-	        			</form>
-	        		</td>
-	        	</tr>
-		    </tfoot>    
+
         </table>
+		<div id="footer">
+			<ul>
+				<li id="previousAndNextButtons">
+					<form class ="containerNavegation"action="#" th:action="@{/listarApenados}" method="post">
+						<a href="?page=0">&lt;&lt;</a>
+						<a class="a" th:href="@{?page={contador} (contador = ${previousPage})}">&lt;</a>
+						<a th:href="@{?page={contador} (contador = ${nextPage})}">&gt;</a>
+						<a th:href="@{?page={page} (page = ${quantidadePaginas - 1})}">&gt;&gt;</a>
+					</form>
+				</li>
+				<li><p th:text="${'Pagina ' + numPaginaAtual + ' de ' + numTotalPaginas}"> </p></li>
+			</ul>
+		</div>
     </main>
 </body>
 </html>

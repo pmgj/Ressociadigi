@@ -8,7 +8,7 @@ var closeBtn = document.querySelector('.close');
 
 // Add click event listener to the image element
 iconeFiltro.addEventListener('click', function() {
-	modal.style.display = 'block';
+		modal.style.display = 'block';
 });
 
 closeBtn.addEventListener('click', function() {
@@ -32,7 +32,7 @@ function handleCheckbox(chbx){
 }
 
 
-//FUNCAO QUE MOSTRA O MODAL
+// FUNCAO QUE MOSTRA O MODAL
 function setModal(modalId, nomeDoApenado, cpfApenado){
 	const modal = document.getElementById(modalId);
 	document.getElementById("mensagem-de-confirmacao").innerText = `Você tem certeza que deseja excluir o registro de ${nomeDoApenado} definitivamente?`;
@@ -48,7 +48,7 @@ function setModal(modalId, nomeDoApenado, cpfApenado){
 
 
 //tem que trocar o ".filtrar" por classe/id que tu colocar na imagem de lixeira
-const excluir = document.querySelectorAll()
+const excluir = document.querySelectorAll("#botao-remover")
 excluir.forEach((i) => {
 	i.addEventListener("click", function(){
 		let nomeDoApenado = i.getAttribute("data-nome");
