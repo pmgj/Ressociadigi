@@ -42,7 +42,7 @@ body {
 .buscador{
     display: flex;
     justify-content: space-between;
-    width: 30rem;
+    width: 35rem;
     
 }
 
@@ -51,6 +51,113 @@ body {
 }
 .a{
     background-color: #20B2AA;
+}
+
+/*Estilizacao modal para filtro*/
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal .modal-content #titleContainer {
+    padding: 10px;
+}
+
+.modal .modal-content span {
+    color: red;
+    font-size: 15px;
+    display: inline-block;
+
+}
+
+.modal-content {
+    background-color: #fff;
+    max-width: 50%;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 5px;
+    border-color: #414178;
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+#containerModalFiltro {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#containerModalFiltro * {
+    box-sizing: border-box;
+}
+
+.flex-outer{
+    list-style-type: none;
+    padding: 0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.flex-outer li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.flex-outer > li:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.flex-outer li label,
+.flex-outer li p {
+    padding: 8px;
+    font-weight: 300;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+}
+
+.flex-outer > li > label,
+.flex-outer li p {
+    flex: 1 0 120px;
+    max-width: 220px;
+}
+
+.flex-outer > li > label + * {
+    flex: 1 0 220px;
+}
+
+.flex-outer li p {
+    margin: 0;
+}
+
+.flex-outer li button {
+    margin-left: auto;
+    padding: 8px 16px;
+    border: none;
+    background: #333;
+    color: #f2f2f2;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    border-radius: 2px;
+}
+
+#icone-filtro{
+    height: 38px;
+    width: 38px;
+    cursor: pointer;
 }
 
 
