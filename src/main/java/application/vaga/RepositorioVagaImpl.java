@@ -10,10 +10,7 @@ import org.springframework.ui.Model;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +31,8 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
         CriteriaQuery<Vaga> cq = cb.createQuery(Vaga.class);
 
         Root<Vaga> vaga = cq.from(Vaga.class);
-        cq.orderBy(cb.asc(vaga.get("empresa")));
+
+        cq.orderBy(cb.asc(vaga.get("tipo")));
 
         List<Predicate> predicates = new ArrayList<>();
 
@@ -98,7 +96,7 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
                 : pageable.getPageNumber() + 1 );
         model.addAttribute("previousPage", pageable.getPageNumber() - 1);
         model.addAttribute("quantidadePaginas", numTotalPaginas);
-        model.addAttribute("listaEmpresas", pgVaga);
+        model.addAttribute("listaVagas", pgVaga);
 
     }
 

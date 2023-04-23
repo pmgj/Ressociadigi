@@ -127,16 +127,7 @@ public class ControladorVaga {
 		Page<Vaga> pgVagas = service.findAll(pageable);
 
 		// Manipulação de Páginas
-		int numPaginaAtual = pageable.getPageNumber() + 1;
-		int numTotalPaginas = pgVagas.getTotalPages();
-		model.addAttribute("pageCounter", "Página " + numPaginaAtual + " de " + numTotalPaginas);
-		model.addAttribute("nextPage", ((pageable.getPageNumber() + 1) > numTotalPaginas - 1)
-				? pageable.getPageNumber()
-				: pageable.getPageNumber() + 1);
-		model.addAttribute("previousPage", pageable.getPageNumber() - 1);
-		model.addAttribute("quantidadePaginas", numTotalPaginas);
-
-		model.addAttribute("listaVagas", pgVagas);
+		vagaRepositoryCustom.gerarModel(model,pageable,pgVagas);
 		return "listarVagas";
 	}
 
@@ -152,16 +143,7 @@ public class ControladorVaga {
 
 		Page<Vaga> pgVagas = vagaRepositoryCustom.findVagaByFilters(empresa,tipo,interlocutor,quantidadeVagasMasculinas,quantidadeVagasFemininas,cargaHoraria,pageable);
 
-		int numPaginaAtual = pageable.getPageNumber() + 1;
-		int numTotalPaginas = pgVagas.getTotalPages();
-		model.addAttribute("pageCounter", "Página " + numPaginaAtual + " de " + numTotalPaginas);
-		model.addAttribute("nextPage", ((pageable.getPageNumber() + 1) > numTotalPaginas - 1)
-				? pageable.getPageNumber()
-				: pageable.getPageNumber() + 1);
-		model.addAttribute("previousPage", pageable.getPageNumber() - 1);
-		model.addAttribute("quantidadePaginas", numTotalPaginas);
-
-		model.addAttribute("listaVagas", pgVagas);
+		vagaRepositoryCustom.gerarModel(model,pageable,pgVagas);
 
 		return "listarVagas";
 

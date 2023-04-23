@@ -15,7 +15,7 @@
     background-color: #F4F4F4;
 }
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 15px;
     background: rgba(246, 130, 31, 1);
 }
 ::-webkit-scrollbar-thumb {
@@ -119,7 +119,7 @@ article{
     height: 80rem;
     background-color: aqua;
     background: rgb(255,255,255);
-background: linear-gradient(0deg, rgba(255,255,255,1) 55%, rgba(0,112,255,1) 55%);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 55%, rgba(0,112,255,1) 55%);
     display: flex;
     flex-direction: column;
     
@@ -141,7 +141,7 @@ background: linear-gradient(0deg, rgba(255,255,255,1) 55%, rgba(0,112,255,1) 55%
     align-items: center;
     column-gap: 10px; */
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto;
     column-gap: 10px;
     row-gap: 10px;
 }
