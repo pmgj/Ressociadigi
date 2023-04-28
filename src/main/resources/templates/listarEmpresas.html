@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{css/listarEmpresas.css}" />
+    <script defer="defer" th:src="@{/js/empresa.js}"></script>
+    <link rel="icon" th:href="@{/imgs/logoRD.png}">
+    <title>Lista de Empresas</title>
+   </head>
+
+<body>
+
+    <main>
+        <div class="title">
+            <div class="title">
+                <a th:href="@{http://localhost:8080}">
+                    <img th:src="@{/imgs/logoRD.png}" width="10%" height="10%" alt="" /> <!--Alterado dia 27/04/2023-->
+                </a>
+
+            </div>
+            <!-- <h1>RESSOCIADIGI</h1> -->
+        </div>
+        <div class="top-layer">
+            <legend class="legenda">TODOS</legend>
+        </div>
+        <div class="header-tabela">
+            <form action="#" th:action="@{/listarEmpresas}" method="post">
+                <div class="buscador">
+
+                    <a> <img id="icone-filtro" th:src="@{/imgs/icone-filtro.png}" width="10%" height="10%" alt="" /> </a>
+                </div>
+            </form>
+            <a th:href="@{/inserirEmpresa}"><button class="AdicionarEmpresa">+</button></a>
+			
+        </div>
+
+        <div class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+
+                <div id="titleContainer">
+                    <h2>Busca Personalizada</h2>
+                    <h1><span>Preenchimento de todos os filtros não é necessário</span></h1>
+                </div>
+
+                <div id="containerModalFiltro">
+                    <form method="post" action="/listarEmpresas">
+
+                        <ul class="flex-outer">
+                            <li>
+                                <label for="cnpj">CNPJ</label>
+                                <input type="text" id="cnpj" name="cnpj" />
+                            </li>
+
+                            <li>
+                                <label for="nome">Nome</label>
+                                <input type="text" id="nome" name="nome"/>
+                            </li>
+
+                            <li>
+                                <label for="responsavel">Responsavel</label>
+                                <input type="text" id="responsavel" name="responsavel"  />
+                            </li>
+
+                            <li>
+                                <label for="interlocutor">Interlocutor</label>
+                                <input type="text" id="interlocutor" name="interlocutor"/>
+                            </li>
+
+                            <li>
+                                <label for="telefone">Telefone</label>
+                                <input type="text" id="telefone" name="telefone"  />
+                            </li>
+
+                            <li>
+                                <label for="email">Email</label>
+                                <input type="text" id="email" name="email"  />
+                            </li>
+
+                            <li>
+                                <label for="cidade">Cidade</label>
+                                <input type="text" id="cidade" name="cidade"  />
+                            </li>
+
+                            <li>
+                                <button type="submit">Buscar</button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>CNPJ</th>
+                    <th>NOME DA EMPRESA</th>
+                    <th>RESPONSÁVEL</th>
+                    <th>INTERLOCUTOR</th>
+                    <th>TELEFONE</th>
+                    <th>EMAIL</th>
+                    <th>CIDADE</th>
+                    <th>AÇÕES</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+             
+            	<tr th:if="${listaEmpresas.empty}">
+            		<td colspan="10">Nenhum registro armazenado.</td>
+            	</tr>
+                <tr th:each="empresa : ${listaEmpresas}">
+                    <td data-label="CNPJ"><span th:text="${empresa.cnpj}">CNPJ</span></td>
+                    <td data-label="NOME DA EMPRESA"><span th:text="${empresa.nome}">Nome</span></td>
+                    <td data-label="RESPONSÁVEL"><span th:text="${empresa.responsavel}">Responsável</span></td>
+                    <td data-label="INTERLOCUTOR"><span th:text="${empresa.interlocutor}">Interlocutor</span></td>
+                    <td data-label="TELEFONE"><span th:text="${empresa.telefone}">Telefone</span></td>
+                    <td data-label="E-MAIL"><span th:text="${empresa.email}">Email</span></td>
+                    <td data-label="CIDADE"><span th:text="${empresa.cidade}">Cidade</span></td>
+                    <td id="Btn-remove-edit" width="180">
+                        <a th:href="@{/alterarEmpresa(cnpj=${empresa.cnpj})}"><button>Editar</button></a>
+                        <a th:href="@{/removerEmpresa(cnpj=${empresa.cnpj})}"><button>Remover</button></a>
+                    </td>
+                </tr>
+          	</tbody>
+        </table>
+        <div id="footer">
+            <ul>
+                <li id="previousAndNextButtons">
+                    <form class="containerNavegation" th:action="@{/listarEmpresas}" method="post">
+                        <a href="?page=0">&lt;&lt;</a>
+                        <a th:href="@{?page={contador} (contador = ${previousPage})}">&lt;</a>
+                        <a th:href="@{?page={contador} (contador = ${nextPage})}">&gt;</a>
+                        <a th:href="@{?page={page}(page = ${quantidadePaginas - 1})}">&gt;&gt;</a>
+                    </form>
+                </li>
+                <li><p th:text="${'Pagina ' + numPaginaAtual + ' de ' + numTotalPaginas}"> </p></li>
+            </ul>
+        </div>
+
+        <div class="tap">
+            <div class="botao-container">
+                <a id="botao-voltar" th:href="@{http://localhost:8080}">Voltar</a>
+                <!--<button type="submit" id="botao-enviar">Enviar</button>-->
+            </div>
+        </div>
+    </main>
+</body>
+</html>

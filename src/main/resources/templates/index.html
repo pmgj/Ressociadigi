@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/index-style.css}" />
+    <link rel="icon" th:href="@{/imgs/logoRD.png}">
+    <title>Página Principal</title>
+</head>
+<body>
+    <main>
+        <header>
+            <div class="logo"><span>R</span>essocia<span>D</span>igi</div>
+            <div class="login-btn">
+                <button class="sair" ><a th:href="@{/signIn}" style="text-decoration:none">Sair</a></button>
+            </div>    
+        </header>
+        <section>
+           <div class="left">
+            <h1 class="t1"> <span class="letra">RessociaDigi:</span> Um projeto que muda vidas </h1>
+            <p class="texto-infomativo">
+                O Patronato Penitenciário é responsável por acompanhar os 
+                egressos, prestar assistência psicossocial e fomentar a
+                ressocialização viabilizando cursos e vagas de trabalho. 
+                Atualmente, 12.912 reeducandos são acompanhados pela entidade. 
+                Encontram-se no mercado de trabalho 1.266 reeducandos.
+            </p>
+           </div>
+            <div class="imagem">
+                <img th:src="@{/imgs/image.jpeg}" alt="">
+            </div>
+        </section>
+
+        <article> 
+            <div class="servicos">
+                <p class="servicos-logo">SERVIÇOS</p>
+                <DIV class="card-container">
+                    <div class="card">
+                        <div class="superior-card">
+                            <img class="imagem-card" th:src="@{/imgs/res.png}" alt="" width="260px" >
+                        </div>
+                        <a th:href="@{/inserirApenado}" style="text-decoration:none"><h4>Cadastrar Apenado</h4></a>
+                        <p class="descricao-card">
+                            Cadastre e armazene os dados de um determinado apenado.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <div class="superior-card">
+                            <img class="imagem-card" th:src="@{/imgs/empre.png}" alt="" width="200px"  >
+                        </div>
+                        <a th:href="@{/inserirEmpresa}" style="text-decoration:none"><h4>Cadastrar Empresa</h4></a>
+                        <p class="descricao-card">
+                            Cadastre e armazene os dados de um determinado empresa.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <div class="superior-card">
+                            <img class="imagem-card" th:src="@{/imgs/vagas.png}" alt="" width="212px"  >
+                        </div>
+                        <a th:href="@{/inserirVaga}" style="text-decoration:none"><h4>Cadastrar Vaga</h4></a>
+                        <p class="descricao-card">
+                            Cadastre e armazene os dados de um determinado vaga.
+                        </p>
+
+                    </div>
+
+                    <div class="card">
+                        <div class="superior-card">
+                            <img class="imagem-card" th:src="@{/imgs/empre.png}" alt="" width="200px"  >
+                        </div>
+                        <a th:href="@{/preencherVaga}" style="text-decoration:none"><h4>Preencher Vagas</h4></a>
+                        <p class="descricao-card">
+                            Pesquise, filtre, edite e mostre a lista de todas as vagas ofertadas pelas empresas.
+
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="superior-card">
+                            <img class="imagem-card" th:src="@{/imgs/listaEmp.png}" alt="" width="200px"  >
+                        </div>
+                        <a th:href="@{/listarApenados}" style="text-decoration:none"><h4>Lista de apenados</h4></a>
+                        <p class="descricao-card">
+                            Pesquise, filtre, edite e mostre a lista de todos os apenados
+                            cadastrados.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="superior-card">
+                            <img class="imagem-card" th:src="@{/imgs/empre.png}" alt="" width="200px"  >
+                        </div>
+                        <a th:href="@{/listarEmpresas}" style="text-decoration:none"><h4>Lista de Empresas</h4></a>
+                        <p class="descricao-card">
+                            Pesquise, filtre, edite e mostre a lista de todos as empresas 
+                            cadastradas.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="superior-card">
+                            <img class="imagem-card" th:src="@{/imgs/empre.png}" alt="" width="200px"  >
+                        </div>
+                        <a th:href="@{/listarVagas}" style="text-decoration:none"><h4>Listar Vagas</h4></a>
+                        <p class="descricao-card">
+                            Pesquise, filtre, edite e mostre a lista de todas as vagas ofertadas pelas empresas.
+
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="superior-card">
+                            <img class="imagem-card" th:src="@{/imgs/empre.png}" alt="" width="200px">
+                        </div>
+                        <a th:href="@{/listarVagasPreenchidas}" style="text-decoration:none"><h4>Listar Vagas Preenchidas</h4></a>
+                        <p class="descricao-card">
+                            Pesquise, filtre, edite e mostre a lista de todas as vagas ofertadas pelas empresas.
+
+                        </p>
+                    </div>
+
+                </DIV>
+
+            </div>
+        </article>
+
+    </main>
+
+</body>
+</html>

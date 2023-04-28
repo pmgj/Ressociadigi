@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+}
+::-webkit-scrollbar {
+    width: 15px;
+    background: rgba(246, 130, 31, 1);
+}
+::-webkit-scrollbar-thumb {
+	width: 5px;
+    background: rgba(246, 130, 31, 1);
+}
+
+.letra{
+    color:  orange;
+}
+header{
+    width: 100%;
+    position: static;
+    height: 4rem;
+    border-bottom: solid 1px rgba(121, 117, 117, 0.736);
+    font-size: 3rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-left: 50px;
+    font-family: 'Rubik Dirt', cursive;
+    display: flex;
+    justify-content: space-between;
+    
+}
+header .logo{
+    font-size: 40px;
+    
+}
+
+.login-btn{
+    display: flex;
+    justify-content: space-between;
+    width: 16rem;
+   
+}
+.sair{
+    width: 5rem;
+    outline: none;
+    border: none;
+    height: 2rem;
+    background-color: rgb(255, 0, 0);
+    color: white;
+    border-radius: 6px;
+    font-family: 'Mukta', sans-serif;
+    font-size: 17px;
+    cursor: pointer;
+}
+.registrar{
+    width: 8rem;
+    outline: none;
+    border: none;
+    height: 2rem;
+    background-color: rgb(196, 146, 28);
+    color: white;
+    margin-right: 20px;
+    border-radius: 6px;
+    font-family: 'Mukta', sans-serif;
+    font-size: 17px;
+    background-color: none; 
+    cursor: pointer;
+}
+section{
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+    column-gap: 20px;
+}
+.left{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+
+.t1{
+    font-size: 4.5rem;
+    font-family: 'Kanit', sans-serif;
+   
+}
+.t1 span{
+    text-decoration: underline;
+}
+
+ .texto-infomativo{
+    font-size: x-large;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+article{
+    margin-top: 3rem;
+   /*  border: solid 4px ; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+   
+}
+.servicos{
+   
+    width: 82.5rem;
+    height: 80rem;
+    background-color: aqua;
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 55%, rgba(0,112,255,1) 55%);
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px; 
+    
+}
+
+.servicos p{
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    font-weight: 900;
+}
+.card-container{
+   /*  display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px; */
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    column-gap: 10px;
+    row-gap: 10px;
+}
+
+.card{
+    width: 22rem;
+    height: 25rem;
+    border: solid 2px;
+    background-color: #ffff;
+}
+
+.superior-card{
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    background: rgb(82, 81, 79);
+    /* background: linear-gradient(to right, #33ccff 0%, #ff99cc 100%); */
+}
+h4{
+    font-size: 1.7rem;
+    padding: 20px; 
+    font-family: 'Josefin Sans', sans-serif;
+    padding-bottom: 5px;
+    
+}
+h4:hover{
+    text-decoration: underline;
+
+}
+.servicos-logo{
+    font-family: 'Oswald', sans-serif;
+    color: white;
+   letter-spacing: 1px;
+
+}
+.imagem-card{
+    background-size: 390%;
+    width: 90%;
+    height: 90%;
+}
+
+.descricao-card{
+    padding: 15px; 
+    font-family: 'Heebo', sans-serif;
+    color: rgba(0, 0, 0, 0.666);
+    
+}
+
+/*res*/
+@media(max-width: 1200px){
+  .imagem {
+    display: none;
+  }
+
+  .left{
+    width: 100vh;
+    padding: 20px;
+}
+}
+
+@media (max-width: 1025px){
+    .imagem{
+        display: none;
+    }
+    .left{
+        width: 100vh;
+        padding: 20px;
+    }
+    .t1{
+        font-size: xx-large;
+    }
+    .logo div {
+        font-size: x-large;
+    }
+    header{
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        /* background-color: #33ccff; */
+        height: 10rem;
+        justify-content: center;
+        row-gap: 20px;
+       
+    }    
+    section{
+        margin-top: 20px;
+    }
+    
+    .card-container{
+        display: grid;
+        grid-template-columns: auto auto;
+        column-gap: 30px;
+        row-gap: 30px;
+        
+    }
+    article .servicos{
+        background-color: #ff99cc;
+        height: auto;
+        
+    }
+    .servicos-logo{
+        
+        padding: 20px;
+        
+    } 
+}
+
+@media (max-width: 750px){
+    .card-container{
+        display: grid;
+        grid-template-columns: auto;
+    }
+    .card{
+        width: 26rem;
+    }
+    
+
+}

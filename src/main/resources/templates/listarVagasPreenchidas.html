@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{css/listarEmpresas.css}" />
+<script defer="defer" th:src="@{/js/*}"></script>
+<link rel="icon" th:href="@{/imgs/logoRD.png}">
+<title>Lista de Vagas Preenchidas</title>
+</head>
+<body>
+
+	<main>
+		<div class="title">
+			<div class="title">
+				<a th:href="@{http://localhost:8080}">
+					<img th:src="@{/imgs/logoRD.png}" width="10%" height="10%" alt="" /> <!--Alterado dia 27/04/2023-->
+				</a>
+
+			</div>
+			<!-- <h1>RESSOCIADIGI</h1> -->
+		</div>
+		<div class="top-layer">
+			<legend>TODOS</legend>
+		</div>
+		<div class="header-tabela">
+			<!-- <form action="#" th:action="@{/buscarEmpresa}" th:object="${busca}" method="post"> -->
+	            <div class="buscador">
+	            	<select id="select-tipoBusca" >
+	            		<option value="APENADO">APENADO</option>
+	            		<option value="EMPRESA">EMPRESA</option>
+	            		<option value="VAGA">VAGA</option>
+	            		<option value="DATA DE INÍCIO">DATA DE INÍCIO</option>
+	            		<option value="DATA DE TÉRMINO">CONTATO</option>
+	            	</select>
+	                <input type="search" placeholder="Buscar" id="nome" />
+	                
+	                <a><button id="buscar">Buscar</button></a>
+	            
+	        	</div>
+			<!-- </form>-->
+			<a th:href="@{/preencherVaga}"><button class="AdicionarEmpresa">+</button></a>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>ID DA VAGA</th>
+					<th>APENADO</th>
+					<th>EMPRESA</th>
+					<th>VAGA</th>
+					<th>DATA DE INÍCIO</th>
+					<th>DATA DE TÉRMINO</th>
+					<th>OPERAÇÕES</th>
+				</tr>
+			</thead>
+
+			<tbody>
+
+				<tr th:if="${listaVagasPreenchidas.empty}">
+					<td colspan="7">Não foram encontradas vagas preenchidas!</td>
+				</tr>
+
+				<tr th:each="vagaPreenchida : ${listaVagasPreenchidas}">
+					<td data-label="ID"><span th:text="${vagaPreenchida.getId()}">ID</span></td>
+					<td data-label="APENADO"><span
+						th:text="${vagaPreenchida.apenado.getNome()}">NOME DO
+							APENADO</span></td>
+					<td data-label="EMPRESA"><span
+						th:text="${vagaPreenchida.vaga.empresa.getNome()}">NOME DA
+							EMPRESA</span></td>
+					<td data-label="VAGA"><span
+						th:text="${vagaPreenchida.vaga.getTipo()}">NOME DA VAGA</span></td>
+					<td data-label="DATA DE INICIO"><span
+						th:text="${vagaPreenchida.dataInicio}">DATA DE INÍCIO</span></td>
+					<td data-label="DATA DE TERMINO"><span
+						th:text="${vagaPreenchida.dataFim}">DATA DE TÉRMINO</span></td>
+					<td id="Btn-remove-edit" width="180">
+						<a th:href="@{/alterarVagaPreenchida(id=${vagaPreenchida.getId()})}"><button>Editar</button></a>
+						<a th:href="@{/removerVagaPreenchida(id=${vagaPreenchida.getId()})}"><button>Remover</button></a>
+					</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+	        		<td colspan="5"></td>
+	        		<td><span id="spanQtdPaginas" th:text="${pageCounter}"></span></td>
+	        		<td id="previousAndNextButtons">
+	        			<a href="?page=0">&lt;&lt;</a>
+	        			<a th:href="@{?page={contador} (contador = ${previousPage})}">&lt;</a>
+	        			<a th:href="@{?page={contador} (contador = ${nextPage})}">&gt;</a>
+	        			<a th:href="@{?page={page}(page = ${quantidadePaginas - 1})}">&gt;&gt;</a>
+	        		</td>
+	        	</tr>
+			</tfoot>
+		</table>
+		<!--<div id="footer">
+			<ul>
+				<li id="previousAndNextButtons">
+					<form class ="containerNavegation"action="#" th:action="@{/listarVagas}" method="post">
+						<a href="?page=0">&lt;&lt;</a>
+						<a class="a" th:href="@{?page={contador} (contador = ${previousPage})}">&lt;</a>
+						<a th:href="@{?page={contador} (contador = ${nextPage})}">&gt;</a>
+						<a th:href="@{?page={page} (page = ${quantidadePaginas - 1})}">&gt;&gt;</a>
+					</form>
+				</li>
+				<li><p th:text="${'Pagina ' + numPaginaAtual + ' de ' + numTotalPaginas}"> </p></li>
+			</ul>
+		</div>-->
+		<div class="tap">
+			<div class="botao-container">
+				<a id="botao-voltar" th:href="@{http://localhost:8080}">Voltar</a>
+				<!--<button type="submit" id="botao-enviar">Enviar</button>-->
+			</div>
+		</div>
+	</main>
+</body>
+</html>

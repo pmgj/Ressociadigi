@@ -1,0 +1,485 @@
+@font-face{
+	src: url(fonts/Inter_Font.ttf);
+	font-family: 'Inter';
+	font-weight: normal;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+}
+::-webkit-scrollbar {
+    width: 5px;
+    background: rgba(246, 130, 31, 1);
+}
+::-webkit-scrollbar-thumb {
+	width: 5px;
+    background: rgba(246, 130, 31, 1);
+}
+
+body {
+    /* align-items: center; */
+    color: #222;
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    justify-content: center;
+    padding: 30px;
+    width: 100vw;
+}
+/****** Styles *******/
+
+.buscador{
+    display: flex;
+    justify-content: space-between;
+    width: 35rem;
+    
+}
+
+.select-tipoBusca{
+    width: 2rem;
+}
+.a{
+    background-color: #20B2AA;
+}
+
+/*Estilizacao modal para filtro*/
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal .modal-content #titleContainer {
+    padding: 10px;
+}
+
+.modal .modal-content span {
+    color: red;
+    font-size: 15px;
+    display: inline-block;
+
+}
+
+.modal-content {
+    background-color: #fff;
+    max-width: 50%;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 5px;
+    border-color: #414178;
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.modal-content{
+    width: 30%;
+    border-color: rgb(65, 65, 120);
+    border-style: solid;
+    border-radius: 10px;
+}
+
+#containerModalFiltro {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#containerModalFiltro * {
+    box-sizing: border-box;
+}
+
+.flex-outer{
+    list-style-type: none;
+    padding: 0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.flex-outer li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.flex-outer > li:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.flex-outer li label,
+.flex-outer li p {
+    padding: 8px;
+    font-weight: 300;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+}
+
+.flex-outer > li > label,
+.flex-outer li p {
+    flex: 1 0 120px;
+    max-width: 220px;
+}
+
+.flex-outer > li > label + * {
+    flex: 1 0 220px;
+}
+
+.flex-outer li p {
+    margin: 0;
+}
+
+.flex-outer li button {
+    margin-left: auto;
+    padding: 8px 16px;
+    border: none;
+    background: #333;
+    color: #f2f2f2;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    border-radius: 2px;
+}
+
+#icone-filtro{
+    height: 38px;
+    width: 38px;
+    cursor: pointer;
+}
+
+
+#select-tipoBusca {
+	height: 2.4rem;
+    border-radius: 6px;
+    width: 10rem;
+    outline: none;
+}
+
+.buscador input{
+
+    width: 15rem;
+    padding: 10px;
+    outline: none;
+    height: 2.4rem;
+    border-radius: 6px;
+    border: solid 0.5px;
+}
+.buscador button{
+    
+    color: aliceblue;
+    background-color: rgb(65, 65, 120);
+    box-shadow: 3px 3px 1.5px rgba(65, 65, 120, 0.25);
+    outline: none;
+    border: none ;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 4rem;
+    height: 2.4rem;
+
+}
+.buscador input:focus{
+    border: solid 1px orange;
+}
+.AdicionarEmpresa{
+    border-radius: 50%;
+    background-color: lightgreen;
+    color: white;
+    height: 2.5rem;
+    width: 2.5rem;
+    font-size: xx-large;
+    border: none;
+    cursor: pointer;
+}
+.header-tabela{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: rgba(222, 222, 222, 1);
+    padding: 20px;
+    height: 10%;
+}
+thead th td {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+main{
+    width: 75rem;
+    display: flex;
+    flex-direction: column;
+    font-family: "Inter";
+}
+
+table {
+    font-weight: 400;
+    min-width: 420px;
+    max-width: 80rem;
+}
+table thead {
+    display: none;
+    /* font-weight: 500; */
+    background-color: #ffddbd;
+    width: 75rem;
+}
+table tbody tr {
+    border: 1px solid #dad6eb;
+    border-radius: 5px;
+    display: block;
+    padding: 30px;
+    margin-bottom: 30px;
+    
+
+}
+table tbody tr td {
+    display: block;
+    font-weight: 500;
+    padding: 5px;
+    position: relative;
+    text-align: right;
+}
+table tbody tr td button {
+    background: rgb(229, 115, 21);
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(34, 34, 34, 0.2);
+    bottom: -30px;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    left: 50%;
+    padding: 10px 0;
+    position: absolute;
+    transform: translate(-50%, 50%);
+    transition: background 0.12s ease-out;
+    width: 50%;
+}
+table tbody tr td button:hover, table tbody tr td button:focus {
+    background: #a795fe;
+    cursor: pointer;
+}
+
+
+
+#previousAndNextButtons a{
+	text-decoration: none;
+	font-size: large;
+	font-weight: bold;
+	color: black;	
+	background-color: orange;
+	border: 1px solid rgba(0, 0, 0, 0.5);
+	border-radius: 10px;
+	margin-left: 10px;
+	padding: 3px;
+}
+
+table tbody tr td:before {
+    color: #8a8a87;
+    content: attr(data-label);
+    font-weight: 400;
+    left: 5px;
+    position: absolute;
+}
+@media all and (min-width: 768px) {
+    table {
+        border: 1px solid #eee;
+        border-collapse: collapse;
+        max-width: 75rem;
+        text-align: left;
+        width: 100%;
+   }
+    table thead {
+        display: table-header-group;
+   }
+    table thead th {
+        padding: 10px;
+   }
+    table tbody {
+        font-size: 0.875em;
+   }
+    table tbody tr {
+        border: none;
+        display: table-row;
+   }
+    table tbody tr:nth-child(odd) {
+        background: #eee;
+   }
+    table tbody tr td {
+        display: table-cell;
+        font-weight: 400;
+        padding: 10px;
+        text-align: left;
+   }
+    table tbody tr td button {
+        display: inline-block;
+        padding: 10px 15px;
+        position: initial;
+        transform: translate(0);
+        width: auto;
+   }
+    table tbody tr td:before {
+        display: none;
+   }
+    table tbody tr td:last-child {
+        text-align: right;
+   }
+
+   
+}
+@media(max-width:700px){
+    #select-tipoBusca{
+        display: none;
+       }
+
+    img{
+        display: none;
+    }
+    .buscador{
+        width: 70%;
+        column-gap: 20px;
+    }
+    .AdicionarEmpresa{
+        display: none;
+    }
+    
+    tfoot{
+        display: none;
+    }
+}
+
+#Btn-remove-edit{
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-layer{
+    
+    border-bottom: 4px solid orange;
+    margin-bottom: 1rem;
+}
+
+img{
+    height: 4em;
+    margin-bottom: 30px;
+}
+
+.pagination ul{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    background: #fff;
+    padding: 8px;
+    border-radius: 50px;
+    box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
+  }
+  .pagination ul li{
+    color: #20B2AA;
+    list-style: none;
+    line-height: 45px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s ease;
+  }
+  .pagination ul li.numb{
+    list-style: none;
+    height: 45px;
+    width: 45px;
+    margin: 0 3px;
+    line-height: 45px;
+    border-radius: 50%;
+  }
+  .pagination ul li.numb.first{
+    margin: 0px 3px 0 -5px;
+  }
+  .pagination ul li.numb.last{
+    margin: 0px -5px 0 3px;
+  }
+  .pagination ul li.dots{
+    font-size: 22px;
+    cursor: default;
+  }
+  .pagination ul li.btn{
+    padding: 0 20px;
+    border-radius: 50px;
+  }
+  .pagination li.active,
+  .pagination ul li.numb:hover,
+  .pagination ul li:first-child:hover,
+  .pagination ul li:last-child:hover{
+    color: #fff;
+    background: #20B2AA;
+  }
+    tbody{
+        margin-bottom: 10rem;
+    }
+
+    #footer ul {
+        list-style: none;
+        padding: 10px;
+    }
+
+    #footer ul li{
+        float:right;
+        margin-left: 10px;
+
+    }
+
+    .containerNavegation{
+        width: 10rem;
+    }
+
+    .tap{
+            display: flex;
+            width: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 60px 30px 50px;
+
+        }
+
+    .botao-container{
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            column-gap: 30px;
+
+
+        }
+    #botao-voltar{
+        background-color: rgba(99, 96, 96, 1);
+        color: white;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
+        text-transform: uppercase;
+        width: 9rem;
+        height: 3rem;
+        font-family: 'Arial';
+        font-style: none;
+        font-size: 1.2rem;
+        line-height: 45px;
+        text-decoration: none;
+        text-align: center;
+        letter-spacing: 0.08em;
+        border: none;
+        border-radius: 50px;
+    }
