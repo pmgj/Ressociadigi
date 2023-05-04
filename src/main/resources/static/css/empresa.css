@@ -160,7 +160,11 @@ nav {
     line-height: 29px;
     letter-spacing: 0.08em;
     border: none;
+<<<<<<< HEAD
     border-radius: 50px;
+=======
+    border-radius: 5px;
+>>>>>>> 619c49e2e6eca5e1d00e3ae03595749135dcc733
 }
 
 #botao-voltar{
@@ -171,6 +175,7 @@ nav {
     width: 9rem;
     height: 3rem;
     font-family: 'Arial';
+<<<<<<< HEAD
     font-style: none;
     font-size: 1.2rem;
     line-height: 45px;
@@ -179,6 +184,14 @@ nav {
     letter-spacing: 0.08em;
     border: none;
     border-radius: 50px;
+=======
+    font-style: normal;
+    font-size: 1.2rem;
+    line-height: 29px;
+    letter-spacing: 0.08em;
+    border: none;
+    border-radius: 5px;
+>>>>>>> 619c49e2e6eca5e1d00e3ae03595749135dcc733
 }
 
 input {
