@@ -446,4 +446,43 @@ img{
 
     .containerNavegation{
         width: 10rem;
+<<<<<<< HEAD
+    }
+
+    .tap{
+            display: flex;
+            width: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 60px 30px 50px;
+
+        }
+
+    .botao-container{
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            column-gap: 30px;
+
+
+        }
+    #botao-voltar{
+        background-color: rgba(99, 96, 96, 1);
+        color: white;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
+        text-transform: uppercase;
+        width: 9rem;
+        height: 3rem;
+        font-family: 'Arial';
+        font-style: none;
+        font-size: 1.2rem;
+        line-height: 45px;
+        text-decoration: none;
+        text-align: center;
+        letter-spacing: 0.08em;
+        border: none;
+        border-radius: 50px;
+=======
+>>>>>>> 619c49e2e6eca5e1d00e3ae03595749135dcc733
     }
