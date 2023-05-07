@@ -397,6 +397,75 @@ public class Apenado {
 	
 }
 
+class ApenadoWithCpf implements Specification<Apenado> {
+
+	private String cpf;
+
+	public ApenadoWithCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	@Override
+	public Predicate toPredicate(Root<Apenado> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		if(cpf == null){
+			return null;
+		}
+		return cb.equal(root.get("cpf"), this.cpf);
+	}
+}
+
+class ApenadoWithNome implements Specification<Apenado> {
+
+	private String nome;
+
+	public ApenadoWithNome(String nome) {
+		this.nome = nome;
+	}
+
+	@Override
+	public Predicate toPredicate(Root<Apenado> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		if(nome == null) {
+			return null;
+		}
+		String nomeLowerCase = nome.toLowerCase();
+		return cb.like(cb.lower(root.get("nome")), "%" + nomeLowerCase + "%");
+	}
+}
+
+class ApenadoWithTelefone implements Specification<Apenado> {
+
+	private String telefone;
+
+
+	public ApenadoWithTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	@Override
+	public Predicate toPredicate(Root<Apenado> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		if(telefone == null) {
+			return null;
+		}
+		return cb.equal(root.get("telefone"), this.telefone);
+	}
+}
+
+class ApenadoWithDataNascimento implements Specification<Apenado> {
+
+	private LocalDate dataNascimento;
+
+	public ApenadoWithDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	@Override
+	public Predicate toPredicate(Root<Apenado> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		if(dataNascimento == null) {
+			return null;
+		}
+		return cb.equal(root.get("dataNascimento"), this.dataNascimento);
+	}
+}
 
 class ApenadoWithNomeDaMae implements Specification<Apenado> {
 
