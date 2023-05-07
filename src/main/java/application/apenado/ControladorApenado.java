@@ -8,7 +8,9 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @Controller
 public class ControladorApenado {
@@ -25,6 +28,9 @@ public class ControladorApenado {
 
     @Autowired
     private RepositorioApenadoImpl apenadoRepository;
+
+    @Autowired
+    private ApenadoRepo repo;
 
     @GetMapping("/mainPage")
     public String mainPage(Model model) {
@@ -36,18 +42,21 @@ public class ControladorApenado {
         return "signIn";
     }
 
-    @GetMapping("/listarApenados")
-    public String listarApenados(Model model, @PageableDefault(page = 0, size = 2) Pageable pageable) {
-    	
-    	Page<Apenado> pgApenado = service.findAll(pageable);
 
-        apenadoRepository.gerarModel(model, pageable, pgApenado);
+//    @GetMapping("/teste")
+//    public Page<Apenado> testeApenados(@RequestParam(value = "nomeDaMae", required = false) String nomeDaMae,
+//                                       Model model,
+//                                       @PageableDefault(page = 0, size = 2) Pageable pageable){
+//
+////        Specification<Apenado> spec = Specification.where(new ApenadoWithNomeDaMae(nomeDaMae));
+////
+////        return repo.findAll(spec, pageable);
+//
+//                return service.findAll(pageable);
+//    }
 
-        return "listarApenados";
-    }
-
-    @PostMapping("/listarApenados")
-    public String searchApenados(@RequestParam(value = "cpf", required = false) String cpf,
+    @RequestMapping("listarApenados")
+    public String listarApenados(@RequestParam(value = "cpf", required = false) String cpf,
                                  @RequestParam(value = "nome", required = false) String nome,
                                  @RequestParam(value = "telefone", required = false) String telefone,
                                  @RequestParam(value = "dataNascimento", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataNascimento,
@@ -55,11 +64,60 @@ public class ControladorApenado {
                                  Model model,
                                  @PageableDefault(page = 0, size = 2) Pageable pageable) {
 
-        Page<Apenado> pgApenado = apenadoRepository.findApenadoByFilters(cpf, nome, telefone, dataNascimento, nomeDaMae, pageable);
+
+        Specification<Apenado> spec = Specification.where(new ApenadoWithNomeDaMae(nomeDaMae));
+
+
+        Page<Apenado> pgApenado = repo.findAll(spec, pageable);
+
+//        Page<Apenado> pgApenado = service.findAll(pageable);
 
         apenadoRepository.gerarModel(model, pageable, pgApenado);
+
         return "listarApenados";
-    }
+}
+
+//    @GetMapping("/listarApenados")
+//    public String listarApenados(Model model, @PageableDefault(page = 0, size = 2) Pageable pageable) {
+//
+//        Page<Apenado> pgApenado = service.findAll(pageable);
+//
+//        apenadoRepository.gerarModel(model, pageable, pgApenado);
+//
+//        return "listarApenados";
+//    }
+
+//    @GetMapping("/listarApenados")
+//    public String listarApenados(@RequestParam(value = "cpf", required = false) String cpf,
+//                                 @RequestParam(value = "nome", required = false) String nome,
+//                                 @RequestParam(value = "telefone", required = false) String telefone,
+//                                 @RequestParam(value = "dataNascimento", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataNascimento,
+//                                 @RequestParam(value = "nomeDaMae", required = false) String nomeDaMae,
+//                                 Model model,
+//                                 @PageableDefault(page = 0, size = 2) Pageable pageable) {
+//
+//
+//        Page<Apenado> pgApenado = service.findAll(pageable);
+//
+//        apenadoRepository.gerarModel(model, pageable, pgApenado);
+//
+//        return "listarApenados";
+//    }
+//
+//    @PostMapping("/listarApenados")
+//    public String searchApenados(@RequestParam(value = "cpf", required = false) String cpf,
+//                                 @RequestParam(value = "nome", required = false) String nome,
+//                                 @RequestParam(value = "telefone", required = false) String telefone,
+//                                 @RequestParam(value = "dataNascimento", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataNascimento,
+//                                 @RequestParam(value = "nomeDaMae", required = false) String nomeDaMae,
+//                                 Model model,
+//                                 @PageableDefault(page = 0, size = 2) Pageable pageable) {
+//
+//        Page<Apenado> pgApenado = apenadoRepository.findApenadoByFilters(cpf, nome, telefone, dataNascimento, nomeDaMae, pageable);
+//
+//        apenadoRepository.gerarModel(model, pageable, pgApenado);
+//        return "listarApenados";
+//    }
 
 
     @ModelAttribute("cnhsList")

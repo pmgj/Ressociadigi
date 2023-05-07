@@ -98,4 +98,5 @@ public class RepositorioApenadoImpl implements RepositorioApenadoCustom {
 
         model.addAttribute("lista", pgApenado);
     }
+
 }

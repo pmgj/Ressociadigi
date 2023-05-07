@@ -15,7 +15,7 @@ import java.util.List;
 
 @RepositoryRestResource(collectionResourceRel = "apenados", path = "apenados")
 
-public interface RepositorioApenado extends JpaRepository<Apenado, String>, RepositorioApenadoCustom {
+public interface RepositorioApenado extends JpaRepository<Apenado, String> {
 
 //    //Nome
 //    @Query(value = "SELECT * FROM Apenado WHERE LOWER(Apenado.NOME) LIKE %:nome%", nativeQuery = true)
