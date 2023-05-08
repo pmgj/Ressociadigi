@@ -1,0 +1,23 @@
+<html>
+  </head>
+  <body>
+    <h1>Search Results</h1>
+    <table>
+        <tr>
+          <th>CPF</th>
+          <th>Nome</th>
+          <th>Data de Nascimento</th>
+          <th>Telefone</th>
+          <th>Nome da Mãe</th>
+        </tr>
+        <tr th:each="apenado : ${apenados}">
+            <td th:text="${apenado.cpf}"></td>
+            <td th:text="${apenado.nome}"></td>
+        <!--    <td th:text="${apenado.dataNascimento}"></td>-->
+            <td th:text="${apenado.telefone}"></td>
+            <td th:text="${apenado.dataNascimento}"></td>
+            <td th:text="${apenado.nomeDaMae}"></td>
+        </tr>
+    </table>
+  </body>
+</html>

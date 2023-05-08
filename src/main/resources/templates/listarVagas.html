@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{css/listarEmpresas.css}" />
-    <script defer="defer" th:src="@{/js/*}"></script> 
+    <script defer="defer" th:src="@{/js/result.js}"></script>
     <link rel="icon" th:href="@{/imgs/logoRD.png}">
     <title>Lista de Vagas</title>
    </head>
@@ -15,32 +15,81 @@
 
     <main>
         <div class="title">
-            <img th:src="@{/imgs/logoRD.png}" width="10%" height="10%" alt="" />
+            <div class="title">
+                <a th:href="@{http://localhost:8080}">
+                    <img th:src="@{/imgs/logoRD.png}" width="10%" height="10%" alt="" /> <!--Alterado dia 27/04/2023-->
+                </a>
+
+            </div>
             <!-- <h1>RESSOCIADIGI</h1> -->
         </div>
         <div class="top-layer">
             <legend>TODOS</legend>
         </div>
         <div class="header-tabela">
-        	<!-- <form action="#" th:action="@{/buscarEmpresa}" th:object="${busca}" method="post"> -->
+        	 <form action="#" th:action="@{/listarVagas}" method="post">
 	            <div class="buscador">
-	            	<select id="select-tipoBusca" >
-	            		<option value="NOME DA EMPRESA">NOME DA EMPRESA</option>
-	            		<option value="TIPO">TIPO</option>
-	            		<option value="INTERLOCUTOR">INTERLOCUTOR</option>
-	            		<option value="VAGAS MASCULINAS">VAGAS MASCULINAS</option>
-	            		<option value="VAGAS FEMININAS">VAGAS FEMININAS</option>
-	            		<option value="CARGA HORÁRIA">CARGA HORÁRIA</option>
-	            		<option value="OPERAÇÕES">OPERAÇÕES</option>
-	            	</select>
-	                <input type="search" placeholder="Buscar" id="nome" />
-	                
-	                <a><button id="buscar">Buscar</button></a>
+
+                    <a> <img id="icone-filtro" th:src="@{/imgs/icone-filtro.png}" width="10%" height="10%" alt="" /> </a>
 	            
 	        	</div>
-			<!-- </form>-->
+			 </form>
 			<a th:href="@{/inserirVaga}"><button class="AdicionarEmpresa">+</button></a>
         </div>
+
+        <div class="modal">
+            <div class="modal-content">
+                <span class="close"></span>
+
+                <div id="titleContainer">
+                    <h2>Busca Personalizada</h2>
+                    <h1><span>Preechimento de todos os filtros não é necessário</span></h1>
+                </div>
+
+                <div id="containerModalFiltro">
+
+                    <form method="post" action="/listarVagas">
+
+                        <ul class="flex-outer">
+
+                            <li>
+                                <label for="empresa">Empresa</label>
+                                <input type="text" id="empresa" nome="empresa">
+                            </li>
+
+                            <li>
+                                <label for="tipo">Tipo</label>
+                                <input type="text" id="tipo" nome="tipo">
+                            </li>
+
+                            <li>
+                                <label for="interlocutor">Interlocutor</label>
+                                <input type="text" id="interlocutor" nome="interlocutor">
+                            </li>
+
+                            <li>
+                                <label for="quantidadeVagasMasculinas">Vagas Masculinas</label>
+                                <input type="text" id="quantidadeVagasMasculinas" nome="quantidadeVagasMasculinas">
+                            </li>
+
+                            <li>
+                                <label for="quantidadeVagasFemininas">Vagas Femininas</label>
+                                <input type="text" id="quantidadeVagasFemininas" nome="quantidadeVagasFemininas">
+                            </li>
+                            <li>
+                                <label for="cargaHoraria">Carga Horaria</label>
+                                <input type="text" id="cargaHoraria" nome="cargaHoraria">
+                            </li>
+
+                            <li>
+                                <button type="submit">Buscar</button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <table>
             <thead>
                 <tr>
@@ -55,7 +104,6 @@
             </thead>
             
             <tbody>
-             
             	<tr th:if="${listaVagas.empty}">
             		<td colspan="7">Não há vagas registradas no sistema.</td>
             	</tr>
@@ -72,19 +120,27 @@
                     </td>
                 </tr>
           	</tbody>
-          	<tfoot>
-	        	<tr>
-	        		<td colspan="5"></td>
-	        		<td><span id="spanQtdPaginas" th:text="${pageCounter}"></span></td>
-	        		<td id="previousAndNextButtons">
-	        			<a href="?page=0">&lt;&lt;</a>
-	        			<a th:href="@{?page={contador} (contador = ${previousPage})}">&lt;</a>
-	        			<a th:href="@{?page={contador} (contador = ${nextPage})}">&gt;</a>
-	        			<a th:href="@{?page={page}(page = ${quantidadePaginas - 1})}">&gt;&gt;</a>
-	        		</td>
-	        	</tr>
-		    </tfoot>     
         </table>
+
+        <div id="footer">
+            <ul>
+                <li id="previousAndNextButtons">
+                    <form class ="containerNavegation"action="#" th:action="@{/listarVagas}" method="post">
+                        <a href="?page=0">&lt;&lt;</a>
+                        <a class="a" th:href="@{?page={contador} (contador = ${previousPage})}">&lt;</a>
+                        <a th:href="@{?page={contador} (contador = ${nextPage})}">&gt;</a>
+                        <a th:href="@{?page={page} (page = ${quantidadePaginas - 1})}">&gt;&gt;</a>
+                    </form>
+                </li>
+                <li><p th:text="${'Pagina ' + numPaginaAtual + ' de ' + numTotalPaginas}"> </p></li>
+            </ul>
+        </div>
+        <div class="tap">
+            <div class="botao-container">
+                <a id="botao-voltar" th:href="@{http://localhost:8080}">Voltar</a>
+                <!--<button type="submit" id="botao-enviar">Enviar</button>-->
+            </div>
+        </div>
     </main>
 </body>
 

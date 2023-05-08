@@ -12,12 +12,18 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import javax.swing.text.MaskFormatter;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import application.vaga.VagaPreenchida;
@@ -98,6 +104,7 @@ public class Apenado {
 	private String operacao;
 
 	@OneToOne(mappedBy = "apenado", cascade = CascadeType.ALL)
+	@JsonBackReference(value = "apenado-vagaPreenchida")
 	private VagaPreenchida vagaPreenchida;
 
 	// Métodos comuns
@@ -388,4 +395,91 @@ public class Apenado {
 	}
 	
 	
+}
+
+class ApenadoWithCpf implements Specification<Apenado> {
+
+	private String cpf;
+
+	public ApenadoWithCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	@Override
+	public Predicate toPredicate(Root<Apenado> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		if(cpf == null){
+			return null;
+		}
+		return cb.equal(root.get("cpf"), this.cpf);
+	}
+}
+
+class ApenadoWithNome implements Specification<Apenado> {
+
+	private String nome;
+
+	public ApenadoWithNome(String nome) {
+		this.nome = nome;
+	}
+
+	@Override
+	public Predicate toPredicate(Root<Apenado> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		if(nome == null) {
+			return null;
+		}
+		String nomeLowerCase = nome.toLowerCase();
+		return cb.like(cb.lower(root.get("nome")), "%" + nomeLowerCase + "%");
+	}
+}
+
+class ApenadoWithTelefone implements Specification<Apenado> {
+
+	private String telefone;
+
+
+	public ApenadoWithTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	@Override
+	public Predicate toPredicate(Root<Apenado> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		if(telefone == null) {
+			return null;
+		}
+		return cb.equal(root.get("telefone"), this.telefone);
+	}
+}
+
+class ApenadoWithDataNascimento implements Specification<Apenado> {
+
+	private LocalDate dataNascimento;
+
+	public ApenadoWithDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	@Override
+	public Predicate toPredicate(Root<Apenado> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		if(dataNascimento == null) {
+			return null;
+		}
+		return cb.equal(root.get("dataNascimento"), this.dataNascimento);
+	}
+}
+
+class ApenadoWithNomeDaMae implements Specification<Apenado> {
+
+	private String nomeDaMae;
+
+	public ApenadoWithNomeDaMae(String nomeDaMae) {
+		this.nomeDaMae = nomeDaMae;
+	}
+
+	@Override
+	public Predicate toPredicate(Root<Apenado> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		if(nomeDaMae == null) {
+			return null;
+		}
+		return cb.equal(root.get("nomeDaMae"), this.nomeDaMae);
+	}
 }

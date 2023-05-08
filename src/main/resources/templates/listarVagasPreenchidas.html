@@ -11,7 +11,12 @@
 
 	<main>
 		<div class="title">
-			<img th:src="@{/imgs/logoRD.png}" width="10%" height="10%" alt="" />
+			<div class="title">
+				<a th:href="@{http://localhost:8080}">
+					<img th:src="@{/imgs/logoRD.png}" width="10%" height="10%" alt="" /> <!--Alterado dia 27/04/2023-->
+				</a>
+
+			</div>
 			<!-- <h1>RESSOCIADIGI</h1> -->
 		</div>
 		<div class="top-layer">
@@ -87,6 +92,26 @@
 	        	</tr>
 			</tfoot>
 		</table>
+
+		<!--<div id="footer">
+			<ul>
+				<li id="previousAndNextButtons">
+					<form class ="containerNavegation"action="#" th:action="@{/listarVagas}" method="post">
+						<a href="?page=0">&lt;&lt;</a>
+						<a class="a" th:href="@{?page={contador} (contador = ${previousPage})}">&lt;</a>
+						<a th:href="@{?page={contador} (contador = ${nextPage})}">&gt;</a>
+						<a th:href="@{?page={page} (page = ${quantidadePaginas - 1})}">&gt;&gt;</a>
+					</form>
+				</li>
+				<li><p th:text="${'Pagina ' + numPaginaAtual + ' de ' + numTotalPaginas}"> </p></li>
+			</ul>
+		</div>-->
+		<div class="tap">
+			<div class="botao-container">
+				<a id="botao-voltar" th:href="@{http://localhost:8080}">Voltar</a>
+				<!--<button type="submit" id="botao-enviar">Enviar</button>-->
+			</div>
+		</div>
 	</main>
 </body>
 </html>

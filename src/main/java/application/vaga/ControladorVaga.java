@@ -25,6 +25,9 @@ public class ControladorVaga {
 	private RepositorioVaga service;
 
 	@Autowired
+	private RepositorioVagaCustom vagaRepositoryCustom;
+
+	@Autowired
 	private RepositorioEmpresa repEmpresa;
 
 	@Autowired
@@ -124,17 +127,26 @@ public class ControladorVaga {
 		Page<Vaga> pgVagas = service.findAll(pageable);
 
 		// Manipulação de Páginas
-		int numPaginaAtual = pageable.getPageNumber() + 1;
-		int numTotalPaginas = pgVagas.getTotalPages();
-		model.addAttribute("pageCounter", "Página " + numPaginaAtual + " de " + numTotalPaginas);
-		model.addAttribute("nextPage", ((pageable.getPageNumber() + 1) > numTotalPaginas - 1)
-				? pageable.getPageNumber()
-				: pageable.getPageNumber() + 1);
-		model.addAttribute("previousPage", pageable.getPageNumber() - 1);
-		model.addAttribute("quantidadePaginas", numTotalPaginas);
-
-		model.addAttribute("listaVagas", pgVagas);
+		vagaRepositoryCustom.gerarModel(model,pageable,pgVagas);
 		return "listarVagas";
+	}
+
+	@PostMapping("listarVagas")
+	public String searchVagas(@RequestParam(value = "empresa", required = false) String empresa,
+							  @RequestParam(value = "tipo", required = false) String tipo,
+							  @RequestParam(value = "interlocutor", required = false) String interlocutor,
+							  @RequestParam(value = "quantidadeVagasMasculinas", required = false) String quantidadeVagasMasculinas,
+							  @RequestParam(value = "quantidadeVagasFemininas", required = false) String quantidadeVagasFemininas,
+	                          @RequestParam(value = "cargaHoraria", required = false) String cargaHoraria,
+	                          Model model,
+	                         @PageableDefault(page = 0, size = 2) Pageable pageable) {
+
+		Page<Vaga> pgVagas = vagaRepositoryCustom.findVagaByFilters(empresa,tipo,interlocutor,quantidadeVagasMasculinas,quantidadeVagasFemininas,cargaHoraria,pageable);
+
+		vagaRepositoryCustom.gerarModel(model,pageable,pgVagas);
+
+		return "listarVagas";
+
 	}
 
 	@GetMapping("/alterarVaga")

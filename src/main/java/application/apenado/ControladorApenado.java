@@ -1,5 +1,6 @@
 package application.apenado;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
@@ -7,22 +8,29 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @Controller
 public class ControladorApenado {
 
     @Autowired
     private RepositorioApenado service;
+
+    @Autowired
+    private RepositorioApenadoImpl apenadoRepository;
+
+    @Autowired
+    private ApenadoRepo repo;
 
     @GetMapping("/mainPage")
     public String mainPage(Model model) {
@@ -34,70 +42,83 @@ public class ControladorApenado {
         return "signIn";
     }
 
-    @GetMapping("/listarApenados")
-    public String listarApenados(Model model, @PageableDefault(page = 0, size = 2) Pageable pageable) {
-    	
-    	Page<Apenado> pgApenado = service.findAll(pageable);
-    	
-        // Manipulação das Páginas
-        int numPaginaAtual = pageable.getPageNumber() + 1;
-        int numTotalPaginas = pgApenado.getTotalPages();
-        model.addAttribute("pageCounter", "Página " + numPaginaAtual + " de " + numTotalPaginas);
-        model.addAttribute("nextPage", ((pageable.getPageNumber() + 1) > numTotalPaginas - 1)
-                ? pageable.getPageNumber()
-                : pageable.getPageNumber() + 1);
-        model.addAttribute("previousPage", pageable.getPageNumber() - 1);
-        model.addAttribute("quantidadePaginas", numTotalPaginas);
 
-        model.addAttribute("lista", pgApenado);
-        return "listarApenados";
-    }
+//    @GetMapping("/teste")
+//    public Page<Apenado> testeApenados(@RequestParam(value = "nomeDaMae", required = false) String nomeDaMae,
+//                                       Model model,
+//                                       @PageableDefault(page = 0, size = 2) Pageable pageable){
+//
+////        Specification<Apenado> spec = Specification.where(new ApenadoWithNomeDaMae(nomeDaMae));
+////
+////        return repo.findAll(spec, pageable);
+//
+//                return service.findAll(pageable);
+//    }
 
-    @PostMapping("/listarApenados")
-    public String listarApenadosFiltering(@RequestParam("searchBy") String searchBy,
-            @RequestParam("value") String value, Model model, @PageableDefault(page = 0, size = 2) Pageable pageable) {
+    @RequestMapping("listarApenados")
+    public String listarApenados(@RequestParam(value = "cpf", required = false) String cpf,
+                                 @RequestParam(value = "nome", required = false) String nome,
+                                 @RequestParam(value = "telefone", required = false) String telefone,
+                                 @RequestParam(value = "dataNascimento", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataNascimento,
+                                 @RequestParam(value = "nomeDaMae", required = false) String nomeDaMae,
+                                 Model model,
+                                 @PageableDefault(page = 0, size = 2) Pageable pageable) {
 
-        Page<Apenado> pgApenado;
 
-        // Caso valor seja branco ou vazio, a ideia é que se torne null para evitar
-        // levantar exceção
-        // E consequentemente quebrar a aplicação. Pois a query pode ser feita com null,
-        // mas não com vazio
-        // Ou branco.
-        value = (value.isBlank() || value.isEmpty()) ? null : value.toLowerCase();
-        switch (searchBy) {
-            case "NOME":
-                pgApenado = service.findByNome(value, pageable);
-                break;
-            case "CPF":
-                pgApenado = service.findByCpf(value, pageable);
-                break;
-            case "DATA DE NASCIMENTO":
-                pgApenado = service.findByDataNascimento(value, pageable);
-                break;
-            case "NOME DA MÃE":
-                pgApenado = service.findByNomeDaMae(value, pageable);
-                break;
-            case "CONTATO":
-                pgApenado = service.findByTelefone(value, pageable);
-                break;
-            default:
-                pgApenado = service.findAll(pageable);
-                break;
+//        Specification<Apenado> spec = Specification.where(new ApenadoWithNome(nome))
+//                                .and(new ApenadoWithCpf(cpf))
+//                                .and(new ApenadoWithNomeDaMae(nomeDaMae))
+//                                .and(new ApenadoWithTelefone(telefone))
+//                                .and(new ApenadoWithDataNascimento(dataNascimento));
+
+        Specification<Apenado> spec = Specification.where(new ApenadoWithNome(nome));
+
+        if(cpf != null && !cpf.isEmpty()) {
+            spec.and(new ApenadoWithCpf(cpf));
+        }
+        if(nomeDaMae != null && !nomeDaMae.isEmpty()) {
+            spec.and(new ApenadoWithNomeDaMae(nomeDaMae));
         }
 
-        int numPaginaAtual = pageable.getPageNumber() + 1;
-        int numTotalPaginas = pgApenado.getTotalPages();
-        model.addAttribute("pageCounter", "Página " + numPaginaAtual + " de " + numTotalPaginas);
-        model.addAttribute("nextPage", ((pageable.getPageNumber() + 1) > numTotalPaginas - 1)
-                ? pageable.getPageNumber()
-                : pageable.getPageNumber() + 1);
-        model.addAttribute("previousPage", pageable.getPageNumber() - 1);
-        model.addAttribute("quantidadePaginas", numTotalPaginas);
 
-        model.addAttribute("lista", pgApenado);
+//        Specification<Apenado> spec = Specification.where(new ApenadoWithNome(nome)).
+
+
+//        Page<Apenado> pgApenado = service.findAll(pageable);
+
+        Page<Apenado> pgApenado = repo.findAll(spec, pageable);
+
+        apenadoRepository.gerarModel(model, pageable, pgApenado);
+
         return "listarApenados";
-    }
+}
+
+//    @GetMapping("/listarApenados")
+//    public String listarApenados(Model model, @PageableDefault(page = 0, size = 2) Pageable pageable) {
+//
+//        Page<Apenado> pgApenado = service.findAll(pageable);
+//
+//        apenadoRepository.gerarModel(model, pageable, pgApenado);
+//
+//        return "listarApenados";
+//    }
+
+
+//    @PostMapping("/listarApenados")
+//    public String searchApenados(@RequestParam(value = "cpf", required = false) String cpf,
+//                                 @RequestParam(value = "nome", required = false) String nome,
+//                                 @RequestParam(value = "telefone", required = false) String telefone,
+//                                 @RequestParam(value = "dataNascimento", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataNascimento,
+//                                 @RequestParam(value = "nomeDaMae", required = false) String nomeDaMae,
+//                                 Model model,
+//                                 @PageableDefault(page = 0, size = 2) Pageable pageable) {
+//
+//        Page<Apenado> pgApenado = apenadoRepository.findApenadoByFilters(cpf, nome, telefone, dataNascimento, nomeDaMae, pageable);
+//
+//        apenadoRepository.gerarModel(model, pageable, pgApenado);
+//        return "listarApenados";
+//    }
+
 
     @ModelAttribute("cnhsList")
     public List<CNH> cnhsList() {

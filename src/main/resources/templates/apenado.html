@@ -12,13 +12,21 @@
 <body>
     <main>
         <nav id="menu-lateral">
-            <img th:src="@{/imgs/logoRD.png}" alt="" />
+            <a th:href="@{http://localhost:8080}">
+                <img th:src="@{/imgs/logoRD.png}" alt="" />
+            </a>
             <ul>
                 <li id="dp">Dados pessoais</li>
                 <li id="ende">Endereço</li>
                 <li id="inst">Instrução</li>
                 <li id="situ">Situacional</li>
             </ul>
+
+            <div class="tap">
+                <div class="botao-container">
+                    <a id="botao-voltar" th:href="@{http://localhost:8080}">Voltar</a>
+                </div>
+            </div>
         </nav>
         <section>
 

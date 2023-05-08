@@ -33,16 +33,11 @@ body {
     width: 100vw;
 }
 /****** Styles *******/
-.header-tabela{
-    width: 100%;
-    background-color: rgba(222, 222, 222, 1);
-    padding: 20px;
-    
-}
+
 .buscador{
     display: flex;
     justify-content: space-between;
-    width: 30rem;
+    width: 35rem;
     
 }
 
@@ -51,6 +46,120 @@ body {
 }
 .a{
     background-color: #20B2AA;
+}
+
+/*Estilizacao modal para filtro*/
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal .modal-content #titleContainer {
+    padding: 10px;
+}
+
+.modal .modal-content span {
+    color: red;
+    font-size: 15px;
+    display: inline-block;
+
+}
+
+.modal-content {
+    background-color: #fff;
+    max-width: 50%;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 5px;
+    border-color: #414178;
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.modal-content{
+    width: 30%;
+    border-color: rgb(65, 65, 120);
+    border-style: solid;
+    border-radius: 10px;
+}
+
+#containerModalFiltro {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#containerModalFiltro * {
+    box-sizing: border-box;
+}
+
+.flex-outer{
+    list-style-type: none;
+    padding: 0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.flex-outer li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.flex-outer > li:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.flex-outer li label,
+.flex-outer li p {
+    padding: 8px;
+    font-weight: 300;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+}
+
+.flex-outer > li > label,
+.flex-outer li p {
+    flex: 1 0 120px;
+    max-width: 220px;
+}
+
+.flex-outer > li > label + * {
+    flex: 1 0 220px;
+}
+
+.flex-outer li p {
+    margin: 0;
+}
+
+.flex-outer li button {
+    margin-left: auto;
+    padding: 8px 16px;
+    border: none;
+    background: #333;
+    color: #f2f2f2;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    border-radius: 2px;
+}
+
+#icone-filtro{
+    height: 38px;
+    width: 38px;
+    cursor: pointer;
 }
 
 
@@ -99,6 +208,10 @@ body {
 .header-tabela{
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    background-color: rgba(222, 222, 222, 1);
+    padding: 20px;
+    height: 10%;
 }
 thead th td {
     display: flex;
@@ -316,23 +429,59 @@ img{
     color: #fff;
     background: #20B2AA;
   }
-  tbody{
-    margin-bottom: 10rem;
-  }
+    tbody{
+        margin-bottom: 10rem;
+    }
 
-  tfoot {
-	background-color: transparent;
-    margin-top: 400px;
-    height: 4rem;
-    border-top: 0.65px solid rgba(65, 65, 65, 0.832);
-    width: 50rem;
-}
-tfoot tr{
-    background-color: transparent;
-    
-}
+    #footer ul {
+        list-style: none;
+        padding: 10px;
+    }
 
-.containerNavetion{
+    #footer ul li{
+        float:right;
+        margin-left: 10px;
 
-    width: 10rem;
-}
+    }
+
+    .containerNavegation{
+        width: 10rem;
+
+    }
+
+    .tap{
+            display: flex;
+            width: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 60px 30px 50px;
+
+        }
+
+    .botao-container{
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            column-gap: 30px;
+
+
+        }
+    #botao-voltar{
+        background-color: rgba(99, 96, 96, 1);
+        color: white;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
+        text-transform: uppercase;
+        width: 9rem;
+        height: 3rem;
+        font-family: 'Arial';
+        font-style: none;
+        font-size: 1.2rem;
+        line-height: 45px;
+        text-decoration: none;
+        text-align: center;
+        letter-spacing: 0.08em;
+        border: none;
+        border-radius: 50px;
+
+    }

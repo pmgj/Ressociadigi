@@ -5,7 +5,6 @@
     <title>Lista de Apenados</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" th:href="@{css/listarEmpresas.css}" />
-    <!-- <link rel="stylesheet" th:href="@{/css/result-style.css}" /> -->
     <script defer="defer" th:src="@{/js/result.js}"></script>
     <link rel="icon" th:href="@{/imgs/logoRD.png}">
 </head>
@@ -14,7 +13,10 @@
 	
 	<main>
         <div class="title">
-            <img th:src="@{/imgs/logoRD.png}" width="10%" height="10%" alt="" />
+			<a th:href="@{http://localhost:8080}">
+				<img th:src="@{/imgs/logoRD.png}" width="10%" height="10%" alt="" /> <!--Alterado dia 27/04/2023-->
+			</a>
+
         </div>
         <div class="top-layer">
             <legend>TODOS</legend>
@@ -23,72 +25,121 @@
         	
         	<form action="#" th:action="@{/listarApenados}" method="post">
 	            <div class="buscador">
-	            	<select id="select-tipoBusca" name="searchBy">
-	            		<option value="NOME">NOME</option>
-	            		<option value="CPF">CPF</option>
-	            		<option value="DATA DE NASCIMENTO">DATA DE NASCIMENTO</option>
-	            		<option value="NOME DA MÃE">NOME DA MÃE</option>
-	            		<option value="CONTATO">CONTATO</option>
-	            	</select>
-	                <input type="search" placeholder="Buscar" name="value" id="value" />
-	                
-	                <a><button id="buscar">Buscar</button></a>
+
+					<a> <img id="icone-filtro" th:src="@{/imgs/icone-filtro.png}" width="10%" height="10%" alt="" /> </a>
 	        	</div>
 			 </form>
 			 
             <a th:href="@{/inserirApenado}"><button class="AdicionarEmpresa">+</button></a>
 			
         </div>
+
+		<div class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<!-- Add your modal content here -->
+				<div id="titleContainer">
+					<h2>Busca Personalizada</h2>
+					<h1><span>Preenchimento de todos os filtros não é necessário</span></h1>
+				</div>
+				<!-- Update the form element with the correct method and action -->
+				<div id="containerModalFiltro">
+				<form method="post" action="/listarApenados">
+
+					<ul class="flex-outer">
+					<!-- Remove the hidden input fields for form parameters, as they will be sent as request parameters automatically -->
+
+					<!-- Add your search form fields here -->
+						<li>
+							<label for="cpf">CPF</label>
+							<input type="text" id="cpf" name="cpf" />
+						</li>
+
+						<li>
+							<label for="nome">Nome</label>
+							<input type="text" id="nome" name="nome"/>
+						</li>
+
+						<li>
+							<label for="telefone">Telefone</label>
+							<input type="text" id="telefone" name="telefone"  />
+						</li>
+
+						<li>
+							<label for="dataNascimento">Data Nascimento</label>
+							<input type="date" id="dataNascimento" name="dataNascimento" pattern="\d{4}\-\d{2}\-\d{2}"/>
+						</li>
+
+						<li>
+							<label for="nomeDaMae">Nome da Mãe</label>
+							<input type="text" id="nomeDaMae" name="nomeDaMae"  />
+						</li>
+
+						<li>
+							<button type="submit">Buscar</button>
+						</li>
+					</ul>
+				</form>
+				</div>
+			</div>
+		</div>
+
         <table>
             <thead>
                 <tr>
+					<th>CPF</th>
                 	<th>NOME</th>
-	                <th>CPF</th>
+					<th>DATA DE NASCIMENTO</th>
+	                <th>TELEFONE</th>
+	                <th>NOME DA MAE</th>
 	                <th>HABILIDADES</th>
 	                <th>ARTIGOS</th>
-	                <th>CURSOS</th>
-	                <th>DATA DE NASCIMENTO</th>
-	                <th>NOME DA MÃE</th>
-	                <th>CONTATO</th>
 	                <th>AÇÕES</th>
                 </tr>
             </thead>
-            
-            <tbody>
-             
-            		<tr th:if="${lista.empty}">
-		                <td colspan="8">Nenhum registro armazenado.</td>
-		            </tr>
-		            <tr th:each="item : ${lista}">
-		                <td data-label="NOME"><span id="nome" th:text="${item.nome}">Nome</span></td>
-		                <td data-label="CPF"><span id="cpf" th:text="${item.cpf}">CPF</span></td>
-		                <td data-label="HABILIDADES"><span id="habilidades" th:text="${item.habilidades}">Habilidades</span></td> <!-- Teste -->
-		                <td data-label="ARTIGOS"><span id="artigos" th:text="${item.artigos}">Artigos</span></td> <!-- Teste -->
-		                <td data-label="CURSOS"><span id="cursos" th:text="${item.cursos}">Cursos</span></td> <!-- Teste -->
-		                <td data-label="DATA DE NASCIMENTO"><span id="dataNascimento" th:text="${item.dataNascimento}">Data de Nascimento</span></td>
-		                <td data-label="NOME MÃE"><span id="nomeMae" th:text="${item.nomeDaMae}">Nome da Mãe</span></td>
-		                <td data-label="CONTATO"><span id="contato" th:text="${item.telefone}">Contato</span></td>
-                    <td id="Btn-remove-edit" width="180">
-                        <a th:href="@{/alterarApenado(cpf=${item.cpf})}"><button>Editar</button></a>
-                        <a th:href="@{/removerApenado(cpf=${item.cpf})}" th:attr="data-nome=${item.nome}, data-cpf=${item.cpf}"><button>Remover</button></a>
-                    </td>
-                	</tr>
-          	</tbody>
-          	<tfoot>
-	        	<tr>
-	        		<td colspan="6"></td>
-	        		<td><span id="spanQtdPaginas" th:text="${pageCounter}"></span></td>
-	        		<td id="previousAndNextButtons">
-	        			<form class ="containerNavetion"action="#" th:action="@{/listarApenados}" method="post">
-	        				<a href="?page=0">&lt;&lt;</a>
-		        			<a class="a" th:href="@{?page={contador} (contador = ${previousPage})}">&lt;</a>
-		        			<a th:href="@{?page={contador} (contador = ${nextPage})}">&gt;</a>
-		        			<a th:href="@{?page={page}(page = ${quantidadePaginas - 1})}">&gt;&gt;</a>
-	        			</form>
-	        		</td>
-	        	</tr>
-		    </tfoot>    
-        </table>
+
+			<tbody>
+
+			<tr th:if="${lista.empty}">
+				<td colspan="8">Nenhum registro armazenado.</td>
+			</tr>
+			<tr th:each="item : ${lista}">
+				<td data-label="NOME"><span id="nome" th:text="${item.nome}">Nome</span></td>
+				<td data-label="CPF"><span id="cpf" th:text="${item.cpf}">CPF</span></td>
+				<td data-label="DATA DE NASCIMENTO"><span id="dataNascimento" th:text="${item.dataNascimento}">Data de Nascimento</span></td>
+				<td data-label="CONTATO"><span id="contato" th:text="${item.telefone}">Contato</span></td>
+				<td data-label="NOME MÃE"><span id="nomeMae" th:text="${item.nomeDaMae}">Nome da Mãe</span></td>
+				<td data-label="HABILIDADES"><span id="habilidades" th:text="${item.habilidades}">Habilidades</span></td>
+				<td data-label="ARTIGOS"><span id="artigos" th:text="${item.artigos}">Artigos</span></td>
+				<td id="Btn-remove-edit" width="180">
+					<a th:href="@{/alterarApenado(cpf=${item.cpf})}"><button>Editar</button></a>
+					<a id="botao-remover" th:href="@{/removerApenado(cpf=${item.cpf})}" th:attr="data-nome=${item.nome}, data-cpf=${item.cpf}"><button>Remover</button></a>
+				</td>
+			</tr>
+			</tbody>
+
+
+		</table>
+		<div id="footer">
+			<ul>
+				<li id="previousAndNextButtons">
+					<div class ="containerNavegation">
+						<a th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},page=0)}">&lt;&lt;</a>
+						<a class="a" th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},page=${previousPage})}">&lt;</a>
+						<a th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},page=${nextPage})}">&gt;</a>
+						<a th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},page=${quantidadePaginas - 1})}">&gt;&gt;</a>
+					</div>
+				</li>
+				<li><p th:text="${'Pagina ' + numPaginaAtual + ' de ' + numTotalPaginas}"> </p></li>
+			</ul>
+		</div>
+
+		<div class="tap">
+			<div class="botao-container">
+				<a id="botao-voltar" th:href="@{http://localhost:8080}">Voltar</a>
+				<!--<button type="submit" id="botao-enviar">Enviar</button>-->
+			</div>
+		</div>
     </main>
 </body>
 </html>

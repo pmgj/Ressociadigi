@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import application.apenado.Apenado;
@@ -24,6 +25,7 @@ public class VagaPreenchida {
 	// Terá uma lista de Apenados
 	@OneToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "ID_APENADO", referencedColumnName = "cpf")
+	@JsonManagedReference(value = "apenado-vagaPreenchida")
 	private Apenado apenado;
 	// Terá uma única vaga.
 	@ManyToOne
