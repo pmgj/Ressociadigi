@@ -123,22 +123,21 @@
         </table>
 
         <div id="footer">
-            <ul>
-                <li id="previousAndNextButtons">
-                    <form class ="containerNavegation"action="#" th:action="@{/listarVagas}" method="post">
-                        <a href="?page=0">&lt;&lt;</a>
-                        <a class="a" th:href="@{?page={contador} (contador = ${previousPage})}">&lt;</a>
-                        <a th:href="@{?page={contador} (contador = ${nextPage})}">&gt;</a>
-                        <a th:href="@{?page={page} (page = ${quantidadePaginas - 1})}">&gt;&gt;</a>
-                    </form>
-                </li>
-                <li><p th:text="${'Pagina ' + numPaginaAtual + ' de ' + numTotalPaginas}"> </p></li>
-            </ul>
-        </div>
-        <div class="tap">
             <div class="botao-container">
                 <a id="botao-voltar" th:href="@{http://localhost:8080}">Voltar</a>
-                <!--<button type="submit" id="botao-enviar">Enviar</button>-->
+            </div>
+
+            <div id="pagination">
+
+                <div id="pageCounter"><p th:text="${'Pagina ' + numPaginaAtual + ' de ' + numTotalPaginas}"> </p></div>
+
+                <div id="previousAndNextButtons">
+                    <a href="?page=0">&lt;&lt;</a>
+                    <a th:href="@{?page={contador} (contador = ${previousPage})}">&lt;</a>
+                    <a th:href="@{?page={contador} (contador = ${nextPage})}">&gt;</a>
+                    <a th:href="@{?page={page}(page = ${quantidadePaginas - 1})}">&gt;&gt;</a>
+                </div>
+
             </div>
         </div>
     </main>

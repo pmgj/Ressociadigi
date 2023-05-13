@@ -41,12 +41,10 @@ body {
     
 }
 
-.select-tipoBusca{
+.select-tipoBusca {
     width: 2rem;
 }
-.a{
-    background-color: #20B2AA;
-}
+
 
 /*Estilizacao modal para filtro*/
 
@@ -258,7 +256,7 @@ table tbody tr td {
 table tbody tr td button {
     background: rgb(229, 115, 21);
     border: none;
-    border-radius: 20px;
+    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(34, 34, 34, 0.2);
     bottom: -30px;
     color: #fff;
@@ -266,6 +264,7 @@ table tbody tr td button {
     font-weight: 700;
     left: 50%;
     padding: 10px 0;
+    margin-right: 5px;
     position: absolute;
     transform: translate(-50%, 50%);
     transition: background 0.12s ease-out;
@@ -277,17 +276,16 @@ table tbody tr td button:hover, table tbody tr td button:focus {
 }
 
 
-
 #previousAndNextButtons a{
 	text-decoration: none;
 	font-size: large;
 	font-weight: bold;
-	color: black;	
-	background-color: orange;
-	border: 1px solid rgba(0, 0, 0, 0.5);
-	border-radius: 10px;
+	color: white;
+	background-color: rgb(229, 115, 21);
+    box-shadow: 0 4px 8px rgba(34, 34, 34, 0.2);
+	border-radius: 8px;
 	margin-left: 10px;
-	padding: 3px;
+	padding: 2px 10px;
 }
 
 table tbody tr td:before {
@@ -433,20 +431,19 @@ img{
         margin-bottom: 10rem;
     }
 
-    #footer ul {
-        list-style: none;
-        padding: 10px;
-    }
-
-    #footer ul li{
-        float:right;
-        margin-left: 10px;
+    #footer {
+        display: flex;
+        flex-direction: row;
+        margin-top: 15px;
+        justify-content: space-between;
+        width: 100%;
 
     }
 
-    .containerNavegation{
-        width: 10rem;
-
+    #pagination {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
 
     .tap{
@@ -464,24 +461,23 @@ img{
             justify-content: center;
             flex-direction: row;
             column-gap: 30px;
+    }
 
-
-        }
     #botao-voltar{
-        background-color: rgba(99, 96, 96, 1);
-        color: white;
+        background-color: #fff;
+        color: rgb(229, 115, 21);
+        border: 2px solid rgb(229, 115, 21);
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
         text-transform: uppercase;
-        width: 9rem;
-        height: 3rem;
-        font-family: 'Arial';
+        padding: 10px;
+        /*font-family: 'Arial';*/
         font-style: none;
-        font-size: 1.2rem;
+        font-size: 1rem;
+        font-weight: 700;
         line-height: 45px;
         text-decoration: none;
         text-align: center;
         letter-spacing: 0.08em;
-        border: none;
-        border-radius: 50px;
+        border-radius: 8px;
 
     }
