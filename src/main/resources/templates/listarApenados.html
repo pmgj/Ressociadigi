@@ -121,25 +121,25 @@
 				</td>
 			</tr>
 			</tbody>
+		</table>
 
-			<div id="confirmModal" class="modal fade" role="dialog">
-				<div class="modal-dialog modal-lg">
-					<div class="modal-content">
-						<div class="modal-header justify-content-center">
-							<h4 class="modal-title">Confirmar exclusão</h4>
-						</div>
-						<div class="modal-body">
-							<p>Você tem certeza que deseja excluir o apenado <strong><span id="confirmNome"></span></strong>?</p>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-bs-dismiss="modal">Cancelar</button>
-							<a id="botao-confirmar-remover" href="#" class="btn btn-danger">Excluir</a>
-						</div>
+		<div id="confirmModal" class="modal fade" role="dialog">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header justify-content-center">
+						<h4 class="modal-title">Confirmar exclusão</h4>
+					</div>
+					<div class="modal-body">
+						<p>Você tem certeza que deseja excluir o apenado <strong><span id="confirmNome"></span></strong>?</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-bs-dismiss="modal">Cancelar</button>
+						<a id="botao-confirmar-remover" href="#" class="btn btn-danger">Excluir</a>
 					</div>
 				</div>
 			</div>
+		</div>
 
-		</table>
 		<div id="footer">
 				<div class="botao-container">
 					<a id="botao-voltar" th:href="@{http://localhost:8080}">Voltar</a>
