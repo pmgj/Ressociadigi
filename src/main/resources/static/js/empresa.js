@@ -25,6 +25,9 @@ var modal = document.querySelector('.modal');
 
 var closeBtn = document.querySelector('.close');
 
+
+
+
 // Add click event listener to the image element
 iconeFiltro.addEventListener('click', function() {
     modal.style.display = 'block';
@@ -38,6 +41,14 @@ modal.addEventListener('click', function(event) {
     if (event.target === modal) {
         modal.style.display = 'none';
     }
+});
+
+$(document).on("click", "#botao-remover", function () {
+    var nome = $(this).data('nome');
+    $("#confirmNome").text(nome);
+    var cnpj = $(this).data('cnpj');
+    $("#botao-confirmar-remover").attr("href", "/removerEmpresa?cnpj=" + cnpj);
+    $('#confirmModal').modal('show');
 });
 
 
