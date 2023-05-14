@@ -106,7 +106,6 @@ section{
 }
 
 article{
-    margin-top: 3rem;
    /*  border: solid 4px ; */
     width: 100%;
     display: flex;
@@ -114,12 +113,8 @@ article{
    
 }
 .servicos{
-   
-    width: 82.5rem;
-    height: 80rem;
-    background-color: aqua;
-    background: rgb(255,255,255);
-    background: linear-gradient(0deg, rgba(255,255,255,1) 55%, rgba(0,112,255,1) 55%);
+    width: 80%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     
@@ -160,6 +155,15 @@ article{
     background: rgb(82, 81, 79);
     /* background: linear-gradient(to right, #33ccff 0%, #ff99cc 100%); */
 }
+
+.cropped1 {
+    width: 352px; /* width of container */
+    height: 210px; /* height of container */
+    object-fit: cover;
+    /*object-position: 20% 10%;*/
+    border: 5px solid black;
+}
+
 h4{
     font-size: 1.7rem;
     padding: 20px; 
@@ -177,11 +181,11 @@ h4:hover{
    letter-spacing: 1px;
 
 }
-.imagem-card{
-    background-size: 390%;
-    width: 90%;
-    height: 90%;
-}
+/*.imagem-card{*/
+/*    background-size: 390%;*/
+/*    width: 90%;*/
+/*    height: 90%;*/
+/*}*/
 
 .descricao-card{
     padding: 15px; 

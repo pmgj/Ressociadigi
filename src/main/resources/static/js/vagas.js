@@ -1,22 +1,3 @@
-
-//mudar leganda
-
-/*
-let legenda = document.querySelector('.legenda')
-let select = document.querySelector('#select-tipoBusca')
-
-function teste (){
-     if (select.options[0].selected){
-        legenda.innerHTML = 'dhiw3hed'
-    }
-     if (select.options[3].selected){
-        legenda.innerHTML = '2'
-    }
-
-} 
-teste() 
-*/
-
 //Funcionamento de modal do icone de filtro
 
 var iconeFiltro = document.querySelector('#icone-filtro');
@@ -24,9 +5,6 @@ var iconeFiltro = document.querySelector('#icone-filtro');
 var modal = document.querySelector('.modal');
 
 var closeBtn = document.querySelector('.close');
-
-
-
 
 // Add click event listener to the image element
 iconeFiltro.addEventListener('click', function() {
@@ -46,9 +24,17 @@ modal.addEventListener('click', function(event) {
 $(document).on("click", "#botao-remover", function () {
     var nome = $(this).data('nome');
     $("#confirmNome").text(nome);
-    var cnpj = $(this).data('cnpj');
-    $("#botao-confirmar-remover").attr("href", "/removerEmpresa?cnpj=" + cnpj);
+    var id = $(this).data('id');
+    $("#botao-confirmar-remover").attr("href", "/removerVaga?id=" + id);
     $('#confirmModal').modal('show');
 });
 
 
+function handleCheckbox(chbx){
+    const listaDeCheckboxesIndividuais = document.querySelectorAll("#individual-checkbox")
+    if(chbx.checked == true){
+        listaDeCheckboxesIndividuais.forEach(i => i.checked = true)
+    } else {
+        listaDeCheckboxesIndividuais.forEach(i => i.checked = false)
+    }
+}
