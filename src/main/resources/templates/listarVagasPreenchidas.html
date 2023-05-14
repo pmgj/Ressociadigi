@@ -2,10 +2,12 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" th:href="@{css/listarEmpresas.css}" />
-<script defer="defer" th:src="@{/js/*}"></script>
-<link rel="icon" th:href="@{/imgs/logoRD.png}">
-<title>Lista de Vagas Preenchidas</title>
+	<link rel="stylesheet" th:href="@{css/listarEmpresas.css}" />
+	<script defer="defer" th:src="@{/js/*}"></script>
+	<link rel="icon" th:href="@{/imgs/logoRD.png}">
+	<!-- Bootstrap Font Icon CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+	<title>Lista de Vagas Preenchidas</title>
 </head>
 <body>
 
@@ -38,7 +40,9 @@
 	            
 	        	</div>
 			<!-- </form>-->
-			<a th:href="@{/preencherVaga}"><button class="AdicionarEmpresa">+</button></a>
+			<a th:href="@{/preencherVaga}">
+				<i class="bi bi-plus-circle-fill" style="font-size: 2rem"></i>
+			</a>
 		</div>
 		<table>
 			<thead>
