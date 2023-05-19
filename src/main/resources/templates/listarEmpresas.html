@@ -165,10 +165,10 @@
                 <div id="pageCounter"><p th:text="${'Pagina ' + numPaginaAtual + ' de ' + numTotalPaginas}"> </p></div>
 
                 <div id="previousAndNextButtons">
-                        <a href="?page=0">&lt;&lt;</a>
-                        <a th:href="@{?page={contador} (contador = ${previousPage})}">&lt;</a>
-                        <a th:href="@{?page={contador} (contador = ${nextPage})}">&gt;</a>
-                        <a th:href="@{?page={page}(page = ${quantidadePaginas - 1})}">&gt;&gt;</a>
+                        <a th:href="@{listarEmpresas(cnpj=${#httpServletRequest.getParameter('cnpj')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},responsavel=${#httpServletRequest.getParameter('responsavel')?:''},interlocutor=${#httpServletRequest.getParameter('interlocutor')?:''},email=${#httpServletRequest.getParameter('email')?:''},cidade=${#httpServletRequest.getParameter('cidade')?:''}, page=0)}">&lt;&lt;</a>
+                        <a th:href="@{listarEmpresas(cnpj=${#httpServletRequest.getParameter('cnpj')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},responsavel=${#httpServletRequest.getParameter('responsavel')?:''},interlocutor=${#httpServletRequest.getParameter('interlocutor')?:''},email=${#httpServletRequest.getParameter('email')?:''},cidade=${#httpServletRequest.getParameter('cidade')?:''}, page=${previousPage})}">&lt;</a>
+                        <a th:href="@{listarEmpresas(cnpj=${#httpServletRequest.getParameter('cnpj')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},responsavel=${#httpServletRequest.getParameter('responsavel')?:''},interlocutor=${#httpServletRequest.getParameter('interlocutor')?:''},email=${#httpServletRequest.getParameter('email')?:''},cidade=${#httpServletRequest.getParameter('cidade')?:''}, page=${nextPage})}">&gt;</a>
+                        <a th:href="@{listarEmpresas(cnpj=${#httpServletRequest.getParameter('cnpj')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},responsavel=${#httpServletRequest.getParameter('responsavel')?:''},interlocutor=${#httpServletRequest.getParameter('interlocutor')?:''},email=${#httpServletRequest.getParameter('email')?:''},cidade=${#httpServletRequest.getParameter('cidade')?:''}, page=${quantidadePaginas - 1})}">&gt;&gt;</a>
                 </div>
 
             </div>
