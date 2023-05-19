@@ -51,16 +51,16 @@ VALUES
 
 INSERT INTO `apenado` (`cpf`,`nome`,`nome_da_mae`,`data_nascimento`,`telefone`,`sexo_biologico`)
 VALUES
-    (68891531550,"Karleigh","","2023-11-18","14972413864","MASCULINO"),
-    (92532699480,"Hasad","","2022-10-28","22360741609","MASCULINO"),
-    (44248276007,"Josephine","","2024-02-02","18823887590","MASCULINO"),
-    (20540538336,"Cathleen","","2023-01-05","15524602021","MASCULINO"),
-    (84220451808,"Marsden","","2023-06-03","83144642468","MASCULINO"),
-    (18092483098,"Dean","","2023-07-20","35873137858","MASCULINO"),
-    (34544207594,"Winter","","2023-08-16","12428808043","MASCULINO"),
-    (76307126851,"Valentine","","2024-02-13","71282213635","MASCULINO"),
-    (57598551407,"Chadwick","","2022-07-01","03846011887","MASCULINO"),
-    (78250606147,"Callum","","2022-08-09","68127938415","MASCULINO");
+    (68891531550,"Karleigh","Maria","2023-11-18","14972413864","MASCULINO"),
+    (92532699480,"Hasad","Maria","2022-10-28","22360741609","MASCULINO"),
+    (44248276007,"Josephine","Maria","2024-02-02","18823887590","MASCULINO"),
+    (20540538336,"Cathleen","Maria","2023-01-05","15524602021","MASCULINO"),
+    (84220451808,"Marsden","Maria","2023-06-03","83144642468","MASCULINO"),
+    (18092483098,"Dean","Maria","2023-07-20","35873137858","MASCULINO"),
+    (34544207594,"Winter","Maria","2023-08-16","12428808043","MASCULINO"),
+    (76307126851,"Valentine","Maria","2024-02-13","71282213635","MASCULINO"),
+    (57598551407,"Chadwick","Maria","2022-07-01","03846011887","MASCULINO"),
+    (78250606147,"Callum","Maria","2022-08-09","68127938415","MASCULINO");
 INSERT INTO `apenado` (`cpf`,`nome`,`nome_da_mae`,`data_nascimento`,`telefone`,`sexo_biologico`)
 VALUES
     (51264803201,"Selma","","2023-07-25","35817302984","MASCULINO"),

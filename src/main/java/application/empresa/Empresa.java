@@ -6,10 +6,16 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import application.vaga.Vaga;
+import org.springframework.data.domain.Page;
+import org.springframework.data.jpa.domain.Specification;
 
 @Entity
 public class Empresa {
@@ -176,4 +182,107 @@ public class Empresa {
 		this.complemento = complemento;
 	}
 
+}
+
+class EmpresaWithCnpj implements Specification<Empresa> {
+
+	private String cnpj;
+
+	public EmpresaWithCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+
+
+	@Override
+	public Predicate toPredicate(Root<Empresa> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		if(cnpj == null) {
+			return cb.isTrue(cb.literal(true));
+		}
+		return cb.equal(root.get("cnpj"), this.cnpj);
+	}
+}
+
+class EmpresaWithNome implements Specification<Empresa> {
+
+	private String nome;
+
+	public EmpresaWithNome(String nome) {
+		this.nome = nome;
+	}
+
+	@Override
+	public Predicate toPredicate(Root<Empresa> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		if(nome == null) {
+			return cb.isTrue(cb.literal(true));
+		}
+		return cb.equal(root.get("nome"), this.nome);
+	}
+}
+
+class EmpresaWithResponsavel implements Specification<Empresa> {
+
+	private String responsavel;
+
+	public EmpresaWithResponsavel(String responsavel) {
+		this.responsavel = responsavel;
+	}
+
+	@Override
+	public Predicate toPredicate(Root<Empresa> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		if(responsavel == null) {
+			return cb.isTrue(cb.literal(true));
+		}
+		return cb.equal(root.get("responavel"), this.responsavel);
+	}
+}
+
+class EmpresaWithInterlocutor implements Specification<Empresa> {
+
+	private String interlocutor;
+
+	public EmpresaWithInterlocutor(String interlocutor) {
+		this.interlocutor = interlocutor;
+	}
+
+	@Override
+	public Predicate toPredicate(Root<Empresa> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		if(interlocutor == null) {
+			return cb.isTrue(cb.literal(true));
+		}
+		return cb.equal(root.get("interlocutor"), this.interlocutor);
+	}
+}
+
+class EmpresaWithEmail implements Specification<Empresa> {
+
+	private String email;
+
+	public EmpresaWithEmail(String email) {
+		this.email = email;
+	}
+
+	@Override
+	public Predicate toPredicate(Root<Empresa> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		if(email == null) {
+			return cb.isTrue(cb.literal(true));
+		}
+		return cb.equal(root.get("email"), this.email);
+	}
+}
+
+class EmpresaWithCidade implements Specification<Empresa> {
+
+	private String cidade;
+
+	public EmpresaWithCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	@Override
+	public Predicate toPredicate(Root<Empresa> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		if(cidade == null) {
+			return cb.isTrue(cb.literal(true));
+		}
+		return cb.equal(root.get("cidade"), this.cidade);
+	}
 }

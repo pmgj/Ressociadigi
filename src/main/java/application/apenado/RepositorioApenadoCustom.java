@@ -16,4 +16,6 @@ public interface RepositorioApenadoCustom{
 
     void gerarModel(Model model, Pageable pageable, Page pgApenado);
 
+    Specification<Apenado> gerarSpec(String cpf, String nome, String telefone, LocalDate dataNascimento, String nomeDaMae);
+
 }

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 
@@ -98,5 +99,34 @@ public class RepositorioApenadoImpl implements RepositorioApenadoCustom {
 
         model.addAttribute("lista", pgApenado);
     }
+
+    @Override
+    public Specification<Apenado> gerarSpec(String cpf, String nome, String telefone, LocalDate dataNascimento, String nomeDaMae) {
+
+        Specification<Apenado> spec = Specification.where(null);
+
+        if (cpf != null && !cpf.isEmpty()) {
+            spec = spec.and(new ApenadoWithCpf(cpf));
+        }
+
+        if (nome != null && !nome.isEmpty()) {
+            spec = spec.and(new ApenadoWithNome(nome));
+        }
+
+        if (telefone != null && !telefone.isEmpty()) {
+            spec = spec.and(new ApenadoWithTelefone(telefone));
+        }
+
+        if (dataNascimento != null) {
+            spec = spec.and(new ApenadoWithDataNascimento(dataNascimento));
+        }
+
+        if (nomeDaMae != null && !nomeDaMae.isEmpty()) {
+            spec = spec.and(new ApenadoWithNomeDaMae(nomeDaMae));
+        }
+
+        return spec;
+    }
+
 
 }
