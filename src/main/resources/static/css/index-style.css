@@ -17,14 +17,16 @@
 ::-webkit-scrollbar {
     width: 15px;
     background: rgba(246, 130, 31, 1);
+    border-radius: 20px;
 }
 ::-webkit-scrollbar-thumb {
 	width: 5px;
     background: rgba(246, 130, 31, 1);
+    border-radius: 20px;
 }
 
 .letra{
-    color:  orange;
+    color: rgba(246, 130, 31, 1);
 }
 header{
     width: 100%;
@@ -33,24 +35,27 @@ header{
     border-bottom: solid 1px rgba(121, 117, 117, 0.736);
     font-size: 3rem;
     display: flex;
-    justify-content: start;
     align-items: center;
-    padding-left: 50px;
     font-family: 'Rubik Dirt', cursive;
     display: flex;
-    justify-content: space-between;
-    
 }
-header .logo{
+.cabecalho{
+    width:90%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+.logo{
     font-size: 40px;
-    
+    display: flex;
+    margin-right: 5rem;
 }
 
 .login-btn{
+    margin-left: 5rem;
     display: flex;
-    justify-content: space-between;
     width: 16rem;
-   
+   justify-content: flex-end;
 }
 .sair{
     width: 5rem;
@@ -59,10 +64,31 @@ header .logo{
     height: 2rem;
     background-color: rgb(255, 0, 0);
     color: white;
-    border-radius: 6px;
+    border-radius: 3px;
     font-family: 'Mukta', sans-serif;
     font-size: 17px;
     cursor: pointer;
+    box-shadow: 2px 2px 5px rgb(50,50,50);
+}
+.sair>a{
+    text-decoration: none;
+    color:white;
+}
+.sair>a:visited{
+    text-decoration: none;
+    color:white;
+}
+a{
+    color: rgba(246, 130, 31, 1);
+    text-decoration: none;
+}
+a:hover{
+    color: rgb(175, 92, 22);
+    text-decoration: none;
+}
+a:visited{
+    color: rgba(246, 130, 31, 1);
+    text-decoration: none;
 }
 .registrar{
     width: 8rem;
@@ -79,20 +105,24 @@ header .logo{
     cursor: pointer;
 }
 section{
+    width:60%;
+    margin: 5% auto;
     display: flex;
-    justify-content: center;
-    margin-top: 70px;
-    column-gap: 20px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    /*margin-top: 70px;
+    column-gap: 20px;*/
 }
 .left{
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 100%;
 }
 
 
 .t1{
-    font-size: 4.5rem;
+    font-size: 2rem;
     font-family: 'Kanit', sans-serif;
    
 }
@@ -101,51 +131,51 @@ section{
 }
 
  .texto-infomativo{
-    font-size: x-large;
+    font-size: 1.2rem;
     font-family: 'Yanone Kaffeesatz', sans-serif;
+     margin-top: 1rem;
 }
 
 article{
    /*  border: solid 4px ; */
-    width: 100%;
+    width: 60%;
+    margin: 5% auto;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+
    
 }
-.servicos{
-    width: 80%;
-    height: 80%;
+/*.servicos{
     display: flex;
     flex-direction: column;
     
     align-items: center;
     justify-content: center;
-    border-radius: 12px; 
-    
-}
 
-.servicos p{
+    
+}*/
+
+.servicos>p{
     margin-bottom: 20px;
     letter-spacing: 2px;
     font-weight: 900;
 }
 .card-container{
-   /*  display: flex;
+    display: flex;
     flex-direction: row;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
     align-items: center;
-    column-gap: 10px; */
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    column-gap: 10px;
-    row-gap: 10px;
 }
 
 .card{
     width: 22rem;
     height: 25rem;
     border: solid 2px;
-    background-color: #ffff;
+    border-radius: 0.4rem;
+    margin: 1rem;
 }
 
 .superior-card{
@@ -175,12 +205,15 @@ h4:hover{
     text-decoration: underline;
 
 }
-.servicos-logo{
-    font-family: 'Oswald', sans-serif;
-    color: white;
-   letter-spacing: 1px;
 
+img{
+    border-radius: 0.4rem;
+    width: 120%;
 }
+.imagem{
+    padding: 5%;
+}
+
 /*.imagem-card{*/
 /*    background-size: 390%;*/
 /*    width: 90%;*/
@@ -196,71 +229,123 @@ h4:hover{
 
 /*res*/
 @media(max-width: 1200px){
-  .imagem {
-    display: none;
-  }
-
-  .left{
-    width: 100vh;
-    padding: 20px;
-}
+    .imagem {
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        margin: 2rem;
+    }
+    .left{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+    .left>h1{
+        text-align: center;
+    }
+    img{
+        width: 80%;
+        display: flex;
+        justify-content: center;
+    }
+    section{
+        display:flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+    article{
+        width: 80%;
+    }
 }
 
 @media (max-width: 1025px){
-    .imagem{
-        display: none;
+    .imagem {
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        margin: 2rem;
     }
     .left{
-        width: 100vh;
-        padding: 20px;
-    }
-    .t1{
-        font-size: xx-large;
-    }
-    .logo div {
-        font-size: x-large;
-    }
-    header{
         display: flex;
-        justify-content: space-around;
-        flex-direction: column;
-        /* background-color: #33ccff; */
-        height: 10rem;
         justify-content: center;
-        row-gap: 20px;
-       
-    }    
+        text-align: center;
+    }
+    .left>h1{
+        text-align: center;
+    }
+    img{
+        width: 80%;
+        display: flex;
+        justify-content: center;
+    }
     section{
-        margin-top: 20px;
+        display:flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
     }
-    
-    .card-container{
-        display: grid;
-        grid-template-columns: auto auto;
-        column-gap: 30px;
-        row-gap: 30px;
-        
+    article{
+        width: 80%;
     }
-    article .servicos{
-        background-color: #ff99cc;
-        height: auto;
-        
-    }
-    .servicos-logo{
-        
-        padding: 20px;
-        
-    } 
 }
 
-@media (max-width: 750px){
-    .card-container{
-        display: grid;
-        grid-template-columns: auto;
+@media (max-width: 600px){
+    .imagem {
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        margin: 2rem;
+    }
+    .left{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+    .left>h1{
+        text-align: center;
+    }
+    img{
+        width: 300px;
+        display: flex;
+        justify-content: center;
+    }
+    section{
+        display:flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+    article{
+        width: 80%;
     }
     .card{
-        width: 26rem;
+        width:350px;
+        height: 400px;
     }
-    
-
+    .logo{
+        margin:0;
+    }
+    .login-btn{
+        margin: 0;
+    }
+}
+@media (max-width: 450px){
+    .cabecalho{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    header{
+        margin:10px 0;
+        height: 7rem;
+    }
+    .login-btn{
+        display: flex;
+        justify-content: flex-start;
+    }
+    .left {
+        text-align: justify;
+    }
 }
