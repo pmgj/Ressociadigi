@@ -33,8 +33,7 @@
             <form action="#" th:action="@{/armazenarApenado}" th:object="${apenado}" method="post">
                 <div id="titulo">
                     <h1 onclick="mudarTitulo()" id="titulox">Dados Pessoais</h1>
-                    <div id="div-sinalizacao">Os dados que contém a sinalização <a id="sinal">(*)</a> são
-                        obrigatórios!
+                    <div id="div-sinalizacao">Os dados que contém a sinalização <a id="sinal">(*)</a> são obrigatórios!
                     </div>
                 </div>
                 <div id="container-inputs">
@@ -65,16 +64,14 @@
                         <div id="telefone2-inpubox" class="input-normal">
                             <label for="telefone2">2° Telefone</label>
                             <input type="text" th:field="*{telefone2}" id="telefone2" maxlength="15">
-                            <label id="labelError" th:if="${#fields.hasErrors('telefone2')}"
-                                th:errors="*{telefone2}">Erro no Telefone
+                            <label id="labelError" th:if="${#fields.hasErrors('telefone2')}" th:errors="*{telefone2}">Erro no Telefone
                                 2</label>
                         </div>
 
                         <div id="nomeMae" class="input-normal">
                             <label for="nomeMae">Nome da mãe</label>
                             <input type="text" th:field="*{nomeDaMae}" id="nomeDaMae">
-                            <label id="labelError" th:if="${#fields.hasErrors('nomeDaMae')}"
-                                th:errors="*{nomeDaMae}">Erro no Telefone
+                            <label id="labelError" th:if="${#fields.hasErrors('nomeDaMae')}" th:errors="*{nomeDaMae}">Erro no Telefone
                                 3</label>
                         </div>
 
@@ -89,16 +86,14 @@
                         <div id="dataNascimento-inputbox" class="input-normal">
                             <label for="dataNascimeto">Data de Nascimento <a id="sinal">*</a></label>
                             <input type="date" th:field="*{dataNascimento}" id="dataNascimento">
-                            <label id="labelError" th:if="${#fields.hasErrors('dataNascimento')}"
-                                th:errors="*{dataNascimento}">Erro na
+                            <label id="labelError" th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}">Erro na
                                 Data de Nascimento</label>
                         </div>
 
                         <div id="cnh-inputbox">
                             <label for="cnh" id="cnhTipo">CNH tipo:</label>
                             <div id="cnh">
-                                <input type="checkbox" th:each="cnh : ${cnhsList}" th:text="${cnh}" th:value="${cnh}"
-                                    th:checked="${apenado.getCnhs().contains(cnh)}" th:field="*{cnhs}" />
+                                <input type="checkbox" th:each="cnh : ${cnhsList}" th:text="${cnh}" th:value="${cnh}" th:checked="${apenado.getCnhs().contains(cnh)}" th:field="*{cnhs}" />
                             </div>
                         </div>
 
@@ -110,8 +105,7 @@
                                 <option value="Feminino">Feminino</option>
                                 <option value="Não-binário">Não-binario</option>
                             </select>
-                            <label id="labelError" th:if="${#fields.hasErrors('sexoBiologico')}"
-                                th:errors="*{sexoBiologico}">Erro no Sexo Biológico</label>
+                            <label id="labelError" th:if="${#fields.hasErrors('sexoBiologico')}" th:errors="*{sexoBiologico}">Erro no Sexo Biológico</label>
                         </div>
 
                         <div id="orientacaoSexual-inputbox" class="input-normal">
@@ -124,8 +118,7 @@
                                 <option value="Assexual">Assexual</option>
                                 <option value="Pansexual">Pansexual</option>
                             </select>
-                            <label id="labelError" th:if="${#fields.hasErrors('orientacaoSexual')}"
-                                th:errors="*{orientacaoSexual}">Erro no Orientação Sexual</label>
+                            <label id="labelError" th:if="${#fields.hasErrors('orientacaoSexual')}" th:errors="*{orientacaoSexual}">Erro no Orientação Sexual</label>
                         </div>
 
                     </div>
@@ -150,8 +143,7 @@
                         <div id="cep-numero" class="input-normal">
                             <label for="NumeroCasa">Número</label>
                             <input type="text" th:field="*{numeroDaCasa}" id="NumeroCasa">
-                            <label id="labelError" th:if="${#fields.hasErrors('numeroDaCasa')}"
-                                th:errors="*{numeroDaCasa}">Erro no Num da casa</label>
+                            <label id="labelError" th:if="${#fields.hasErrors('numeroDaCasa')}" th:errors="*{numeroDaCasa}">Erro no Num da casa</label>
                         </div>
 
                         <div id="bairro-input" class="input-normal">
@@ -171,8 +163,7 @@
                         <div id="complemento-input" class="input-normal">
                             <label for="complemento">Complemento</label>
                             <input type="text" th:field="*{complemento}" id="complemento" class="form-input">
-                            <label id="labelError" th:if="${#fields.hasErrors('complemento')}"
-                                th:errors="*{complemento}">Erro no Complemento</label>
+                            <label id="labelError" th:if="${#fields.hasErrors('complemento')}" th:errors="*{complemento}">Erro no Complemento</label>
                         </div>
 
                         <div id="estado-input" class="input-normal">
@@ -213,18 +204,17 @@
                     </div>
                     <!-----------------------SEÇÃO INSTRUÇÃO------------------------------>
                     <div id="grupo-input-instrucao">
-						
-						<div id="habilidades" class="input-normal">
+
+                        <div id="habilidades" class="input-normal">
                             <label for="selHabilidade">Habilidades</label>
                             <select id="selHabilidade" name="habilidades" th:field="*{habilidades}" multiple="multiple" size="3">
                             	<option th:each="habilidade : ${apenado.getHabilidades()}" th:value="${habilidade}" th:text="${habilidade}"></option>
                             </select>
                             <button type="button" name="Habilidades" class="buttonAdicionarHabilidade" data-add="selHabilidade">+</button>
-                            <label id="labelError" th:if="${#fields.hasErrors('habilidades')}"
-                                th:errors="*{habilidades}">Erro
+                            <label id="labelError" th:if="${#fields.hasErrors('habilidades')}" th:errors="*{habilidades}">Erro
                                 nas Habilidades</label>
                         </div>
-                        
+
 
                         <div id="cursos" class="input-normal">
                             <label for="selCursos">Cursos</label>
@@ -245,15 +235,11 @@
 
                         <div id="restricao">
                             <label>Existe alguma restrição?:</label>
-                            <input type="radio" th:each="restricao : ${restricoes}" th:value="${restricao}"
-                                th:text="${restricao.texto}" th:checked="${apenado.getRestricao().equals(restricao)}"
-                                th:field="*{restricao}" />
-                            <textarea id="area-restricao" disabled th:field="*{textoRestricao}" name="restricao"
-                                cols="10" rows="6"></textarea>
-                            <label id="labelError" th:if="${#fields.hasErrors('textoRestricao')}"
-                                th:errors="*{textoRestricao}">Erro na Restrição</label>
+                            <input type="radio" th:each="restricao : ${restricoes}" th:value="${restricao}" th:text="${restricao.texto}" th:checked="${apenado.getRestricao().equals(restricao)}" th:field="*{restricao}" />
+                            <textarea id="area-restricao" disabled th:field="*{textoRestricao}" name="restricao" cols="10" rows="6"></textarea>
+                            <label id="labelError" th:if="${#fields.hasErrors('textoRestricao')}" th:errors="*{textoRestricao}">Erro na Restrição</label>
                         </div>
-						<!-- HABILIDADES FICA AQUI ABAIXO -->
+                        <!-- HABILIDADES FICA AQUI ABAIXO -->
                         <div id="instrucao" class="input-normal">
                             <label for="escolaridade">Escolaridade</label>
                             <select name="escolaridade" th:field="*{escolaridade}" id="escolaridade">
@@ -265,8 +251,7 @@
                                 <option value="Ensino superior incompleto">Ensino superior incompleto</option>
                                 <option value="Ensino superior completo">Ensino superior completo</option>
                             </select>
-                            <label id="labelError" th:if="${#fields.hasErrors('escolaridade')}"
-                                th:errors="*{escolaridade}">Erro na Escolaridade</label>
+                            <label id="labelError" th:if="${#fields.hasErrors('escolaridade')}" th:errors="*{escolaridade}">Erro na Escolaridade</label>
                         </div>
                     </div>
                     <!-----------------------SEÇÃO SITUACIONAL------------------------------>
@@ -274,8 +259,7 @@
                         <div id="numeroProcesso-input" class="input-normal">
                             <label for="numeroProcesso">Número do processo</label>
                             <input type="text" th:field="*{numeroProcesso}" id="numeroProcesso">
-                            <label id="labelError" th:if="${#fields.hasErrors('numeroProcesso')}"
-                                th:errors="*{numeroProcesso}">Erro no Numero do Processo</label>
+                            <label id="labelError" th:if="${#fields.hasErrors('numeroProcesso')}" th:errors="*{numeroProcesso}">Erro no Numero do Processo</label>
 
                         </div>
 
@@ -293,18 +277,15 @@
                         <div id="terminoPena-input" class="input-normal">
                             <label for="terminoPena">Termino Pena</label>
                             <input type="date" th:field="*{dataTerminoPena}" id="terminoPena">
-                            <label id="labelError" th:if="${#fields.hasErrors('dataTerminoPena')}"
-                                th:errors="*{dataTerminoPena}">Erro no Termino de Pena</label>
+                            <label id="labelError" th:if="${#fields.hasErrors('dataTerminoPena')}" th:errors="*{dataTerminoPena}">Erro no Termino de Pena</label>
                         </div>
 
                         <div id="prioridade">
                             <p>Prioridade</p>
                             <div id="prioridades">
-                                <input type="radio" th:each="p : ${prioridades}" th:value="${p}" th:text="${p.texto}"
-                                    th:checked="${apenado.getPrioridade() == p}" th:field="*{prioridade}" />
+                                <input type="radio" th:each="p : ${prioridades}" th:value="${p}" th:text="${p.texto}" th:checked="${apenado.getPrioridade() == p}" th:field="*{prioridade}" />
                             </div>
-                            <label id="labelError" th:if="${#fields.hasErrors('prioridade')}"
-                                th:errors="*{prioridade}">Erro na Prioridade</label>
+                            <label id="labelError" th:if="${#fields.hasErrors('prioridade')}" th:errors="*{prioridade}">Erro na Prioridade</label>
                         </div>
 
                         <fieldset class="fieldset-dados-bancarios">
@@ -315,15 +296,13 @@
                             <div id="div-numeroConta" class="input-normal-dados-bancarios">
                                 <label for="numeroDaConta">Número da Conta</label>
                                 <input type="text" th:field="*{numConta}" name="numConta" id="numeroDaConta">
-                                <label id="labelError" th:if="${#fields.hasErrors('numConta')}"
-                                    th:errors="*{numConta}">Erro no Número da Conta</label>
+                                <label id="labelError" th:if="${#fields.hasErrors('numConta')}" th:errors="*{numConta}">Erro no Número da Conta</label>
                             </div>
 
                             <div id="div-agencia" class="input-normal-dados-bancarios">
                                 <label for="agencia">Agência</label>
                                 <input type="text" th:field="*{agencia}" name="agencia" id="agencia">
-                                <label id="labelError" th:if="${#fields.hasErrors('agencia')}"
-                                    th:errors="*{agencia}">Erro no Número da
+                                <label id="labelError" th:if="${#fields.hasErrors('agencia')}" th:errors="*{agencia}">Erro no Número da
                                     Agência</label>
                             </div>
 
@@ -338,12 +317,11 @@
                             <div id="div-operacao" class="input-normal-dados-bancarios">
                                 <label for="operacao">Operação</label>
                                 <input type="text" th:field="*{operacao}" name="operacao" id="operacao">
-                                <label id="labelError" th:if="${#fields.hasErrors('operacao')}"
-                                    th:errors="*{operacao}">Erro na
+                                <label id="labelError" th:if="${#fields.hasErrors('operacao')}" th:errors="*{operacao}">Erro na
                                     Operação</label>
                             </div>
                         </fieldset>
-						<div></div>
+                        <div></div>
                         <div id="botao-cadastrar">
                             <button type="submit">Cadastrar</button>
                         </div>
@@ -369,7 +347,7 @@
             <label for="dialogValue" class="labelAddHabilidade">Adicione uma habilidade</label>
             <div class="inputAddHabilidade">
                 <input type="text" id="dialogValue">
-                 <button class="buttonAdicionarHabilidade" id="dialogAdd">+</button>
+                <button class="buttonAdicionarHabilidade" id="dialogAdd">+</button>
             </div>
         </div>
         <div class="removeInputBox">
@@ -379,7 +357,7 @@
                 <button class="buttonRemoverHabilidade" id="dialogDel">Delete</button>
             </div>
         </div>
-        
+
     </dialog>
 
 </body>

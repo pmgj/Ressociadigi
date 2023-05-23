@@ -1,10 +1,10 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap'); */
+
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sarabun&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@800&display=swap');
-*{
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
@@ -13,25 +13,28 @@
 ::-webkit-scrollbar-track {
     background-color: #F4F4F4;
 }
+
 ::-webkit-scrollbar {
     width: 5px;
     background: rgba(246, 130, 31, 1);
 }
+
 ::-webkit-scrollbar-thumb {
-	width: 5px;
+    width: 5px;
     background: rgba(246, 130, 31, 1);
 }
+
 body {
     font-family: 'Anton', sans-serif;
     width: 100%;
-    height: 100%; 
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgba(222, 222, 222, 1);
     padding: 30px;
-   
 }
+
 main {
     margin-top: 50px;
     display: flex;
@@ -42,8 +45,8 @@ main {
     height: 50rem;
     border-radius: 9px;
     margin-bottom: 30px;
-    
 }
+
 section {
     width: 60rem;
     height: 55rem;
@@ -51,21 +54,22 @@ section {
     box-shadow: 9px 9px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
 }
+
 nav {
     width: 20rem;
     height: 45rem;
     padding: 5px;
     background-color: rgba(222, 222, 222, 1);
     border-radius: 5px;
-
 }
+
 #titulo {
     height: 9rem;
     border-bottom: black 8px;
     font-family: 'Martian Mono', monospace;
 }
+
 #titulo h1 {
-    
     padding: 1.2rem;
     border-bottom: solid 4px rgba(0, 0, 0, 0.15);
     font-size: 2em;
@@ -75,7 +79,7 @@ nav {
     font-size: 2em;
 }
 
-.container-input-empresa{
+.container-input-empresa {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 3rem;
@@ -98,48 +102,53 @@ nav {
     display: block;
     letter-spacing: 1px;
 }
-.input-normal input{
+
+.input-normal input {
     font-size: 1.1em;
     padding: 10px;
 }
 
-.cep, .numero{
+.cep,
+.numero {
     display: flex;
     flex-direction: column;
 }
 
-.cep input{
-    width: 8rem;
-}
-.numero input{
+.cep input {
     width: 8rem;
 }
 
-#containerCep{
+.numero input {
+    width: 8rem;
+}
+
+#containerCep {
     display: flex;
     flex-direction: row;
     column-gap: 20px;
 }
 
-.cep, .numero{
+.cep,
+.numero {
     display: flex;
     flex-direction: column;
 }
 
-.cep input{
-    width: 8rem;
-    height: 2.5rem;
-    padding: 10px;
-    border-radius: 6px;
-}
-.numero input{
+.cep input {
     width: 8rem;
     height: 2.5rem;
     padding: 10px;
     border-radius: 6px;
 }
 
-.botao-container{
+.numero input {
+    width: 8rem;
+    height: 2.5rem;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.botao-container {
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
@@ -147,112 +156,131 @@ nav {
     margin-left: 7em;
 }
 
-#botao-enviar{    
-    background-color: rgba(246, 130, 31, 1);
+#botao-enviar {
+    background-color: rgb(255, 119, 0);
     color: white;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
+    /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5)); */
     text-transform: uppercase;
     width: 9rem;
     height: 3rem;
     font-family: 'Arial';
     font-style: normal;
-    font-size: 1.2rem;
-    line-height: 29px;
-    letter-spacing: 0.08em;
-    border: none;
-    border-radius: 50px;
-    border-radius: 5px;
-}
-
-#botao-voltar{
-    background-color: rgba(99, 96, 96, 1);
-    color: white;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
-    text-transform: uppercase;
-    width: 9rem;
-    height: 3rem;
-    font-family: 'Arial';
-    font-style: none;
     font-size: 1.2rem;
     line-height: 45px;
-    text-decoration: none;
-    text-align: center;
-    letter-spacing: 0.08em;
-    border: none;
-    border-radius: 50px;
-    font-style: normal;
-    font-size: 1.2rem;
-    line-height: 29px;
     letter-spacing: 0.08em;
     border: none;
     border-radius: 5px;
+    padding: 10px 20px;
+    text-decoration: none;
+    text-align: center;
+    margin-left: 10px;
+}
+
+#botao-enviar:hover {
+    background-color: rgb(152, 71, 1);
+    /* Cor de fundo quando passa o mouse */
+}
+
+
+/* Estilo quando o botão é pressionado */
+
+#botao-enviar:active {
+    background-color: rgb(103, 48, 0);
+    /* Cor de fundo quando pressionado */
+}
+
+#botao-voltar {
+    background-color: #007bff;
+    color: #ffffff;
+    /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5)); */
+    text-transform: uppercase;
+    font-weight: bold;
+    width: 9rem;
+    height: 3rem;
+    font-family: 'Arial';
+    font-style: normal;
+    font-size: 1.2rem;
+    line-height: 45px;
+    letter-spacing: 0.08em;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-decoration: none;
+    text-align: center;
+    margin-left: 10px;
+}
+
+#botao-voltar:hover {
+    background-color: #0056b3;
+    /* Cor de fundo quando passa o mouse */
+}
+
+
+/* Estilo quando o botão é pressionado */
+
+#botao-voltar:active {
+    background-color: #003380;
+    /* Cor de fundo quando pressionado */
 }
 
 input {
     outline: rgb(203, 139, 19);
 }
-.container-input{
+
+.container-input {
     background-color: aqua;
 }
 
-@media (max-width: 900px){
-    #titulo{
+@media (max-width: 900px) {
+    #titulo {
         width: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
     }
-    
 }
+
+
 /*responsividade*/
-@media (max-width:750px){
-    .container-input-empresa{
+
+@media (max-width:750px) {
+    .container-input-empresa {
         display: flex;
         flex-direction: column;
         align-items: center;
-
         overflow-y: scroll;
         background-color: white;
-        
     }
-    form{
+    form {
         height: 100vh;
         background-color: white;
     }
-    .tap{ 
+    .tap {
         display: flex;
         width: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 10px 60px 30px 50px;
-        
     }
-    
-    section{  
-    border: none;
-    background: #FFFFFF;
-    box-shadow: 0;
-    border-radius: 0px;
-    /* overflow: scroll;
+    section {
+        border: none;
+        background: #FFFFFF;
+        box-shadow: 0;
+        border-radius: 0px;
+        /* overflow: scroll;
     overflow-y: scroll; */
-    
     }
-
-    #titulo{
+    #titulo {
         display: flex;
         width: 100%;
         align-items: center;
         justify-content: center;
     }
-    .botao-container{
+    .botao-container {
         display: flex;
         justify-content: center;
         flex-direction: row;
         column-gap: 30px;
-
-
     }
-
 }
-
