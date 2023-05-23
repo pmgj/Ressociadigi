@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -122,16 +124,16 @@ public class ControladorVaga {
 		return "redirect:/listarVagas";
 	}
 
-	@GetMapping("/listarVagas")
-	public String listarVagas(Model model, @PageableDefault(page = 0, size = 2) Pageable pageable) {
-		Page<Vaga> pgVagas = service.findAll(pageable);
+//	@GetMapping("/listarVagas")
+//	public String listarVagas(Model model, @PageableDefault(page = 0, size = 2) Pageable pageable) {
+//		Page<Vaga> pgVagas = service.findAll(pageable);
+//
+//		// Manipulação de Páginas
+//		vagaRepositoryCustom.gerarModel(model,pageable,pgVagas);
+//		return "listarVagas";
+//	}
 
-		// Manipulação de Páginas
-		vagaRepositoryCustom.gerarModel(model,pageable,pgVagas);
-		return "listarVagas";
-	}
-
-	@PostMapping("listarVagas")
+	@RequestMapping("listarVagas")
 	public String searchVagas(@RequestParam(value = "empresa", required = false) String empresa,
 							  @RequestParam(value = "tipo", required = false) String tipo,
 							  @RequestParam(value = "interlocutor", required = false) String interlocutor,
@@ -141,7 +143,11 @@ public class ControladorVaga {
 	                          Model model,
 	                         @PageableDefault(page = 0, size = 2) Pageable pageable) {
 
-		Page<Vaga> pgVagas = vagaRepositoryCustom.findVagaByFilters(empresa,tipo,interlocutor,quantidadeVagasMasculinas,quantidadeVagasFemininas,cargaHoraria,pageable);
+		Specification<Vaga> spec = vagaRepositoryCustom.gerarSpec(empresa, tipo, interlocutor);
+
+		System.out.println(interlocutor + " ai calicaaaaa");
+
+		Page<Vaga> pgVagas = service.findAll(spec, pageable);
 
 		vagaRepositoryCustom.gerarModel(model,pageable,pgVagas);
 

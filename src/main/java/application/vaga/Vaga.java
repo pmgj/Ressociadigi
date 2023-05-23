@@ -10,9 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.criteria.*;
 import javax.validation.constraints.NotNull;
 
 import application.empresa.Empresa;
+import org.springframework.data.jpa.domain.Specification;
 
 @Entity
 public class Vaga {
@@ -114,4 +116,56 @@ public class Vaga {
 		this.restricao = restricao;
 	}
 
+}
+
+class VagaWithTipo implements Specification<Vaga> {
+
+	private String tipo;
+
+	public VagaWithTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	@Override
+	public Predicate toPredicate(Root<Vaga> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		if(tipo == null) {
+			return cb.isTrue(cb.literal(true));
+		}
+		return cb.equal(root.get("tipo"), this.tipo);
+	}
+}
+
+class VagaWithInterlocutor implements Specification<Vaga> {
+
+	private String interlocutor;
+
+	public VagaWithInterlocutor(String interlocutor) {
+		this.interlocutor = interlocutor;
+	}
+
+	@Override
+	public Predicate toPredicate(Root<Vaga> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		if(interlocutor == null) {
+			return cb.isTrue(cb.literal(true));
+		}
+		return cb.equal(root.get("interlocutor"), this.interlocutor);
+	}
+}
+
+class VagaWithEmpresa implements  Specification<Vaga> {
+
+	private String nomeEmpresa;
+
+	public VagaWithEmpresa(String nomeEmpresa) {
+		this.nomeEmpresa = nomeEmpresa;
+	}
+
+	@Override
+	public Predicate toPredicate(Root<Vaga> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		if(nomeEmpresa == null) {
+			return cb.isTrue(cb.literal(true));
+		}
+		Join<Vaga, Empresa> empresaJoin = root.join("empresa");
+		return cb.equal(empresaJoin.get("nome"), nomeEmpresa);
+	}
 }

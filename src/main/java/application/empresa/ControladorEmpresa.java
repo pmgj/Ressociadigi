@@ -70,24 +70,6 @@ public class ControladorEmpresa {
 		return "redirect:/listarEmpresas";
 	}
 
-//	@PostMapping("/listarEmpresas")
-//	public String searchEmpresas(@RequestParam(value = "cnpj", required = false) String cnpj,
-//								 @RequestParam(value = "nome", required = false) String nome,
-//								 @RequestParam(value = "responsavel", required = false) String responsavel,
-//								 @RequestParam(value = "interlocutor", required = false) String interlocutor,
-//								 @RequestParam(value = "telefone", required = false) String telefone,
-//								 @RequestParam(value = "email", required = false) String email,
-//								 @RequestParam(value = "cidade", required = false) String cidade,
-//								 Model model,
-//								 @PageableDefault(page = 0, size = 2) Pageable pageable) {
-//
-//		Page<Empresa> pgEmpresa = apenadoRepositoryCustom.findEmpresaByFilters(cnpj, nome, responsavel, interlocutor, telefone, email, cidade, pageable);
-//
-//		apenadoRepositoryCustom.gerarModel(model, pageable, pgEmpresa);
-//
-//		return "listarEmpresas";
-//	}
-
 	@RequestMapping("listarEmpresas")
 	public String searchEmpresas(@RequestParam(value = "cnpj", required = false) String cnpj,
 								 @RequestParam(value = "nome", required = false) String nome,

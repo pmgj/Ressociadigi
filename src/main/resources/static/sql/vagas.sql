@@ -1,0 +1,40 @@
+INSERT INTO `vaga` (`id`,`carga_horaria`,`interlocutor`,`quantidade_vagas_femininas`,`quantidade_vagas_masculinas`,`tipo`,`empresa_cnpj`)
+VALUES
+    (74,1,"Noble Richards",48,18,"pede,",82692),
+    (75,5,"Galvin Cotton",3,20,"ligula",82692),
+    (76,3,"Orlando Bowers",9,36,"ac",82692),
+    (77,6,"Grace Franks",7,12,"Curabitur",82692),
+    (78,1,"Phoebe Combs",33,10,"ultricies",82692),
+    (79,4,"Hedy Arnold",4,22,"enim,",82692),
+    (80,2,"Farrah Kinney",32,1,"inceptos",82692),
+    (81,4,"Kyla Baird",42,46,"imperdiet",82692),
+    (82,3,"Yuri Cline",17,40,"neque.",82692),
+    (83,5,"Isabelle Francis",43,14,"ridiculus",82692),
+    (84,4,"Marshall Bentley",8,44,"posuere,",82692),
+    (85,6,"Maggie Myers",45,48,"Donec",82692),
+    (86,5,"Leigh Barron",43,6,"vulputate",82692),
+    (87,2,"Quinn Owens",42,21,"ligula.",82692),
+    (88,2,"Eagan Dickson",32,22,"sapien,",82692),
+    (89,8,"Imogene Armstrong",30,13,"Duis",82692),
+    (90,1,"Bevis Keith",49,8,"Integer",82692),
+    (91,4,"Lavinia Golden",34,47,"Pellentesque",82692),
+    (92,2,"Luke Cleveland",26,5,"Mauris",82692),
+    (93,8,"Connor Jenkins",10,15,"sit",82692);
+
+INSERT INTO `vaga` (`id`,`carga_horaria`,`interlocutor`,`quantidade_vagas_femininas`,`quantidade_vagas_masculinas`,`tipo`,`empresa`)
+VALUES
+    (54,7,"Xanthus Walls",5,4,"egestas",52796),
+    (55,1,"Kevyn Koch",34,1,"luctus.",52796),
+    (56,8,"Sylvester Kim",9,28,"feugiat.",52796),
+    (57,6,"Yoshi Kent",9,24,"luctus",52796),
+    (58,10,"Russell Martinez",30,29,"faucibus",52796),
+    (59,0,"Forrest Leblanc",43,17,"id,",52796),
+    (60,8,"Regina Ruiz",49,32,"mi.",52796),
+    (61,4,"Winter Gallagher",39,20,"non",52796),
+    (62,1,"Conan Simon",31,19,"nibh.",52796),
+    (63,7,"Wade Poole",49,50,"amet,",52796),
+    (64,6,"Jaime Decker",11,30,"sed",52796),
+    (65,5,"Hanna Castaneda",1,19,"Lorem",52796),
+    (66,3,"Anthony Ward",10,36,"Suspendisse",52796),
+    (67,9,"Kareem Cooke",7,37,"orci",52796),
+    (68,7,"Winter Morris",46,48,"Vivamus",52796);
