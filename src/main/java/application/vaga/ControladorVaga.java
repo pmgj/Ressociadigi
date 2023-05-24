@@ -39,21 +39,38 @@ public class ControladorVaga {
 	private RepositorioApenado repApenado;
 
 	// Seção de Vagas Preenchidas
-	@GetMapping("/listarVagasPreenchidas")
-	public String listarVagasPreenchidas(Model model, @PageableDefault(page = 0, size = 2) Pageable pageable) {
-		Page<VagaPreenchida> pgVagaPreenchida = repVagaPreenchida.findAll(pageable);
+//	@GetMapping("/listarVagasPreenchidas")
+//	public String listarVagasPreenchidas(Model model, @PageableDefault(page = 0, size = 2) Pageable pageable) {
+//		Page<VagaPreenchida> pgVagaPreenchida = repVagaPreenchida.findAll(pageable);
+//
+//		// Manipulação das Páginas
+//		int numPaginaAtual = pageable.getPageNumber() + 1;
+//		int numTotalPaginas = pgVagaPreenchida.getTotalPages();
+//		model.addAttribute("pageCounter", "Página " + numPaginaAtual + " de " + numTotalPaginas);
+//		model.addAttribute("nextPage", ((pageable.getPageNumber() + 1) > numTotalPaginas - 1)
+//				? pageable.getPageNumber()
+//				: pageable.getPageNumber() + 1);
+//		model.addAttribute("previousPage", pageable.getPageNumber() - 1);
+//		model.addAttribute("quantidadePaginas", numTotalPaginas);
+//
+//		model.addAttribute("listaVagasPreenchidas", pgVagaPreenchida);
+//		return "listarVagasPreenchidas";
+//	}
 
-		// Manipulação das Páginas
-		int numPaginaAtual = pageable.getPageNumber() + 1;
-		int numTotalPaginas = pgVagaPreenchida.getTotalPages();
-		model.addAttribute("pageCounter", "Página " + numPaginaAtual + " de " + numTotalPaginas);
-		model.addAttribute("nextPage", ((pageable.getPageNumber() + 1) > numTotalPaginas - 1)
-				? pageable.getPageNumber()
-				: pageable.getPageNumber() + 1);
-		model.addAttribute("previousPage", pageable.getPageNumber() - 1);
-		model.addAttribute("quantidadePaginas", numTotalPaginas);
+	@RequestMapping("listarVagasPreenchidas")
+	public String listarVagasPreenchidas(@RequestParam(value = "empresa", required = false)String empresa,
+										 @RequestParam(value = "apenado", required = false)String apenado,
+										 Model model,
+										 @PageableDefault(page = 0, size = 2) Pageable pageable) {
 
-		model.addAttribute("listaVagasPreenchidas", pgVagaPreenchida);
+		System.out.println("AIIIIIIIIIIII " + apenado);
+
+		Specification<VagaPreenchida> spec = vagaRepositoryCustom.gerarSpecVagaPreenchida(empresa, apenado);
+
+		Page<VagaPreenchida> pgVagas = repVagaPreenchida.findAll(spec, pageable);
+
+		vagaRepositoryCustom.gerarModel(model,pageable,pgVagas);
+
 		return "listarVagasPreenchidas";
 	}
 
@@ -123,16 +140,6 @@ public class ControladorVaga {
 		service.save(vaga);
 		return "redirect:/listarVagas";
 	}
-
-//	@GetMapping("/listarVagas")
-//	public String listarVagas(Model model, @PageableDefault(page = 0, size = 2) Pageable pageable) {
-//		Page<Vaga> pgVagas = service.findAll(pageable);
-//
-//		// Manipulação de Páginas
-//		vagaRepositoryCustom.gerarModel(model,pageable,pgVagas);
-//		return "listarVagas";
-//	}
-
 	@RequestMapping("listarVagas")
 	public String searchVagas(@RequestParam(value = "empresa", required = false) String empresa,
 							  @RequestParam(value = "tipo", required = false) String tipo,

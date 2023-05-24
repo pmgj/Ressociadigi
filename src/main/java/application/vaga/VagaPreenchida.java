@@ -10,8 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.criteria.*;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import application.apenado.Apenado;
@@ -76,4 +78,31 @@ public class VagaPreenchida {
 		this.dataFim = dataFim;
 	}
 
+}
+
+class VagaPreenchidaWithEmpresa implements Specification<VagaPreenchida> {
+
+	@Override
+	public Predicate toPredicate(Root<VagaPreenchida> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+		return null;
+	}
+}
+
+class VagaPreenchidaWithApenado implements Specification<VagaPreenchida> {
+
+	String nomeApenado;
+
+	public VagaPreenchidaWithApenado(String nomeApenado) {
+		this.nomeApenado = nomeApenado;
+	}
+
+	@Override
+	public Predicate toPredicate(Root<VagaPreenchida> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		if(nomeApenado == null) {
+			return cb.isTrue(cb.literal(true));
+		}
+		Join<VagaPreenchida, Apenado> apenadoJoin = root.join("apenado", JoinType.INNER);
+		Path<String> apenadoNomePath = apenadoJoin.get("nome");
+		return cb.equal(apenadoNomePath, nomeApenado);
+	}
 }

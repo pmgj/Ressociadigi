@@ -10,5 +10,6 @@ public interface RepositorioVagaCustom {
 
    Specification<Vaga> gerarSpec(String empresa, String tipo, String interlocutor,String vagasMasculinas, String vagasFemininas, String cargaHoraria);
 
+   Specification<VagaPreenchida> gerarSpecVagaPreenchida(String empresa, String apenado);
    Integer converterStringParaInteger(String valor);
 }
