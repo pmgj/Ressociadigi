@@ -29,68 +29,6 @@ public class RepositorioEmpresaImpl  implements RepositorioEmpresaCustom{
     public RepositorioEmpresaImpl(EntityManagerFactory emf) {
         this.em = emf.createEntityManager();
     }
-    @Override
-    public Page<Empresa> findEmpresaByFilters(String cnpj, String nome, String responsavel, String interlocutor, String telefone, String email, String cidade,Pageable pageable) {
-
-        CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<Empresa> cq = cb.createQuery(Empresa.class);
-
-        Root<Empresa> empresa = cq.from(Empresa.class);
-        cq.orderBy(cb.asc(empresa.get("cnpj")));
-
-        List<Predicate> predicates = new ArrayList<>();
-
-        if (cnpj != null && !cnpj.isEmpty()) {
-            predicates.add(cb.equal(empresa.get("cnpj"), cnpj));
-        }
-
-        if (nome != null && !nome.isEmpty()) {
-            predicates.add(cb.equal(empresa.get("nome"), nome));
-        }
-
-        if (responsavel != null && !responsavel.isEmpty()) {
-            predicates.add(cb.equal(empresa.get("responsavel"), responsavel));
-        }
-
-        if (interlocutor != null && !interlocutor.isEmpty()) {
-            predicates.add(cb.equal(empresa.get("interlocutor"), interlocutor));
-        }
-
-        if (telefone != null && !telefone.isEmpty()) {
-            predicates.add(cb.equal(empresa.get("telefone"), telefone));
-        }
-
-        if (email != null && !email.isEmpty()) {
-            predicates.add(cb.equal(empresa.get("email"), email));
-        }
-
-        if (cidade != null && !cidade.isEmpty()) {
-            predicates.add(cb.equal(empresa.get("cidade"), cidade));
-        }
-
-        cq.where(predicates.toArray(new Predicate[0]));
-
-        TypedQuery<Empresa> query = em.createQuery(cq);
-
-
-        int pageNumber = pageable.getPageNumber();
-        int pageSize = pageable.getPageSize();
-        int firstResult = pageNumber * pageSize;
-        query.setFirstResult(firstResult);
-        query.setMaxResults(pageSize);
-
-        List<Empresa> resultList = query.getResultList();
-
-        CriteriaQuery<Long> countQuery = cb.createQuery(Long.class);
-        Root<Empresa> countRoot = countQuery.from(Empresa.class);
-        countQuery.select(cb.count(countRoot)).where(predicates.toArray(new Predicate[0]));
-        Long total = em.createQuery(countQuery).getSingleResult();
-
-        Page<Empresa> page = new PageImpl<>(resultList, pageable, total);
-
-        return page;
-
-    }
 
     @Override
     public void gerarModel(Model model, Pageable pageable, Page pgEmpresa) {

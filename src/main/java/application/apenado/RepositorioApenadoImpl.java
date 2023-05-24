@@ -30,60 +30,6 @@ public class RepositorioApenadoImpl implements RepositorioApenadoCustom {
     }
 
 
-//    Metodo para construcao de querys dinamicas utilizando Criteria API
-    @Override
-    public Page<Apenado> findApenadoByFilters(String cpf, String nome, String telefone, LocalDate dataNascimento, String nomeDaMae, Pageable pageable) {
-
-        CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<Apenado> cq = cb.createQuery(Apenado.class);
-
-        Root<Apenado> apenado = cq.from(Apenado.class);
-        cq.orderBy(cb.asc(apenado.get("cpf")));
-
-        List<Predicate> predicates = new ArrayList<>();
-
-        if (cpf != null && !cpf.isEmpty()) {
-            predicates.add(cb.equal(apenado.get("cpf"), cpf));
-        }
-
-        if (nome != null && !nome.isEmpty()) {
-            predicates.add(cb.equal(apenado.get("nome"), nome));
-        }
-
-        if (dataNascimento != null) {
-            predicates.add(cb.equal(apenado.get("dataNascimento"), dataNascimento));
-        }
-
-        if (telefone != null && !telefone.isEmpty()) {
-            predicates.add(cb.equal(apenado.get("telefone"), telefone));
-        }
-
-        if (nomeDaMae != null && !nomeDaMae.isEmpty()) {
-            predicates.add(cb.equal(apenado.get("nomeDaMae"), nomeDaMae));
-        }
-
-        cq.where(predicates.toArray(new Predicate[0]));
-
-        TypedQuery<Apenado> query = em.createQuery(cq);
-
-        int pageNumber = pageable.getPageNumber();
-        int pageSize = pageable.getPageSize();
-        int firstResult = pageNumber * pageSize;
-        query.setFirstResult(firstResult);
-        query.setMaxResults(pageSize);
-
-        List<Apenado> resultList = query.getResultList();
-
-        CriteriaQuery<Long> countQuery = cb.createQuery(Long.class);
-        Root<Apenado> countRoot = countQuery.from(Apenado.class);
-        countQuery.select(cb.count(countRoot)).where(predicates.toArray(new Predicate[0]));
-        Long total = em.createQuery(countQuery).getSingleResult();
-
-        Page<Apenado> page = new PageImpl<>(resultList, pageable, total);
-
-        return page;
-    }
-
     @Override
     public void gerarModel(Model model, Pageable pageable, Page pgApenado) {
         // Manipulação das Páginas
