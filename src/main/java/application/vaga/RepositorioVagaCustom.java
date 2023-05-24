@@ -11,6 +11,7 @@ public interface RepositorioVagaCustom {
 
    public void gerarModel(Model model, Pageable pageable, Page pgApenado);
 
-   Specification<Vaga> gerarSpec(String empresa, String tipo, String interlocutor);
+   Specification<Vaga> gerarSpec(String empresa, String tipo, String interlocutor,String vagasMasculinas, String vagasFemininas, String cargaHoraria);
 
- }
+   Integer converterStringParaInteger(String valor);
+}

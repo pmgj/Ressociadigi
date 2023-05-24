@@ -104,9 +104,16 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
     }
 
     @Override
-    public Specification<Vaga> gerarSpec(String empresa, String tipo, String interlocutor) {
+    public Specification<Vaga> gerarSpec(String empresa, String tipo, String interlocutor, String vagasMasculinas, String vagasFemininas, String cargaHoraria) {
 
         Specification<Vaga> spec = Specification.where(null);
+
+        int vagasMasculinasConvertido = converterStringParaInteger(vagasMasculinas);
+
+        int vagasFemininasConvertido = converterStringParaInteger(vagasFemininas);
+
+        int cargaHorariaConvertido = converterStringParaInteger(cargaHoraria);
+
 
         if(empresa != null && !empresa.isEmpty()) {
             spec = spec.and(new VagaWithEmpresa(empresa));
@@ -120,7 +127,32 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
             spec = spec.and(new VagaWithInterlocutor(interlocutor));
         }
 
+        if(vagasMasculinasConvertido != 0) {
+            spec = spec.and(new VagaWithCargosMasculinos(vagasMasculinasConvertido));
+        }
+
+        if(vagasFemininasConvertido != 0){
+            spec = spec.and(new VagaWithCargosFemininos(vagasFemininasConvertido));
+        }
+
+        if(cargaHorariaConvertido != 0){
+            spec = spec.and(new VagaWithCargaHoraria(cargaHorariaConvertido));
+        }
+
         return spec;
+    }
+
+    @Override
+    public Integer converterStringParaInteger(String valor) {
+        int valorConvertido;
+
+        if(valor == null) {
+            valorConvertido = 0;
+        } else {
+            valorConvertido = Integer.parseInt(valor);
+        }
+
+        return valorConvertido;
     }
 
 }

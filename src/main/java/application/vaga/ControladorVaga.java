@@ -143,9 +143,8 @@ public class ControladorVaga {
 	                          Model model,
 	                         @PageableDefault(page = 0, size = 2) Pageable pageable) {
 
-		Specification<Vaga> spec = vagaRepositoryCustom.gerarSpec(empresa, tipo, interlocutor);
 
-		System.out.println(interlocutor + " ai calicaaaaa");
+		Specification<Vaga> spec = vagaRepositoryCustom.gerarSpec(empresa, tipo, interlocutor, quantidadeVagasMasculinas, quantidadeVagasFemininas, cargaHoraria);
 
 		Page<Vaga> pgVagas = service.findAll(spec, pageable);
 

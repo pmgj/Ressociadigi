@@ -29,7 +29,7 @@ VALUES
     (43002715847,"Delilah","","2023-02-09","70724123432","MASCULINO"),
     (85395314349,"Benedict","","2023-02-12","64234373565","MASCULINO"),
     (88902016694,"Nash","","2022-12-14","57061151850","MASCULINO");
-[14:07, 08/05/2023] Fernando: INSERT INTO `apenado` (`cpf`,`nome`,`nome_da_mae`,`data_nascimento`,`telefone`,`sexo_biologico`)
+INSERT INTO `apenado` (`cpf`,`nome`,`nome_da_mae`,`data_nascimento`,`telefone`,`sexo_biologico`)
 VALUES
   (35811694131,"Germaine","Maria","2022-08-17","08943445789","MASCULINO"),
   (85697073327,"Carson","Maria","2023-12-16","65560161281","MASCULINO"),

@@ -23,10 +23,10 @@ public class Vaga {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VAGA_SEQUENCE")
 	private int id;
 	private String interlocutor;
-	private Integer quantidadeVagasMasculinas;
-	private Integer quantidadeVagasFemininas;
+	private Integer quantidadeVagasMasculinas = 0;
+	private Integer quantidadeVagasFemininas = 0;
 	private String tipo;
-	private Integer cargaHoraria;
+	private Integer cargaHoraria = 0;
 	private String procuraPor;
 	private String restricao;
 	@ManyToOne
@@ -167,5 +167,58 @@ class VagaWithEmpresa implements  Specification<Vaga> {
 		}
 		Join<Vaga, Empresa> empresaJoin = root.join("empresa");
 		return cb.equal(empresaJoin.get("nome"), nomeEmpresa);
+	}
+}
+
+class VagaWithCargosFemininos implements Specification<Vaga> {
+
+	private int vagasFemininas;
+
+	public VagaWithCargosFemininos(int vagasFemininas) {
+		this.vagasFemininas = vagasFemininas;
+	}
+
+
+	@Override
+	public Predicate toPredicate(Root<Vaga> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		if(vagasFemininas == 0) {
+			return cb.isTrue(cb.literal(true));
+		}
+		return cb.equal(root.get("quantidadeVagasFemininas"), vagasFemininas);
+	}
+}
+
+class VagaWithCargosMasculinos implements Specification<Vaga> {
+
+	private Integer vagasMasculinas;
+
+	public VagaWithCargosMasculinos(Integer vagasMasculinas) {
+		this.vagasMasculinas = vagasMasculinas;
+	}
+
+	@Override
+	public Predicate toPredicate(Root<Vaga> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		if(vagasMasculinas == 0) {
+			return cb.isTrue(cb.literal(true));
+		}
+		return cb.equal(root.get("quantidadeVagasMasculinas"), vagasMasculinas);
+	}
+}
+
+class VagaWithCargaHoraria implements Specification<Vaga> {
+
+	private int cargaHoraria;
+
+	public VagaWithCargaHoraria(int cargaHoraria) {
+		this.cargaHoraria = cargaHoraria;
+	}
+
+
+	@Override
+	public Predicate toPredicate(Root<Vaga> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		if(cargaHoraria== 0) {
+			return cb.isTrue(cb.literal(true));
+		}
+		return cb.equal(root.get("cargaHoraria"), cargaHoraria);
 	}
 }
