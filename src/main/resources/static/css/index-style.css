@@ -61,7 +61,7 @@
     
     .login-btn {
         margin-left: 5rem;
-        display: flex;
+        display: none;
         width: 16rem;
         justify-content: flex-end;
     }
@@ -154,7 +154,7 @@
     
     article {
         /*  border: solid 4px ; */
-        width: 60%;
+        width: 90%;
         margin: 5% auto;
         display: flex;
         justify-content: space-around;
@@ -343,6 +343,7 @@
         }
         .login-btn {
             margin: 0;
+            display: none;
         }
     }
     
@@ -358,7 +359,7 @@
             height: 7rem;
         }
         .login-btn {
-            display: flex;
+            display: none;
             justify-content: flex-start;
         }
         .left {
