@@ -7,13 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/empresa.css}">
     <link rel="icon" th:href="@{/imgs/logoRD.png}">
-    <script defer="defer" th:src="@{/js/empresa.js}"></script>
+    <script defer="defer" th:src="@{/js/alertReturnModal.js}"></script>
     <title>Cadastro de Empresa</title>
 </head>
 
 <body>
-
+    <div class="fade-modal"></div>
     <main>
+        <!--                   Modal                 -->
+        <div class="modal-confirm">
+            <h2>Tem certeza que deseja voltar?</h2>
+            <h3>Todo o preenchimento será perdido.</h3>
+            <div class="botao-modal-confirm">
+                <button id="cancelar">Não, preencher formulário</button>
+                <a th:href="@{http://localhost:8080}">Sim, voltar</a>
+            </div>
+        </div>
+
 
         <section>
             <form action="#" th:action="@{/armazenarEmpresa}" th:object="${empresa}" method="post">
@@ -145,7 +155,7 @@
 
                 <div class="tap">
                     <div class="botao-container">
-                        <a id="botao-voltar" th:href="@{http://localhost:8080}">Voltar</a>
+                        <a id="botao-voltar">Voltar</a>
                         <button type="submit" id="botao-enviar">Enviar</button>
                     </div>
                 </div>

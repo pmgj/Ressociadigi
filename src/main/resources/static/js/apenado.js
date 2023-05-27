@@ -199,3 +199,19 @@ botoesAdd.forEach(b => {
 // Utilizando a variável global(selectCurrentOptionID) inicializada através do "change" do EventListener acima(linha 108)
 // Nós utilizaremos ela para comparar com o ID de cada Option. Quando encontrarmos esse Option, removeremos ele...
 // Utilizando o método remove().
+
+
+//               modal voltar com fade
+
+document.querySelector('#botao-voltar').addEventListener('click',()=>{
+    let modal = document.querySelector('.modal-confirm');
+    let fade = document.querySelector('.fade-modal');
+    modal.style.display='flex';
+    fade.style.display='flex';
+})
+document.querySelector('#cancelar').addEventListener('click', ()=>{
+    let modal = document.querySelector('.modal-confirm');
+    let fade = document.querySelector('.fade-modal');
+    modal.style.display='none';
+    fade.style.display='none';
+})

@@ -1,4 +1,18 @@
+//               modal voltar com fade
 
+document.querySelector('#botao-voltar').addEventListener('click',()=>{
+
+    let modal1 = document.querySelector('.modal-confirm');
+    let fade = document.querySelector('.fade-modal');
+    modal1.style.display='flex';
+    fade.style.display='flex';
+})
+document.querySelector('#cancelar').addEventListener('click', ()=>{
+    let modal1 = document.querySelector('.modal-confirm');
+    let fade = document.querySelector('.fade-modal');
+    modal1.style.display='none';
+    fade.style.display='none';
+})
 //mudar leganda
 
 /*
@@ -29,11 +43,11 @@ var closeBtn = document.querySelector('.close');
 
 
 // Add click event listener to the image element
-iconeFiltro.addEventListener('click', function() {
+iconeFiltro.addEventListener('click', ()=> {
     modal.style.display = 'block';
 });
 
-closeBtn.addEventListener('click', function() {
+closeBtn.addEventListener('click', ()=> {
     modal.style.display = 'none';
 });
 

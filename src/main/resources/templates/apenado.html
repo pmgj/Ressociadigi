@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <div class="fade-modal"></div>
     <main>
         <nav id="menu-lateral">
             <a th:href="@{http://localhost:8080}">
@@ -24,10 +25,22 @@
 
             <div class="tap">
                 <div class="botao-container">
-                    <a id="botao-voltar" th:href="@{http://localhost:8080}">Voltar</a>
+                    <a id="botao-voltar" >Voltar</a>
                 </div>
             </div>
         </nav>
+
+        <!-- Modal de confirmação + fade-->
+
+        <div class="modal-confirm">
+            <h2>Tem certeza que deseja voltar?</h2>
+            <h3>Todo o preenchimento será perdido.</h3>
+            <div class="botao-modal-confirm">
+                <button id="cancelar">Não, preencher formulário</button>
+                <a th:href="@{http://localhost:8080}">Sim, voltar</a>
+            </div>
+        </div>
+
         <section>
 
             <form action="#" th:action="@{/armazenarApenado}" th:object="${apenado}" method="post">

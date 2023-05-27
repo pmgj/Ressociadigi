@@ -4,10 +4,23 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" th:href="@{/css/vagas.css}" />
 <link rel="icon" th:href="@{/imgs/logoRD.png}">
+	<script defer="defer" th:src="@{/js/alertReturnModal.js}"></script>
 <title>Alocar Vaga</title>
 </head>
 <body>
+	<div class="fade-modal"></div>
 	<main>
+		<!-- Modal de confirmação + fade-->
+
+		<div class="modal-confirm">
+			<h2>Tem certeza que deseja voltar?</h2>
+			<h3>Todo o preenchimento será perdido.</h3>
+			<div class="botao-modal-confirm">
+				<button id="cancelar">Não, preencher formulário</button>
+				<a th:href="@{http://localhost:8080}">Sim, voltar</a>
+			</div>
+		</div>
+
 		<nav>
 			<img src="" alt="">
 		</nav>
@@ -48,7 +61,7 @@
 					<div class="tap">
 						<div class="container-botao">
 							<!--<input type="button" id="botao-voltar" value="Voltar" modificado 27/04/2023/>-->
-							<a id="botao-voltar" th:href="@{http://localhost:8080}">Voltar</a>
+							<a id="botao-voltar" >Voltar</a>
 							<button id="botao-enviar">Enviar</button>
 						</div>
 					</div>
