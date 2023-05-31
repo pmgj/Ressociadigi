@@ -21,28 +21,26 @@
     <main>
         <div class="title">
             <a th:href="@{http://localhost:8080}">
-                <img th:src="@{/imgs/logoRD.png}" width="10%" height="10%" alt="" />
+                <h1>RessociaDigi</h1>
+                <hr>
                 <!--Alterado dia 27/04/2023-->
             </a>
-
         </div>
         <div class="top-layer">
-            <legend>TODOS</legend>
+            <h3>Apenados</h3>
         </div>
+
+
+
         <div class="header-tabela">
 
-            <form action="#" th:action="@{/listarApenados}" method="post">
-                <div class="buscador">
-
-                    <a> <img id="icone-filtro" th:src="@{/imgs/icone-filtro.png}" width="10%" height="10%" alt="" /> </a>
-                </div>
-            </form>
-
+            <div class="buscador">
+               <button id="icone-filtro" type="button" class="botao-filtro laranja">Filtrar</button>
+            </div>
 
             <a th:href="@{/inserirApenado}">
-                <i class="bi bi-plus-circle-fill" style="font-size: 2rem"></i>
+                <button type="button" class="botao-cadastro laranja">Cadastrar Apenado</button>
             </a>
-
 
         </div>
 
@@ -150,20 +148,27 @@
 
         <div id="footer">
             <div class="botao-container">
-                <a id="botao-voltar" th:href="@{http://localhost:8080}">Voltar</a>
-
+                <a th:href="@{http://localhost:8080}" ><button type="button" class="botao-filtro laranja">Voltar</button></a>
             </div>
 
             <div id="pagination">
-                <div id="pageCounter">
+                <div id="pageCounter" class="text-center">
                     <p th:text="${'Pagina ' + numPaginaAtual + ' de ' + numTotalPaginas}"> </p>
                 </div>
 
                 <div id="previousAndNextButtons">
-                    <a th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},page=0)}">&lt;&lt;</a>
-                    <a class="a" th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},page=${previousPage})}">&lt;</a>
-                    <a th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},page=${nextPage})}">&gt;</a>
-                    <a th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},page=${quantidadePaginas - 1})}">&gt;&gt;</a>
+                    <a th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},page=0)}">
+                        <button type="button" class="botao-paginacao laranja"><<</button>
+                    </a>
+                    <a class="a" th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},page=${previousPage})}">
+                        <button type="button" class="botao-paginacao laranja"><</button>
+                    </a>
+                    <a th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},page=${nextPage})}">
+                        <button type="button" class="botao-paginacao laranja">></button>
+                    </a>
+                    <a th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},page=${quantidadePaginas - 1})}">
+                        <button type="button" class="botao-paginacao laranja">>></button>
+                    </a>
                 </div>
             </div>
         </div>
