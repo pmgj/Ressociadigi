@@ -35,11 +35,11 @@
         <div class="header-tabela">
 
             <div class="buscador">
-               <button id="icone-filtro" type="button" class="botao-filtro laranja">Filtrar</button>
+               <button id="icone-filtro" type="button" class="botao laranja">Filtrar</button>
             </div>
 
             <a th:href="@{/inserirApenado}">
-                <button type="button" class="botao-cadastro laranja">Cadastrar Apenado</button>
+                <button type="button" class="botao laranja">Cadastrar Apenado</button>
             </a>
 
         </div>
@@ -148,7 +148,7 @@
 
         <div id="footer">
             <div class="botao-container">
-                <a th:href="@{http://localhost:8080}" ><button type="button" class="botao-filtro laranja">Voltar</button></a>
+                <a th:href="@{http://localhost:8080}" ><button type="button" class="botao laranja">Voltar</button></a>
             </div>
 
             <div id="pagination">
@@ -158,16 +158,16 @@
 
                 <div id="previousAndNextButtons">
                     <a th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},page=0)}">
-                        <button type="button" class="botao-paginacao laranja"><<</button>
+                        <button type="button" class="botao laranja"><<</button>
                     </a>
                     <a class="a" th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},page=${previousPage})}">
-                        <button type="button" class="botao-paginacao laranja"><</button>
+                        <button type="button" class="botao laranja"><</button>
                     </a>
                     <a th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},page=${nextPage})}">
-                        <button type="button" class="botao-paginacao laranja">></button>
+                        <button type="button" class="botao laranja">></button>
                     </a>
                     <a th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},page=${quantidadePaginas - 1})}">
-                        <button type="button" class="botao-paginacao laranja">>></button>
+                        <button type="button" class="botao laranja">>></button>
                     </a>
                 </div>
             </div>
