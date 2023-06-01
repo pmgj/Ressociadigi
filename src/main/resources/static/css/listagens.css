@@ -457,6 +457,10 @@ tbody {
     justify-content: space-between;
 }
 
+#pagination div a {
+    text-decoration: none;
+}
+
 #pageCounter{
     line-height: 35px;
     text-align: center;
