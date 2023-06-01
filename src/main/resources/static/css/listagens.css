@@ -186,18 +186,6 @@ body {
     border: solid 0.5px;
 }
 
-
-.AdicionarEmpresa {
-    border-radius: 50%;
-    background-color: lightgreen;
-    color: white;
-    height: 2.5rem;
-    width: 2.5rem;
-    font-size: xx-large;
-    border: none;
-    cursor: pointer;
-}
-
 .header-tabela {
     display: flex;
     justify-content: space-between;
@@ -382,63 +370,6 @@ img {
     margin-bottom: 30px;
 }
 
-.pagination ul {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    background: #fff;
-    padding: 8px;
-    border-radius: 50px;
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
-}
-
-.pagination ul li {
-    color: #20B2AA;
-    list-style: none;
-    line-height: 45px;
-    text-align: center;
-    font-size: 18px;
-    font-weight: 500;
-    cursor: pointer;
-    user-select: none;
-    transition: all 0.3s ease;
-}
-
-.pagination ul li.numb {
-    list-style: none;
-    height: 45px;
-    width: 45px;
-    margin: 0 3px;
-    line-height: 45px;
-    border-radius: 50%;
-}
-
-.pagination ul li.numb.first {
-    margin: 0px 3px 0 -5px;
-}
-
-.pagination ul li.numb.last {
-    margin: 0px -5px 0 3px;
-}
-
-.pagination ul li.dots {
-    font-size: 22px;
-    cursor: default;
-}
-
-.pagination ul li.btn {
-    padding: 0 20px;
-    border-radius: 50px;
-}
-
-.pagination li.active,
-.pagination ul li.numb:hover,
-.pagination ul li:first-child:hover,
-.pagination ul li:last-child:hover {
-    color: #fff;
-    background: #20B2AA;
-}
-
 tbody {
     margin-bottom: 10rem;
 }
@@ -483,39 +414,4 @@ tbody {
     justify-content: center;
     flex-direction: row;
     column-gap: 30px;
-}
-
-#botao-voltar {
-    background-color: #fff;
-    color: rgb(229, 115, 21);
-    border: 2px solid rgb(229, 115, 21);
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
-    text-transform: uppercase;
-    padding: 10px 15px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 45px;
-    text-decoration: none;
-    text-align: center;
-    letter-spacing: 0.08em;
-    border-radius: 8px;
-    width: 6rem;
-    padding: 2px 6px 2px 6px;
-}
-
-
-/* Estilo quando o botão é passado por cima */
-
-#botao-voltar:hover {
-    background-color: #0056b3;
-    /* Cor de fundo quando passa o mouse */
-}
-
-
-/* Estilo quando o botão é pressionado */
-
-#botao-voltar:active {
-    background-color: #003380;
-    /* Cor de fundo quando pressionado */
 }
