@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{css/listarEmpresas.css}" />
+    <link rel="stylesheet" th:href="@{css/listagens.css}" />
     <script defer="defer" th:src="@{/js/empresa.js}"></script>
     <link rel="icon" th:href="@{/imgs/logoRD.png}">
     <title>Lista de Empresas</title>
@@ -22,25 +22,24 @@
         <div class="title">
             <div class="title">
                 <a th:href="@{http://localhost:8080}">
-                    <img th:src="@{/imgs/logoRD.png}" width="10%" height="10%" alt="" /> <!--Alterado dia 27/04/2023-->
+                    <h1>RessociaDigi</h1>
+                    <hr>
                 </a>
-
             </div>
             <!-- <h1>RESSOCIADIGI</h1> -->
         </div>
         <div class="top-layer">
-            <legend class="legenda">TODOS</legend>
+           <h3>Empresas</h3>
         </div>
-        <div class="header-tabela">
-            <form action="#" th:action="@{/listarEmpresas}" method="post">
-                <div class="buscador">
 
-                    <a> <img id="icone-filtro" th:src="@{/imgs/icone-filtro.png}" width="10%" height="10%" alt="" /> </a>
-                </div>
-            </form>
+        <div class="header-tabela">
+
+            <div class="buscador">
+                <button id="icone-filtro" type="button" class="botao laranja">Filtrar</button>
+            </div>
 
             <a th:href="@{/inserirEmpresa}">
-                <i class="bi bi-plus-circle-fill" style="font-size: 2rem"></i>
+                <button type="button" class="botao laranja">Cadastrar Empresa</button>
             </a>
 			
         </div>
@@ -157,7 +156,9 @@
         </table>
         <div id="footer">
             <div class="botao-container">
-                <a id="botao-voltar" th:href="@{http://localhost:8080}">Voltar</a>
+                <a th:href="@{http://localhost:8080}">
+                    <button type="button" class="botao laranja">Voltar</button>
+                </a>
             </div>
 
             <div id="pagination">
@@ -165,14 +166,22 @@
                 <div id="pageCounter"><p th:text="${'Pagina ' + numPaginaAtual + ' de ' + numTotalPaginas}"> </p></div>
 
                 <div id="previousAndNextButtons">
-                        <a th:href="@{listarEmpresas(cnpj=${#httpServletRequest.getParameter('cnpj')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},responsavel=${#httpServletRequest.getParameter('responsavel')?:''},interlocutor=${#httpServletRequest.getParameter('interlocutor')?:''},email=${#httpServletRequest.getParameter('email')?:''},cidade=${#httpServletRequest.getParameter('cidade')?:''}, page=0)}">&lt;&lt;</a>
-                        <a th:href="@{listarEmpresas(cnpj=${#httpServletRequest.getParameter('cnpj')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},responsavel=${#httpServletRequest.getParameter('responsavel')?:''},interlocutor=${#httpServletRequest.getParameter('interlocutor')?:''},email=${#httpServletRequest.getParameter('email')?:''},cidade=${#httpServletRequest.getParameter('cidade')?:''}, page=${previousPage})}">&lt;</a>
-                        <a th:href="@{listarEmpresas(cnpj=${#httpServletRequest.getParameter('cnpj')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},responsavel=${#httpServletRequest.getParameter('responsavel')?:''},interlocutor=${#httpServletRequest.getParameter('interlocutor')?:''},email=${#httpServletRequest.getParameter('email')?:''},cidade=${#httpServletRequest.getParameter('cidade')?:''}, page=${nextPage})}">&gt;</a>
-                        <a th:href="@{listarEmpresas(cnpj=${#httpServletRequest.getParameter('cnpj')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},responsavel=${#httpServletRequest.getParameter('responsavel')?:''},interlocutor=${#httpServletRequest.getParameter('interlocutor')?:''},email=${#httpServletRequest.getParameter('email')?:''},cidade=${#httpServletRequest.getParameter('cidade')?:''}, page=${quantidadePaginas - 1})}">&gt;&gt;</a>
+                        <a th:href="@{listarEmpresas(cnpj=${#httpServletRequest.getParameter('cnpj')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},responsavel=${#httpServletRequest.getParameter('responsavel')?:''},interlocutor=${#httpServletRequest.getParameter('interlocutor')?:''},email=${#httpServletRequest.getParameter('email')?:''},cidade=${#httpServletRequest.getParameter('cidade')?:''}, page=0)}">
+                            <button type="button" class="botao laranja"><<</button>
+                        </a>
+                        <a th:href="@{listarEmpresas(cnpj=${#httpServletRequest.getParameter('cnpj')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},responsavel=${#httpServletRequest.getParameter('responsavel')?:''},interlocutor=${#httpServletRequest.getParameter('interlocutor')?:''},email=${#httpServletRequest.getParameter('email')?:''},cidade=${#httpServletRequest.getParameter('cidade')?:''}, page=${previousPage})}">
+                            <button type="button" class="botao laranja"><</button>
+                        </a>
+                        <a th:href="@{listarEmpresas(cnpj=${#httpServletRequest.getParameter('cnpj')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},responsavel=${#httpServletRequest.getParameter('responsavel')?:''},interlocutor=${#httpServletRequest.getParameter('interlocutor')?:''},email=${#httpServletRequest.getParameter('email')?:''},cidade=${#httpServletRequest.getParameter('cidade')?:''}, page=${nextPage})}">
+                            <button type="button" class="botao laranja">></button>
+                        </a>
+                        <a th:href="@{listarEmpresas(cnpj=${#httpServletRequest.getParameter('cnpj')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},responsavel=${#httpServletRequest.getParameter('responsavel')?:''},interlocutor=${#httpServletRequest.getParameter('interlocutor')?:''},email=${#httpServletRequest.getParameter('email')?:''},cidade=${#httpServletRequest.getParameter('cidade')?:''}, page=${quantidadePaginas - 1})}">
+                            <button type="button" class="botao laranja">>></button>
+                        </a>
                 </div>
 
+                </div>
             </div>
-        </div>
         </div>
     </main>
 </body>
