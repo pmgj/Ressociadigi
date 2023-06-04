@@ -4,7 +4,9 @@
      ::-webkit-scrollbar-track {
         background-color: #F4F4F4;
     }
-    
+    button a{
+        cursor:pointer;
+    }
      ::-webkit-scrollbar {
         width: 5px;
         background: rgba(246, 130, 31, 1);

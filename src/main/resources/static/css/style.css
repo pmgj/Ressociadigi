@@ -106,7 +106,7 @@ img {
 
 #cnh-inputbox>label {
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: 1rem;
     letter-spacing: 0.8px;
 }
 
@@ -117,7 +117,7 @@ img {
 
 #restricao {
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: 1rem;
     letter-spacing: 0.8px;
 }
 
@@ -266,7 +266,7 @@ select[multiple=multiple] {
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 0px;
     border-top-right-radius: 0px;
-    scrollbar-width: 1px;
+    /*scrollbar-width: 1px;*/
 }
 
 .input-normal>label {
@@ -560,6 +560,7 @@ dialog::backdrop {
     border-radius: 5px;
     border: none;
     font-size: 15px;
+    cursor:pointer;
 }
 .botao-modal-confirm>a{
     padding: 8px;
@@ -570,108 +571,24 @@ dialog::backdrop {
     border-radius: 5px;
 }
 
-
-
-@media (max-width: 1336px){
-    section{
-        width: 70rem;
-        height: 700px;
-        padding:20px ;
-    }
-}
-@media (max-width: 800px) {
-    main {
-        flex-direction: column;
-        height: 70rem;
-        width: auto;
-    }
-    nav {
-        display: flex;
-        flex-direction: row;
-        background-color: aqua;
-        width: 100%;
-        height: 60rem;
-        display: none;
-    }
-    h1 {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: none;
-    }
-    img {
-        display: none;
-    }
-    ul {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        column-gap: 20px;
-        overflow: auto;
-        width: 100%;
-    }
-    ul li .topico-menu {
-        font-size: 5px;
-    }
-    form {
-        display: flex;
-        flex-direction: column;
-    }
-    #restricao {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    #container-inputs {
-        display: grid;
-        grid-template-columns: auto;
-    }
-    section #grupo-input-pessoais {
-        display: flex;
-        flex-direction: column;
-    }
-    section {
-        height: auto;
-    }
-    #grupo-input-pessoais,
-    #grupo-input-endereco,
-    #grupo-input-sitacional,
-    #grupo-input-instrucao {
-        display: grid;
-        grid-template-columns: auto;
-        column-gap: 3rem;
-        display: flex;
-        flex-direction: column;
-        row-gap: 2em;
-        width: 800px;
-        display: none;
-        display: flex;
-        justify-content: center;
-        flex-direction: row;
-        align-items: center;
-    }
-    #div-sinalizacao {
-        display: none;
-    }
-}
-
 .tap {
     display: flex;
     width: 100vh;
     display: flex;
     justify-content: left;
-    align-items: left;
+    /*align-items: left;*/
     padding: 10px 60px 30px 50px;
     margin-top: 30px;
 }
-
+button a{
+    cursor:pointer;
+}
 .botao-container {
     display: flex;
     justify-content: center;
     flex-direction: row;
     column-gap: 30px;
+    cursor: pointer;
 }
 
 #botao-voltar {
@@ -699,5 +616,109 @@ dialog::backdrop {
 }
 
 
-/* Estilo quando o botão é passado por cima */
 
+@media (max-width: 1336px){
+    section{
+        width: 70rem;
+        height: 700px;
+        padding:20px ;
+    }
+}
+@media (max-width: 1280px){
+    .input-normal>input,
+    .input-normal>select,
+    textarea{
+        width: 12rem;
+    }
+}
+@media (max-width: 1050px){
+    main{
+        display: flex;
+        flex-direction: column;
+    }
+    section{
+        width: 98%;
+    }
+    #menu-lateral{
+        display: flex;
+        flex-direction: column;
+        width: 98%;
+        height: auto;
+        justify-content: center;
+        align-items: center;
+    }
+    img{
+        width: 180px;
+        height: auto;
+    }
+    ul{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    li{
+        margin: 0 5px;
+        font-size: 1rem;
+    }
+    .tap{
+        padding: 0;
+        display: flex;
+        justify-content: center!important;
+    }
+    .modal-confirm{
+        width: 70%!important;
+        margin: 0!important;
+        top: 100px;
+    }
+
+}
+@media (max-width: 700px){
+    #div-sinalizacao{
+        font-size: 13px!important;
+    }
+    .input-normal>label{
+        font-size: 13px!important;
+    }
+    #grupo-input-pessoais,
+    #grupo-input-endereco,
+    #grupo-input-instrucao,
+    #grupo-input-situacional{
+        grid-template-columns: 1fr;
+        grid-column: 1;
+        justify-items: center;
+    }
+    section{
+        height: auto;
+    }
+}
+@media (max-width: 500px) {
+    #titulo{
+        margin-bottom: 30px;
+    }
+    ul{
+        flex-direction: column;
+    }
+    .fieldset-dados-bancarios{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    #titulox{
+        font-size:1.3rem!important;
+    }
+    #artigo-input{
+        display: flex;
+        flex-direction: column;
+    }
+    #div-numeroConta,
+    #div-agencia,
+    #div-banco,
+    #div-operacao{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}

@@ -154,6 +154,7 @@ nav {
     justify-content: space-between;
     width: 70%;
     margin-left: 7em;
+    cursor: pointer;
 }
 
 #botao-enviar {
