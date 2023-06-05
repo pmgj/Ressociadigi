@@ -102,7 +102,6 @@ class VagaPreenchidaWithApenado implements Specification<VagaPreenchida> {
 			return cb.isTrue(cb.literal(true));
 		}
 		Join<VagaPreenchida, Apenado> apenadoJoin = root.join("apenado", JoinType.INNER);
-		Path<String> apenadoNomePath = apenadoJoin.get("nome");
-		return cb.equal(apenadoNomePath, nomeApenado);
+		return cb.equal(apenadoJoin.get("nome"), nomeApenado);
 	}
 }
