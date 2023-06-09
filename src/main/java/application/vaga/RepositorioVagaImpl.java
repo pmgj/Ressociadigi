@@ -88,7 +88,7 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
 
         Specification<VagaPreenchida> spec = Specification.where(null);
 
-        if(apenado != null && apenado.isEmpty()) {
+        if(apenado != null && !apenado.isEmpty()) {
             spec = spec.and(new VagaPreenchidaWithApenado(apenado));
         }
 

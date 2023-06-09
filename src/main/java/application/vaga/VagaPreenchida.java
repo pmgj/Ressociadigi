@@ -101,7 +101,7 @@ class VagaPreenchidaWithApenado implements Specification<VagaPreenchida> {
 		if(nomeApenado == null) {
 			return cb.isTrue(cb.literal(true));
 		}
-		Join<VagaPreenchida, Apenado> apenadoJoin = root.join("apenado", JoinType.INNER);
+		Join<VagaPreenchida, Apenado> apenadoJoin = root.join("apenado");
 		return cb.equal(apenadoJoin.get("nome"), nomeApenado);
 	}
 }

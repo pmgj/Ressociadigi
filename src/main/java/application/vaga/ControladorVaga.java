@@ -63,6 +63,7 @@ public class ControladorVaga {
 										 Model model,
 										 @PageableDefault(page = 0, size = 2) Pageable pageable) {
 
+
 		Specification<VagaPreenchida> spec = vagaRepositoryCustom.gerarSpecVagaPreenchida(empresa, apenado);
 
 		Page<VagaPreenchida> pgVagas = repVagaPreenchida.findAll(spec, pageable);
