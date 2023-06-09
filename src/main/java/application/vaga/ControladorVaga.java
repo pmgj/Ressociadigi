@@ -60,11 +60,12 @@ public class ControladorVaga {
 	@RequestMapping("listarVagasPreenchidas")
 	public String listarVagasPreenchidas(@RequestParam(value = "empresa", required = false)String empresa,
 										 @RequestParam(value = "apenado", required = false)String apenado,
+										 @RequestParam(value = "tipo", required = false)String tipo,
 										 Model model,
 										 @PageableDefault(page = 0, size = 2) Pageable pageable) {
 
 
-		Specification<VagaPreenchida> spec = vagaRepositoryCustom.gerarSpecVagaPreenchida(empresa, apenado);
+		Specification<VagaPreenchida> spec = vagaRepositoryCustom.gerarSpecVagaPreenchida(empresa, apenado, tipo);
 
 		Page<VagaPreenchida> pgVagas = repVagaPreenchida.findAll(spec, pageable);
 
