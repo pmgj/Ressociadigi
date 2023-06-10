@@ -11,17 +11,18 @@
 </head>
 <body>
     <div class="fade-modal"></div>
+    <div class="modal-confirm">
+        <h2>Tem certeza que deseja voltar?</h2>
+        <h3>Todo o preenchimento será perdido.</h3>
+        <div class="botao-modal-confirm">
+            <button id="cancelar">Não, preencher formulário</button>
+            <a th:href="@{/}">Sim, voltar</a>
+        </div>
+    </div>
    <main>
        <!-- Modal de confirmação + fade-->
 
-       <div class="modal-confirm">
-           <h2>Tem certeza que deseja voltar?</h2>
-           <h3>Todo o preenchimento será perdido.</h3>
-           <div class="botao-modal-confirm">
-               <button id="cancelar">Não, preencher formulário</button>
-               <a th:href="@{/}">Sim, voltar</a>
-           </div>
-       </div>
+
 
 
        <header>

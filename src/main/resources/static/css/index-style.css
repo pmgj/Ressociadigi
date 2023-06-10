@@ -157,6 +157,7 @@
     article {
         /*  border: solid 4px ; */
         width: 90%;
+        max-width: 100rem;
         margin: 5% auto;
         display: flex;
         justify-content: space-around;

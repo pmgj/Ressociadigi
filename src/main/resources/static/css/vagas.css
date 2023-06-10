@@ -35,6 +35,8 @@
     body{
         background-color: #fff;
         font-family: 'Roboto', sans-serif;
+        display: flex;
+        justify-content: center;
     }
     header{
         margin-bottom: 30px;
@@ -205,7 +207,8 @@
         display: none;
         background-color: #eeeeee;
         border-radius: 5px;
-        margin: 20% auto;
+        top: 100px;
+        margin: 20px auto;
         z-index: 5;
         flex-direction: column;
         justify-content: space-around;
@@ -271,7 +274,7 @@
         }
         .modal-confirm{
             width: 70%!important;
-            margin: 0!important;
+            margin: 0 auto!important;
             top: 100px;
         }
     }

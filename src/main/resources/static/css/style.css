@@ -524,7 +524,8 @@ dialog::backdrop {
     display: none;
     background-color: #eeeeee;
     border-radius: 5px;
-    margin: 20% auto;
+    top: 100px;
+    margin: 20px auto;
     z-index: 5;
     flex-direction: column;
     justify-content: space-around;
