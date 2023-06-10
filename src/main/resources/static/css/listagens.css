@@ -3,7 +3,9 @@
     font-family: 'Inter';
     font-weight: normal;
 }
-
+button a{
+    cursor:pointer;
+}
 * {
     box-sizing: border-box;
     margin: 0;
@@ -33,6 +35,19 @@ body {
     justify-content: center;
     padding: 30px;
     width: 100vw;
+}
+
+.title h1 {
+    color: 	#CD7F32;
+    font-weight: bold;
+}
+
+.title hr {
+    border: 2px solid orange;
+}
+
+.title a {
+    text-decoration: none;
 }
 
 
@@ -156,11 +171,6 @@ body {
     border-radius: 2px;
 }
 
-#icone-filtro {
-    height: 38px;
-    width: 38px;
-    cursor: pointer;
-}
 
 #select-tipoBusca {
     height: 2.4rem;
@@ -178,41 +188,40 @@ body {
     border: solid 0.5px;
 }
 
-.buscador button {
-    color: aliceblue;
-    background-color: rgb(65, 65, 120);
-    box-shadow: 3px 3px 1.5px rgba(65, 65, 120, 0.25);
-    outline: none;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    width: 4rem;
-    height: 2.4rem;
-}
-
-.buscador input:focus {
-    border: solid 1px orange;
-}
-
-.AdicionarEmpresa {
-    border-radius: 50%;
-    background-color: lightgreen;
-    color: white;
-    height: 2.5rem;
-    width: 2.5rem;
-    font-size: xx-large;
-    border: none;
-    cursor: pointer;
-}
-
 .header-tabela {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    background-color: rgba(222, 222, 222, 1);
     padding: 20px;
-    height: 10%;
+    margin-bottom: 1rem;
 }
+
+
+.botao {
+    background-color: #fff;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 40px;
+    text-decoration: none;
+    text-align: center;
+    letter-spacing: 0.08em;
+    border-radius: 8px;
+    width: fit-content;
+    padding: 0px 10px;
+}
+
+.laranja {
+    border-color: #CD7F32;
+    color: #CD7F32;
+}
+
+.laranja:hover {
+    background-color:  #FFBF00;
+    color: white;
+}
+
 
 thead th td {
     display: flex;
@@ -236,16 +245,17 @@ table {
 table thead {
     display: none;
     /* font-weight: 500; */
-    background-color: #ffddbd;
+    background-color:  #CD7F32;
     width: 75rem;
 }
 
 table tbody tr {
     border: 1px solid #dad6eb;
-    border-radius: 5px;
+    border-radius: 3px 3px 0px 0px;
     display: block;
     padding: 30px;
     margin-bottom: 30px;
+    background: #FAC898;
 }
 
 table tbody tr td {
@@ -274,24 +284,6 @@ table tbody tr td button {
     width: 50%;
 }
 
-table tbody tr td button:hover,
-table tbody tr td button:focus {
-    background: #a795fe;
-    cursor: pointer;
-}
-
-#previousAndNextButtons a {
-    text-decoration: none;
-    font-size: large;
-    font-weight: bold;
-    color: white;
-    background-color: rgb(229, 115, 21);
-    box-shadow: 0 4px 8px rgba(34, 34, 34, 0.2);
-    border-radius: 8px;
-    margin-left: 10px;
-    padding: 2px 10px;
-}
-
 table tbody tr td:before {
     color: #8a8a87;
     content: attr(data-label);
@@ -300,13 +292,14 @@ table tbody tr td:before {
     position: absolute;
 }
 
-@media all and (min-width: 768px) {
+@media all and (min-width: 300px) {
     table {
         border: 1px solid #eee;
         border-collapse: collapse;
         max-width: 75rem;
         text-align: left;
         width: 100%;
+        overflow: scroll;
     }
     table thead {
         display: table-header-group;
@@ -322,7 +315,7 @@ table tbody tr td:before {
         display: table-row;
     }
     table tbody tr:nth-child(odd) {
-        background: #eee;
+        background: none;
     }
     table tbody tr td {
         display: table-cell;
@@ -345,95 +338,51 @@ table tbody tr td:before {
     }
 }
 
-@media(max-width:700px) {
-    #select-tipoBusca {
-        display: none;
+@media(max-width:950px) {
+    main {
+        width: 80%;
     }
-    img {
-        display: none;
-    }
-    .buscador {
-        width: 70%;
-        column-gap: 20px;
-    }
-    .AdicionarEmpresa {
-        display: none;
-    }
-    tfoot {
-        display: none;
+    table{
+        margin-right: 2rem;
     }
 }
+@media(max-width:600px){
+    #footer{
+        flex-direction: column-reverse!important;
+        width: 100%;
+    }
+    #pagination{
+        flex-direction: column-reverse!important;
+        justify-content: center!important;
+    }
+    #previousAndNextButtons{
+        display: flex;
+        justify-content: center;
+    }
+    .header-tabela{
+        flex-direction: column;
+        justify-content: center;
+        padding: 0;
+    }
+    .buscador{
+        margin-bottom: 10px;
+    }
 
+}
 #Btn-remove-edit {
     display: flex;
     justify-content: space-between;
 }
 
 .top-layer {
-    border-bottom: 4px solid orange;
     margin-bottom: 1rem;
+    color: #CD7F32;
+    font-weight: bold;
 }
 
 img {
     height: 4em;
     margin-bottom: 30px;
-}
-
-.pagination ul {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    background: #fff;
-    padding: 8px;
-    border-radius: 50px;
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
-}
-
-.pagination ul li {
-    color: #20B2AA;
-    list-style: none;
-    line-height: 45px;
-    text-align: center;
-    font-size: 18px;
-    font-weight: 500;
-    cursor: pointer;
-    user-select: none;
-    transition: all 0.3s ease;
-}
-
-.pagination ul li.numb {
-    list-style: none;
-    height: 45px;
-    width: 45px;
-    margin: 0 3px;
-    line-height: 45px;
-    border-radius: 50%;
-}
-
-.pagination ul li.numb.first {
-    margin: 0px 3px 0 -5px;
-}
-
-.pagination ul li.numb.last {
-    margin: 0px -5px 0 3px;
-}
-
-.pagination ul li.dots {
-    font-size: 22px;
-    cursor: default;
-}
-
-.pagination ul li.btn {
-    padding: 0 20px;
-    border-radius: 50px;
-}
-
-.pagination li.active,
-.pagination ul li.numb:hover,
-.pagination ul li:first-child:hover,
-.pagination ul li:last-child:hover {
-    color: #fff;
-    background: #20B2AA;
 }
 
 tbody {
@@ -454,6 +403,18 @@ tbody {
     justify-content: space-between;
 }
 
+#pagination div a {
+    text-decoration: none;
+}
+
+#pageCounter{
+    line-height: 35px;
+    text-align: center;
+    padding: 2px 10px 2px 10px;
+    color: #CD7F32;
+    font-weight: bold;
+}
+
 .tap {
     display: flex;
     width: 100vh;
@@ -468,39 +429,4 @@ tbody {
     justify-content: center;
     flex-direction: row;
     column-gap: 30px;
-}
-
-#botao-voltar {
-    background-color: #fff;
-    color: rgb(229, 115, 21);
-    border: 2px solid rgb(229, 115, 21);
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
-    text-transform: uppercase;
-    padding: 10px 15px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 45px;
-    text-decoration: none;
-    text-align: center;
-    letter-spacing: 0.08em;
-    border-radius: 8px;
-    width: 6rem;
-    padding: 2px 6px 2px 6px;
-}
-
-
-/* Estilo quando o botão é passado por cima */
-
-#botao-voltar:hover {
-    background-color: #0056b3;
-    /* Cor de fundo quando passa o mouse */
-}
-
-
-/* Estilo quando o botão é pressionado */
-
-#botao-voltar:active {
-    background-color: #003380;
-    /* Cor de fundo quando pressionado */
 }

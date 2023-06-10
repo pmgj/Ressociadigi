@@ -2,7 +2,8 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-	<link rel="stylesheet" th:href="@{css/listarEmpresas.css}" />
+	<link rel="stylesheet" th:href="@{css/listagens.css}" />
+	<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=10, minimum-scale=1.0">
 	<link rel="icon" th:href="@{/imgs/logoRD.png}">
 	<script defer="defer" th:src="@{/js/vagasPreenchidas.js}"></script>
 	<!-- Bootstrap Font Icon CSS -->
@@ -18,25 +19,24 @@
 	<main>
 		<div class="title">
 			<div class="title">
-				<a th:href="@{http://localhost:8080}">
-					<img th:src="@{/imgs/logoRD.png}" width="10%" height="10%" alt="" /> <!--Alterado dia 27/04/2023-->
+				<a th:href="@{/}">
+					<h1>RessociaDigi</h1>
+					<hr>
 				</a>
-
 			</div>
-			<!-- <h1>RESSOCIADIGI</h1> -->
+
 		</div>
 		<div class="top-layer">
-			<legend>TODOS</legend>
+			<h3>Vagas Preenchidas</h3>
 		</div>
 		<div class="header-tabela">
-			<!-- <form action="#" th:action="@{/buscarEmpresa}" th:object="${busca}" method="post"> -->
-	            <div class="buscador">
-					<a href="#" data-toggle="modal" data-target="#confirmModal"> <img id="icone-filtro" th:src="@{/imgs/icone-filtro.png}" width="10%" height="10%" alt="" /> </a>
-	            
-	        	</div>
-			<!-- </form>-->
-			<a th:href="@{/preencherVaga}">
-				<i class="bi bi-plus-circle-fill" style="font-size: 2rem"></i>
+
+			<div class="buscador">
+				<button id="icone-filtro" type="button" class="botao laranja" data-toggle="modal" data-target="#confirmModal">Filtrar</button>
+			</div>
+
+			<a th:href="@{/inserirApenado}">
+				<button type="button" class="botao laranja">Cadastrar Apenado</button>
 			</a>
 		</div>
 		<div id="confirmModal" class="modal fade" role="dialog">
@@ -107,7 +107,9 @@
 
 		<div id="footer">
 			<div class="botao-container">
-				<a id="botao-voltar" th:href="@{http://localhost:8080}">Voltar</a>
+				<a th:href="@{/}">
+					<button type="button" class="botao laranja">Voltar</button>
+				</a>
 			</div>
 
 			<div id="pagination">
@@ -115,10 +117,18 @@
 				<div id="pageCounter"><p th:text="${'Pagina ' + numPaginaAtual + ' de ' + numTotalPaginas}"> </p></div>
 
 				<div id="previousAndNextButtons">
-					<a href="?page=0">&lt;&lt;</a>
-					<a th:href="@{?page={contador} (contador = ${previousPage})}">&lt;</a>
-					<a th:href="@{?page={contador} (contador = ${nextPage})}">&gt;</a>
-					<a th:href="@{?page={page}(page = ${quantidadePaginas - 1})}">&gt;&gt;</a>
+					<a href="?page=0">
+						<button type="button" class="botao laranja"><<</button>
+					</a>
+					<a th:href="@{?page={contador} (contador = ${previousPage})}">
+						<button type="button" class="botao laranja"><</button>
+					</a>
+					<a th:href="@{?page={contador} (contador = ${nextPage})}">
+						<button type="button" class="botao laranja">></button>
+					</a>
+					<a th:href="@{?page={page}(page = ${quantidadePaginas - 1})}">
+						<button type="button" class="botao laranja">>></button>
+					</a>
 				</div>
 
 			</div>

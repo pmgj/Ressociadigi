@@ -2,6 +2,7 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=10, minimum-scale=1.0">
 <link rel="stylesheet" th:href="@{/css/vagas.css}" />
 <link rel="icon" th:href="@{/imgs/logoRD.png}">
 	<script defer="defer" th:src="@{/js/alertReturnModal.js}"></script>
@@ -17,19 +18,26 @@
 			<h3>Todo o preenchimento será perdido.</h3>
 			<div class="botao-modal-confirm">
 				<button id="cancelar">Não, preencher formulário</button>
-				<a th:href="@{http://localhost:8080}">Sim, voltar</a>
+				<a th:href="@{/}">Sim, voltar</a>
 			</div>
 		</div>
 
-		<nav>
-			<img src="" alt="">
-		</nav>
+		<header>
+			<div class="title">
+				<a th:href="@{/}">
+					<h1>RessociaDigi</h1>
+					<hr>
+				</a>
+			</div>
+			<div class="top-layer">
+				<h3>Preencher Vaga</h3>
+			</div>
+		</header>
+
 
 		<section>
 			<form action="#" th:action="@{/armazenarVagaPreenchida}" th:object="${vagaPreenchida}" method="post">
-				<div id="titulo">
-					<h1>Preencher Vaga</h1>
-				</div>
+
 
 				<div class="container-input-vagas">
 					 <div class="input-normal" id="nomeVaga">
