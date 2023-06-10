@@ -32,31 +32,53 @@
         padding: 0;
         margin: 0;
     }
-    
+    body{
+        background-color: #fff;
+        font-family: 'Roboto', sans-serif;
+    }
+    header{
+        margin-bottom: 30px;
+        width: 100%;
+    }
+
+    .title h1 {
+        color: 	#C96D09;
+        font-weight: bold;
+        font-size: 3rem;
+    }
+    h3{
+        font-size: 2rem;
+        color:#C96D09;
+        font-weight: 500;
+        margin-top: 1rem;
+    }
+    a{
+        text-decoration: none;
+    }
+    hr {
+        border: 2px solid orange;
+        margin-top: 1rem;
+    }
     main {
-        background-color: rgba(222, 222, 222, 1);
-        height: 100vh;
         display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
+        flex-direction: column;
+        width: 80%;
+        margin: 20px auto;
     }
     
     section {
-        width: 55rem;
-        height: 45rem;
+        width: 100%;
         background: #FFFFFF;
-        box-shadow: 9px 9px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 10px;
-        font-family: 'Anton', sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
     
     textarea {
-        width: 18rem;
+        width: 100%;
         padding: 10px;
-        font-size: 20px;
-        max-height: 10rem;
+        font-size: 1rem;
+        resize: vertical;
         border-radius: 4px;
+        border: 2px solid #C96D09;
     }
     
     form {
@@ -67,7 +89,7 @@
     
     .container-input-vagas {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 50% 50%;
         column-gap: 3rem;
         row-gap: 2em;
         width: 80%;
@@ -79,43 +101,40 @@
         flex-direction: column;
     }
     
-    #titulo {}
-    
-    #titulo {
-        height: 9rem;
-        border-bottom: black 8px;
-        width: 100%;
-    }
-    
-    #titulo h1 {
-        letter-spacing: 2px;
-        padding: 1.2rem;
-        border-bottom: solid 4px rgba(0, 0, 0, 0.15);
-        font-size: 2em;
-        font-family: 'Martian Mono', monospace;
-    }
+
     
     .input-normal>input,
     .input-normal>select {
-        width: 18rem;
+        width: 100%;
         height: 2.5rem;
-        border-radius: 6px;
-        padding: 4px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 2px solid #C96D09;
+        background-color: #fff;
+        color: #222222;
+        caret-color: #C96D09;
     }
-    
+
+
+    .input-normal>input{
+        margin-bottom: 1.1rem;
+        color: #C96D09;
+        font-weight: 600;
+    }
     .input-normal>label {
         text-transform: uppercase;
         font-size: 0.8rem;
         letter-spacing: 0.8px;
         display: block;
+        font-weight: 600;
     }
     
     .container-botao {
         margin-top: 20px;
         display: flex;
         justify-content: space-between;
-        width: 70%;
-        margin-left: 7em;
+        width: 100%;
     }
     
     .tap {
@@ -234,39 +253,25 @@
 
 
 
-    @media (max-width: 700px) {
-        #titulo {
-            width: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    }
-    
-    @media (max-width:600px) {
+    @media (max-width: 850px) {
         .container-input-vagas {
+
             display: flex;
             flex-direction: column;
-            align-items: center;
+
         }
-        .tap {
-            display: flex;
-            width: 100vh;
-            justify-content: space-between;
-            padding: 10px 60px 30px 50px;
+        .input-normal{
+            margin-top: 1rem;
         }
-        section {
-            border: none;
-            background: #FFFFFF;
-            box-shadow: 0;
-            border-radius: 0px;
-            overflow: scroll;
-            overflow-y: scroll;
+        h1{
+            font-size: 2rem!important;
         }
-        #titulo {
-            display: flex;
-            width: 100%;
-            align-items: center;
-            justify-content: center;
+        h3{
+            font-size: 1.2rem;
+        }
+        .modal-confirm{
+            width: 70%!important;
+            margin: 0!important;
+            top: 100px;
         }
     }
