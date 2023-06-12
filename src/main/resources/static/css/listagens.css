@@ -3,7 +3,9 @@
     font-family: 'Inter';
     font-weight: normal;
 }
-
+button a{
+    cursor:pointer;
+}
 * {
     box-sizing: border-box;
     margin: 0;
@@ -191,7 +193,7 @@ body {
     justify-content: space-between;
     width: 100%;
     padding: 20px;
-    height: 10%;
+    margin-bottom: 1rem;
 }
 
 
@@ -290,13 +292,14 @@ table tbody tr td:before {
     position: absolute;
 }
 
-@media all and (min-width: 768px) {
+@media all and (min-width: 300px) {
     table {
         border: 1px solid #eee;
         border-collapse: collapse;
         max-width: 75rem;
         text-align: left;
         width: 100%;
+        overflow: scroll;
     }
     table thead {
         display: table-header-group;
@@ -335,25 +338,37 @@ table tbody tr td:before {
     }
 }
 
-@media(max-width:700px) {
-    #select-tipoBusca {
-        display: none;
+@media(max-width:950px) {
+    main {
+        width: 80%;
     }
-    img {
-        display: none;
-    }
-    .buscador {
-        width: 70%;
-        column-gap: 20px;
-    }
-    .AdicionarEmpresa {
-        display: none;
-    }
-    tfoot {
-        display: none;
+    table{
+        margin-right: 2rem;
     }
 }
+@media(max-width:600px){
+    #footer{
+        flex-direction: column-reverse!important;
+        width: 100%;
+    }
+    #pagination{
+        flex-direction: column-reverse!important;
+        justify-content: center!important;
+    }
+    #previousAndNextButtons{
+        display: flex;
+        justify-content: center;
+    }
+    .header-tabela{
+        flex-direction: column;
+        justify-content: center;
+        padding: 0;
+    }
+    .buscador{
+        margin-bottom: 10px;
+    }
 
+}
 #Btn-remove-edit {
     display: flex;
     justify-content: space-between;

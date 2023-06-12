@@ -209,6 +209,7 @@ document.querySelector('#botao-voltar').addEventListener('click',()=>{
     modal.style.display='flex';
     fade.style.display='flex';
 })
+
 document.querySelector('#cancelar').addEventListener('click', ()=>{
     let modal = document.querySelector('.modal-confirm');
     let fade = document.querySelector('.fade-modal');

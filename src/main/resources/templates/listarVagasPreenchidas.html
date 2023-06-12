@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 	<link rel="stylesheet" th:href="@{css/listagens.css}" />
+	<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=10, minimum-scale=1.0">
 	<link rel="icon" th:href="@{/imgs/logoRD.png}">
 	<script defer="defer" th:src="@{/js/vagasPreenchidas.js}"></script>
 	<!-- Bootstrap Font Icon CSS -->
@@ -18,7 +19,7 @@
 	<main>
 		<div class="title">
 			<div class="title">
-				<a th:href="@{http://localhost:8080}">
+				<a th:href="@{/}">
 					<h1>RessociaDigi</h1>
 					<hr>
 				</a>
@@ -110,7 +111,7 @@
 
 		<div id="footer">
 			<div class="botao-container">
-				<a th:href="@{http://localhost:8080}">
+				<a th:href="@{/}">
 					<button type="button" class="botao laranja">Voltar</button>
 				</a>
 			</div>

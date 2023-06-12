@@ -7,15 +7,16 @@
     <link rel="stylesheet" th:href="@{/css/style.css}" />
     <link rel="icon" th:href="@{/imgs/logoRD.png}">
     <script defer="defer" th:src="@{/js/apenado.js}"></script>
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=10, minimum-scale=1.0">
 </head>
 
 <body>
     <div class="fade-modal"></div>
     <main>
-        <nav id="menu-lateral">
-            <a th:href="@{http://localhost:8080}">
-                <img th:src="@{/imgs/logoRD.png}" alt="Logo do RessociaDigi" />
-            </a>
+        <nav id="menu-lateral" >
+
+                    <img th:src="@{/imgs/logoRD.png}" alt="Logo do RessociaDigi"  />
+
             <ul>
                 <li id="dp">Dados pessoais</li>
                 <li id="ende">Endereço</li>
@@ -37,7 +38,7 @@
             <h3>Todo o preenchimento será perdido.</h3>
             <div class="botao-modal-confirm">
                 <button id="cancelar">Não, preencher formulário</button>
-                <a th:href="@{http://localhost:8080}">Sim, voltar</a>
+                <a th:href="@{/}">Sim, voltar</a>
             </div>
         </div>
 
@@ -247,8 +248,8 @@
                         </div>
 
                         <div id="restricao">
-                            <label>Existe alguma restrição?:</label>
-                            <input type="radio" th:each="restricao : ${restricoes}" th:value="${restricao}" th:text="${restricao.texto}" th:checked="${apenado.getRestricao().equals(restricao)}" th:field="*{restricao}" />
+                            <label>Existe alguma restrição?:</label><br>
+                            <input type="radio" th:each="restricao : ${restricoes}" th:value="${restricao}" th:text="${restricao.texto}" th:checked="${apenado.getRestricao().equals(restricao)}" th:field="*{restricao}" /><br>
                             <textarea id="area-restricao" disabled th:field="*{textoRestricao}" name="restricao" cols="10" rows="6"></textarea>
                             <label id="labelError" th:if="${#fields.hasErrors('textoRestricao')}" th:errors="*{textoRestricao}">Erro na Restrição</label>
                         </div>
