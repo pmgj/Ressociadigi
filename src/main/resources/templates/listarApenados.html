@@ -122,6 +122,7 @@
                     <td data-label="HABILIDADES"><span id="habilidades" th:text="${item.habilidades}">Habilidades</span></td>
                     <td data-label="ARTIGOS"><span id="artigos" th:text="${item.artigos}">Artigos</span></td>
                     <td id="Btn-remove-edit" width="180">
+                        <button id="ver-mais" th:attr="data-cpf=${item.cpf}"  ></button>
                         <a th:href="@{/alterarApenado(cpf=${item.cpf})}"><button>Editar</button></a>
                         <a id="botao-remover" href="#" th:attr="data-nome=${item.nome}, data-cpf=${item.cpf}" data-toggle="modal" data-target="#confirmModal"><button>Remover</button></a>
                     </td>

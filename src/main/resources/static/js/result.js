@@ -65,3 +65,37 @@ function handleCheckbox(chbx){
 // })
 
 
+$(document).on("click", "#ver-mais", function () {
+
+	var cpf = $(this).data('cpf');
+	getUserDetails(cpf)
+});
+
+
+
+function getUserDetails(cpf) {
+	$.ajax({
+		url: '/detalharApenado?cpf=' + encodeURIComponent(cpf),
+		type: 'GET',
+		success: function(response) {
+			// Manipule o objeto de usuário retornado
+			console.log(response)
+			console.log(response.name);
+			console.log(response.email);
+			// Chame a função para exibir os detalhes do usuário em um modal ou em qualquer outro lugar desejado
+			exibirDetalhesUsuario(response);
+		},
+		error: function(xhr, status, error) {
+			console.error(error);
+		}
+	});
+}
+
+function exibirDetalhesUsuario(user) {
+	// Manipule os dados do usuário retornado e exiba em um modal ou em qualquer outro lugar desejado na página
+	console.log(user.name);
+	console.log(user.email);
+	// Exemplo de inserção dos dados em um modal usando Bootstrap
+
+}
+
