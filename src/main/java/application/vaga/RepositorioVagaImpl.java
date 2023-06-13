@@ -84,12 +84,20 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
     }
 
     @Override
-    public Specification<VagaPreenchida> gerarSpecVagaPreenchida(String empresa, String apenado) {
+    public Specification<VagaPreenchida> gerarSpecVagaPreenchida(String empresa, String apenado, String tipo) {
 
         Specification<VagaPreenchida> spec = Specification.where(null);
 
-        if(apenado != null && apenado.isEmpty()) {
+        if(apenado != null && !apenado.isEmpty()) {
             spec = spec.and(new VagaPreenchidaWithApenado(apenado));
+        }
+
+        if(empresa != null && !empresa.isEmpty()) {
+            spec = spec.and(new VagaPreenchidaWithEmpresa(empresa));
+        }
+
+        if(tipo != null && !tipo.isEmpty()) {
+            spec = spec.and(new VagaPreenchidaWithTipo(tipo));
         }
 
         return spec;

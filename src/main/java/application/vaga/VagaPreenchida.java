@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.criteria.*;
 
+import application.empresa.Empresa;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -82,10 +83,41 @@ public class VagaPreenchida {
 
 class VagaPreenchidaWithEmpresa implements Specification<VagaPreenchida> {
 
-	@Override
-	public Predicate toPredicate(Root<VagaPreenchida> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-		return null;
+	String nomeEmpresa;
+
+	public VagaPreenchidaWithEmpresa(String nomeEmpresa) {
+		this.nomeEmpresa = nomeEmpresa;
 	}
+
+	@Override
+	public Predicate toPredicate(Root<VagaPreenchida> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		if(nomeEmpresa == null) {
+			return cb.isTrue(cb.literal(true));
+		}
+		Join<VagaPreenchida, Vaga> vaga = root.join("vaga");
+		Join<Vaga, Empresa> empresa = vaga.join("empresa");
+		return cb.equal(empresa.get("nome"), nomeEmpresa);
+	}
+}
+
+
+class VagaPreenchidaWithTipo implements Specification<VagaPreenchida> {
+
+	String tipo;
+
+	public VagaPreenchidaWithTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	@Override
+	public Predicate toPredicate(Root<VagaPreenchida> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		if(tipo == null) {
+			return cb.isTrue(cb.literal(true));
+		}
+		Join<VagaPreenchida, Vaga> vaga = root.join("vaga");
+		return cb.equal(vaga.get("tipo"), tipo);
+	}
+
 }
 
 class VagaPreenchidaWithApenado implements Specification<VagaPreenchida> {
@@ -101,8 +133,7 @@ class VagaPreenchidaWithApenado implements Specification<VagaPreenchida> {
 		if(nomeApenado == null) {
 			return cb.isTrue(cb.literal(true));
 		}
-		Join<VagaPreenchida, Apenado> apenadoJoin = root.join("apenado", JoinType.INNER);
-		Path<String> apenadoNomePath = apenadoJoin.get("nome");
-		return cb.equal(apenadoNomePath, nomeApenado);
+		Join<VagaPreenchida, Apenado> apenadoJoin = root.join("apenado");
+		return cb.equal(apenadoJoin.get("nome"), nomeApenado);
 	}
 }
