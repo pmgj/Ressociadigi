@@ -80,8 +80,7 @@ function getUserDetails(cpf) {
 		success: function(response) {
 			// Manipule o objeto de usuário retornado
 			console.log(response)
-			console.log(response.name);
-			console.log(response.email);
+			console.log(response.nome);
 			// Chame a função para exibir os detalhes do usuário em um modal ou em qualquer outro lugar desejado
 			exibirDetalhesUsuario(response);
 		},
@@ -93,8 +92,14 @@ function getUserDetails(cpf) {
 
 function exibirDetalhesUsuario(user) {
 	// Manipule os dados do usuário retornado e exiba em um modal ou em qualquer outro lugar desejado na página
-	console.log(user.name);
-	console.log(user.email);
+	$('#modal-detalhamento').html(user);
+	$('#modal-detalhamento').css('display', 'block');
+	$('#detalhamento-fade').css('display', 'flex');
+
+	$('#btn-voltar-detalhamento').click(()=>{
+		$('#modal-detalhamento').css('display', 'none');
+		$('#detalhamento-fade').css('display', 'none');
+	});
 	// Exemplo de inserção dos dados em um modal usando Bootstrap
 
 }

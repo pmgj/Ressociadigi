@@ -3,6 +3,7 @@
     font-family: 'Inter';
     font-weight: normal;
 }
+
 button a{
     cursor:pointer;
 }
@@ -291,6 +292,87 @@ table tbody tr td:before {
     left: 5px;
     position: absolute;
 }
+.icones-lista{
+    width: 27px;
+}
+
+/*                Detalhamento               */
+#detalhamento-fade{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(34, 34, 34, 0.51);
+    background-size: cover;
+    z-index: 2;
+    display: none;
+    overflow: auto;
+}
+#modal-detalhamento{
+    top: 200px;
+    width: 50%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 3;
+    display: none;
+
+
+    font-family: 'Roboto', sans-serif;
+}
+
+/*Modal do detalhamento*/
+.modal-detalhamento{
+    width: 100%;
+    display: flex;
+    background-color: #eeeeee;
+    border-radius: 5px;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 10px;
+}
+#header-detalhamento{
+    display: flex;
+    justify-content: space-between;
+}
+#btn-voltar-detalhamento{
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: #C96D09;
+}
+.caixa-detalhamento{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px;
+    padding: 20px 10px;
+    background-color: #C96D09;
+    color: white;
+    margin-top: 2rem;
+    border-radius: 5px;
+    box-shadow: 1px 1px 15px #cecece;
+}
+.caixa-detalhamento>h3{
+    font-weight: 500;
+}
+.caixa-detalhamento>p{
+    font-size: 1.2rem;
+}
+.item-detalhamento{
+    display: flex;
+    flex-direction: column;
+}
+.sem-restricao-detalhamento{
+    font-weight: 600;
+    color: #18570b;
+}
+.com-restricao-detalhamento{
+    font-weight: 600;
+    color: #6b0618;
+}
+
+
+
+
 
 @media all and (min-width: 300px) {
     table {
@@ -367,6 +449,10 @@ table tbody tr td:before {
     .buscador{
         margin-bottom: 10px;
     }
+    .icones-lista{
+        width: 18px;
+    }
+
 
 }
 #Btn-remove-edit {
@@ -380,10 +466,10 @@ table tbody tr td:before {
     font-weight: bold;
 }
 
-img {
-    height: 4em;
-    margin-bottom: 30px;
-}
+/*img {*/
+/*    height: 4em;*/
+/*    margin-bottom: 30px;*/
+/*}*/
 
 tbody {
     margin-bottom: 10rem;

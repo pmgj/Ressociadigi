@@ -108,7 +108,7 @@ public class ControladorApenado {
     @GetMapping("/detalharApenado")
     public String getUserByCPF(@RequestParam("cpf") String cpf, Model model) {
         Apenado apenado = service.findById(cpf).get();
-        model.addAttribute("apenado", apenado);
-        return "apenado";
+        model.addAttribute("detalhamento", apenado);
+        return "detalhamento";
     }
 }
