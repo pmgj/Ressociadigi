@@ -89,6 +89,9 @@ public class ControladorVaga {
 	@PostMapping("/armazenarVagaPreenchida")
 	public String armazenarVagaPreenchida(@Valid VagaPreenchida vagaPreenchida, BindingResult bindingResult,
 			Model model) {
+
+		System.out.println("AIII");
+		System.out.println(vagaPreenchida.getApenado());
 		if (bindingResult.hasErrors()) {
 			return "alocarVagaApenado";
 		}
