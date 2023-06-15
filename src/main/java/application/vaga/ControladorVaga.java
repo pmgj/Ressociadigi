@@ -153,6 +153,10 @@ public class ControladorVaga {
 	                          Model model,
 	                         @PageableDefault(page = 0, size = 2) Pageable pageable) {
 
+		System.out.println("aiii" + empresa);
+
+		System.out.println("aiii" + interlocutor);
+
 
 		Specification<Vaga> spec = vagaRepositoryCustom.gerarSpec(empresa, tipo, interlocutor, quantidadeVagasMasculinas, quantidadeVagasFemininas, cargaHoraria);
 
