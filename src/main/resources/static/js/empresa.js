@@ -31,31 +31,11 @@ function teste (){
 teste() 
 */
 
-//Funcionamento de modal do icone de filtro
-
-var iconeFiltro = document.querySelector('#icone-filtro');
-
-var modal = document.querySelector('.modal');
-
-var closeBtn = document.querySelector('.close');
-
-
-
-
-// Add click event listener to the image element
-iconeFiltro.addEventListener('click', ()=> {
-    modal.style.display = 'block';
+//Modal de Filtro
+$(document).on("click", "#icone-filtro", function () {
+    $('#filtroModal').modal('show');
 });
 
-closeBtn.addEventListener('click', ()=> {
-    modal.style.display = 'none';
-});
-
-modal.addEventListener('click', function(event) {
-    if (event.target === modal) {
-        modal.style.display = 'none';
-    }
-});
 
 $(document).on("click", "#botao-remover", function () {
     var nome = $(this).data('nome');

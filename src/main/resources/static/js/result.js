@@ -3,6 +3,8 @@ $(document).on("click", "#icone-filtro", function () {
 	$('#filtroModal').modal('show');
 });
 
+
+//Modal de Exclusao
 $(document).on("click", "#botao-remover", function () {
 	var nome = $(this).data('nome');
 	$("#confirmNome").text(nome);

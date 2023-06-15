@@ -44,59 +44,47 @@
 			
         </div>
 
-        <div class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
+        <div id="filtroModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center">
+                        <h4 class="modal-title">Busca Personalizada</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="/listarEmpresas">
 
-                <div id="titleContainer">
-                    <h2>Busca Personalizada</h2>
-                    <h1><span>Preenchimento de todos os filtros não é necessário</span></h1>
-                </div>
+                            <div class="form-group">
+                                <label for="inputCnpj">CNPJ</label>
+                                <input type="text" class="form-control" id="inputCnpj" placeholder="CNPJ" name="cnpj">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputNome">Nome</label>
+                                <input type="text" class="form-control" id="inputNome" placeholder="Nome" name="nome">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputResponsavel">Responsavel</label>
+                                <input type="text" class="form-control" id="inputResponsavel" placeholder="Responsavel" name="responsavel">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputInterlocutor">Interlocutor</label>
+                                <input type="text" class="form-control" id="inputInterlocutor" placeholder="Interlocutor" name="interlocutor">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputTelefone">Telefone</label>
+                                <input type="text" class="form-control" id="inputTelefone" placeholder="Telefone" name="telefone">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail">Email</label>
+                                <input type="text" class="form-control" id="inputEmail" placeholder="Email" name="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputCidade">Cidade</label>
+                                <input type="text" class="form-control" id="inputCidade" placeholder="Cidade" name="cidade">
+                            </div>
 
-                <div id="containerModalFiltro">
-                    <form method="post" action="/listarEmpresas">
-
-                        <ul class="flex-outer">
-                            <li>
-                                <label for="cnpj">CNPJ</label>
-                                <input type="text" id="cnpj" name="cnpj" />
-                            </li>
-
-                            <li>
-                                <label for="nome">Nome</label>
-                                <input type="text" id="nome" name="nome"/>
-                            </li>
-
-                            <li>
-                                <label for="responsavel">Responsavel</label>
-                                <input type="text" id="responsavel" name="responsavel"  />
-                            </li>
-
-                            <li>
-                                <label for="interlocutor">Interlocutor</label>
-                                <input type="text" id="interlocutor" name="interlocutor"/>
-                            </li>
-
-                            <li>
-                                <label for="telefone">Telefone</label>
-                                <input type="text" id="telefone" name="telefone"  />
-                            </li>
-
-                            <li>
-                                <label for="email">Email</label>
-                                <input type="text" id="email" name="email"  />
-                            </li>
-
-                            <li>
-                                <label for="cidade">Cidade</label>
-                                <input type="text" id="cidade" name="cidade"  />
-                            </li>
-
-                            <li>
-                                <button type="submit">Buscar</button>
-                            </li>
-                        </ul>
-                    </form>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

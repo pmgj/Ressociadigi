@@ -47,15 +47,6 @@ public class ControladorEmpresa {
 		return "redirect:/listarEmpresas";
 	}
 	
-//	@GetMapping("/listarEmpresas")
-//	public String listarEmpresas(Model model, @PageableDefault(page = 0, size = 2) Pageable pageable) {
-//		Page<Empresa> pgEmpresa = service.findAll(pageable);
-//
-//		apenadoRepositoryCustom.gerarModel(model, pageable, pgEmpresa);
-//
-//		return "listarEmpresas";
-//	}
-	
 	@GetMapping("/alterarEmpresa")
 	public String alterarEmpresaForm(@RequestParam String cnpj, Model model) {
 		Empresa empresa = service.findById(cnpj).get();
