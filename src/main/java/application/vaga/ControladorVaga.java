@@ -2,7 +2,6 @@ package application.vaga;
 
 import javax.validation.Valid;
 
-import application.apenado.Apenado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,10 +19,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import application.apenado.RepositorioApenado;
 import application.empresa.RepositorioEmpresa;
-
-import java.awt.*;
-import java.time.LocalDate;
-import java.util.Date;
 
 @Controller
 public class ControladorVaga {
@@ -43,8 +38,6 @@ public class ControladorVaga {
 	@Autowired
 	private RepositorioApenado repApenado;
 
-	@Autowired
-	private RepositorioVaga repVaga;
 
 	@RequestMapping("listarVagasPreenchidas")
 	public String listarVagasPreenchidas(@RequestParam(value = "empresa", required = false)String empresa,
@@ -84,13 +77,12 @@ public class ControladorVaga {
 		if (bindingResult.hasErrors()) {
 			return "alocarVagaApenado";
 		}
-
 		try {
-		    repVagaPreenchida.save(vagaPreenchida);
+			repVagaPreenchida.save(vagaPreenchida);
 		} catch (Exception e) {
 			model.addAttribute("listaApenados", repApenado.findAll());
 			model.addAttribute("listaVagas", service.findAll());
-			bindingResult.rejectValue("apenado.cpf", null, null,
+			bindingResult.rejectValue("apenado", null, null,
 					"Você tentou atribuir uma vaga a um apenado que já está empregado.");
 			System.err.print(e.getMessage());
 			return "alocarVagaApenado";

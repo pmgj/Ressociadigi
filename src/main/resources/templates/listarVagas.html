@@ -43,55 +43,43 @@
             </a>
         </div>
 
-        <div class="modal">
-            <div class="modal-content">
-                <span class="close"></span>
+        <div id="filtroModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center">
+                        <h4 class="modal-title">Busca Personalizada</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="/listarVagas">
 
-                <div id="titleContainer">
-                    <h2>Busca Personalizada</h2>
-                    <h1><span>Preechimento de todos os filtros não é necessário</span></h1>
-                </div>
+                            <div class="form-group">
+                                <label for="inputEmpresa">Empresa</label>
+                                <input type="text" class="form-control" id="inputEmpresa" placeholder="Empresa" name="empresa">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputTipo">Tipo</label>
+                                <input type="text" class="form-control" id="inputTipo" placeholder="Tipo" name="tipo">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputInterlocutor">Interlocutor</label>
+                                <input type="text" class="form-control" id="inputInterlocutor" placeholder="Interlocutor" name="interlocutor">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputVagasMasculinas">Vagas Masculinas</label>
+                                <input type="number" value="0" class="form-control" id="inputVagasMasculinas" placeholder="Vagas Masculinas" name="quantidadeVagasMasculinas">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputVagasFemininas">Vagas Femininas</label>
+                                <input type="number" value="0" class="form-control" id="inputVagasFemininas" placeholder="Vagas Femininas" name="quantidadeVagasFemininas">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputCargaHoraria">Carga Horaria</label>
+                                <input type="number" value="0" class="form-control" id="inputCargaHoraria" placeholder="Carga Horaria" name="cargaHoraria">
+                            </div>
 
-                <div id="containerModalFiltro">
-
-                    <form method="post" action="/listarVagas">
-
-                        <ul class="flex-outer">
-
-                            <li>
-                                <label for="empresa">Empresa</label>
-                                <input type="text" id="empresa" name="empresa">
-                            </li>
-
-                            <li>
-                                <label for="tipo">Tipo</label>
-                                <input type="text" id="tipo" name="tipo">
-                            </li>
-
-                            <li>
-                                <label for="interlocutor">Interlocutor</label>
-                                <input type="text" id="interlocutor" name="interlocutor">
-                            </li>
-
-                            <li>
-                                <label for="quantidadeVagasMasculinas">Vagas Masculinas</label>
-                                <input type="number" value="0" id="quantidadeVagasMasculinas" name="quantidadeVagasMasculinas">
-                            </li>
-
-                            <li>
-                                <label for="quantidadeVagasFemininas">Vagas Femininas</label>
-                                <input type="number" value="0" id="quantidadeVagasFemininas" name="quantidadeVagasFemininas">
-                            </li>
-                            <li>
-                                <label for="cargaHoraria">Carga Horaria</label>
-                                <input type="number" value="0" id="cargaHoraria" name="cargaHoraria">
-                            </li>
-
-                            <li>
-                                <button type="submit">Buscar</button>
-                            </li>
-                        </ul>
-                    </form>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

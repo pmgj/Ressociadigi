@@ -232,7 +232,7 @@ class EmpresaWithResponsavel implements Specification<Empresa> {
 		if(responsavel == null) {
 			return cb.isTrue(cb.literal(true));
 		}
-		return cb.equal(root.get("responavel"), this.responsavel);
+		return cb.equal(root.get("responsavel"), this.responsavel);
 	}
 }
 

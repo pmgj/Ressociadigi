@@ -44,55 +44,42 @@
 
         </div>
 
-        <div class="modal">
+        <div id="filtroModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <span class="close">&times;</span>
-                <!-- Add your modal content here -->
-                <div id="titleContainer">
-                    <h2>Busca Personalizada</h2>
-                    <h1><span>Preenchimento de todos os filtros não é necessário</span></h1>
+                <div class="modal-header justify-content-center">
+                    <h4 class="modal-title">Busca Personalizada</h4>
                 </div>
-                <!-- Update the form element with the correct method and action -->
-                <div id="containerModalFiltro">
+                <div class="modal-body">
                     <form method="post" action="/listarApenados">
 
-                        <ul class="flex-outer">
-                            <!-- Remove the hidden input fields for form parameters, as they will be sent as request parameters automatically -->
+                        <div class="form-group">
+                            <label for="inputCpf">CPF</label>
+                            <input type="text" class="form-control" id="inputCpf" placeholder="Empresa" name="cpf">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputNome">Nome</label>
+                            <input type="text" class="form-control" id="inputNome" placeholder="Nome" name="nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputTelefone">Telefone</label>
+                            <input type="text" class="form-control" id="inputTelefone" placeholder="Telefone" name="telefone">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputDataNascimento">Data de Nascimento</label>
+                            <input type="text" class="form-control" id="inputDataNascimento" placeholder="Data de Nascimento" name="dataNascimento">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputNomeMae">Nome da Mae</label>
+                            <input type="text" class="form-control" id="inputNomeMae" placeholder="Nome da Mae" name="nomeMae">
+                        </div>
 
-                            <!-- Add your search form fields here -->
-                            <li>
-                                <label for="cpf">CPF</label>
-                                <input type="text" id="cpf" name="cpf" />
-                            </li>
-
-                            <li>
-                                <label for="nome">Nome</label>
-                                <input type="text" id="nome" name="nome" />
-                            </li>
-
-                            <li>
-                                <label for="telefone">Telefone</label>
-                                <input type="text" id="telefone" name="telefone" />
-                            </li>
-
-                            <li>
-                                <label for="dataNascimento">Data Nascimento</label>
-                                <input type="date" id="dataNascimento" name="dataNascimento" pattern="\d{4}\-\d{2}\-\d{2}" />
-                            </li>
-
-                            <li>
-                                <label for="nomeDaMae">Nome da Mãe</label>
-                                <input type="text" id="nomeDaMae" name="nomeDaMae" />
-                            </li>
-
-                            <li>
-                                <button type="submit">Buscar</button>
-                            </li>
-                        </ul>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
+    </div>
 
         <table>
             <thead>
