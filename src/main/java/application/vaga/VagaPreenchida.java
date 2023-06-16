@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.criteria.*;
+import javax.validation.constraints.NotNull;
 
 import application.empresa.Empresa;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -29,10 +30,12 @@ public class VagaPreenchida {
 	@OneToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "ID_APENADO", referencedColumnName = "cpf")
 	@JsonManagedReference(value = "apenado-vagaPreenchida")
+	@NotNull
 	private Apenado apenado;
 	// Terá uma única vaga.
 	@ManyToOne
 	@JoinColumn(name = "ID_VAGA", referencedColumnName = "ID")
+	@NotNull
 	private Vaga vaga;
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate dataInicio;

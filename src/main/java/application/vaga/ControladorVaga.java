@@ -2,6 +2,7 @@ package application.vaga;
 
 import javax.validation.Valid;
 
+import application.apenado.Apenado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,6 +20,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import application.apenado.RepositorioApenado;
 import application.empresa.RepositorioEmpresa;
+
+import java.awt.*;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Controller
 public class ControladorVaga {
@@ -38,24 +43,8 @@ public class ControladorVaga {
 	@Autowired
 	private RepositorioApenado repApenado;
 
-	// Seção de Vagas Preenchidas
-//	@GetMapping("/listarVagasPreenchidas")
-//	public String listarVagasPreenchidas(Model model, @PageableDefault(page = 0, size = 2) Pageable pageable) {
-//		Page<VagaPreenchida> pgVagaPreenchida = repVagaPreenchida.findAll(pageable);
-//
-//		// Manipulação das Páginas
-//		int numPaginaAtual = pageable.getPageNumber() + 1;
-//		int numTotalPaginas = pgVagaPreenchida.getTotalPages();
-//		model.addAttribute("pageCounter", "Página " + numPaginaAtual + " de " + numTotalPaginas);
-//		model.addAttribute("nextPage", ((pageable.getPageNumber() + 1) > numTotalPaginas - 1)
-//				? pageable.getPageNumber()
-//				: pageable.getPageNumber() + 1);
-//		model.addAttribute("previousPage", pageable.getPageNumber() - 1);
-//		model.addAttribute("quantidadePaginas", numTotalPaginas);
-//
-//		model.addAttribute("listaVagasPreenchidas", pgVagaPreenchida);
-//		return "listarVagasPreenchidas";
-//	}
+	@Autowired
+	private RepositorioVaga repVaga;
 
 	@RequestMapping("listarVagasPreenchidas")
 	public String listarVagasPreenchidas(@RequestParam(value = "empresa", required = false)String empresa,
@@ -87,17 +76,21 @@ public class ControladorVaga {
 	}
 
 	@PostMapping("/armazenarVagaPreenchida")
-	public String armazenarVagaPreenchida(@Valid VagaPreenchida vagaPreenchida, BindingResult bindingResult,
-			Model model) {
+	public String armazenarVagaPreenchida(@Valid VagaPreenchida vagaPreenchida,
+										  BindingResult bindingResult,
+										  Model model
+										  ) {
+
 		if (bindingResult.hasErrors()) {
 			return "alocarVagaApenado";
 		}
+
 		try {
-			repVagaPreenchida.save(vagaPreenchida);
+		    repVagaPreenchida.save(vagaPreenchida);
 		} catch (Exception e) {
 			model.addAttribute("listaApenados", repApenado.findAll());
 			model.addAttribute("listaVagas", service.findAll());
-			bindingResult.rejectValue("apenado", null, null,
+			bindingResult.rejectValue("apenado.cpf", null, null,
 					"Você tentou atribuir uma vaga a um apenado que já está empregado.");
 			System.err.print(e.getMessage());
 			return "alocarVagaApenado";
