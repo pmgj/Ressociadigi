@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import application.apenado.Apenado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -88,6 +89,13 @@ public class ControladorEmpresa {
 		apenadoRepositoryCustom.gerarModel(model, pageable, pgEmpresa);
 
 		return "listarEmpresas";
+	}
+
+	@GetMapping("/detalharEmpresa")
+	public String getUserByCPF(@RequestParam("cnpj") String cnpj, Model model) {
+		Empresa empresa = service.findById(cnpj).get();
+		model.addAttribute("detalhamentoEmpresa", empresa);
+		return "detalhamentoEmpresa";
 	}
 
 }

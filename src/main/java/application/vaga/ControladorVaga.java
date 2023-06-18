@@ -2,6 +2,7 @@ package application.vaga;
 
 import javax.validation.Valid;
 
+import application.apenado.Apenado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -174,5 +175,11 @@ public class ControladorVaga {
 		Vaga vaga = service.findById(id).get();
 		service.delete(vaga);
 		return "redirect:/listarVagas";
+	}
+	@GetMapping("/detalharVaga")
+	public String getVagaById(@RequestParam("id") int id, Model model) {
+		Vaga vaga= service.findById(id).get();
+		model.addAttribute("vagaDetalhamento", vaga);
+		return "vagaDetalhamento";
 	}
 }

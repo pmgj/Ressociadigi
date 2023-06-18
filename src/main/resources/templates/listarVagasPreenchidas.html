@@ -15,7 +15,12 @@
 	<title>Lista de Vagas Preenchidas</title>
 </head>
 <body>
+	<div id="detalhamento-fade">
+		<div id="modal-detalhamento">
 
+		</div>
+
+	</div>
 	<main>
 		<div class="title">
 			<div class="title">
@@ -102,8 +107,9 @@
 					<td data-label="DATA DE TERMINO"><span
 						th:text="${vagaPreenchida.dataFim}">DATA DE TÉRMINO</span></td>
 					<td id="Btn-remove-edit" width="180">
-						<a th:href="@{/alterarVagaPreenchida(id=${vagaPreenchida.getId()})}"><button>Editar</button></a>
-						<a th:href="@{/removerVagaPreenchida(id=${vagaPreenchida.getId()})}"><button>Remover</button></a>
+						<button id="ver-mais" th:attr="data-id=${vagaPreenchida.getId()}"><img class="icones-lista" src="/imgs/view.png" alt="detalhamento"></button>
+						<a th:href="@{/alterarVagaPreenchida(id=${vagaPreenchida.getId()})}"><button><img class="icones-lista" src="/imgs/edit.png.png" alt="editar item"></button></a>
+						<a th:href="@{/removerVagaPreenchida(id=${vagaPreenchida.getId()})}"><button><img class="icones-lista" src="/imgs/remove.png.png" alt="remover item"></button></a>
 					</td>
 				</tr>
 			</tbody>

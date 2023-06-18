@@ -17,7 +17,12 @@
    </head>
 
 <body>
+    <div id="detalhamento-fade">
+        <div id="modal-detalhamento">
 
+        </div>
+
+    </div>
     <main>
         <div class="title">
             <div class="title">
@@ -109,7 +114,6 @@
                     <th>RESPONSÁVEL</th>
                     <th>INTERLOCUTOR</th>
                     <th>TELEFONE</th>
-                    <th>EMAIL</th>
                     <th>CIDADE</th>
                     <th>AÇÕES</th>
                 </tr>
@@ -126,12 +130,13 @@
                     <td data-label="RESPONSÁVEL"><span th:text="${empresa.responsavel}">Responsável</span></td>
                     <td data-label="INTERLOCUTOR"><span th:text="${empresa.interlocutor}">Interlocutor</span></td>
                     <td data-label="TELEFONE"><span th:text="${empresa.telefone}">Telefone</span></td>
-                    <td data-label="E-MAIL"><span th:text="${empresa.email}">Email</span></td>
                     <td data-label="CIDADE"><span th:text="${empresa.cidade}">Cidade</span></td>
                     <td id="Btn-remove-edit" width="180">
-                        <a th:href="@{/alterarEmpresa(cnpj=${empresa.cnpj})}"><button>Editar</button></a>
+                        <button id="ver-mais" th:attr="data-cnpj=${empresa.cnpj}"><img class="icones-lista" src="/imgs/view.png" alt="detalhamento"></button>
+
+                        <a th:href="@{/alterarEmpresa(cnpj=${empresa.cnpj})}"><button><img class="icones-lista" src="/imgs/edit.png" alt="editar"></button></a>
 <!--                        <a th:href="@{/removerEmpresa(cnpj=${empresa.cnpj})}"><button>Remover</button></a>-->
-                        <a id="botao-remover" href="#" th:attr="data-nome=${empresa.nome}, data-cnpj=${empresa.cnpj}" data-toggle="modal" data-target="#confirmModal"><button>Remover</button></a>
+                        <a id="botao-remover" href="#" th:attr="data-nome=${empresa.nome}, data-cnpj=${empresa.cnpj}" data-toggle="modal" data-target="#confirmModal"><button><img class="icones-lista" src="/imgs/remove.png" alt="remover"></button></a>
                     </td>
                 </tr>
           	</tbody>

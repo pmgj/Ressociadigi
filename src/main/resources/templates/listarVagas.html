@@ -17,7 +17,12 @@
    </head>
 
 <body>
+    <div id="detalhamento-fade">
+        <div id="modal-detalhamento">
 
+        </div>
+
+    </div>
     <main>
         <div class="title">
             <div class="title">
@@ -121,8 +126,9 @@
                     <td data-label="VAGAS FEMININAS"><span th:text="${vaga.quantidadeVagasFemininas}">VAGAS FEMININAS</span></td>
                     <td data-label="CARGA HORÁRIA"><span th:text="${vaga.cargaHoraria}">CARGA HORÁRIA</span></td>
                     <td id="Btn-remove-edit" width="180">
-                        <a th:href="@{/alterarVaga(id=${vaga.getId()})}"><button>Editar</button></a>
-                        <a id="botao-remover" href="#" th:attr="data-nome=${vaga.empresa.nome}, data-id=${vaga.getId()}" data-toggle="modal" data-target="#confirmModal"><button>Remover</button></a>
+                        <button id="ver-mais" th:attr="data-id=${vaga.getId()}"><img class="icones-lista" src="/imgs/view.png" alt="detalhamento"></button>
+                        <a th:href="@{/alterarVaga(id=${vaga.getId()})}"><button><img class="icones-lista" src="/imgs/edit.png.png" alt="editar item"></button></a>
+                        <a id="botao-remover" href="#" th:attr="data-nome=${vaga.empresa.nome}, data-id=${vaga.getId()}" data-toggle="modal" data-target="#confirmModal"><button><img class="icones-lista" src="/imgs/remove.png.png" alt="remover item"></button></a>
                     </td>
                 </tr>
           	</tbody>
