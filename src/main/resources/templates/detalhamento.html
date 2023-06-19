@@ -3,6 +3,7 @@
     <h1>Detalhamento</h1>
     <span id="btn-voltar-detalhamento">X</span>
   </div>
+  <h2>Pessoal</h2>
   <div class="caixa-detalhamento pessoal-detalhamento">
     <div class="item-detalhamento">
       <h3>Nome</h3>
@@ -44,6 +45,7 @@
       <p th:text="${detalhamento.email}"></p>
     </div>
   </div>
+  <h2>Endereço</h2>
   <div class="caixa-detalhamento endereco-detalhamento">
     <div class="item-detalhamento">
       <h3>Endereço</h3>
@@ -58,6 +60,7 @@
       </p>
     </div>
   </div>
+  <h2>Instrução</h2>
   <div class="caixa-detalhamento instrucao-detalhamento">
     <div class="item-detalhamento">
       <h3>Habilidades</h3>
@@ -75,13 +78,17 @@
       <h3>Perfil</h3>
       <p th:text="${detalhamento.perfil}"></p>
     </div>
-    <div class="item-detalhamento">
-      <h3>Restrição</h3>
-      <p th:text="${detalhamento.restricao}"></p>
-      <h3>Descrição</h3>
+    <div class="item-detalhamento com-restricao-detalhamento"  th:if="${detalhamento.restricao.getTexto() =='Sim'}">
+      <h3>Apenado com restrição</h3>
+<!--      <h3 th:text="${detalhamento.restricao.getTexto() =='SIM'? 'Apenado com Restrição':'Apenado sem Restrição'}"></h3>-->
       <p th:text="${detalhamento.textoRestricao}"></p>
     </div>
+    <div class="item-detalhamento sem-restricao-detalhamento" th:unless="${detalhamento.restricao.getTexto() =='Sim'}">
+      <h3>Apenado sem restrição</h3>
+    </div>
+
   </div>
+  <h2>Situacional</h2>
   <div class="caixa-detalhamento situacional-detalhamento">
     <div class="item-detalhamento">
       <h3>Número do Processo</h3>
@@ -102,6 +109,7 @@
       <p th:text="${detalhamento.prioridade}"></p>
     </div>
   </div>
+  <h2>Dados Bancários</h2>
   <div class="caixa-detalhamento banco-detalhamento">
     <div class="item-detalhamento">
       <h3>Número da conta</h3>

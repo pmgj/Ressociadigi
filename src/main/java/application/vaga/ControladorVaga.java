@@ -182,4 +182,10 @@ public class ControladorVaga {
 		model.addAttribute("vagaDetalhamento", vaga);
 		return "vagaDetalhamento";
 	}
+	@GetMapping("/detalharVagaPreenchida")
+	public String getVagaPreenchidaById(@RequestParam("id") int id, Model model) {
+		VagaPreenchida vaga= repVagaPreenchida.findById(id).get();
+		model.addAttribute("vagaPreenchida", vaga);
+		return "detalhamentoVagaPreenchida";
+	}
 }

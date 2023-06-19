@@ -12,13 +12,13 @@ $(document).on("click", "#ver-mais", function () {
 
 function getVagaDetails(id) {
     $.ajax({
-        url: '/detalharVaga?id=' + encodeURIComponent(id),
+        url: '/detalharVagaPreenchida?id=' + encodeURIComponent(id),
         type: 'GET',
         success: function(response) {
             // Manipule o objeto de usuário retornado
 
             // Chame a função para exibir os detalhes do usuário em um modal ou em qualquer outro lugar desejado
-            exibirDetalhesUsuario(response);
+            exibirDetalhesVagaPreenchida(response);
         },
         error: function(xhr, status, error) {
             console.error(error);
@@ -26,7 +26,7 @@ function getVagaDetails(id) {
     });
 }
 
-function exibirDetalhesUsuario(vaga) {
+function exibirDetalhesVagaPreenchida(vaga) {
     // Manipule os dados do usuário retornado e exiba em um modal ou em qualquer outro lugar desejado na página
     $('#modal-detalhamento').html(vaga);
     $('#modal-detalhamento').css('display', 'block');

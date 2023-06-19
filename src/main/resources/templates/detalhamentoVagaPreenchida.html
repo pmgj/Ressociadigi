@@ -1,0 +1,51 @@
+<div class="modal-detalhamento" >
+    <div id="header-detalhamento">
+        <h1>Detalhamento</h1>
+        <span id="btn-voltar-detalhamento">X</span>
+    </div>
+    <h2>Empresa</h2>
+    <div class="caixa-detalhamento">
+        <div class="item-detalhamento">
+            <h3>Código da vaga</h3>
+            <p th:text="${vagaPreenchida.id}"></p>
+        </div>
+        <div class="item-detalhamento">
+            <h3>Empresa</h3>
+            <p th:text="${vagaPreenchida.vaga.empresa.nome}"></p>
+        </div>
+        <div class="item-detalhamento">
+            <h3>Cargo</h3>
+            <p th:text="${vagaPreenchida.vaga.tipo}"></p>
+        </div>
+        <div class="item-detalhamento">
+            <h3>Telefone </h3>
+            <p th:text="${vagaPreenchida.vaga.empresa.telefone}"></p>
+        </div>
+    </div>
+    <h2>Apenado</h2>
+    <div class="caixa-detalhamento">
+        <div class="item-detalhamento">
+            <h3>Nome </h3>
+            <p th:text="${vagaPreenchida.apenado.nome}"></p>
+        </div>
+        <div class="item-detalhamento">
+            <h3>CPF </h3>
+            <p th:text="${vagaPreenchida.apenado.cpf}"></p>
+        </div>
+        <div class="item-detalhamento">
+            <h3>CPF </h3>
+            <p th:text="${vagaPreenchida.apenado.telefone}"></p>
+        </div>
+    </div>
+    <h2>Duração</h2>
+    <div class="caixa-detalhamento">
+        <div class="item-detalhamento">
+            <h3>Nome </h3>
+            <p th:text="${vagaPreenchida.dataInicio}"></p>
+        </div>
+        <div class="item-detalhamento">
+            <h3>Nome </h3>
+            <p th:text="${vagaPreenchida.dataFim}"></p>
+        </div>
+    </div>
+</div>
