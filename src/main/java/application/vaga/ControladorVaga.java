@@ -63,7 +63,7 @@ public class ControladorVaga {
 										 @RequestParam(value = "apenado", required = false)String apenado,
 										 @RequestParam(value = "tipo", required = false)String tipo,
 										 Model model,
-										 @PageableDefault(page = 0, size = 2) Pageable pageable) {
+										 @PageableDefault(page = 0, size = 8) Pageable pageable) {
 
 
 		Specification<VagaPreenchida> spec = vagaRepositoryCustom.gerarSpecVagaPreenchida(empresa, apenado, tipo);
@@ -149,7 +149,7 @@ public class ControladorVaga {
 							  @RequestParam(value = "quantidadeVagasFemininas", required = false) String quantidadeVagasFemininas,
 	                          @RequestParam(value = "cargaHoraria", required = false) String cargaHoraria,
 	                          Model model,
-	                         @PageableDefault(page = 0, size = 2) Pageable pageable) {
+	                         @PageableDefault(page = 0, size = 8) Pageable pageable) {
 
 
 		Specification<Vaga> spec = vagaRepositoryCustom.gerarSpec(empresa, tipo, interlocutor, quantidadeVagasMasculinas, quantidadeVagasFemininas, cargaHoraria);

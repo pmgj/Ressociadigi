@@ -329,7 +329,7 @@ table tbody tr td:before {
     border-radius: 5px;
     flex-direction: column;
     justify-content: center;
-    padding: 20px 10px;
+    padding: 30px;
 }
 #header-detalhamento{
     display: flex;
@@ -339,17 +339,19 @@ table tbody tr td:before {
     font-weight: 900;
     font-size: 1.5rem;
     color: #C96D09;
+    cursor: pointer;
 }
 .caixa-detalhamento{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 15px;
-    padding: 20px 10px;
-    background-color: #C96D09;
-    color: white;
+    padding: 20px 20px;
+    background-color: #cccaca;
+    color: #3d3c3c;
     margin-top: 2rem;
     border-radius: 5px;
     box-shadow: 1px 1px 15px #cecece;
+    border: 2px solid #C96D09;
 }
 .caixa-detalhamento>h3{
     font-weight: 500;

@@ -80,7 +80,7 @@ public class ControladorEmpresa {
 								 @RequestParam(value = "email", required = false) String email,
 								 @RequestParam(value = "cidade", required = false) String cidade,
 								 Model model,
-								 @PageableDefault(page = 0, size = 2) Pageable pageable) {
+								 @PageableDefault(page = 0, size = 8) Pageable pageable) {
 
 		Specification<Empresa> spec = apenadoRepositoryCustom.gerarSpec(cnpj, nome, responsavel, interlocutor, telefone, email, cidade);
 

@@ -108,7 +108,7 @@
                     <th>DATA DE NASCIMENTO</th>
                     <th>TELEFONE</th>
                     <th>HABILIDADES</th>
-                    <th>ARTIGOS</th>
+<!--                    <th>ARTIGOS</th>-->
                     <th>AÇÕES</th>
                 </tr>
             </thead>
@@ -123,8 +123,14 @@
                     <td data-label="CPF"><span id="cpf" th:text="${item.cpf}">CPF</span></td>
                     <td data-label="DATA DE NASCIMENTO"><span id="dataNascimento" th:text="${item.dataNascimento}">Data de Nascimento</span></td>
                     <td data-label="CONTATO"><span id="contato" th:text="${item.telefone}">Contato</span></td>
-                    <td data-label="HABILIDADES"><span id="habilidades" th:text="${item.habilidades}">Habilidades</span></td>
-                    <td data-label="ARTIGOS"><span id="artigos" th:text="${item.artigos}">Artigos</span></td>
+                    <td data-label="HABILIDADES">
+                        <ul>
+                            <li id="habilidades" th:each="habilidade : ${item.habilidades}" th:text="${habilidade}"></li>
+                        </ul>
+
+<!--                        <span >Habilidades</span>-->
+                    </td>
+<!--                    <td data-label="ARTIGOS"><span id="artigos" th:text="${item.artigos}">Artigos</span></td>-->
                     <td id="Btn-remove-edit" width="180">
                         <button id="ver-mais" th:attr="data-cpf=${item.cpf}"><img class="icones-lista" src="/imgs/view.png" alt="detalhamento"></button>
                         <a th:href="@{/alterarApenado(cpf=${item.cpf})}"><button><img class="icones-lista" src="/imgs/edit.png" alt="editar"></button></a>

@@ -30,9 +30,9 @@
     </div>
     <div class="item-detalhamento">
       <h3>CNH</h3>
-      <p>
-        <span th:each="item : ${detalhamento.cnhs}" th:text="${item}+ ', ' "></span>
-      </p>
+      <ul>
+        <li th:each="item : ${detalhamento.cnhs}" th:text="${item}"></li>
+      </ul>
     </div>
     <div class="item-detalhamento">
       <h3>Telefones</h3>
@@ -50,9 +50,10 @@
       <p>
         <span th:text="${detalhamento.rua}"></span>,
         <span th:text="${detalhamento.numeroDaCasa}"></span>,
-        <span th:text="${detalhamento.complemento}"></span> -
+        <span th:text="${detalhamento.complemento}"></span> <br>
         <span th:text="${detalhamento.bairro}"></span>,
-        <span th:text="${detalhamento.cidade}"></span>,
+        <span th:text="${detalhamento.cidade}"></span> -
+        <span th:text="${detalhamento.estado}"></span>. CEP:
         <span th:text="${detalhamento.cep}"></span>
       </p>
     </div>
@@ -74,11 +75,10 @@
       <h3>Perfil</h3>
       <p th:text="${detalhamento.perfil}"></p>
     </div>
-    <div class="item-detalhamento sem-restricao-detalhamento" th:if="${detalhamento.restricao == 0}">
-      <h3>Apenado sem restrição</h3>
-    </div>
-    <div class="item-detalhamento com-restricao-detalhamento" th:if="${detalhamento.restricao == 1}">
-      <h3>Apenado com restrição</h3>
+    <div class="item-detalhamento">
+      <h3>Restrição</h3>
+      <p th:text="${detalhamento.restricao}"></p>
+      <h3>Descrição</h3>
       <p th:text="${detalhamento.textoRestricao}"></p>
     </div>
   </div>
@@ -89,9 +89,9 @@
     </div>
     <div class="item-detalhamento">
       <h3>Artigos</h3>
-      <p>
-        <span th:each="item : ${detalhamento.artigos}" th:text="${item}+ ', ' "></span>
-      </p>
+      <ul>
+        <li th:each="item : ${detalhamento.artigos}" th:text="${item}"></li>
+      </ul>
     </div>
     <div class="item-detalhamento">
       <h3>Data do término da pena</h3>
