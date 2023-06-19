@@ -105,5 +105,37 @@ public class ControladorApenado {
         service.deleteById(cpf);
         return "redirect:/listarApenados";
     }
-
+    @GetMapping("/detalharApenado")
+    public String getUserByCPF(@RequestParam("cpf") String cpf, Model model) {
+        Apenado apenado = service.findById(cpf).get();
+        model.addAttribute("detalhamento", apenado);
+        return "detalhamento";
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

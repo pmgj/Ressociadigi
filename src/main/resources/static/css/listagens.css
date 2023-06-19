@@ -3,6 +3,7 @@
     font-family: 'Inter';
     font-weight: normal;
 }
+
 button a{
     cursor:pointer;
 }
@@ -10,6 +11,12 @@ button a{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+.modal-detalhamento > h2{
+    margin-top: 15px;
+    margin-bottom: -10px;
+    font-weight: 300;
 }
 
 ::-webkit-scrollbar-track {
@@ -217,6 +224,106 @@ table tbody tr td:before {
     left: 5px;
     position: absolute;
 }
+.icones-lista{
+    width: 27px;
+}
+
+/*                Detalhamento               */
+#detalhamento-fade{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(34, 34, 34, 0.51);
+    background-size: cover;
+    z-index: 2;
+    display: none;
+    overflow: auto;
+}
+#modal-detalhamento{
+    top: 200px;
+    width: 50%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 3;
+    display: none;
+
+
+    font-family: 'Roboto', sans-serif;
+}
+
+/*Modal do detalhamento*/
+.modal-detalhamento{
+    width: 100%;
+    display: flex;
+    background-color: #eeeeee;
+    border-radius: 5px;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    word-wrap: break-word;
+}
+#header-detalhamento{
+    display: flex;
+    justify-content: space-between;
+}
+#btn-voltar-detalhamento{
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: #C96D09;
+    cursor: pointer;
+}
+.caixa-detalhamento{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px;
+    padding: 20px 20px;
+    background-color: #cccaca;
+    color: #3d3c3c;
+    margin-top: 2rem;
+    border-radius: 5px;
+    box-shadow: 1px 1px 15px #cecece;
+    border: 2px solid #C96D09;
+}
+.caixa-detalhamento>h3{
+    font-weight: 500;
+}
+.caixa-detalhamento>p{
+    font-size: 1.2rem;
+}
+.item-detalhamento{
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+}
+.item-detalhamento:only-child{
+    word-wrap: break-word;
+    width: 100%;
+}
+.sem-restricao-detalhamento>h3{
+    font-weight: 600;
+    color: #18570b;
+    font-size: 1.4rem;
+}
+.com-restricao-detalhamento>h3{
+    font-weight: 600;
+    color: #6b0618;
+    font-size: 1.4rem;
+}
+@media (max-width: 1280px){
+    #modal-detalhamento{
+        width: 80%;
+    }
+}
+@media (max-width: 600px){
+    .caixa-detalhamento{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+
+
 
 @media all and (min-width: 300px) {
     table {
@@ -293,6 +400,10 @@ table tbody tr td:before {
     .buscador{
         margin-bottom: 10px;
     }
+    .icones-lista{
+        width: 18px;
+    }
+
 
 }
 #Btn-remove-edit {
@@ -306,10 +417,10 @@ table tbody tr td:before {
     font-weight: bold;
 }
 
-img {
-    height: 4em;
-    margin-bottom: 30px;
-}
+/*img {*/
+/*    height: 4em;*/
+/*    margin-bottom: 30px;*/
+/*}*/
 
 tbody {
     margin-bottom: 10rem;

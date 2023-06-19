@@ -46,3 +46,41 @@ $(document).on("click", "#botao-remover", function () {
 });
 
 
+$(document).on("click", "#ver-mais", function () {
+
+    var cnpj = $(this).data('cnpj');
+    getUserDetails(cnpj)
+});
+
+
+
+function getUserDetails(cnpj) {
+    $.ajax({
+        url: '/detalharEmpresa?cnpj=' + encodeURIComponent(cnpj),
+        type: 'GET',
+        success: function(response) {
+            // Manipule o objeto de usuário retornado
+            console.log(response)
+            console.log(response.nome);
+            // Chame a função para exibir os detalhes do usuário em um modal ou em qualquer outro lugar desejado
+            exibirDetalhesUsuario(response);
+        },
+        error: function(xhr, status, error) {
+            console.error(error);
+        }
+    });
+}
+
+function exibirDetalhesUsuario(cnpj) {
+    // Manipule os dados do usuário retornado e exiba em um modal ou em qualquer outro lugar desejado na página
+    $('#modal-detalhamento').html(cnpj);
+    $('#modal-detalhamento').css('display', 'block');
+    $('#detalhamento-fade').css('display', 'flex');
+
+    $('#btn-voltar-detalhamento').click(()=>{
+        $('#modal-detalhamento').css('display', 'none');
+        $('#detalhamento-fade').css('display', 'none');
+    });
+    // Exemplo de inserção dos dados em um modal usando Bootstrap
+
+}

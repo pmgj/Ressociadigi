@@ -1,0 +1,61 @@
+<div class="modal-detalhamento" >
+  <div id="header-detalhamento">
+    <h1>Detalhamento</h1>
+    <span id="btn-voltar-detalhamento">X</span>
+  </div>
+  <div class="caixa-detalhamento">
+    <div class="item-detalhamento">
+      <h3>Nome</h3>
+      <p th:text="${detalhamentoEmpresa.nome}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>CNPJ</h3>
+      <p th:text="${detalhamentoEmpresa.cnpj}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Responsável</h3>
+      <p th:text="${detalhamentoEmpresa.responsavel}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Interlocutor</h3>
+      <p th:text="${detalhamentoEmpresa.interlocutor}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Telefones</h3>
+      <p th:text="${detalhamentoEmpresa.telefone}"></p>
+      <p th:text="${detalhamentoEmpresa.telefone2}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>E-mail</h3>
+      <p th:text="${detalhamentoEmpresa.email}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Número do Convênio</h3>
+      <p th:text="${detalhamentoEmpresa.numConvenio}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Vigência</h3>
+      <p th:text="${detalhamentoEmpresa.vigencia}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Endereço</h3>
+      <p>
+        <span th:text="${detalhamentoEmpresa.rua}"></span>,
+        <span th:text="${detalhamentoEmpresa.numero}"></span>,
+        <span th:text="${detalhamentoEmpresa.complemento}"></span> <br>
+        <span th:text="${detalhamentoEmpresa.bairro}"></span>,
+        <span th:text="${detalhamentoEmpresa.cidade}"></span> -
+        <span th:text="${detalhamentoEmpresa.estado}"></span>. CEP:
+        <span th:text="${detalhamentoEmpresa.cep}"></span>
+      </p>
+    </div>
+  </div>
+  <div class="caixa-detalhamento">
+    <div class="item-detalhamento">
+      <h3>Lista de Vagas</h3>
+      <ul>
+        <li th:each="vaga : ${detalhamentoEmpresa.vagas}" th:text="${vaga.tipo}"></li>
+      </ul>
+    </div>
+  </div>
+</div>

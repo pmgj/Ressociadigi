@@ -1,0 +1,44 @@
+<div class="modal-detalhamento" >
+  <div id="header-detalhamento">
+    <h1>Detalhamento</h1>
+    <span id="btn-voltar-detalhamento">X</span>
+  </div>
+  <div class="caixa-detalhamento">
+    <div class="item-detalhamento">
+      <h3>Código da vaga</h3>
+      <p th:text="${vagaDetalhamento.id}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Cargo</h3>
+      <p th:text="${vagaDetalhamento.tipo}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Interlocutor</h3>
+      <p th:text="${vagaDetalhamento.interlocutor}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Empresa</h3>
+      <p th:text="${vagaDetalhamento.empresa.getNome()}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Quantidade de vagas</h3>
+      <p>Masculino</p>
+      <p th:text="${vagaDetalhamento.quantidadeVagasMasculinas}"></p>
+      <p>Feminino</p>
+      <p th:text="${vagaDetalhamento.quantidadeVagasFemininas}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Carga Horária</h3>
+      <p th:text="${vagaDetalhamento.cargaHoraria}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Diferencial</h3>
+      <p th:text="${vagaDetalhamento.procuraPor}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Restrições</h3>
+      <p th:text="${vagaDetalhamento.restricao}"></p>
+    </div>
+  </div>
+
+</div>

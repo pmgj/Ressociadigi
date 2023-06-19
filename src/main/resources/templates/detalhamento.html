@@ -1,0 +1,131 @@
+<div class="modal-detalhamento" >
+  <div id="header-detalhamento">
+    <h1>Detalhamento</h1>
+    <span id="btn-voltar-detalhamento">X</span>
+  </div>
+  <h2>Pessoal</h2>
+  <div class="caixa-detalhamento pessoal-detalhamento">
+    <div class="item-detalhamento">
+      <h3>Nome</h3>
+      <p th:text="${detalhamento.nome}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>CPF</h3>
+      <p th:text="${detalhamento.cpf}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Data de Nascimento</h3>
+      <p th:text="${detalhamento.dataNascimento}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Nome da mãe</h3>
+      <p th:text="${detalhamento.nomeDaMae}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Sexo Biológico</h3>
+      <p th:text="${detalhamento.sexoBiologico}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Orientação Sexual</h3>
+      <p th:text="${detalhamento.orientacaoSexual}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>CNH</h3>
+      <ul>
+        <li th:each="item : ${detalhamento.cnhs}" th:text="${item}"></li>
+      </ul>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Telefones</h3>
+      <p th:text="${detalhamento.telefone}"></p>
+      <p th:text="${detalhamento.telefone2}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>E-mail</h3>
+      <p th:text="${detalhamento.email}"></p>
+    </div>
+  </div>
+  <h2>Endereço</h2>
+  <div class="caixa-detalhamento endereco-detalhamento">
+    <div class="item-detalhamento">
+      <h3>Endereço</h3>
+      <p>
+        <span th:text="${detalhamento.rua}"></span>,
+        <span th:text="${detalhamento.numeroDaCasa}"></span>,
+        <span th:text="${detalhamento.complemento}"></span> <br>
+        <span th:text="${detalhamento.bairro}"></span>,
+        <span th:text="${detalhamento.cidade}"></span> -
+        <span th:text="${detalhamento.estado}"></span>. CEP:
+        <span th:text="${detalhamento.cep}"></span>
+      </p>
+    </div>
+  </div>
+  <h2>Instrução</h2>
+  <div class="caixa-detalhamento instrucao-detalhamento">
+    <div class="item-detalhamento">
+      <h3>Habilidades</h3>
+      <p>
+        <span th:each="item : ${detalhamento.habilidades}" th:text="${item}+ ', ' "></span>
+      </p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Cursos</h3>
+      <p>
+        <span th:each="item : ${detalhamento.cursos}" th:text="${item}+ ', ' "></span>
+      </p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Perfil</h3>
+      <p th:text="${detalhamento.perfil}"></p>
+    </div>
+    <div class="item-detalhamento com-restricao-detalhamento"  th:if="${detalhamento.restricao.getTexto() =='Sim'}">
+      <h3>Apenado com restrição</h3>
+<!--      <h3 th:text="${detalhamento.restricao.getTexto() =='SIM'? 'Apenado com Restrição':'Apenado sem Restrição'}"></h3>-->
+      <p th:text="${detalhamento.textoRestricao}"></p>
+    </div>
+    <div class="item-detalhamento sem-restricao-detalhamento" th:unless="${detalhamento.restricao.getTexto() =='Sim'}">
+      <h3>Apenado sem restrição</h3>
+    </div>
+
+  </div>
+  <h2>Situacional</h2>
+  <div class="caixa-detalhamento situacional-detalhamento">
+    <div class="item-detalhamento">
+      <h3>Número do Processo</h3>
+      <p th:text="${detalhamento.numeroProcesso}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Artigos</h3>
+      <ul>
+        <li th:each="item : ${detalhamento.artigos}" th:text="${item}"></li>
+      </ul>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Data do término da pena</h3>
+      <p th:text="${detalhamento.dataTerminoPena}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Prioridade</h3>
+      <p th:text="${detalhamento.prioridade}"></p>
+    </div>
+  </div>
+  <h2>Dados Bancários</h2>
+  <div class="caixa-detalhamento banco-detalhamento">
+    <div class="item-detalhamento">
+      <h3>Número da conta</h3>
+      <p th:text="${detalhamento.numConta}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Agência</h3>
+      <p th:text="${detalhamento.agencia}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Banco</h3>
+      <p th:text="${detalhamento.banco}"></p>
+    </div>
+    <div class="item-detalhamento">
+      <h3>Operação</h3>
+      <p th:text="${detalhamento.operacao}"></p>
+    </div>
+  </div>
+</div>

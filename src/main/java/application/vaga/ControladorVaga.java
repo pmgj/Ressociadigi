@@ -2,6 +2,7 @@ package application.vaga;
 
 import javax.validation.Valid;
 
+import application.apenado.Apenado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -44,7 +45,7 @@ public class ControladorVaga {
 										 @RequestParam(value = "apenado", required = false)String apenado,
 										 @RequestParam(value = "tipo", required = false)String tipo,
 										 Model model,
-										 @PageableDefault(page = 0, size = 2) Pageable pageable) {
+										 @PageableDefault(page = 0, size = 8) Pageable pageable) {
 
 
 		Specification<VagaPreenchida> spec = vagaRepositoryCustom.gerarSpecVagaPreenchida(empresa, apenado, tipo);
@@ -133,7 +134,7 @@ public class ControladorVaga {
 							  @RequestParam(value = "quantidadeVagasFemininas", required = false) String quantidadeVagasFemininas,
 	                          @RequestParam(value = "cargaHoraria", required = false) String cargaHoraria,
 	                          Model model,
-	                         @PageableDefault(page = 0, size = 2) Pageable pageable) {
+	                         @PageableDefault(page = 0, size = 8) Pageable pageable) {
 
 
 		Specification<Vaga> spec = vagaRepositoryCustom.gerarSpec(empresa, tipo, interlocutor, quantidadeVagasMasculinas, quantidadeVagasFemininas, cargaHoraria);
@@ -159,5 +160,17 @@ public class ControladorVaga {
 		Vaga vaga = service.findById(id).get();
 		service.delete(vaga);
 		return "redirect:/listarVagas";
+	}
+	@GetMapping("/detalharVaga")
+	public String getVagaById(@RequestParam("id") int id, Model model) {
+		Vaga vaga= service.findById(id).get();
+		model.addAttribute("vagaDetalhamento", vaga);
+		return "vagaDetalhamento";
+	}
+	@GetMapping("/detalharVagaPreenchida")
+	public String getVagaPreenchidaById(@RequestParam("id") int id, Model model) {
+		VagaPreenchida vaga= repVagaPreenchida.findById(id).get();
+		model.addAttribute("vagaPreenchida", vaga);
+		return "detalhamentoVagaPreenchida";
 	}
 }

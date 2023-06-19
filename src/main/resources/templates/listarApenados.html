@@ -18,6 +18,12 @@
 </head>
 
 <body>
+    <div id="detalhamento-fade">
+        <div id="modal-detalhamento">
+
+        </div>
+
+    </div>
 
     <main>
         <div class="title">
@@ -88,9 +94,8 @@
                     <th>CPF</th>
                     <th>DATA DE NASCIMENTO</th>
                     <th>TELEFONE</th>
-                    <th>NOME DA MAE</th>
                     <th>HABILIDADES</th>
-                    <th>ARTIGOS</th>
+<!--                    <th>ARTIGOS</th>-->
                     <th>AÇÕES</th>
                 </tr>
             </thead>
@@ -105,16 +110,26 @@
                     <td data-label="CPF"><span id="cpf" th:text="${item.cpf}">CPF</span></td>
                     <td data-label="DATA DE NASCIMENTO"><span id="dataNascimento" th:text="${item.dataNascimento}">Data de Nascimento</span></td>
                     <td data-label="CONTATO"><span id="contato" th:text="${item.telefone}">Contato</span></td>
-                    <td data-label="NOME MÃE"><span id="nomeMae" th:text="${item.nomeDaMae}">Nome da Mãe</span></td>
-                    <td data-label="HABILIDADES"><span id="habilidades" th:text="${item.habilidades}">Habilidades</span></td>
-                    <td data-label="ARTIGOS"><span id="artigos" th:text="${item.artigos}">Artigos</span></td>
+                    <td data-label="HABILIDADES">
+                        <ul>
+                            <li id="habilidades" th:each="habilidade : ${item.habilidades}" th:text="${habilidade}"></li>
+                        </ul>
+
+<!--                        <span >Habilidades</span>-->
+                    </td>
+<!--                    <td data-label="ARTIGOS"><span id="artigos" th:text="${item.artigos}">Artigos</span></td>-->
                     <td id="Btn-remove-edit" width="180">
-                        <a th:href="@{/alterarApenado(cpf=${item.cpf})}"><button>Editar</button></a>
-                        <a id="botao-remover" href="#" th:attr="data-nome=${item.nome}, data-cpf=${item.cpf}" data-toggle="modal" data-target="#confirmModal"><button>Remover</button></a>
+                        <button id="ver-mais" th:attr="data-cpf=${item.cpf}"><img class="icones-lista" src="/imgs/view.png" alt="detalhamento"></button>
+                        <a th:href="@{/alterarApenado(cpf=${item.cpf})}"><button><img class="icones-lista" src="/imgs/edit.png" alt="editar"></button></a>
+                        <a id="botao-remover" href="#" th:attr="data-nome=${item.nome}, data-cpf=${item.cpf}" data-toggle="modal" data-target="#confirmModal"><button><img class="icones-lista" src="/imgs/remove.png" alt="remover"></button></a>
                     </td>
                 </tr>
             </tbody>
         </table>
+
+
+
+
 
         <div id="confirmModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
