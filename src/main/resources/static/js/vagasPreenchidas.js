@@ -1,9 +1,16 @@
+//Modal de Filtro
 $(document).on("click", "#icone-filtro", function () {
+    $('#filtroModal').modal('show');
+});
+
+//Modal de Exclusao
+$(document).on("click", "#botao-remover", function () {
+    var id = $(this).data('id');
+    $("#botao-confirmar-remover").attr("href", "/removerVagaPreenchida?id=" + id);
     $('#confirmModal').modal('show');
 });
 
 $(document).on("click", "#ver-mais", function () {
-
     var id = $(this).data('id');
     getVagaDetails(id)
 });

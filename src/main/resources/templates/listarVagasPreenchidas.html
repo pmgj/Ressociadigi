@@ -44,7 +44,7 @@
 				<button type="button" class="botao laranja">Preencher Vagas</button>
 			</a>
 		</div>
-		<div id="confirmModal" class="modal fade" role="dialog">
+		<div id="filtroModal" class="modal fade" role="dialog">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<div class="modal-header justify-content-center">
@@ -109,11 +109,28 @@
 					<td id="Btn-remove-edit" width="180">
 						<button id="ver-mais" th:attr="data-id=${vagaPreenchida.getId()}"><img class="icones-lista" src="/imgs/view.png" alt="detalhamento"></button>
 						<a th:href="@{/alterarVagaPreenchida(id=${vagaPreenchida.getId()})}"><button><img class="icones-lista" src="/imgs/edit.png" alt="editar item"></button></a>
-						<a th:href="@{/removerVagaPreenchida(id=${vagaPreenchida.getId()})}"><button><img class="icones-lista" src="/imgs/remove.png" alt="remover item"></button></a>
+						<a id="botao-remover" href="#" th:attr="data-id=${vagaPreenchida.getId()}" data-toggle="modal" data-target="#confirmModal"><button><img class="icones-lista" src="/imgs/remove.png" alt="remover item"></button></a>
 					</td>
 				</tr>
 			</tbody>
 		</table>
+
+		<div id="confirmModal" class="modal fade" role="dialog">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header justify-content-center">
+						<h4 class="modal-title">Confirmar exclusão</h4>
+					</div>
+					<div class="modal-body">
+						<p>Você tem certeza que deseja excluir essa vaga?</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-bs-dismiss="modal">Cancelar</button>
+						<a id="botao-confirmar-remover" href="#" class="btn btn-danger">Excluir</a>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<div id="footer">
 			<div class="botao-container">
