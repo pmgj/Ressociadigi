@@ -40,6 +40,9 @@
 
 
 				<div class="container-input-vagas">
+
+					<input type="hidden" th:field="*{id}">
+
 					 <div class="input-normal" id="nomeVaga">
 						<label for="vagaSelect">Selecione a vaga</label> 
 						<select th:field="*{vaga.id}" name="vagaSelect" id="vagaSelect">
@@ -48,6 +51,7 @@
 						</select>
 						 <label id="labelError" th:if="${#fields.hasErrors('vaga.id')}" th:errors="*{vaga.id}">Erro na vaga</label>
 					</div>
+					
 					<div class="input-normal" id="nomeApenado">
 						<label for="apenadoSelect">Selecione o apenado</label> 
 						<select name="apenadoSelect" id="apenadoSelect" th:field="*{apenado.cpf}">
