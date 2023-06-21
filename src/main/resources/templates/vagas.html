@@ -41,6 +41,9 @@
 
 
             <div class="container-input-vagas">
+
+                <input type="hidden" th:field="*{id}">
+
                 <div class="input-normal" id="nomeEmpresa">
                     <label for="empresaSelect">selecione a empresa</label>
                     <select th:field="*{empresa}" name="empresaSelect" id="empresaSelect">
