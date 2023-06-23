@@ -21,6 +21,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import application.apenado.Apenado;
 
 @Entity
+@DataFimAntesDataInicio
+@DataInicioDepoisDataFim
 public class VagaPreenchida {
 
 	@Id
@@ -38,6 +40,8 @@ public class VagaPreenchida {
 	@NotNull
 	private Vaga vaga;
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+
+
 	private LocalDate dataInicio;
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate dataFim;

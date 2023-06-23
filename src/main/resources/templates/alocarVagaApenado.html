@@ -59,17 +59,17 @@
 						</select>
 						<label id="labelError" th:if="${#fields.hasErrors('apenado.cpf')}" th:errors="*{apenado.cpf}">Erro no apenado</label>
 					</div>
-					
+
 					<div class="input-normal">
 						<label for="dataInicio">Data de Inicio</label>
 						<input th:field="*{dataInicio}" type="date" name="dataInicio" id="dataInicio">
-						<p th:if="${#fields.hasErrors('dataInicio')}" th:errorclass="error" th:errors="*{dataInicio}" />
+						<p th:if="${#fields.hasErrors('dataInicio')}" th:errors="*{dataInicio}" class="validation" />
 					</div>
 					
 					<div class="input-normal">
 						<label for="dataFim">Data de Término</label>
 						<input th:field="*{dataFim}" type="date" name="dataFim" id="dataFim">
-						<p th:if="${#fields.hasErrors('dataInicio')}" th:errorclass="error" th:errors="*{dataFim}" />
+						<p th:if="${#fields.hasErrors('dataFim')}" th:errors="*{dataFim}" class="validation" />
 					</div>
 					
 					<div class="tap">
