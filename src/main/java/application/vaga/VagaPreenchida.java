@@ -14,6 +14,8 @@ import javax.persistence.criteria.*;
 import javax.validation.constraints.NotNull;
 
 import application.empresa.Empresa;
+import application.vaga.validation.DataFimAntesDataInicio;
+import application.vaga.validation.DataInicioDepoisDataFim;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -24,7 +26,6 @@ import application.apenado.Apenado;
 @DataFimAntesDataInicio
 @DataInicioDepoisDataFim
 public class VagaPreenchida {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VAGA_PREENCHIDA_SEQUENCE")
 	private int id;

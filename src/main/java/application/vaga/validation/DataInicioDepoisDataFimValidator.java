@@ -1,4 +1,6 @@
-package application.vaga;
+package application.vaga.validation;
+
+import application.vaga.VagaPreenchida;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

@@ -76,6 +76,8 @@ public class ControladorVaga {
 										  ) {
 
 		if (bindingResult.hasErrors()) {
+			model.addAttribute("listaApenados", repApenado.findAll());
+			model.addAttribute("listaVagas", service.findAll());
 			return "alocarVagaApenado";
 		}
 		try {

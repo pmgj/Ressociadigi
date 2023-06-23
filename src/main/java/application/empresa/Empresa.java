@@ -25,6 +25,7 @@ public class Empresa {
 	@NotNull(message = "Este campo não pode ser nulo")
 	@NotEmpty(message = "Este campo não pode estar vazio")
 	private String cnpj;
+	@NotEmpty(message = "Este campo nao pode estar vazio")
 	private String nome;
 	private String responsavel;
 	private String email;

@@ -1,4 +1,4 @@
-package application.vaga;
+package application.vaga.validation;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
