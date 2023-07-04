@@ -56,7 +56,8 @@
 						<select name="apenadoSelect" id="apenadoSelect" th:field="*{apenado.cpf}">
 							<option th:each="apenado : ${listaApenados}" th:value="${apenado.getCpf()}" th:text="${apenado.getNome()}"></option>
 						</select>
-						<label id="labelError" th:if="${#fields.hasErrors('apenado.cpf')}" th:errors="*{apenado.cpf}">Erro no apenado</label>
+<!--						<label id="labelError" th:if="${#fields.hasErrors('apenado.cpf')}" th:errors="*{apenado.cpf}">Erro no apenado</label>-->
+						<span th:if="${#fields.hasErrors('apenado.cpf')}" th:errors="*{apenado.cpf}" class="validation" />
 					</div>
 
 					<div class="input-normal">

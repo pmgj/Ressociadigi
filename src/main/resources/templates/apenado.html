@@ -221,12 +221,15 @@
 
                         <div id="habilidades" class="input-normal">
                             <label for="selHabilidade">Habilidades</label>
-                            <select id="selHabilidade" name="habilidades" th:field="*{habilidades}" multiple="multiple" size="3">
-                            	<option th:each="habilidade : ${apenado.getHabilidades()}" th:value="${habilidade}" th:text="${habilidade}"></option>
-                            </select>
-                            <button type="button" name="Habilidades" class="buttonAdicionarHabilidade" data-add="selHabilidade">+</button>
-                            <label id="labelError" th:if="${#fields.hasErrors('habilidades')}" th:errors="*{habilidades}">Erro
-                                nas Habilidades</label>
+                            <div class="inputHabilidades">
+                                <select id="selHabilidade" name="habilidades" th:field="*{habilidades}" multiple="multiple" size="3">
+                                    <option th:each="habilidade : ${apenado.getHabilidades()}" th:value="${habilidade}" th:text="${habilidade}"></option>
+                                </select>
+                                <button type="button" name="Habilidades" class="buttonAdicionarHabilidade" data-add="selHabilidade">+</button>
+                                <label id="labelError" th:if="${#fields.hasErrors('habilidades')}" th:errors="*{habilidades}">Erro
+                                    nas Habilidades</label>
+                            </div>
+
                         </div>
 
 

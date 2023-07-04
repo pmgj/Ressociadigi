@@ -374,14 +374,19 @@ input[type="radio"] {
     padding: 15px;
 }
 
+.inputHabilidades {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
 .buttonAdicionarHabilidade {
     border-radius: 5px;
     color: white;
     font-size: xx-large;
     background-color: rgb(255, 119, 0);
     cursor: pointer;
-    padding: 0 10px;
-    margin-top: 5px;
+    padding: 2px 10px;
 }
 
 .cardHabilidade {

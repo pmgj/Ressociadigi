@@ -1,8 +1,11 @@
 package application.vaga;
 
+import javax.validation.ConstraintValidatorContext;
 import javax.validation.Valid;
 
 import application.apenado.Apenado;
+import application.vaga.validation.QuantidadeVagasValidator;
+import application.vaga.validation.SexoVagaValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -29,6 +32,9 @@ public class ControladorVaga {
 
 	@Autowired
 	private RepositorioVagaCustom vagaRepositoryCustom;
+
+	@Autowired
+	private RepositorioVaga repVaga;
 
 	@Autowired
 	private RepositorioEmpresa repEmpresa;
@@ -73,7 +79,10 @@ public class ControladorVaga {
 	public String armazenarVagaPreenchida(@Valid VagaPreenchida vagaPreenchida,
 										  BindingResult bindingResult,
 										  Model model
-										  ) {
+	) {
+
+		Apenado apenadoEscolhido = repApenado.findById(vagaPreenchida.getApenado().getCpf()).orElse(null);
+		Vaga vagaEscolhida = repVaga.findById(vagaPreenchida.getVaga().getId()).orElse(null);
 
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("listaApenados", repApenado.findAll());
@@ -81,7 +90,20 @@ public class ControladorVaga {
 			return "alocarVagaApenado";
 		}
 		try {
+
+			String sexo = apenadoEscolhido.getSexoBiologico();
+
+			int vagasDisponiveis;
+			if(sexo.equals("MASCULINO")) {
+				vagasDisponiveis = (vagaEscolhida.getQuantidadeVagasMasculinas() - 1);
+				vagaEscolhida.setQuantidadeVagasMasculinas(vagasDisponiveis);
+			} else {
+				vagasDisponiveis = (vagaEscolhida.getQuantidadeVagasFemininas() - 1);
+				vagaEscolhida.setQuantidadeVagasFemininas(vagasDisponiveis);
+			}
+			System.out.println("AIIIIII");
 			repVagaPreenchida.save(vagaPreenchida);
+
 		} catch (Exception e) {
 			model.addAttribute("listaApenados", repApenado.findAll());
 			model.addAttribute("listaVagas", service.findAll());

@@ -27,6 +27,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import application.vaga.VagaPreenchida;
+import org.springframework.stereotype.Component;
 
 @Entity
 public class Apenado {

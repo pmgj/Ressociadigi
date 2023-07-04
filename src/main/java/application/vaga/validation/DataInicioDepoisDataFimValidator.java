@@ -1,5 +1,6 @@
 package application.vaga.validation;
 
+import application.apenado.Apenado;
 import application.vaga.VagaPreenchida;
 
 import javax.validation.ConstraintValidator;
