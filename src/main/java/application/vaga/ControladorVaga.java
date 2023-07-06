@@ -128,7 +128,18 @@ public class ControladorVaga {
 
 	@GetMapping("/removerVagaPreenchida")
 	public String removerVagaPreenchida(@RequestParam int id, Model model) {
+
 		VagaPreenchida vagaPreenchida = repVagaPreenchida.findById(id).get();
+
+//		String generoApenado = vagaPreenchida.getApenado().getSexoBiologico();
+//		Vaga vagaSelecionada = vagaPreenchida.getVaga();
+//
+//		vagaRepositoryCustom.aumentarVagaPorGenero(vagaPreenchida);
+//
+//		System.out.println(vagaPreenchida.getId() + " ID CAGAAA ");
+//		repVagaPreenchida.delete(vagaPreenchida);
+//		return "redirect:/listarVagasPreenchidas";
+
 		repVagaPreenchida.delete(vagaPreenchida);
 		return "redirect:/listarVagasPreenchidas";
 	}

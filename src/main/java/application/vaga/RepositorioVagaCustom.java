@@ -18,4 +18,7 @@ public interface RepositorioVagaCustom {
 
    void reduzirVagaPorGenero(String genero,Vaga vaga);
 
+   void aumentarVagaPorGenero(String genero, Vaga vaga);
+
+   void aumentarVagaPorGenero(VagaPreenchida vagaPreenchida);
 }

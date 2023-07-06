@@ -147,5 +147,38 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
         }
     }
 
+    @Override
+    public void aumentarVagaPorGenero(String genero, Vaga vaga) {
+
+        if(genero.equals("MASCULINO")) {
+            int vagasDisponiveis = (vaga.getQuantidadeVagasMasculinas() + 1);
+
+            vaga.setQuantidadeVagasMasculinas(vagasDisponiveis);
+        } else {
+            int vagasDisponiveis = (vaga.getQuantidadeVagasFemininas() + 1);
+
+            vaga.setQuantidadeVagasFemininas(vagasDisponiveis);
+        }
+    }
+
+
+    @Override
+    public void aumentarVagaPorGenero(VagaPreenchida vagaPreenchida) {
+
+        String genero = vagaPreenchida.getApenado().getSexoBiologico();
+		Vaga vaga = vagaPreenchida.getVaga();
+
+
+        if(genero.equals("MASCULINO")) {
+            int vagasDisponiveis = (vaga.getQuantidadeVagasMasculinas() + 1);
+
+            vaga.setQuantidadeVagasMasculinas(vagasDisponiveis);
+        } else {
+            int vagasDisponiveis = (vaga.getQuantidadeVagasFemininas() + 1);
+
+            vaga.setQuantidadeVagasFemininas(vagasDisponiveis);
+        }
+    }
+
 
 }

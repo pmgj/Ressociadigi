@@ -143,20 +143,6 @@
 
 				<div id="pageCounter"><p th:text="${'Pagina ' + numPaginaAtual + ' de ' + numTotalPaginas}"> </p></div>
 
-<!--				<div id="previousAndNextButtons">-->
-<!--					<a href="?page=0">-->
-<!--						<button type="button" class="botao laranja"><<</button>-->
-<!--					</a>-->
-<!--					<a th:href="@{?page={contador} (contador = ${previousPage})}">-->
-<!--						<button type="button" class="botao laranja"><</button>-->
-<!--					</a>-->
-<!--					<a th:href="@{?page={contador} (contador = ${nextPage})}">-->
-<!--						<button type="button" class="botao laranja">></button>-->
-<!--					</a>-->
-<!--					<a th:href="@{?page={page}(page = ${quantidadePaginas - 1})}">-->
-<!--						<button type="button" class="botao laranja">>></button>-->
-<!--					</a>-->
-<!--				</div>-->
 				<div id="previousAndNextButtons">
 					<a th:href="@{listarVagasPreenchidas(empresa=${#httpServletRequest.getParameter('empresa')?:''},tipo=${#httpServletRequest.getParameter('tipo')?:''},interlocutor=${#httpServletRequest.getParameter('interlocutor')?:''},vagasMasculinas=${#httpServletRequest.getParameter('vagasMasculinas')?:'0'},vagasFemininas=${#httpServletRequest.getParameter('vagasFeminas')?:'0'},cargaHoraria=${#httpServletRequest.getParameter('cargaHoraria')?:'0'}, page=0)}">
 						<button type="button" class="botao laranja"><<</button>
