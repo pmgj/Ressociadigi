@@ -1,5 +1,6 @@
 package application.vaga;
 
+import application.apenado.Apenado;
 import application.empresa.Empresa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -114,6 +115,24 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
         }
 
         return valorConvertido;
+    }
+
+    @Override
+    public boolean validarGenero(Apenado apenado, Vaga vaga) {
+
+        String sexo = apenado.getSexoBiologico();
+
+        System.out.println(apenado.getSexoBiologico() + " " + apenado.getNome());
+
+        if(sexo.equals("MASCULINO") && vaga.getQuantidadeVagasMasculinas() <= 0) {
+            return false;
+        }
+
+        if(sexo.equals("Feminino") && vaga.getQuantidadeVagasFemininas() <= 0) {
+            return false;
+        }
+
+        return true;
     }
 
 }

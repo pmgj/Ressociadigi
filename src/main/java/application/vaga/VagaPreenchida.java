@@ -26,7 +26,7 @@ import application.apenado.Apenado;
 @Entity
 @DataFimAntesDataInicio
 @DataInicioDepoisDataFim
-@SexoVaga
+//@SexoVaga
 public class VagaPreenchida {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VAGA_PREENCHIDA_SEQUENCE")
