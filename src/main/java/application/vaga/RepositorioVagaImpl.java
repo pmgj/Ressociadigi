@@ -1,10 +1,8 @@
 package application.vaga;
 
 import application.apenado.Apenado;
-import application.empresa.Empresa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Repository;
@@ -12,10 +10,6 @@ import org.springframework.ui.Model;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Repository
 public class RepositorioVagaImpl implements RepositorioVagaCustom {
@@ -134,5 +128,24 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
 
         return true;
     }
+
+    @Override
+    public void reduzirVagaPorGenero(String genero, Vaga vaga) {
+
+        if(genero.equals("Masculino")) {
+                int vagasDisponiveis = (vaga.getQuantidadeVagasMasculinas() - 1);
+
+                if(vagasDisponiveis >= 0) {
+                     vaga.setQuantidadeVagasMasculinas(vagasDisponiveis);
+                }
+        } else {
+                int vagasDisponiveis = (vaga.getQuantidadeVagasFemininas() - 1);
+
+                if(vagasDisponiveis >= 0) {
+                     vaga.setQuantidadeVagasFemininas(vagasDisponiveis);
+                }
+        }
+    }
+
 
 }

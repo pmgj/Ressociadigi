@@ -86,8 +86,6 @@ public class ControladorVaga {
 
 		boolean validacaoGenero = vagaRepositoryCustom.validarGenero(apenadoEscolhido, vagaEscolhida);
 
-		System.out.println("RESPOSTA : " + validacaoGenero);
-
 		if(!validacaoGenero) {
 			model.addAttribute("validacaoGenero", "Nao existem vagas do genero " + apenadoEscolhido.getSexoBiologico() + " nessa posicao");
 			model.addAttribute("listaApenados", repApenado.findAll());
@@ -104,15 +102,7 @@ public class ControladorVaga {
 
 			String sexo = apenadoEscolhido.getSexoBiologico();
 
-			int vagasDisponiveis;
-			if(sexo.equals("Masculino")) {
-				vagasDisponiveis = (vagaEscolhida.getQuantidadeVagasMasculinas() - 1);
-				vagaEscolhida.setQuantidadeVagasMasculinas(vagasDisponiveis);
-			} else {
-				vagasDisponiveis = (vagaEscolhida.getQuantidadeVagasFemininas() - 1);
-				vagaEscolhida.setQuantidadeVagasFemininas(vagasDisponiveis);
-			}
-			System.out.println("AIIIIII");
+			vagaRepositoryCustom.reduzirVagaPorGenero(sexo, vagaEscolhida);
 			repVagaPreenchida.save(vagaPreenchida);
 
 		} catch (Exception e) {

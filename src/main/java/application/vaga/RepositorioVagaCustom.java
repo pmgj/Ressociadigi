@@ -15,4 +15,7 @@ public interface RepositorioVagaCustom {
    Integer converterStringParaInteger(String valor);
 
    boolean validarGenero(Apenado apenado, Vaga vaga);
+
+   void reduzirVagaPorGenero(String genero,Vaga vaga);
+
 }
