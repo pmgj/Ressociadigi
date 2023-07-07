@@ -118,7 +118,7 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
 
         System.out.println(apenado.getSexoBiologico() + " " + apenado.getNome());
 
-        if(sexo.equals("MASCULINO") && vaga.getQuantidadeVagasMasculinas() <= 0) {
+        if(sexo.equals("Masculino") && vaga.getQuantidadeVagasMasculinas() <= 0) {
             return false;
         }
 
@@ -150,8 +150,12 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
     @Override
     public void aumentarVagaPorGenero(String genero, Vaga vaga) {
 
+        System.out.println("AQUIII 1 ");
+
         if(genero.equals("MASCULINO")) {
             int vagasDisponiveis = (vaga.getQuantidadeVagasMasculinas() + 1);
+
+            System.out.println("AQUIII " + vagasDisponiveis);
 
             vaga.setQuantidadeVagasMasculinas(vagasDisponiveis);
         } else {
@@ -159,6 +163,8 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
 
             vaga.setQuantidadeVagasFemininas(vagasDisponiveis);
         }
+
+
     }
 
 
@@ -168,16 +174,22 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
         String genero = vagaPreenchida.getApenado().getSexoBiologico();
 		Vaga vaga = vagaPreenchida.getVaga();
 
+        System.out.println("AQUIII 1 ");
 
         if(genero.equals("MASCULINO")) {
+
             int vagasDisponiveis = (vaga.getQuantidadeVagasMasculinas() + 1);
 
+            System.out.println("AQUIII " + vagasDisponiveis);
+
             vaga.setQuantidadeVagasMasculinas(vagasDisponiveis);
+
         } else {
             int vagasDisponiveis = (vaga.getQuantidadeVagasFemininas() + 1);
 
             vaga.setQuantidadeVagasFemininas(vagasDisponiveis);
         }
+
     }
 
 

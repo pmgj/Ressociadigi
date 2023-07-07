@@ -131,14 +131,9 @@ public class ControladorVaga {
 
 		VagaPreenchida vagaPreenchida = repVagaPreenchida.findById(id).get();
 
-//		String generoApenado = vagaPreenchida.getApenado().getSexoBiologico();
-//		Vaga vagaSelecionada = vagaPreenchida.getVaga();
-//
+		//Aumento de quantidade de vagas disponiveis ao remover uma vaga(Nao esta funcionando)
 //		vagaRepositoryCustom.aumentarVagaPorGenero(vagaPreenchida);
-//
-//		System.out.println(vagaPreenchida.getId() + " ID CAGAAA ");
-//		repVagaPreenchida.delete(vagaPreenchida);
-//		return "redirect:/listarVagasPreenchidas";
+
 
 		repVagaPreenchida.delete(vagaPreenchida);
 		return "redirect:/listarVagasPreenchidas";
