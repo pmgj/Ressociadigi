@@ -38,7 +38,7 @@
 
 
         <section>
-            <form action="#" th:action="@{/armazenarEmpresa}" th:object="${empresa}" method="post">
+            <form action="#" th:action="@{/armazenarEmpresa}" th:object="${empresa}" method="post" id="formulario">
 
                 <!-- ------------------------------------------------------------------------------------ -->
                 <!-- ------------------------------ SEÇÃO DE DADOS INICIAIS ----------------------------- -->
@@ -52,7 +52,7 @@
 
                     <div class="input-normal" id="div-cnpj">
                         <label for="nome">CNPJ</label>
-                        <input type="text" th:field="*{cnpj}">
+                        <input type="text" th:field="*{cnpj}" id="cnpj">
                         <label id="labelError" th:if="${#fields.hasErrors('cnpj')}" th:errors="*{cnpj}">Erro no CNPJ</label>
                     </div>
 

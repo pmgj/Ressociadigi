@@ -216,3 +216,57 @@ document.querySelector('#cancelar').addEventListener('click', ()=>{
     modal.style.display='none';
     fade.style.display='none';
 })
+
+//                     Validação CPF
+
+function validarCPF(cpf) {
+    cpf = cpf.replace(/[^\d]+/g, ''); // Remove caracteres não numéricos
+
+    if (cpf.length !== 11 || /^(.)\1+$/.test(cpf)) {
+        return false;
+    }
+
+    var soma = 0;
+    for (var i = 0; i < 9; i++) {
+        soma += parseInt(cpf.charAt(i)) * (10 - i);
+    }
+
+    var resto = 11 - (soma % 11);
+    if (resto === 10 || resto === 11) {
+        resto = 0;
+    }
+
+    if (resto !== parseInt(cpf.charAt(9))) {
+        return false;
+    }
+
+    soma = 0;
+    for (var i = 0; i < 10; i++) {
+        soma += parseInt(cpf.charAt(i)) * (11 - i);
+    }
+
+    resto = 11 - (soma % 11);
+    if (resto === 10 || resto === 11) {
+        resto = 0;
+    }
+
+    if (resto !== parseInt(cpf.charAt(10))) {
+        return false;
+    }
+
+    return true;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    var form = document.getElementById('formulario');
+    form.addEventListener('submit', function(event) {
+        var cpfInput = document.getElementById('cpf');
+        var cpf = cpfInput.value;
+
+        if (!validarCPF(cpf)) {
+            event.preventDefault();
+            alert('CPF inválido! Por favor, verifique o CPF inserido.');
+            return false;
+        }
+    });
+});
