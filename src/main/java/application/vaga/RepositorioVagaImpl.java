@@ -1,6 +1,7 @@
 package application.vaga;
 
 import application.apenado.Apenado;
+import org.atteo.evo.inflector.English;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,6 +11,8 @@ import org.springframework.ui.Model;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class RepositorioVagaImpl implements RepositorioVagaCustom {
@@ -130,65 +133,34 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
     }
 
     @Override
-    public void reduzirVagaPorGenero(String genero, Vaga vaga) {
+    public void reduzirNumeroDeVagas(Vaga vaga, Model model) {
 
-        if(genero.equals("Masculino")) {
-                int vagasDisponiveis = (vaga.getQuantidadeVagasMasculinas() - 1);
+        List<VagaPreenchida> vagasPreenchidas = vaga.getVagasPreenchidas();
 
-                if(vagasDisponiveis >= 0) {
-                     vaga.setQuantidadeVagasMasculinas(vagasDisponiveis);
-                }
-        } else {
-                int vagasDisponiveis = (vaga.getQuantidadeVagasFemininas() - 1);
+        List<VagaPreenchida> vagasMasculinas = new ArrayList<>();
+        List<VagaPreenchida> vagasFemininas = new ArrayList<>();
 
-                if(vagasDisponiveis >= 0) {
-                     vaga.setQuantidadeVagasFemininas(vagasDisponiveis);
-                }
-        }
-    }
+        System.out.println("TESTEE:  " + vagasPreenchidas.get(0));
 
-    @Override
-    public void aumentarVagaPorGenero(String genero, Vaga vaga) {
 
-        System.out.println("AQUIII 1 ");
-
-        if(genero.equals("MASCULINO")) {
-            int vagasDisponiveis = (vaga.getQuantidadeVagasMasculinas() + 1);
-
-            System.out.println("AQUIII " + vagasDisponiveis);
-
-            vaga.setQuantidadeVagasMasculinas(vagasDisponiveis);
-        } else {
-            int vagasDisponiveis = (vaga.getQuantidadeVagasFemininas() + 1);
-
-            vaga.setQuantidadeVagasFemininas(vagasDisponiveis);
+        for(VagaPreenchida vagaAtual : vagasPreenchidas){
+            if(vagaAtual.getApenado().getSexoBiologico().equalsIgnoreCase("Masculino")) {
+                vagasMasculinas.add(vagaAtual);
+            } else {
+                vagasFemininas.add(vagaAtual);
+            }
         }
 
+        int vagasMasulinasOcupadas = vagasMasculinas.size();
+        int vagasFemininasOcupadas = vagasFemininas.size();
 
-    }
 
 
-    @Override
-    public void aumentarVagaPorGenero(VagaPreenchida vagaPreenchida) {
-
-        String genero = vagaPreenchida.getApenado().getSexoBiologico();
-		Vaga vaga = vagaPreenchida.getVaga();
-
-        System.out.println("AQUIII 1 ");
-
-        if(genero.equals("MASCULINO")) {
-
-            int vagasDisponiveis = (vaga.getQuantidadeVagasMasculinas() + 1);
-
-            System.out.println("AQUIII " + vagasDisponiveis);
-
-            vaga.setQuantidadeVagasMasculinas(vagasDisponiveis);
-
-        } else {
-            int vagasDisponiveis = (vaga.getQuantidadeVagasFemininas() + 1);
-
-            vaga.setQuantidadeVagasFemininas(vagasDisponiveis);
-        }
+//        if(vagasPreenchidas == null) {
+//            System.out.println("TESTEEE:  NuLOOO");
+//        } else {
+//            System.out.println("TESTEEE: " + vagasPreenchidas.size());
+//        }
 
     }
 

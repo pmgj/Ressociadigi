@@ -16,9 +16,5 @@ public interface RepositorioVagaCustom {
 
    boolean validarGenero(Apenado apenado, Vaga vaga);
 
-   void reduzirVagaPorGenero(String genero,Vaga vaga);
-
-   void aumentarVagaPorGenero(String genero, Vaga vaga);
-
-   void aumentarVagaPorGenero(VagaPreenchida vagaPreenchida);
+   void reduzirNumeroDeVagas(Vaga vaga, Model model);
 }
