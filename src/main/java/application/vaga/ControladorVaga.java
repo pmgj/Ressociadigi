@@ -24,6 +24,8 @@ import org.springframework.web.servlet.ModelAndView;
 import application.apenado.RepositorioApenado;
 import application.empresa.RepositorioEmpresa;
 
+import java.util.List;
+
 @Controller
 public class ControladorVaga {
 
@@ -66,10 +68,15 @@ public class ControladorVaga {
 	@GetMapping("/preencherVaga")
 	public ModelAndView preencherVaga(Model model) {
 		VagaPreenchida vagaPreenchida = new VagaPreenchida();
+
+		List<Vaga> vagas = service.findAll();
 		
 		model.addAttribute("listaApenados", repApenado.findAll(Sort.by(Sort.Direction.ASC, "nome")));
 		model.addAttribute("listaVagas", service.findAll(Sort.by(Sort.Direction.ASC, "tipo")));
 		model.addAttribute("listaEmpresas", repEmpresa.findAll());
+
+		vagaRepositoryCustom.reduzirNumeroDeVagas1(vagas, model);
+
 		ModelAndView mav = new ModelAndView("alocarVagaApenado");
 		mav.addObject("vagaPreenchida", vagaPreenchida);
 		return mav;
@@ -86,7 +93,7 @@ public class ControladorVaga {
 
 		boolean validacaoGenero = vagaRepositoryCustom.validarGenero(apenadoEscolhido, vagaEscolhida);
 
-		vagaRepositoryCustom.reduzirNumeroDeVagas(vagaEscolhida, model);
+//		vagaRepositoryCustom.reduzirNumeroDeVagas(vagaEscolhida, model);
 
 		if(!validacaoGenero) {
 			model.addAttribute("validacaoGenero", "Nao existem vagas do genero " + apenadoEscolhido.getSexoBiologico() + " nessa posicao");

@@ -164,5 +164,51 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
 
     }
 
+    @Override
+    public void reduzirNumeroDeVagas1(List<Vaga> vagas, Model model) {
+
+        List<VagaPreenchida> vagasTotais;
+        Vaga vagaAtual;
+
+       List<Integer> vagasMasculinas = new ArrayList<>();
+       List<Integer> vagasFemininas = new ArrayList<>();
+
+
+        for(int i = 0; i < vagas.size(); i++) {
+            int countMasculino = 0;
+            int countFeminino = 0;
+            vagaAtual = vagas.get(i);
+            vagasTotais = vagaAtual.getVagasPreenchidas();
+            for(VagaPreenchida vagaPreenchida : vagasTotais) {
+                if(vagaPreenchida.getApenado().getSexoBiologico().equalsIgnoreCase("Masculino")) {
+                    countMasculino++;
+                } else {
+                    countFeminino++;
+                }
+            }
+            countMasculino = vagaAtual.getQuantidadeVagasMasculinas() - countMasculino;
+            countFeminino =  vagaAtual.getQuantidadeVagasFemininas() - countFeminino;
+
+            vagasMasculinas.add(countMasculino);
+            vagasFemininas.add(countFeminino);
+        }
+
+        System.out.println("TESTEEEEE AIAI");
+
+        for(int i = 0; i < vagasMasculinas.size(); i++) {
+            System.out.println(vagasMasculinas.get(i) + " " +  vagasFemininas.get(i));
+        }
+
+
+//        for(Vaga vagaAtua : vagas){
+//            vagasTotais = vagaAtual.getVagasPreenchidas();
+//           for(VagaPreenchida vagaPreenchida : vagasTotais) {
+//               if(vagaPreenchida.getApenado().getSexoBiologico().equalsIgnoreCase("Masculino")) {
+//                   vagasMasculinas.add()
+//               }
+//           }
+//        }
+    }
+
 
 }
