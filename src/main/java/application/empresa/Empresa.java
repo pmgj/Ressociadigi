@@ -13,11 +13,13 @@ import javax.persistence.criteria.Root;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import application.empresa.validation.CnpjAndName;
 import application.vaga.Vaga;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.domain.Specification;
 
 @Entity
+@CnpjAndName
 public class Empresa {
 
 	// Dados Gerais

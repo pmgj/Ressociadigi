@@ -22,6 +22,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
+import application.apenado.validation.Cpf;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -29,6 +30,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import application.vaga.VagaPreenchida;
 
 @Entity
+@Cpf
 public class Apenado {
 
 	// Atributos relacionados à seção de Dados Pessoais.
