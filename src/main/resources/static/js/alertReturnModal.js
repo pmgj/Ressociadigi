@@ -19,11 +19,17 @@ document.addEventListener('DOMContentLoaded', function() {
     var form = document.getElementById('formulario');
     form.addEventListener('submit', function(event) {
         var cnpjInput = document.getElementById('cnpj');
+        var nomeEmpresa = document.querySelector('#nomeEmpresa')
         var cnpj = cnpjInput.value;
 
         if (!validarCNPJ(cnpj)) {
             event.preventDefault();
             alert('CNPJ inválido! Por favor, verifique o CNPJ inserido.');
+            return false;
+        }
+        if(nomeEmpresa.value == ''){
+            event.preventDefault();
+            alert('Nome da empresa inválido! Por favor, verifique o Nome da empresa inserido.');
             return false;
         }
     });

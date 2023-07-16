@@ -46,7 +46,7 @@
                 <div class="container-input-empresa">
                     <div class="input-normal" id="div-nomeEmpresa">
                         <label for="nome">Nome da empresa</label>
-                        <input type="text" th:field="*{nome}">
+                        <input type="text" th:field="*{nome}" id="nomeEmpresa">
                         <label id="labelError" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Erro no nome</label>
                     </div>
 
