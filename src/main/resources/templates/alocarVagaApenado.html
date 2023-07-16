@@ -45,8 +45,8 @@
 					 <div class="input-normal" id="nomeVaga">
 						<label for="vagaSelect">Selecione a vaga</label> 
 						<select th:field="*{vaga.id}" name="vagaSelect" id="vagaSelect">
-							<option th:each="vaga : ${listaVagas}" th:value="${vaga.getId()}" th:text="${vaga.getTipo() + ' | H: ' + vaga.getQuantidadeVagasMasculinas()
-							+ ' F: ' + vaga.getQuantidadeVagasFemininas() + ' | ' + vaga.empresa.nome}"></option>
+							<option th:each="vaga,iterStat : ${listaVagas}" th:value="${vaga.getId()}" th:text="${vaga.getTipo() + ' | H: ' + vagasMasculinasDisponiveis[iterStat.index]
+							+ ' F: ' + vagasFemininasDisponiveis[iterStat.index] + ' | ' + vaga.empresa.nome}"></option>
 						</select>
 						 <label id="labelError" th:if="${#fields.hasErrors('vaga.id')}" th:errors="*{vaga.id}">Erro na vaga</label>
 					</div>

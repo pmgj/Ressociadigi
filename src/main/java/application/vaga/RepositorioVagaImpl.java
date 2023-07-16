@@ -12,7 +12,9 @@ import org.springframework.ui.Model;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class RepositorioVagaImpl implements RepositorioVagaCustom {
@@ -121,11 +123,11 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
 
         System.out.println(apenado.getSexoBiologico() + " " + apenado.getNome());
 
-        if(sexo.equals("Masculino") && vaga.getQuantidadeVagasMasculinas() <= 0) {
+        if(sexo.equals("Masculino") && vaga.getQuantidadeVagasMasculinas() == 0) {
             return false;
         }
 
-        if(sexo.equals("Feminino") && vaga.getQuantidadeVagasFemininas() <= 0) {
+        if(sexo.equals("Feminino") && vaga.getQuantidadeVagasFemininas() == 0) {
             return false;
         }
 
@@ -133,81 +135,49 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
     }
 
     @Override
-    public void reduzirNumeroDeVagas(Vaga vaga, Model model) {
-
-        List<VagaPreenchida> vagasPreenchidas = vaga.getVagasPreenchidas();
-
-        List<VagaPreenchida> vagasMasculinas = new ArrayList<>();
-        List<VagaPreenchida> vagasFemininas = new ArrayList<>();
-
-        System.out.println("TESTEE:  " + vagasPreenchidas.get(0));
-
-
-        for(VagaPreenchida vagaAtual : vagasPreenchidas){
-            if(vagaAtual.getApenado().getSexoBiologico().equalsIgnoreCase("Masculino")) {
-                vagasMasculinas.add(vagaAtual);
-            } else {
-                vagasFemininas.add(vagaAtual);
-            }
-        }
-
-        int vagasMasulinasOcupadas = vagasMasculinas.size();
-        int vagasFemininasOcupadas = vagasFemininas.size();
-
-
-
-//        if(vagasPreenchidas == null) {
-//            System.out.println("TESTEEE:  NuLOOO");
-//        } else {
-//            System.out.println("TESTEEE: " + vagasPreenchidas.size());
-//        }
-
-    }
-
-    @Override
-    public void reduzirNumeroDeVagas1(List<Vaga> vagas, Model model) {
+    public Map<String, List<Integer>> reduzirNumeroDeVagas(List<Vaga> vagas) {
 
         List<VagaPreenchida> vagasTotais;
         Vaga vagaAtual;
 
-       List<Integer> vagasMasculinas = new ArrayList<>();
-       List<Integer> vagasFemininas = new ArrayList<>();
+        List<Integer> vagasMasculinas = new ArrayList<>();
+        List<Integer> vagasFemininas = new ArrayList<>();
 
+        System.out.println("TAMANHO VAGAS: " + vagas.size());
 
         for(int i = 0; i < vagas.size(); i++) {
             int countMasculino = 0;
             int countFeminino = 0;
+
             vagaAtual = vagas.get(i);
+            System.out.println("VAGA ATUAL" + vagaAtual);
+
             vagasTotais = vagaAtual.getVagasPreenchidas();
-            for(VagaPreenchida vagaPreenchida : vagasTotais) {
-                if(vagaPreenchida.getApenado().getSexoBiologico().equalsIgnoreCase("Masculino")) {
+            for(VagaPreenchida vagaPreenchidaAux : vagasTotais) {
+                System.out.println("quantidadeee");
+                if(vagaPreenchidaAux.getApenado().getSexoBiologico().equalsIgnoreCase("Masculino")) {
                     countMasculino++;
                 } else {
                     countFeminino++;
                 }
+
             }
+
+            System.out.println("TESTEE 11"+ countMasculino);
+
             countMasculino = vagaAtual.getQuantidadeVagasMasculinas() - countMasculino;
             countFeminino =  vagaAtual.getQuantidadeVagasFemininas() - countFeminino;
 
             vagasMasculinas.add(countMasculino);
             vagasFemininas.add(countFeminino);
+
         }
 
-        System.out.println("TESTEEEEE AIAI");
+        Map<String, List<Integer>> map = new HashMap<>();
+        map.put("vagasMasculinas", vagasMasculinas);
+        map.put("vagasFemininas", vagasFemininas);
 
-        for(int i = 0; i < vagasMasculinas.size(); i++) {
-            System.out.println(vagasMasculinas.get(i) + " " +  vagasFemininas.get(i));
-        }
-
-
-//        for(Vaga vagaAtua : vagas){
-//            vagasTotais = vagaAtual.getVagasPreenchidas();
-//           for(VagaPreenchida vagaPreenchida : vagasTotais) {
-//               if(vagaPreenchida.getApenado().getSexoBiologico().equalsIgnoreCase("Masculino")) {
-//                   vagasMasculinas.add()
-//               }
-//           }
-//        }
+        return map;
     }
 
 

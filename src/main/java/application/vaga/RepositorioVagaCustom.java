@@ -7,6 +7,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.ui.Model;
 
 import java.util.List;
+import java.util.Map;
 
 public interface RepositorioVagaCustom {
    public void gerarModel(Model model, Pageable pageable, Page pgApenado);
@@ -18,7 +19,5 @@ public interface RepositorioVagaCustom {
 
    boolean validarGenero(Apenado apenado, Vaga vaga);
 
-   void reduzirNumeroDeVagas(Vaga vaga, Model model);
-
-   void reduzirNumeroDeVagas1(List<Vaga> vagas, Model model);
+   public Map<String, List<Integer>> reduzirNumeroDeVagas(List<Vaga> vagas);
 }

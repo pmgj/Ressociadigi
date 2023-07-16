@@ -24,7 +24,10 @@ import org.springframework.web.servlet.ModelAndView;
 import application.apenado.RepositorioApenado;
 import application.empresa.RepositorioEmpresa;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ControladorVaga {
@@ -70,12 +73,57 @@ public class ControladorVaga {
 		VagaPreenchida vagaPreenchida = new VagaPreenchida();
 
 		List<Vaga> vagas = service.findAll();
-		
-		model.addAttribute("listaApenados", repApenado.findAll(Sort.by(Sort.Direction.ASC, "nome")));
-		model.addAttribute("listaVagas", service.findAll(Sort.by(Sort.Direction.ASC, "tipo")));
-		model.addAttribute("listaEmpresas", repEmpresa.findAll());
 
-		vagaRepositoryCustom.reduzirNumeroDeVagas1(vagas, model);
+//		List<Integer> vagasMasculinas = new ArrayList<>();
+//		List<Integer> vagasFemininas = new ArrayList<>();
+
+		Map<String, List<Integer>> map = vagaRepositoryCustom.reduzirNumeroDeVagas(vagas);
+
+		List<Integer> vagasMasculinas = map.get("vagasMasculinas");
+		List<Integer> vagasFemininas = map.get("vagasFemininas");
+
+//		List<VagaPreenchida> vagasTotais;
+//		Vaga vagaAtual;
+//
+//
+//		System.out.println("TAMANHO VAGAS: " + vagas.size());
+//
+//		for(int i = 0; i < vagas.size(); i++) {
+//			int countMasculino = 0;
+//			int countFeminino = 0;
+//
+//			vagaAtual = vagas.get(i);
+//			System.out.println("VAGA ATUAL" + vagaAtual);
+//
+//			vagasTotais = vagaAtual.getVagasPreenchidas();
+//			for(VagaPreenchida vagaPreenchidaAux : vagasTotais) {
+//				System.out.println("quantidadeee");
+//				if(vagaPreenchidaAux.getApenado().getSexoBiologico().equalsIgnoreCase("Masculino")) {
+//					countMasculino++;
+//				} else {
+//					countFeminino++;
+//				}
+//
+//			}
+//
+//			System.out.println("TESTEE 11"+ countMasculino);
+//
+//			countMasculino = vagaAtual.getQuantidadeVagasMasculinas() - countMasculino;
+//			countFeminino =  vagaAtual.getQuantidadeVagasFemininas() - countFeminino;
+//
+//			vagasMasculinas.add(countMasculino);
+//			vagasFemininas.add(countFeminino);
+//
+//		}
+//
+//		System.out.println("TESTE:: " + vagasMasculinas);
+
+
+		model.addAttribute("listaApenados", repApenado.findAll(Sort.by(Sort.Direction.ASC, "nome")));
+		model.addAttribute("listaVagas", vagas);
+		model.addAttribute("listaEmpresas", repEmpresa.findAll());
+		model.addAttribute("vagasMasculinasDisponiveis",vagasMasculinas);
+		model.addAttribute("vagasFemininasDisponiveis", vagasFemininas);
 
 		ModelAndView mav = new ModelAndView("alocarVagaApenado");
 		mav.addObject("vagaPreenchida", vagaPreenchida);
@@ -92,8 +140,6 @@ public class ControladorVaga {
 		Vaga vagaEscolhida = repVaga.findById(vagaPreenchida.getVaga().getId()).orElse(null);
 
 		boolean validacaoGenero = vagaRepositoryCustom.validarGenero(apenadoEscolhido, vagaEscolhida);
-
-//		vagaRepositoryCustom.reduzirNumeroDeVagas(vagaEscolhida, model);
 
 		if(!validacaoGenero) {
 			model.addAttribute("validacaoGenero", "Nao existem vagas do genero " + apenadoEscolhido.getSexoBiologico() + " nessa posicao");
