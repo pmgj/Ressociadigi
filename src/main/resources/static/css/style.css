@@ -592,7 +592,11 @@ button a{
     cursor: pointer;
 }
 
-
+#cpfInvalido{
+    display:none;
+    color: #6b0618;
+    font-weight: 700;
+}
 
 
 @media (max-width: 1336px){

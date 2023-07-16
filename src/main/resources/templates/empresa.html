@@ -48,12 +48,14 @@
                         <label for="nome">Nome da empresa</label>
                         <input type="text" th:field="*{nome}" id="nomeEmpresa">
                         <label id="labelError" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Erro no nome</label>
+                        <label id="nomeEmpresaInvalido">Nome da empresa inválido! Por favor, verifique o Nome da empresa inserido.</label>
                     </div>
 
                     <div class="input-normal" id="div-cnpj">
                         <label for="nome">CNPJ</label>
                         <input type="text" th:field="*{cnpj}" id="cnpj">
                         <label id="labelError" th:if="${#fields.hasErrors('cnpj')}" th:errors="*{cnpj}">Erro no CNPJ</label>
+                        <label id="cnpjInvalido">CNPJ inválido! Por favor, verifique o CNPJ inserido.</label>
                     </div>
 
                     <div class="input-normal" id="div-responsavel">

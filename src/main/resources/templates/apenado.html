@@ -65,6 +65,7 @@
                             <input type="text" th:field="*{cpf}" id="cpf">
                             <label id="labelError" th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}">Erro no
                                 CPF</label>
+                            <label id="cpfInvalido">CPF inválido! Por favor, verifique o CPF inserido.</label>
                         </div>
 
                         <div id="telefone-input" class="input-normal">

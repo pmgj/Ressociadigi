@@ -262,10 +262,11 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', function(event) {
         var cpfInput = document.getElementById('cpf');
         var cpf = cpfInput.value;
-
+        document.querySelector('#cpfInvalido').setAttribute('style', 'display:none;');
         if (!validarCPF(cpf)) {
             event.preventDefault();
-            alert('CPF inválido! Por favor, verifique o CPF inserido.');
+            document.querySelector('#cpfInvalido').setAttribute('style', 'display:block;');
+            exibirTela();
             return false;
         }
     });

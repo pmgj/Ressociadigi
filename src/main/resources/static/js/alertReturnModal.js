@@ -21,15 +21,16 @@ document.addEventListener('DOMContentLoaded', function() {
         var cnpjInput = document.getElementById('cnpj');
         var nomeEmpresa = document.querySelector('#nomeEmpresa')
         var cnpj = cnpjInput.value;
-
+        document.querySelector('#cnpjInvalido').setAttribute('style', 'display: none;');
+        document.querySelector('#nomeEmpresaInvalido').setAttribute('style', 'display: none;');
         if (!validarCNPJ(cnpj)) {
             event.preventDefault();
-            alert('CNPJ inválido! Por favor, verifique o CNPJ inserido.');
+            document.querySelector('#cnpjInvalido').setAttribute('style', 'display: block;');
             return false;
         }
         if(nomeEmpresa.value == ''){
             event.preventDefault();
-            alert('Nome da empresa inválido! Por favor, verifique o Nome da empresa inserido.');
+            document.querySelector('#nomeEmpresaInvalido').setAttribute('style', 'display: block;');
             return false;
         }
     });

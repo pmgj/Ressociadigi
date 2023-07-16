@@ -347,7 +347,12 @@ input {
     border-radius: 5px;
 }
 
-
+#cnpjInvalido,
+#nomeEmpresaInvalido{
+    display: none;
+    color: #6b0618;
+    font-weight: 700;
+}
 
 /*responsividade*/
 
