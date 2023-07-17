@@ -168,8 +168,19 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
             countMasculino = vagaAtual.getQuantidadeVagasMasculinas() - countMasculino;
             countFeminino =  vagaAtual.getQuantidadeVagasFemininas() - countFeminino;
 
-            vagasMasculinas.add(countMasculino);
-            vagasFemininas.add(countFeminino);
+            if(countMasculino <= 0) {
+                vagasMasculinas.add(0);
+            }else{
+                vagasMasculinas.add(countMasculino);
+            }
+
+            if(countFeminino <= 0) {
+                vagasFemininas.add(0);
+            }else{
+                vagasFemininas.add(countFeminino);
+            }
+
+
 
         }
 
