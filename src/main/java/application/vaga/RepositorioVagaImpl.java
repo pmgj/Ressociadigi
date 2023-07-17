@@ -135,33 +135,34 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
     }
 
     @Override
-    public Map<String, List<Integer>> reduzirNumeroDeVagas(List<Vaga> vagas) {
+    public Map<String, List<Long>> reduzirNumeroDeVagas(List<Vaga> vagas) {
 
         List<VagaPreenchida> vagasTotais;
         Vaga vagaAtual;
 
-        List<Integer> vagasMasculinas = new ArrayList<>();
-        List<Integer> vagasFemininas = new ArrayList<>();
+        List<Long> vagasMasculinas = new ArrayList<>();
+        List<Long> vagasFemininas = new ArrayList<>();
 
         System.out.println("TAMANHO VAGAS: " + vagas.size());
 
         for(int i = 0; i < vagas.size(); i++) {
-            int countMasculino = 0;
-            int countFeminino = 0;
+            long countMasculino = 0;
+            long countFeminino = 0;
 
             vagaAtual = vagas.get(i);
             System.out.println("VAGA ATUAL" + vagaAtual);
 
             vagasTotais = vagaAtual.getVagasPreenchidas();
-            for(VagaPreenchida vagaPreenchidaAux : vagasTotais) {
-                System.out.println("quantidadeee");
-                if(vagaPreenchidaAux.getApenado().getSexoBiologico().equalsIgnoreCase("Masculino")) {
-                    countMasculino++;
-                } else {
-                    countFeminino++;
-                }
-
-            }
+            countMasculino = vagasTotais.stream().filter(vp -> vp.getApenado().getSexoBiologico().equalsIgnoreCase("Masculino")).count();
+            countFeminino = vagasTotais.stream().filter(vp -> vp.getApenado().getSexoBiologico().equalsIgnoreCase("Feminino")).count();
+//            for(VagaPreenchida vagaPreenchidaAux : vagasTotais) {
+//                System.out.println("quantidadeee");
+//                if(vagaPreenchidaAux.getApenado().getSexoBiologico().equalsIgnoreCase("Masculino")) {
+//                    countMasculino++;
+//                } else {
+//                    countFeminino++;
+//                }
+//            }
 
             System.out.println("TESTEE 11"+ countMasculino);
 
@@ -169,22 +170,19 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
             countFeminino =  vagaAtual.getQuantidadeVagasFemininas() - countFeminino;
 
             if(countMasculino <= 0) {
-                vagasMasculinas.add(0);
+                vagasMasculinas.add(0L);
             }else{
                 vagasMasculinas.add(countMasculino);
             }
 
             if(countFeminino <= 0) {
-                vagasFemininas.add(0);
+                vagasFemininas.add(0L);
             }else{
                 vagasFemininas.add(countFeminino);
             }
-
-
-
         }
 
-        Map<String, List<Integer>> map = new HashMap<>();
+        Map<String, List<Long>> map = new HashMap<>();
         map.put("vagasMasculinas", vagasMasculinas);
         map.put("vagasFemininas", vagasFemininas);
 

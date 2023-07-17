@@ -19,5 +19,5 @@ public interface RepositorioVagaCustom {
 
    boolean validarGenero(Apenado apenado, Vaga vaga);
 
-   public Map<String, List<Integer>> reduzirNumeroDeVagas(List<Vaga> vagas);
+   public Map<String, List<Long>> reduzirNumeroDeVagas(List<Vaga> vagas);
 }
