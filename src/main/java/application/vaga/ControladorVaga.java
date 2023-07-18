@@ -102,8 +102,18 @@ public class ControladorVaga {
 		Apenado apenadoEscolhido = repApenado.findById(vagaPreenchida.getApenado().getCpf()).orElse(null);
 		Vaga vagaEscolhida = repVaga.findById(vagaPreenchida.getVaga().getId()).orElse(null);
 
+		List<Vaga> vagas = service.findAll();
+
+		var map = vagaRepositoryCustom.reduzirNumeroDeVagas(vagas);
+
+		var vagasMasculinas = map.get("vagasMasculinas");
+		var vagasFemininas = map.get("vagasFemininas");
 
 		boolean validacaoGenero = vagaRepositoryCustom.validarGenero(apenadoEscolhido, vagaEscolhida);
+
+		boolean aiai = vagaRepositoryCustom.validarQuantidadeVagas(map, vagaEscolhida, apenadoEscolhido);
+
+		System.out.println(aiai);
 
 
 		if(!validacaoGenero) {
@@ -116,13 +126,6 @@ public class ControladorVaga {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("listaApenados", repApenado.findAll());
 			model.addAttribute("listaVagas", service.findAll());
-
-			List<Vaga> vagas = service.findAll();
-
-			var map = vagaRepositoryCustom.reduzirNumeroDeVagas(vagas);
-
-			var vagasMasculinas = map.get("vagasMasculinas");
-			var vagasFemininas = map.get("vagasFemininas");
 
 			model.addAttribute("vagasMasculinasDisponiveis",vagasMasculinas);
 			model.addAttribute("vagasFemininasDisponiveis", vagasFemininas);
