@@ -86,6 +86,16 @@ public class ControladorApenado {
 
     @PostMapping("/armazenarApenado")
     public String armazenarApenado(@Valid Apenado apenado, BindingResult bindingResult, Model model) {
+
+
+
+        boolean cpfExist = apenadoRepository.cpfExist(apenado);
+
+        if(cpfExist){
+            model.addAttribute("cpfExist", "Cpf já cadastrado.");
+            return "apenado";
+        }
+
         if (bindingResult.hasErrors()) {
             return "apenado";
         }

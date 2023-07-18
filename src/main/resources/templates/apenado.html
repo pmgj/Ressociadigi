@@ -66,6 +66,7 @@
                             <label id="labelError" th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}">Erro no
                                 CPF</label>
                             <label id="cpfInvalido">CPF inválido! Por favor, verifique o CPF inserido.</label>
+                            <label th:if="${cpfExist}" style="color: #6b0618; font-weight: 600" th:text="${cpfExist}" id="cpfExist"/>
                         </div>
 
                         <div id="telefone-input" class="input-normal">

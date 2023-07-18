@@ -94,10 +94,7 @@ img {
     font-size: 2em;
 }
 
-#labelError {
-    color: red;
-    font-family: 'Sarabun', sans-serif;
-}
+
 
 .fieldset-dados-bancarios>legend>h1 {
     font-size: 1.0em;
@@ -481,6 +478,7 @@ dialog::backdrop {
     height: 3.125rem;
     border-radius: 6px 0px 0px 6px;
     font-size: 15px;
+
 }
 
 .buttonRemoverHabilidade {
@@ -592,10 +590,14 @@ button a{
     cursor: pointer;
 }
 
+#cpfInvalido,
+#labelError{
+
+    color: #6b0618;
+    font-weight: 600;
+}
 #cpfInvalido{
     display:none;
-    color: #6b0618;
-    font-weight: 700;
 }
 
 

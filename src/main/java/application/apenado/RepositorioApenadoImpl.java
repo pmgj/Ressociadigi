@@ -22,6 +22,10 @@ import java.util.List;
 @Repository
 public class RepositorioApenadoImpl implements RepositorioApenadoCustom {
 
+    @Lazy
+    @Autowired
+    private RepositorioApenado service;
+
     EntityManager em;
 
     @Autowired
@@ -74,5 +78,17 @@ public class RepositorioApenadoImpl implements RepositorioApenadoCustom {
         return spec;
     }
 
+    @Override
+    public boolean cpfExist(Apenado apenado){
+
+        String cpf = apenado.getCpf();
+
+        Apenado apenadoBanco = service.findById(cpf).orElse(null);
+        if(apenadoBanco != null){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
 }

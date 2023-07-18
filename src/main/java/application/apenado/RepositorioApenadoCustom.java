@@ -15,4 +15,6 @@ public interface RepositorioApenadoCustom{
 
     Specification<Apenado> gerarSpec(String cpf, String nome, String telefone, LocalDate dataNascimento, String nomeDaMae);
 
+    public boolean cpfExist(Apenado apenado);
+
 }
