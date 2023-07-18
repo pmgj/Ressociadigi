@@ -591,10 +591,11 @@ button a{
 }
 
 #cpfInvalido,
-#labelError{
+#labelError,
+#cpfExist{
 
-    color: #6b0618;
-    font-weight: 600;
+    color: #be1937;;
+    font-weight: 500;
 }
 #cpfInvalido{
     display:none;

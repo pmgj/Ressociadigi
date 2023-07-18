@@ -56,7 +56,7 @@
                         <input type="text" th:field="*{cnpj}" id="cnpj">
                         <label id="labelError" th:if="${#fields.hasErrors('cnpj')}" th:errors="*{cnpj}">Erro no CNPJ</label>
                         <label id="cnpjInvalido">CNPJ inválido! Por favor, verifique o CNPJ inserido.</label>
-                        <label th:if="${cnpjExist}" style="color: #6b0618; font-weight: 600" th:text="${cnpjExist}" id="cnpjExist"/>
+                        <label th:if="${cnpjExist}" th:text="${cnpjExist}" id="cnpjExist"/>
                     </div>
 
                     <div class="input-normal" id="div-responsavel">

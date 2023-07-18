@@ -267,7 +267,12 @@ nav {
 
 
 
-
+#labelError,
+#cnpjInvalido,
+#cnpjExist{
+    font-weight: 600;
+    color: #be1937;
+}
 /* Estilo quando o botão é pressionado */
 
 
