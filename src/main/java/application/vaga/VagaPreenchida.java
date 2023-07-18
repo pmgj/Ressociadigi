@@ -10,16 +10,24 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.criteria.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import javax.validation.constraints.NotNull;
 
-import application.empresa.Empresa;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import application.apenado.Apenado;
+import application.empresa.Empresa;
+import application.vaga.validation.SexoVaga;
 
 @Entity
+@SexoVaga
 public class VagaPreenchida {
 
 	@Id
@@ -33,6 +41,7 @@ public class VagaPreenchida {
 	// Terá uma única vaga.
 	@ManyToOne
 	@JoinColumn(name = "ID_VAGA", referencedColumnName = "ID")
+	@NotNull
 	private Vaga vaga;
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate dataInicio;
@@ -91,7 +100,7 @@ class VagaPreenchidaWithEmpresa implements Specification<VagaPreenchida> {
 
 	@Override
 	public Predicate toPredicate(Root<VagaPreenchida> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-		if(nomeEmpresa == null) {
+		if (nomeEmpresa == null) {
 			return cb.isTrue(cb.literal(true));
 		}
 		Join<VagaPreenchida, Vaga> vaga = root.join("vaga");
@@ -99,7 +108,6 @@ class VagaPreenchidaWithEmpresa implements Specification<VagaPreenchida> {
 		return cb.equal(empresa.get("nome"), nomeEmpresa);
 	}
 }
-
 
 class VagaPreenchidaWithTipo implements Specification<VagaPreenchida> {
 
@@ -111,7 +119,7 @@ class VagaPreenchidaWithTipo implements Specification<VagaPreenchida> {
 
 	@Override
 	public Predicate toPredicate(Root<VagaPreenchida> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-		if(tipo == null) {
+		if (tipo == null) {
 			return cb.isTrue(cb.literal(true));
 		}
 		Join<VagaPreenchida, Vaga> vaga = root.join("vaga");
@@ -130,7 +138,7 @@ class VagaPreenchidaWithApenado implements Specification<VagaPreenchida> {
 
 	@Override
 	public Predicate toPredicate(Root<VagaPreenchida> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-		if(nomeApenado == null) {
+		if (nomeApenado == null) {
 			return cb.isTrue(cb.literal(true));
 		}
 		Join<VagaPreenchida, Apenado> apenadoJoin = root.join("apenado");
