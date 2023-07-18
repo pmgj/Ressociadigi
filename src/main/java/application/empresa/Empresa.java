@@ -13,9 +13,9 @@ import javax.persistence.criteria.Root;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import application.vaga.Vaga;
-import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.domain.Specification;
+
+import application.vaga.Vaga;
 
 @Entity
 public class Empresa {
@@ -192,10 +192,9 @@ class EmpresaWithCnpj implements Specification<Empresa> {
 		this.cnpj = cnpj;
 	}
 
-
 	@Override
 	public Predicate toPredicate(Root<Empresa> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-		if(cnpj == null) {
+		if (cnpj == null) {
 			return cb.isTrue(cb.literal(true));
 		}
 		return cb.equal(root.get("cnpj"), this.cnpj);
@@ -212,7 +211,7 @@ class EmpresaWithNome implements Specification<Empresa> {
 
 	@Override
 	public Predicate toPredicate(Root<Empresa> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-		if(nome == null) {
+		if (nome == null) {
 			return cb.isTrue(cb.literal(true));
 		}
 		return cb.equal(root.get("nome"), this.nome);
@@ -229,7 +228,7 @@ class EmpresaWithResponsavel implements Specification<Empresa> {
 
 	@Override
 	public Predicate toPredicate(Root<Empresa> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-		if(responsavel == null) {
+		if (responsavel == null) {
 			return cb.isTrue(cb.literal(true));
 		}
 		return cb.equal(root.get("responavel"), this.responsavel);
@@ -246,7 +245,7 @@ class EmpresaWithInterlocutor implements Specification<Empresa> {
 
 	@Override
 	public Predicate toPredicate(Root<Empresa> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-		if(interlocutor == null) {
+		if (interlocutor == null) {
 			return cb.isTrue(cb.literal(true));
 		}
 		return cb.equal(root.get("interlocutor"), this.interlocutor);
@@ -263,7 +262,7 @@ class EmpresaWithEmail implements Specification<Empresa> {
 
 	@Override
 	public Predicate toPredicate(Root<Empresa> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-		if(email == null) {
+		if (email == null) {
 			return cb.isTrue(cb.literal(true));
 		}
 		return cb.equal(root.get("email"), this.email);
@@ -280,7 +279,7 @@ class EmpresaWithCidade implements Specification<Empresa> {
 
 	@Override
 	public Predicate toPredicate(Root<Empresa> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-		if(cidade == null) {
+		if (cidade == null) {
 			return cb.isTrue(cb.literal(true));
 		}
 		return cb.equal(root.get("cidade"), this.cidade);

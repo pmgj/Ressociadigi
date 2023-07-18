@@ -8,7 +8,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.web.PageableDefault;
@@ -16,9 +15,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.util.UriComponentsBuilder;
 
 @Controller
 public class ControladorApenado {
@@ -44,13 +46,12 @@ public class ControladorApenado {
 
     @RequestMapping("listarApenados")
     public String listarApenados(@RequestParam(value = "cpf", required = false) String cpf,
-                                 @RequestParam(value = "nome", required = false) String nome,
-                                 @RequestParam(value = "telefone", required = false) String telefone,
-                                 @RequestParam(value = "dataNascimento", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataNascimento,
-                                 @RequestParam(value = "nomeDaMae", required = false) String nomeDaMae,
-                                 Model model,
-                                 @PageableDefault(page = 0, size = 8) Pageable pageable) {
-
+            @RequestParam(value = "nome", required = false) String nome,
+            @RequestParam(value = "telefone", required = false) String telefone,
+            @RequestParam(value = "dataNascimento", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataNascimento,
+            @RequestParam(value = "nomeDaMae", required = false) String nomeDaMae,
+            Model model,
+            @PageableDefault(page = 0, size = 8) Pageable pageable) {
 
         Specification<Apenado> spec = apenadoRepository.gerarSpec(cpf, nome, telefone, dataNascimento, nomeDaMae);
 
@@ -59,7 +60,7 @@ public class ControladorApenado {
         apenadoRepository.gerarModel(model, pageable, pgApenado);
 
         return "listarApenados";
-}
+    }
 
     @ModelAttribute("cnhsList")
     public List<CNH> cnhsList() {

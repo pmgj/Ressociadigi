@@ -1,9 +1,5 @@
 package application.empresa;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,47 +18,47 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ControladorEmpresa {
-	
+
 	@Autowired
 	private RepositorioEmpresa service;
 
 	@Autowired
 	private RepositorioEmpresaCustom apenadoRepositoryCustom;
-	
-		
+
 	@GetMapping("/inserirEmpresa")
 	public ModelAndView inserirVagaForm() {
 		Empresa empresa = new Empresa();
 		ModelAndView mav = new ModelAndView("empresa");
 		mav.addObject("empresa", empresa);
-		return mav;   
-	} 	
-	
+		return mav;
+	}
+
 	@PostMapping("/armazenarEmpresa")
 	public String armazenarEmpresa(@Valid Empresa empresa, BindingResult brs, Model m) {
-		if(brs.hasErrors()) {
+		if (brs.hasErrors()) {
 			return "empresa";
 		}
 		service.save(empresa);
 		return "redirect:/listarEmpresas";
 	}
-	
-//	@GetMapping("/listarEmpresas")
-//	public String listarEmpresas(Model model, @PageableDefault(page = 0, size = 2) Pageable pageable) {
-//		Page<Empresa> pgEmpresa = service.findAll(pageable);
-//
-//		apenadoRepositoryCustom.gerarModel(model, pageable, pgEmpresa);
-//
-//		return "listarEmpresas";
-//	}
-	
+
+	// @GetMapping("/listarEmpresas")
+	// public String listarEmpresas(Model model, @PageableDefault(page = 0, size =
+	// 2) Pageable pageable) {
+	// Page<Empresa> pgEmpresa = service.findAll(pageable);
+	//
+	// apenadoRepositoryCustom.gerarModel(model, pageable, pgEmpresa);
+	//
+	// return "listarEmpresas";
+	// }
+
 	@GetMapping("/alterarEmpresa")
 	public String alterarEmpresaForm(@RequestParam String cnpj, Model model) {
 		Empresa empresa = service.findById(cnpj).get();
 		model.addAttribute("empresa", empresa);
 		return "empresa";
 	}
-	
+
 	@GetMapping("/removerEmpresa")
 	public String removerEmpresa(@RequestParam String cnpj) {
 		Empresa empresa = service.findById(cnpj).get();
@@ -72,16 +68,17 @@ public class ControladorEmpresa {
 
 	@RequestMapping("listarEmpresas")
 	public String searchEmpresas(@RequestParam(value = "cnpj", required = false) String cnpj,
-								 @RequestParam(value = "nome", required = false) String nome,
-								 @RequestParam(value = "responsavel", required = false) String responsavel,
-								 @RequestParam(value = "interlocutor", required = false) String interlocutor,
-								 @RequestParam(value = "telefone", required = false) String telefone,
-								 @RequestParam(value = "email", required = false) String email,
-								 @RequestParam(value = "cidade", required = false) String cidade,
-								 Model model,
-								 @PageableDefault(page = 0, size = 2) Pageable pageable) {
+			@RequestParam(value = "nome", required = false) String nome,
+			@RequestParam(value = "responsavel", required = false) String responsavel,
+			@RequestParam(value = "interlocutor", required = false) String interlocutor,
+			@RequestParam(value = "telefone", required = false) String telefone,
+			@RequestParam(value = "email", required = false) String email,
+			@RequestParam(value = "cidade", required = false) String cidade,
+			Model model,
+			@PageableDefault(page = 0, size = 2) Pageable pageable) {
 
-		Specification<Empresa> spec = apenadoRepositoryCustom.gerarSpec(cnpj, nome, responsavel, interlocutor, telefone, email, cidade);
+		Specification<Empresa> spec = apenadoRepositoryCustom.gerarSpec(cnpj, nome, responsavel, interlocutor, telefone,
+				email, cidade);
 
 		Page<Empresa> pgEmpresa = service.findAll(spec, pageable);
 

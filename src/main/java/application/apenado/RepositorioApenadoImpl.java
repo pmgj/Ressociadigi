@@ -1,23 +1,16 @@
 package application.apenado;
 
+import java.time.LocalDate;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Repository
 public class RepositorioApenadoImpl implements RepositorioApenadoCustom {
@@ -28,7 +21,6 @@ public class RepositorioApenadoImpl implements RepositorioApenadoCustom {
     public RepositorioApenadoImpl(EntityManagerFactory emf) {
         this.em = emf.createEntityManager();
     }
-
 
     @Override
     public void gerarModel(Model model, Pageable pageable, Page pgApenado) {
@@ -47,7 +39,8 @@ public class RepositorioApenadoImpl implements RepositorioApenadoCustom {
     }
 
     @Override
-    public Specification<Apenado> gerarSpec(String cpf, String nome, String telefone, LocalDate dataNascimento, String nomeDaMae) {
+    public Specification<Apenado> gerarSpec(String cpf, String nome, String telefone, LocalDate dataNascimento,
+            String nomeDaMae) {
 
         Specification<Apenado> spec = Specification.where(null);
 
@@ -73,6 +66,5 @@ public class RepositorioApenadoImpl implements RepositorioApenadoCustom {
 
         return spec;
     }
-
 
 }

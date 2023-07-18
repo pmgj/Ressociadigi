@@ -1,27 +1,17 @@
 package application.empresa;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
-import org.hibernate.internal.CriteriaImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-import java.util.ArrayList;
-import java.util.List;
-
 @Repository
-public class RepositorioEmpresaImpl  implements RepositorioEmpresaCustom{
+public class RepositorioEmpresaImpl implements RepositorioEmpresaCustom {
 
     EntityManager em;
 
@@ -40,38 +30,39 @@ public class RepositorioEmpresaImpl  implements RepositorioEmpresaCustom{
         model.addAttribute("pageCounter", "Página " + numPaginaAtual + " de " + numTotalPaginas);
         model.addAttribute("nextPage", ((pageable.getPageNumber() + 1) > numTotalPaginas - 1)
                 ? pageable.getPageNumber()
-                : pageable.getPageNumber() + 1 );
+                : pageable.getPageNumber() + 1);
         model.addAttribute("previousPage", pageable.getPageNumber() - 1);
         model.addAttribute("quantidadePaginas", numTotalPaginas);
         model.addAttribute("listaEmpresas", pgEmpresa);
     }
 
     @Override
-    public Specification<Empresa> gerarSpec(String cnpj, String nome, String responsavel, String interlocutor, String telefone, String email, String cidade) {
+    public Specification<Empresa> gerarSpec(String cnpj, String nome, String responsavel, String interlocutor,
+            String telefone, String email, String cidade) {
 
         Specification<Empresa> spec = Specification.where(null);
 
-        if(cnpj != null && !cnpj.isEmpty()) {
+        if (cnpj != null && !cnpj.isEmpty()) {
             spec = spec.and(new EmpresaWithCnpj(cnpj));
         }
 
-        if(nome != null && !nome.isEmpty()) {
+        if (nome != null && !nome.isEmpty()) {
             spec = spec.and(new EmpresaWithNome(nome));
         }
 
-        if(responsavel != null && !responsavel.isEmpty()) {
+        if (responsavel != null && !responsavel.isEmpty()) {
             spec = spec.and(new EmpresaWithResponsavel(responsavel));
         }
 
-        if(interlocutor != null && !interlocutor.isEmpty()) {
+        if (interlocutor != null && !interlocutor.isEmpty()) {
             spec = spec.and(new EmpresaWithInterlocutor(interlocutor));
         }
 
-        if(email != null && !email.isEmpty()) {
+        if (email != null && !email.isEmpty()) {
             spec = spec.and(new EmpresaWithEmail(email));
         }
 
-        if(cidade != null && !cidade.isEmpty()) {
+        if (cidade != null && !cidade.isEmpty()) {
             spec = spec.and(new EmpresaWithCidade(cidade));
         }
 
