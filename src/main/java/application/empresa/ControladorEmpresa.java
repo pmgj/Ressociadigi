@@ -29,6 +29,9 @@ public class ControladorEmpresa {
 
 	@Autowired
 	private RepositorioEmpresaCustom apenadoRepositoryCustom;
+
+	@Autowired
+	private  RepositorioEmpresaImpl empresaRepository;
 	
 		
 	@GetMapping("/inserirEmpresa")
@@ -41,6 +44,14 @@ public class ControladorEmpresa {
 	
 	@PostMapping("/armazenarEmpresa")
 	public String armazenarEmpresa(@Valid Empresa empresa, BindingResult brs, Model m) {
+
+		boolean cnpjExist = empresaRepository.cnpjExist(empresa);
+
+		if(cnpjExist){
+			m.addAttribute("cnpjExist", "Cnpj já cadastrado.");
+			return "empresa";
+		}
+
 		if(brs.hasErrors()) {
 			return "empresa";
 		}

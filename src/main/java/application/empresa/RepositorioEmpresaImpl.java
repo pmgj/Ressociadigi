@@ -3,6 +3,7 @@ package application.empresa;
 
 import org.hibernate.internal.CriteriaImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -23,6 +24,9 @@ import java.util.List;
 @Repository
 public class RepositorioEmpresaImpl  implements RepositorioEmpresaCustom{
 
+    @Lazy
+    @Autowired
+    private RepositorioEmpresa service;
     EntityManager em;
 
     @Autowired
@@ -76,5 +80,17 @@ public class RepositorioEmpresaImpl  implements RepositorioEmpresaCustom{
         }
 
         return spec;
+    }
+
+    @Override
+    public boolean cnpjExist(Empresa empresa) {
+        String cnpj = empresa.getCnpj();
+        Empresa empresaBanco = service.findById(cnpj).orElse(null);
+
+        if(empresaBanco != null){
+            return  true;
+        }else{
+            return false;
+        }
     }
 }

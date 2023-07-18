@@ -11,5 +11,7 @@ public interface RepositorioEmpresaCustom {
 
     Specification<Empresa> gerarSpec(String cnpj, String nome, String responsavel, String interlocutor, String telefone, String email, String cidade);
 
+    public boolean cnpjExist(Empresa empresa);
+
 
 }
