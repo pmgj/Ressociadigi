@@ -82,6 +82,18 @@
                         <label id="labelError" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}">Erro no telefone</label>
                     </div>
 
+                    <div class="input-normal id="div-convenio>
+                        <label for="convenio">Numero de Convenio</label>
+                        <input type="text" th:field="*{numConvenio}" id="convenio" name="convenio">
+                        <label id="labelError" th:if="${#fields.hasErrors('numConvenio')}" th:errors="*{numConvenio}">Erro no numero de convenio</label>
+                    </div>
+
+                    <div class="input-normal id="div-convenio>
+                        <label for="vigencia">Vigencia</label>
+                        <input type="text" th:field="*{vigencia}" id="vigencia" name="vigencia">
+                        <label id="labelError" th:if="${#fields.hasErrors('vigencia')}" th:errors="*{vigencia}">Erro na vigencia</label>
+                    </div>
+
                     <div class="input-normal" id="div-telefone2">
                         <label for="telefone2">2° Telefone</label>
                         <input type="text" th:field="*{telefone2}" id="telefone2">
