@@ -111,15 +111,26 @@ public class ControladorVaga {
 
 		boolean validacaoGenero = vagaRepositoryCustom.validarGenero(apenadoEscolhido, vagaEscolhida);
 
-		boolean aiai = vagaRepositoryCustom.validarQuantidadeVagas(map, vagaEscolhida, apenadoEscolhido);
+		boolean validaQuantidadeVagas = vagaRepositoryCustom.validarQuantidadeVagas(map, vagaEscolhida, apenadoEscolhido);
 
-		System.out.println(aiai);
+		if(!validaQuantidadeVagas) {
 
+			model.addAttribute("validacaoQuantidade", "As posicoes dessa vaga estao preenchidas");
+			model.addAttribute("listaApenados", repApenado.findAll());
+			model.addAttribute("listaVagas", service.findAll());
+
+			model.addAttribute("vagasMasculinasDisponiveis", vagasMasculinas);
+			model.addAttribute("vagasFemininasDisponiveis", vagasFemininas);
+			return "alocarVagaApenado";
+		}
 
 		if(!validacaoGenero) {
 			model.addAttribute("validacaoGenero", "Nao existem vagas do genero " + apenadoEscolhido.getSexoBiologico() + " nessa posicao");
 			model.addAttribute("listaApenados", repApenado.findAll());
 			model.addAttribute("listaVagas", service.findAll());
+
+			model.addAttribute("vagasMasculinasDisponiveis",vagasMasculinas);
+			model.addAttribute("vagasFemininasDisponiveis", vagasFemininas);
 			return "alocarVagaApenado";
 		}
 

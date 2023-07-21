@@ -11,7 +11,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = DataFimAntesDataInicioValidator.class)
 public @interface DataFimAntesDataInicio {
-
     String message() default "End date must be after start date";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};

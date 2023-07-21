@@ -123,11 +123,11 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
 
         System.out.println(apenado.getSexoBiologico() + " " + apenado.getNome());
 
-        if(sexo.equals("Masculino") && vaga.getQuantidadeVagasMasculinas() == 0) {
+        if(sexo.equals("Masculino") && vaga.getQuantidadeVagasMasculinas() <= 0) {
             return false;
         }
 
-        if(sexo.equals("Feminino") && vaga.getQuantidadeVagasFemininas() == 0) {
+        if(sexo.equals("Feminino") && vaga.getQuantidadeVagasFemininas() <= 0) {
             return false;
         }
 
@@ -180,14 +180,6 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
             vagasTotais = vagaAtual.getVagasPreenchidas();
             countMasculino = vagasTotais.stream().filter(vp -> vp.getApenado().getSexoBiologico().equalsIgnoreCase("Masculino")).count();
             countFeminino = vagasTotais.stream().filter(vp -> vp.getApenado().getSexoBiologico().equalsIgnoreCase("Feminino")).count();
-//            for(VagaPreenchida vagaPreenchidaAux : vagasTotais) {
-//                System.out.println("quantidadeee");
-//                if(vagaPreenchidaAux.getApenado().getSexoBiologico().equalsIgnoreCase("Masculino")) {
-//                    countMasculino++;
-//                } else {
-//                    countFeminino++;
-//                }
-//            }
 
             countMasculino = vagaAtual.getQuantidadeVagasMasculinas() - countMasculino;
             countFeminino =  vagaAtual.getQuantidadeVagasFemininas() - countFeminino;
