@@ -42,6 +42,16 @@
                 <button type="button" class="botao laranja">Cadastrar Apenado</button>
             </a>
 
+            <form method="get" action="/listarApenados">
+            <select id="tamanho_da_lista" name="limite">
+                <option value="2" th:selected="${limite == 2}">2</option>
+                <option value="4" th:selected="${limite == 4}">4</option>
+                <option value="8" th:selected="${limite == 8}">8</option>
+                <option value="10" th:selected="${limite == 10}">10</option>
+                <option value="20" th:selected="${limite == 20}">20</option>
+            </select>
+            </form>
+
         </div>
 
         <div class="modal">
@@ -64,6 +74,8 @@
                                 <label for="cpf">CPF</label>
                                 <input type="text" id="cpf" name="cpf" />
                             </li>
+
+
 
                             <li>
                                 <label for="nome">Nome</label>
@@ -174,6 +186,18 @@
         </div>
 
     </main>
+
+<!--    NOVO CODIGO-->
+    <script>
+        // Captura o valor selecionado no seletor de limite e recarrega a página com o novo valor
+        // document.getElementById('tamanho_da_lista').addEventListener('change', function(evt) {
+        //     evt.currentTarget.parentNode.submit();
+        // });
+    </script>
+
+
+
+
 </body>
 
 </html>

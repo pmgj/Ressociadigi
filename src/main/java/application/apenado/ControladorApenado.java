@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.web.PageableDefault;
@@ -44,23 +45,33 @@ public class ControladorApenado {
         return "signIn";
     }
 
-    @RequestMapping("listarApenados")
+    @GetMapping("/listarApenados")
     public String listarApenados(@RequestParam(value = "cpf", required = false) String cpf,
-            @RequestParam(value = "nome", required = false) String nome,
-            @RequestParam(value = "telefone", required = false) String telefone,
-            @RequestParam(value = "dataNascimento", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataNascimento,
-            @RequestParam(value = "nomeDaMae", required = false) String nomeDaMae,
-            Model model,
-            @PageableDefault(page = 0, size = 8) Pageable pageable) {
+                                 @RequestParam(value = "nome", required = false) String nome,
+                                 @RequestParam(value = "telefone", required = false) String telefone,
+                                 @RequestParam(value = "dataNascimento", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataNascimento,
+                                 @RequestParam(value = "nomeDaMae", required = false) String nomeDaMae,
+                                 @RequestParam(value = "limite", required = false, defaultValue = "4") int limite,
+                                 Model model,
+                                 @PageableDefault(size = 40) Pageable pageable) {
 
         Specification<Apenado> spec = apenadoRepository.gerarSpec(cpf, nome, telefone, dataNascimento, nomeDaMae);
 
         Page<Apenado> pgApenado = repo.findAll(spec, pageable);
 
+        // Verifica se o limite é maior que zero e menor que o número total de elementos na página
+        if (limite > 0 && limite < pgApenado.getNumberOfElements()) {
+            // Cria um novo objeto Pageable apenas com o novo tamanho (limite) e a mesma ordenação
+            pageable = PageRequest.of(pageable.getPageNumber(), limite, pageable.getSort());
+
+            pgApenado = repo.findAll(spec, pageable); // Busca a página novamente com o novo Pageable
+        }
+
         apenadoRepository.gerarModel(model, pageable, pgApenado);
 
         return "listarApenados";
     }
+
 
     @ModelAttribute("cnhsList")
     public List<CNH> cnhsList() {

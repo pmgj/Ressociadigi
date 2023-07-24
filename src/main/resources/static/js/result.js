@@ -64,4 +64,6 @@ function handleCheckbox(chbx){
 // 	})
 // })
 
-
+document.getElementById('tamanho_da_lista').addEventListener('change', function(evt) {
+	evt.currentTarget.parentNode.submit();
+});
