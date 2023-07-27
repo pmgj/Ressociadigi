@@ -130,8 +130,6 @@ public class ControladorVaga {
 			model.addAttribute("listaApenados", repApenado.findAll());
 			model.addAttribute("listaVagas", service.findAll());
 
-			model.addAttribute("vagasMasculinasDisponiveis", vagasMasculinas);
-			model.addAttribute("vagasFemininasDisponiveis", vagasFemininas);
 			return "alocarVagaApenado";
 		}
 
@@ -144,20 +142,19 @@ public class ControladorVaga {
 			return "alocarVagaApenado";
 		}
 		try {
-
-//			model.addAttribute("listaApenados", repApenado.findAll());
-//			model.addAttribute("listaVagas", service.findAll());
-//
-//			model.addAttribute("vagasMasculinasDisponiveis",vagasMasculinas);
-//			model.addAttribute("vagasFemininasDisponiveis", vagasFemininas);
-
 			repVagaPreenchida.save(vagaPreenchida);
 
 		} catch (Exception e) {
 			model.addAttribute("listaApenados", repApenado.findAll());
 			model.addAttribute("listaVagas", service.findAll());
+
+			model.addAttribute("vagasMasculinasDisponiveis", vagasMasculinas);
+			model.addAttribute("vagasFemininasDisponiveis", vagasFemininas);
+
 			bindingResult.rejectValue("apenado", null, null,
 					"Você tentou atribuir uma vaga a um apenado que já está empregado.");
+
+			model.addAttribute("apenadoAlocado", "Você tentou atribuir uma vaga a um apenado que já está empregado.");
 			System.err.print(e.getMessage());
 			return "alocarVagaApenado";
 		}
