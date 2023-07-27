@@ -9,9 +9,10 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = DataFimAntesDataInicioValidator.class)
-public @interface DataFimAntesDataInicio {
-    String message() default "End date must be after start date";
+@Constraint(validatedBy = SexoVagaValidator.class)
+public @interface SexoVaga {
+
+    String message() default "Voce tentou inserir um apenado em uma vaga de soxo diferente";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

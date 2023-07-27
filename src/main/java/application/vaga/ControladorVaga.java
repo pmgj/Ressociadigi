@@ -1,8 +1,11 @@
 package application.vaga;
 
+import javax.validation.ConstraintValidatorContext;
 import javax.validation.Valid;
 
 import application.apenado.Apenado;
+import application.vaga.validation.QuantidadeVagasValidator;
+import application.vaga.validation.SexoVagaValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,6 +24,11 @@ import org.springframework.web.servlet.ModelAndView;
 import application.apenado.RepositorioApenado;
 import application.empresa.RepositorioEmpresa;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @Controller
 public class ControladorVaga {
 
@@ -29,6 +37,9 @@ public class ControladorVaga {
 
 	@Autowired
 	private RepositorioVagaCustom vagaRepositoryCustom;
+
+	@Autowired
+	private RepositorioVaga repVaga;
 
 	@Autowired
 	private RepositorioEmpresa repEmpresa;
@@ -60,10 +71,23 @@ public class ControladorVaga {
 	@GetMapping("/preencherVaga")
 	public ModelAndView preencherVaga(Model model) {
 		VagaPreenchida vagaPreenchida = new VagaPreenchida();
-		
+
+		List<Vaga> vagas = service.findAll();
+
+//		List<Integer> vagasMasculinas = new ArrayList<>();
+//		List<Integer> vagasFemininas = new ArrayList<>();
+
+		var map = vagaRepositoryCustom.reduzirNumeroDeVagas(vagas);
+
+		var vagasMasculinas = map.get("vagasMasculinas");
+		var vagasFemininas = map.get("vagasFemininas");
+
 		model.addAttribute("listaApenados", repApenado.findAll(Sort.by(Sort.Direction.ASC, "nome")));
-		model.addAttribute("listaVagas", service.findAll(Sort.by(Sort.Direction.ASC, "tipo")));
+		model.addAttribute("listaVagas", vagas);
 		model.addAttribute("listaEmpresas", repEmpresa.findAll());
+		model.addAttribute("vagasMasculinasDisponiveis",vagasMasculinas);
+		model.addAttribute("vagasFemininasDisponiveis", vagasFemininas);
+
 		ModelAndView mav = new ModelAndView("alocarVagaApenado");
 		mav.addObject("vagaPreenchida", vagaPreenchida);
 		return mav;
@@ -73,15 +97,62 @@ public class ControladorVaga {
 	public String armazenarVagaPreenchida(@Valid VagaPreenchida vagaPreenchida,
 										  BindingResult bindingResult,
 										  Model model
-										  ) {
+	) {
+
+		Apenado apenadoEscolhido = repApenado.findById(vagaPreenchida.getApenado().getCpf()).orElse(null);
+		Vaga vagaEscolhida = repVaga.findById(vagaPreenchida.getVaga().getId()).orElse(null);
+
+		List<Vaga> vagas = service.findAll();
+
+		var map = vagaRepositoryCustom.reduzirNumeroDeVagas(vagas);
+
+		var vagasMasculinas = map.get("vagasMasculinas");
+		var vagasFemininas = map.get("vagasFemininas");
+
+		boolean validacaoGenero = vagaRepositoryCustom.validarGenero(apenadoEscolhido, vagaEscolhida);
+
+		boolean validaQuantidadeVagas = vagaRepositoryCustom.validarQuantidadeVagas(map, vagaEscolhida, apenadoEscolhido);
+
+
+		if(!validacaoGenero) {
+			model.addAttribute("validacaoGenero", "Nao existem vagas do genero " + apenadoEscolhido.getSexoBiologico() + " nessa posicao");
+			model.addAttribute("listaApenados", repApenado.findAll());
+			model.addAttribute("listaVagas", service.findAll());
+
+			model.addAttribute("vagasMasculinasDisponiveis",vagasMasculinas);
+			model.addAttribute("vagasFemininasDisponiveis", vagasFemininas);
+			return "alocarVagaApenado";
+		}
+
+		if(!validaQuantidadeVagas) {
+
+			model.addAttribute("validacaoQuantidade", "As posicoes dessa vaga estao preenchidas");
+			model.addAttribute("listaApenados", repApenado.findAll());
+			model.addAttribute("listaVagas", service.findAll());
+
+			model.addAttribute("vagasMasculinasDisponiveis", vagasMasculinas);
+			model.addAttribute("vagasFemininasDisponiveis", vagasFemininas);
+			return "alocarVagaApenado";
+		}
 
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("listaApenados", repApenado.findAll());
 			model.addAttribute("listaVagas", service.findAll());
+
+			model.addAttribute("vagasMasculinasDisponiveis",vagasMasculinas);
+			model.addAttribute("vagasFemininasDisponiveis", vagasFemininas);
 			return "alocarVagaApenado";
 		}
 		try {
+
+//			model.addAttribute("listaApenados", repApenado.findAll());
+//			model.addAttribute("listaVagas", service.findAll());
+//
+//			model.addAttribute("vagasMasculinasDisponiveis",vagasMasculinas);
+//			model.addAttribute("vagasFemininasDisponiveis", vagasFemininas);
+
 			repVagaPreenchida.save(vagaPreenchida);
+
 		} catch (Exception e) {
 			model.addAttribute("listaApenados", repApenado.findAll());
 			model.addAttribute("listaVagas", service.findAll());
@@ -105,7 +176,13 @@ public class ControladorVaga {
 
 	@GetMapping("/removerVagaPreenchida")
 	public String removerVagaPreenchida(@RequestParam int id, Model model) {
+
 		VagaPreenchida vagaPreenchida = repVagaPreenchida.findById(id).get();
+
+		//Aumento de quantidade de vagas disponiveis ao remover uma vaga(Nao esta funcionando)
+//		vagaRepositoryCustom.aumentarVagaPorGenero(vagaPreenchida);
+
+
 		repVagaPreenchida.delete(vagaPreenchida);
 		return "redirect:/listarVagasPreenchidas";
 	}
