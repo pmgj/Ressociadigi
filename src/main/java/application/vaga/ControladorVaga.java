@@ -113,16 +113,6 @@ public class ControladorVaga {
 
 		boolean validaQuantidadeVagas = vagaRepositoryCustom.validarQuantidadeVagas(map, vagaEscolhida, apenadoEscolhido);
 
-		if(!validaQuantidadeVagas) {
-
-			model.addAttribute("validacaoQuantidade", "As posicoes dessa vaga estao preenchidas");
-			model.addAttribute("listaApenados", repApenado.findAll());
-			model.addAttribute("listaVagas", service.findAll());
-
-			model.addAttribute("vagasMasculinasDisponiveis", vagasMasculinas);
-			model.addAttribute("vagasFemininasDisponiveis", vagasFemininas);
-			return "alocarVagaApenado";
-		}
 
 		if(!validacaoGenero) {
 			model.addAttribute("validacaoGenero", "Nao existem vagas do genero " + apenadoEscolhido.getSexoBiologico() + " nessa posicao");
@@ -130,6 +120,17 @@ public class ControladorVaga {
 			model.addAttribute("listaVagas", service.findAll());
 
 			model.addAttribute("vagasMasculinasDisponiveis",vagasMasculinas);
+			model.addAttribute("vagasFemininasDisponiveis", vagasFemininas);
+			return "alocarVagaApenado";
+		}
+
+		if(!validaQuantidadeVagas) {
+
+			model.addAttribute("validacaoQuantidade", "As posicoes dessa vaga estao preenchidas");
+			model.addAttribute("listaApenados", repApenado.findAll());
+			model.addAttribute("listaVagas", service.findAll());
+
+			model.addAttribute("vagasMasculinasDisponiveis", vagasMasculinas);
 			model.addAttribute("vagasFemininasDisponiveis", vagasFemininas);
 			return "alocarVagaApenado";
 		}
