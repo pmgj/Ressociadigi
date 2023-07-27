@@ -145,6 +145,12 @@ public class ControladorVaga {
 		}
 		try {
 
+//			model.addAttribute("listaApenados", repApenado.findAll());
+//			model.addAttribute("listaVagas", service.findAll());
+//
+//			model.addAttribute("vagasMasculinasDisponiveis",vagasMasculinas);
+//			model.addAttribute("vagasFemininasDisponiveis", vagasFemininas);
+
 			repVagaPreenchida.save(vagaPreenchida);
 
 		} catch (Exception e) {
