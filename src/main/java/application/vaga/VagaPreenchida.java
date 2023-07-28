@@ -104,7 +104,7 @@ class VagaPreenchidaWithEmpresa implements Specification<VagaPreenchida> {
 		}
 		Join<VagaPreenchida, Vaga> vaga = root.join("vaga");
 		Join<Vaga, Empresa> empresa = vaga.join("empresa");
-		return cb.equal(empresa.get("nome"), nomeEmpresa);
+		return cb.like(empresa.get("nome"), nomeEmpresa + "%");
 	}
 }
 
@@ -123,7 +123,7 @@ class VagaPreenchidaWithTipo implements Specification<VagaPreenchida> {
 			return cb.isTrue(cb.literal(true));
 		}
 		Join<VagaPreenchida, Vaga> vaga = root.join("vaga");
-		return cb.equal(vaga.get("tipo"), tipo);
+		return cb.like(vaga.get("tipo"), tipo + "%");
 	}
 
 }
@@ -142,6 +142,6 @@ class VagaPreenchidaWithApenado implements Specification<VagaPreenchida> {
 			return cb.isTrue(cb.literal(true));
 		}
 		Join<VagaPreenchida, Apenado> apenadoJoin = root.join("apenado");
-		return cb.equal(apenadoJoin.get("nome"), nomeApenado);
+		return cb.like(apenadoJoin.get("nome"), nomeApenado + "%");
 	}
 }

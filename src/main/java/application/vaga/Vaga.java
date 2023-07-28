@@ -131,7 +131,7 @@ class VagaWithTipo implements Specification<Vaga> {
 		if(tipo == null) {
 			return cb.isTrue(cb.literal(true));
 		}
-		return cb.equal(root.get("tipo"), this.tipo);
+		return cb.like(root.get("tipo"), this.tipo + "%");
 	}
 }
 
@@ -148,7 +148,7 @@ class VagaWithInterlocutor implements Specification<Vaga> {
 		if(interlocutor == null) {
 			return cb.isTrue(cb.literal(true));
 		}
-		return cb.equal(root.get("interlocutor"), this.interlocutor);
+		return cb.like(root.get("interlocutor"), this.interlocutor + "%");
 	}
 }
 
@@ -166,7 +166,7 @@ class VagaWithEmpresa implements  Specification<Vaga> {
 			return cb.isTrue(cb.literal(true));
 		}
 		Join<Vaga, Empresa> empresaJoin = root.join("empresa");
-		return cb.equal(empresaJoin.get("nome"), nomeEmpresa);
+		return cb.like(empresaJoin.get("nome"), nomeEmpresa + "%");
 	}
 }
 

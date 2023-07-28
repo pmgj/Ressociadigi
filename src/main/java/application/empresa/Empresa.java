@@ -201,7 +201,7 @@ class EmpresaWithCnpj implements Specification<Empresa> {
 		if(cnpj == null) {
 			return cb.isTrue(cb.literal(true));
 		}
-		return cb.equal(root.get("cnpj"), this.cnpj);
+		return cb.like(root.get("cnpj"), this.cnpj + "%");
 	}
 }
 
@@ -218,7 +218,7 @@ class EmpresaWithNome implements Specification<Empresa> {
 		if(nome == null) {
 			return cb.isTrue(cb.literal(true));
 		}
-		return cb.equal(root.get("nome"), this.nome);
+		return cb.like(root.get("nome"), this.nome + "%");
 	}
 }
 
@@ -235,7 +235,7 @@ class EmpresaWithResponsavel implements Specification<Empresa> {
 		if(responsavel == null) {
 			return cb.isTrue(cb.literal(true));
 		}
-		return cb.equal(root.get("responsavel"), this.responsavel);
+		return cb.like(root.get("responsavel"), this.responsavel + "%");
 	}
 }
 
@@ -252,7 +252,7 @@ class EmpresaWithInterlocutor implements Specification<Empresa> {
 		if(interlocutor == null) {
 			return cb.isTrue(cb.literal(true));
 		}
-		return cb.equal(root.get("interlocutor"), this.interlocutor);
+		return cb.like(root.get("interlocutor"), this.interlocutor + "%");
 	}
 }
 
@@ -269,7 +269,7 @@ class EmpresaWithEmail implements Specification<Empresa> {
 		if(email == null) {
 			return cb.isTrue(cb.literal(true));
 		}
-		return cb.equal(root.get("email"), this.email);
+		return cb.like(root.get("email"), this.email + "%");
 	}
 }
 
@@ -286,6 +286,6 @@ class EmpresaWithCidade implements Specification<Empresa> {
 		if(cidade == null) {
 			return cb.isTrue(cb.literal(true));
 		}
-		return cb.equal(root.get("cidade"), this.cidade);
+		return cb.like(root.get("cidade"), this.cidade + "%");
 	}
 }
