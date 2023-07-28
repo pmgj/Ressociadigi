@@ -413,7 +413,8 @@ class ApenadoWithCpf implements Specification<Apenado> {
 		if(cpf == null){
 			return null;
 		}
-		return cb.equal(root.get("cpf"), this.cpf);
+
+		return cb.like(root.get("cpf"), this.cpf + "%");
 	}
 }
 
@@ -431,7 +432,8 @@ class ApenadoWithNome implements Specification<Apenado> {
 			return null;
 		}
 		String nomeLowerCase = nome.toLowerCase();
-		return cb.like(cb.lower(root.get("nome")), "%" + nomeLowerCase + "%");
+
+		return cb.like(cb.lower(root.get("nome")), nomeLowerCase + "%");
 	}
 }
 
@@ -449,7 +451,9 @@ class ApenadoWithTelefone implements Specification<Apenado> {
 		if(telefone == null) {
 			return null;
 		}
-		return cb.equal(root.get("telefone"), this.telefone);
+
+
+		return cb.like(root.get("telefone"), this.telefone + "%" );
 	}
 }
 
@@ -466,7 +470,8 @@ class ApenadoWithDataNascimento implements Specification<Apenado> {
 		if(dataNascimento == null) {
 			return null;
 		}
-		return cb.equal(root.get("dataNascimento"), this.dataNascimento);
+
+		return cb.like(root.get("dataNascimento"),  this.dataNascimento + "%");
 	}
 }
 
@@ -483,6 +488,6 @@ class ApenadoWithNomeDaMae implements Specification<Apenado> {
 		if(nomeDaMae == null) {
 			return null;
 		}
-		return cb.equal(root.get("nomeDaMae"), this.nomeDaMae);
+		return cb.like(root.get("nomeDaMae"), this.nomeDaMae + "%");
 	}
 }
