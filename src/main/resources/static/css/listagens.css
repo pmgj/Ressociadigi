@@ -7,6 +7,9 @@
 button a{
     cursor:pointer;
 }
+.header-tabela>a>button{
+    margin-left: 3rem;
+}
 * {
     box-sizing: border-box;
     margin: 0;

@@ -12,161 +12,228 @@
 
 <body>
     <main>
+<!--        <header>-->
+<!--            <div class="cabecalho">-->
+<!--                <div class="logo"><span>R</span>essocia<span>D</span>igi</div>-->
+<!--            </div>-->
+<!--        </header>-->
+<!--        <section>-->
+<!--            <div class="left">-->
+<!--                <h1 class="t1"> <span class="letra">RessociaDigi:</span> Um projeto que muda vidas </h1>-->
+<!--                <p class="texto-infomativo">-->
+<!--                    O Patronato Penitenciário é responsável por acompanhar os egressos, prestar assistência psicossocial-->
+<!--                    e fomentar a ressocialização viabilizando cursos e vagas de trabalho. Atualmente, 12.912 reeducandos-->
+<!--                    são acompanhados pela entidade. Encontram-se no mercado-->
+<!--                    de trabalho 1.266 reeducandos.-->
+<!--                </p>-->
+<!--            </div>-->
+<!--            <div class="imagem">-->
+<!--                <img th:src="@{/imgs/image.jpeg}" alt="Pessoas em carteiras escolares estudando">-->
+<!--            </div>-->
+<!--        </section>-->
+
+<!--        <article>-->
+
+<!--            <DIV class="card-container">-->
+<!--                <div class="new-card">-->
+<!--                    <a th:href="@{/inserirApenado}" style="text-decoration:none">-->
+<!--                        <img class="new-img" th:src="@{/imgs/1.png}" alt="">-->
+<!--                    </a>-->
+<!--                    &lt;!&ndash;                    <div class="superior-card">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <img class="imagem-card cropped1" th:src="@{/imgs/1.png}" alt="" width="260px">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <a th:href="@{/inserirApenado}" style="text-decoration:none">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <h4>Cadastrar Apenado</h4>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <p class="descricao-card">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        Cadastre e armazene os dados de um determinado apenado.&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </p>&ndash;&gt;-->
+<!--                </div>-->
+<!--                <div class="new-card">-->
+<!--                    <a th:href="@{/inserirEmpresa}" style="text-decoration:none">-->
+<!--                        <img class="new-img" th:src="@{/imgs/3.png}" alt="">-->
+<!--                    </a>-->
+<!--                    &lt;!&ndash;                    <div class="superior-card">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <img class="imagem-card cropped1" th:src="@{/imgs/3.png}" alt="" width="200px">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <a th:href="@{/inserirEmpresa}" style="text-decoration:none">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <h4>Cadastrar Empresa</h4>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <p class="descricao-card">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        Cadastre e armazene os dados de um determinado empresa.&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </p>&ndash;&gt;-->
+<!--                </div>-->
+<!--                <div class="new-card">-->
+<!--                    <a th:href="@{/inserirVaga}" style="text-decoration:none">-->
+<!--                        <img class="new-img" th:src="@{/imgs/5.png}" alt="">-->
+<!--                    </a>-->
+<!--                    &lt;!&ndash;                    <div class="superior-card">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <img class="imagem-card cropped1" th:src="@{/imgs/5.png}" alt="" width="212px">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <a th:href="@{/inserirVaga}" style="text-decoration:none">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <h4>Cadastrar Vaga</h4>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <p class="descricao-card">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        Cadastre e armazene os dados de um determinado vaga.&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </p>&ndash;&gt;-->
+
+<!--                </div>-->
+
+<!--                <div class="new-card">-->
+<!--                    <a th:href="@{/preencherVaga}" style="text-decoration:none">-->
+<!--                        <img class="new-img" th:src="@{/imgs/8.png}" alt="">-->
+<!--                    </a>-->
+<!--                    &lt;!&ndash;                    &ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <div class="superior-card">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <img class="imagem-card cropped1" th:src="@{/imgs/8.png}" alt="" width="200px">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <a th:href="@{/preencherVaga}" style="text-decoration:none">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <h4>Preencher Vagas</h4>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <p class="descricao-card">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        Pesquise, filtre, edite e mostre a lista de todas as vagas ofertadas pelas empresas.&ndash;&gt;-->
+
+<!--                    &lt;!&ndash;                    </p>&ndash;&gt;-->
+<!--                </div>-->
+
+<!--                <div class="new-card">-->
+<!--                    <a th:href="@{/listarApenados}" style="text-decoration:none">-->
+<!--                        <img class="new-img" th:src="@{/imgs/2.png}" alt="">-->
+<!--                    </a>-->
+
+<!--                    &lt;!&ndash;                    <div class="superior-card">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <img class="imagem-card cropped1" th:src="@{/imgs/2.png}" alt="" width="200px">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <a th:href="@{/listarApenados}" style="text-decoration:none">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <h4>Lista de apenados</h4>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <p class="descricao-card">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        Pesquise, filtre, edite e mostre a lista de todos os apenados cadastrados.&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </p>&ndash;&gt;-->
+<!--                </div>-->
+
+<!--                <div class="new-card">-->
+<!--                    <a th:href="@{/listarEmpresas}" style="text-decoration:none">-->
+<!--                        <img class="new-img" th:src="@{/imgs/4.png}" alt="">-->
+<!--                    </a>-->
+
+<!--                    &lt;!&ndash;                    <div class="superior-card">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <img class="imagem-card cropped1" th:src="@{/imgs/4.png}" alt="" width="200px">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <a th:href="@{/listarEmpresas}" style="text-decoration:none">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <h4>Lista de Empresas</h4>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <p class="descricao-card">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        Pesquise, filtre, edite e mostre a lista de todos as empresas cadastradas.&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </p>&ndash;&gt;-->
+<!--                </div>-->
+
+<!--                <div class="new-card">-->
+<!--                    <a th:href="@{/listarVagas}" style="text-decoration:none">-->
+<!--                        <img class="new-img" th:src="@{/imgs/6.png}" alt="">-->
+<!--                    </a>-->
+
+<!--                    &lt;!&ndash;                    <div class="superior-card">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <img class="imagem-card cropped1" th:src="@{/imgs/6.png}" alt="" width="200px">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <a th:href="@{/listarVagas}" style="text-decoration:none">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <h4>Listar Vagas</h4>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <p class="descricao-card">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        Pesquise, filtre, edite e mostre a lista de todas as vagas ofertadas pelas empresas.&ndash;&gt;-->
+
+<!--                    &lt;!&ndash;                    </p>&ndash;&gt;-->
+<!--                </div>-->
+
+<!--                <div class="new-card">-->
+<!--                    <a th:href="@{/listarVagasPreenchidas}" style="text-decoration:none">-->
+<!--                        <img class="new-img" th:src="@{/imgs/7.png}" alt="">-->
+<!--                    </a>-->
+
+<!--                    &lt;!&ndash;                    <div class="superior-card">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <img class="imagem-card cropped1" th:src="@{/imgs/7.png}" alt="" width="200px">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <a th:href="@{/listarVagasPreenchidas}" style="text-decoration:none">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <h4>Listar Vagas Preenchidas</h4>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <p class="descricao-card">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        Pesquise, filtre, edite e mostre a lista de todas as vagas ofertadas pelas empresas.&ndash;&gt;-->
+
+<!--                    &lt;!&ndash;                    </p>&ndash;&gt;-->
+<!--                </div>-->
+
+<!--            </DIV>-->
+
+
+<!--        </article>-->
         <header>
-            <div class="cabecalho">
-                <div class="logo"><span>R</span>essocia<span>D</span>igi</div>
-            </div>
+            <h1 id="tituloRessociaDigi">Ressociadigi</h1>
         </header>
-        <section>
-            <div class="left">
-                <h1 class="t1"> <span class="letra">RessociaDigi:</span> Um projeto que muda vidas </h1>
-                <p class="texto-infomativo">
-                    O Patronato Penitenciário é responsável por acompanhar os egressos, prestar assistência psicossocial
-                    e fomentar a ressocialização viabilizando cursos e vagas de trabalho. Atualmente, 12.912 reeducandos
-                    são acompanhados pela entidade. Encontram-se no mercado
-                    de trabalho 1.266 reeducandos.
+        <div>
+
+            <section id="institucional">
+                <p>
+                    Somos uma entidade governamental dedicada à ressocialização de egressos do sistema penal do estado. Nosso compromisso é promover a reinserção social, reduzindo a reincidência criminal e construindo uma sociedade mais justa e segura.
                 </p>
-            </div>
-            <div class="imagem">
-                <img th:src="@{/imgs/image.jpeg}" alt="Pessoas em carteiras escolares estudando">
-            </div>
-        </section>
-
-        <article>
-
-            <DIV class="card-container">
-                <div class="new-card">
-                    <a th:href="@{/inserirApenado}" style="text-decoration:none">
-                        <img class="new-img" th:src="@{/imgs/1.png}" alt="">
-                    </a>
-                    <!--                    <div class="superior-card">-->
-                    <!--                        <img class="imagem-card cropped1" th:src="@{/imgs/1.png}" alt="" width="260px">-->
-                    <!--                    </div>-->
-                    <!--                    <a th:href="@{/inserirApenado}" style="text-decoration:none">-->
-                    <!--                        <h4>Cadastrar Apenado</h4>-->
-                    <!--                    </a>-->
-                    <!--                    <p class="descricao-card">-->
-                    <!--                        Cadastre e armazene os dados de um determinado apenado.-->
-                    <!--                    </p>-->
-                </div>
-                <div class="new-card">
-                    <a th:href="@{/inserirEmpresa}" style="text-decoration:none">
-                        <img class="new-img" th:src="@{/imgs/3.png}" alt="">
-                    </a>
-                    <!--                    <div class="superior-card">-->
-                    <!--                        <img class="imagem-card cropped1" th:src="@{/imgs/3.png}" alt="" width="200px">-->
-                    <!--                    </div>-->
-                    <!--                    <a th:href="@{/inserirEmpresa}" style="text-decoration:none">-->
-                    <!--                        <h4>Cadastrar Empresa</h4>-->
-                    <!--                    </a>-->
-                    <!--                    <p class="descricao-card">-->
-                    <!--                        Cadastre e armazene os dados de um determinado empresa.-->
-                    <!--                    </p>-->
-                </div>
-                <div class="new-card">
-                    <a th:href="@{/inserirVaga}" style="text-decoration:none">
-                        <img class="new-img" th:src="@{/imgs/5.png}" alt="">
-                    </a>
-                    <!--                    <div class="superior-card">-->
-                    <!--                        <img class="imagem-card cropped1" th:src="@{/imgs/5.png}" alt="" width="212px">-->
-                    <!--                    </div>-->
-                    <!--                    <a th:href="@{/inserirVaga}" style="text-decoration:none">-->
-                    <!--                        <h4>Cadastrar Vaga</h4>-->
-                    <!--                    </a>-->
-                    <!--                    <p class="descricao-card">-->
-                    <!--                        Cadastre e armazene os dados de um determinado vaga.-->
-                    <!--                    </p>-->
+                <p>
+                    Com abordagem multidisciplinar, nossos programas oferecem apoio e acompanhamento individualizado, englobando assistência social, psicologia, educação e capacitação profissional. Entendemos as necessidades específicas de cada egresso, auxiliando-os a superar obstáculos e reconstruir suas vidas.
+                </p>
+                <div class="texto-foto">
+                    <div>
+                        <img src="/imgs/patronado.png" alt="Apenados estudando" />
+                    </div>
+                    <div>
+                        <p>
+                            Além disso, estabelecemos parcerias com empresas e instituições locais, facilitando a inserção no mercado de trabalho e estimulando a independência financeira. Nossa missão é romper o ciclo da criminalidade e proporcionar oportunidades para uma reintegração positiva na sociedade.
+                        </p>
+                    </div>
 
                 </div>
+                <div class="texto-foto inverte">
+                    <div>
+                        <img src="/imgs/patronato01.jpg" alt="Apenados estudando" />
+                    </div>
+                    <div>
+                        <p>Aqui, a empatia, o respeito e a inclusão são os pilares que nos movem. Nossa atuação visa à promoção da cidadania e à construção de uma comunidade mais solidária. </p>
 
-                <div class="new-card">
-                    <a th:href="@{/preencherVaga}" style="text-decoration:none">
-                        <img class="new-img" th:src="@{/imgs/8.png}" alt="">
+                    </div>
+                </div>
+                <p>
+                    Junte-se a nós nessa jornada de transformação! Seja parte dessa iniciativa que busca oferecer uma nova chance e criar um futuro melhor para todos.
+                </p>
+                <h2>Transformando vidas, construindo esperanças.</h2>
+            </section>
+        </div>
+
+        <nav id="barra-lateral">
+<!--            <div id="home">-->
+<!--                <a href="">-->
+<!--                    <img src="../static/imgs/home-orange.png" alt="Tela inicial" id="home-orange"/>-->
+<!--                    <img src="../static/imgs/home-white.png" alt="Tela Inicial selecionada" id="home-white"/>-->
+<!--                </a>-->
+<!--            </div>-->
+
+                <div id="apenado">
+                    <a th:href="@{/listarApenados}">
+                        <img src="/imgs/user-orange.png" alt="Apenado" id="user-orange"/>
+                        <!--                    <img src="../static/imgs/user-white.png" alt="Apenado selecionado" id="user-white"/>-->
                     </a>
-                    <!--                    -->
-                    <!--                    <div class="superior-card">-->
-                    <!--                        <img class="imagem-card cropped1" th:src="@{/imgs/8.png}" alt="" width="200px">-->
-                    <!--                    </div>-->
-                    <!--                    <a th:href="@{/preencherVaga}" style="text-decoration:none">-->
-                    <!--                        <h4>Preencher Vagas</h4>-->
-                    <!--                    </a>-->
-                    <!--                    <p class="descricao-card">-->
-                    <!--                        Pesquise, filtre, edite e mostre a lista de todas as vagas ofertadas pelas empresas.-->
-
-                    <!--                    </p>-->
+                </div>
+                <div id="empresa">
+                    <a th:href="@{/listarEmpresas}">
+                        <img src="/imgs/company-orange.png" alt="Empresa" id="company-orange"/>
+                        <!--                    <img src="../static/imgs/company-white.png" alt="Empresa selecionada" id="company-white"/>-->
+                    </a>
+                </div>
+                <div id="vagas">
+                    <a th:href="@{/listarVagas}">
+                        <img src="/imgs/work-orange.png" alt="Vagas" id="work-orange"/>
+                        <!--                    <img src="../static/imgs/work-white.png" alt="Vagas selecionada" id="work-white"/>-->
+                    </a>
                 </div>
 
-                <div class="new-card">
-                    <a th:href="@{/listarApenados}" style="text-decoration:none">
-                        <img class="new-img" th:src="@{/imgs/2.png}" alt="">
-                    </a>
 
-                    <!--                    <div class="superior-card">-->
-                    <!--                        <img class="imagem-card cropped1" th:src="@{/imgs/2.png}" alt="" width="200px">-->
-                    <!--                    </div>-->
-                    <!--                    <a th:href="@{/listarApenados}" style="text-decoration:none">-->
-                    <!--                        <h4>Lista de apenados</h4>-->
-                    <!--                    </a>-->
-                    <!--                    <p class="descricao-card">-->
-                    <!--                        Pesquise, filtre, edite e mostre a lista de todos os apenados cadastrados.-->
-                    <!--                    </p>-->
-                </div>
-
-                <div class="new-card">
-                    <a th:href="@{/listarEmpresas}" style="text-decoration:none">
-                        <img class="new-img" th:src="@{/imgs/4.png}" alt="">
-                    </a>
-
-                    <!--                    <div class="superior-card">-->
-                    <!--                        <img class="imagem-card cropped1" th:src="@{/imgs/4.png}" alt="" width="200px">-->
-                    <!--                    </div>-->
-                    <!--                    <a th:href="@{/listarEmpresas}" style="text-decoration:none">-->
-                    <!--                        <h4>Lista de Empresas</h4>-->
-                    <!--                    </a>-->
-                    <!--                    <p class="descricao-card">-->
-                    <!--                        Pesquise, filtre, edite e mostre a lista de todos as empresas cadastradas.-->
-                    <!--                    </p>-->
-                </div>
-
-                <div class="new-card">
-                    <a th:href="@{/listarVagas}" style="text-decoration:none">
-                        <img class="new-img" th:src="@{/imgs/6.png}" alt="">
-                    </a>
-
-                    <!--                    <div class="superior-card">-->
-                    <!--                        <img class="imagem-card cropped1" th:src="@{/imgs/6.png}" alt="" width="200px">-->
-                    <!--                    </div>-->
-                    <!--                    <a th:href="@{/listarVagas}" style="text-decoration:none">-->
-                    <!--                        <h4>Listar Vagas</h4>-->
-                    <!--                    </a>-->
-                    <!--                    <p class="descricao-card">-->
-                    <!--                        Pesquise, filtre, edite e mostre a lista de todas as vagas ofertadas pelas empresas.-->
-
-                    <!--                    </p>-->
-                </div>
-
-                <div class="new-card">
-                    <a th:href="@{/listarVagasPreenchidas}" style="text-decoration:none">
-                        <img class="new-img" th:src="@{/imgs/7.png}" alt="">
-                    </a>
-
-                    <!--                    <div class="superior-card">-->
-                    <!--                        <img class="imagem-card cropped1" th:src="@{/imgs/7.png}" alt="" width="200px">-->
-                    <!--                    </div>-->
-                    <!--                    <a th:href="@{/listarVagasPreenchidas}" style="text-decoration:none">-->
-                    <!--                        <h4>Listar Vagas Preenchidas</h4>-->
-                    <!--                    </a>-->
-                    <!--                    <p class="descricao-card">-->
-                    <!--                        Pesquise, filtre, edite e mostre a lista de todas as vagas ofertadas pelas empresas.-->
-
-                    <!--                    </p>-->
-                </div>
-
-            </DIV>
-
-
-        </article>
-
+        </nav>
     </main>
 
 </body>
