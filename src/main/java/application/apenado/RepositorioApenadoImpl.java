@@ -43,6 +43,7 @@ public class RepositorioApenadoImpl implements RepositorioApenadoCustom {
         model.addAttribute("previousPage", pageable.getPageNumber() - 1);
         model.addAttribute("quantidadePaginas", numTotalPaginas);
 
+
         model.addAttribute("lista", pgApenado);
     }
 
