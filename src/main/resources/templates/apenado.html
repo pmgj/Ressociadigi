@@ -12,24 +12,20 @@
 
 <body>
     <div class="fade-modal"></div>
+
     <main>
-        <nav id="menu-lateral" >
-
-                    <img th:src="@{/imgs/logoRD.png}" alt="Logo do RessociaDigi"  />
-
-            <ul>
-                <li id="dp">Dados pessoais</li>
-                <li id="ende">Endereço</li>
-                <li id="inst">Instrução</li>
-                <li id="situ">Situacional</li>
-            </ul>
-
-            <div class="tap">
-                <div class="botao-container">
-                    <a id="botao-voltar" >Voltar</a>
-                </div>
+        <header>
+            <div class="title">
+                <a th:href="@{/}">
+                    <h1>RessociaDigi</h1>
+                    <hr>
+                </a>
             </div>
-        </nav>
+            <div class="top-layer">
+                <h3>Cadastrar Apenado</h3>
+            </div>
+        </header>
+
 
         <!-- Modal de confirmação + fade-->
 
@@ -236,12 +232,16 @@
 
                         <div id="cursos" class="input-normal">
                             <label for="selCursos">Cursos</label>
-                            <select id="selCursos" th:field="*{cursos}" multiple="multiple" size="3">
-                            	<option th:each="curso : ${apenado.getCursos()}" th:value="${curso}" th:text="${curso}"></option>
-                            </select>
-                            <button type="button" name="Cursos" class="buttonAdicionarHabilidade" data-add="selCursos">+</button>
-                            <label id="labelError" th:if="${#fields.hasErrors('cursos')}" th:errors="*{cursos}">Erro
-                                no Curso</label>
+                            <div class="inputCursos">
+
+                                <select id="selCursos" th:field="*{cursos}" multiple="multiple" size="3">
+                                    <option th:each="curso : ${apenado.getCursos()}" th:value="${curso}" th:text="${curso}"></option>
+                                </select>
+                                <button type="button" name="Cursos" class="buttonAdicionarHabilidade" data-add="selCursos">+</button>
+                                <label id="labelError" th:if="${#fields.hasErrors('cursos')}" th:errors="*{cursos}">Erro
+                                    no Curso</label>
+                            </div>
+
                         </div>
 
                         <div id="perfil" class="input-normal">
@@ -252,8 +252,10 @@
                         </div>
 
                         <div id="restricao">
-                            <label>Existe alguma restrição?:</label><br>
-                            <input type="radio" th:each="restricao : ${restricoes}" th:value="${restricao}" th:text="${restricao.texto}" th:checked="${apenado.getRestricao().equals(restricao)}" th:field="*{restricao}" /><br>
+                            <div class="labelInputRestricao">
+                                <label>Existe alguma restrição?</label>
+                                <input type="radio" th:each="restricao : ${restricoes}" th:value="${restricao}" th:text="${restricao.texto}" th:checked="${apenado.getRestricao().equals(restricao)}" th:field="*{restricao}" />
+                            </div>
                             <textarea id="area-restricao" disabled th:field="*{textoRestricao}" name="restricao" cols="10" rows="6"></textarea>
                             <label id="labelError" th:if="${#fields.hasErrors('textoRestricao')}" th:errors="*{textoRestricao}">Erro na Restrição</label>
                         </div>
@@ -283,13 +285,16 @@
 
                         <div id="artigo-input" class="input-normal">
                             <label for="artigo">Artigo(s)</label>
-                            <!-- <input type="text" th:field="*{artigos}" id="artigo"> -->
-                            <select id="selArtigos" th:field="*{artigos}" multiple="multiple" size="3">
-                            	<option th:each="artigo : ${apenado.getArtigos()}" th:value="${artigo}" th:text="${artigo}"></option>
-                            </select>
-                            <button type="button" name="Artigos" class="buttonAdicionarHabilidade" data-add="selArtigos">+</button>
-                            <label id="labelError" th:if="${#fields.hasErrors('artigos')}" th:errors="*{artigos}">Erro
-                                no Artigo</label>
+                            <div class="inputArtigo">
+                                <!-- <input type="text" th:field="*{artigos}" id="artigo"> -->
+                                <select id="selArtigos" th:field="*{artigos}" multiple="multiple" size="3">
+                                    <option th:each="artigo : ${apenado.getArtigos()}" th:value="${artigo}" th:text="${artigo}"></option>
+                                </select>
+                                <button type="button" name="Artigos" class="buttonAdicionarHabilidade" data-add="selArtigos">+</button>
+                                <label id="labelError" th:if="${#fields.hasErrors('artigos')}" th:errors="*{artigos}">Erro
+                                    no Artigo</label>
+                            </div>
+
                         </div>
 
                         <div id="terminoPena-input" class="input-normal">
@@ -339,7 +344,7 @@
                                     Operação</label>
                             </div>
                         </fieldset>
-                        <div></div>
+                        <div></div><div></div>
                         <div id="botao-cadastrar">
                             <button type="submit">Cadastrar</button>
                         </div>
@@ -352,7 +357,19 @@
             </form>
 
         </section>
+        <nav id="menu-rodape" >
 
+
+            <div><a id="botao-voltar" >Voltar</a></div>
+            <ul>
+                <li id="dp">Dados pessoais</li>
+                <li id="ende">Endereço</li>
+                <li id="inst">Instrução</li>
+                <li id="situ">Situacional</li>
+            </ul>
+
+
+        </nav>
     </main>
 
     <dialog class="input-normal">

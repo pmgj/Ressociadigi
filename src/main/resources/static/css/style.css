@@ -11,52 +11,105 @@
 }
 
 body {
-    font-family: 'Anton', sans-serif;
+    font-family: 'Roboto', sans-serif;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(222, 222, 222, 1);
+    background-color: #fff;
+    flex-direction: column;
+    padding: 30px;
+}
+header{
+    margin-bottom: 30px;
+    width: 100%;
+}
+.title h1 {
+    color: 	#C96D09;
+    font-weight: bold;
+    font-size: 3rem;
+}
+h3{
+    font-size: 2rem;
+    color:#C96D09;
+    font-weight: 500;
+    margin-top: 1rem;
+}
+a{
+    text-decoration: none;
+}
+hr {
+    border: 2px solid orange;
+    margin-top: 1rem;
+}
+li{
+    margin: 0 15px;
+}
+#botao-voltar{
+    background-color: rgba(246, 130, 31, 1);
+    color: #ffffff;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding: 5px;
+    cursor:pointer;
 }
 
 #titulox {
-    font-family: 'Martian Mono', monospace;
+    font-family: 'Roboto', sans-serif;
 }
 
 main {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 80%;
-    border-radius: 5px;
-    margin-top: 2%;
+    margin: 0 auto;
 }
 
 section {
-    width: 60rem;
+    width: 100%;
     height: 600px;
     padding-bottom: 10px;
     background: #FFFFFF;
-    box-shadow: 9px 9px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
 }
 
 nav {
-    width: 20rem;
-    height: 45rem;
+    width: 80%;
     padding: 5px;
-    background-color: rgba(222, 222, 222, 1);
     border-radius: 5px;
-    margin-top: 0;
+    margin: 40px auto;
+    display: flex;
+    justify-content: space-around;
 }
-
+nav>ul{
+    display: flex;
+    justify-content: space-between;
+}
+.input-normal>input,
+.input-normal>select,
+.inputHabilidades>select,
+.inputCursos>select,
+.inputArtigo>select{
+    width: 100%;
+    height: 2.5rem;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #C96D09;
+    background-color: #fff;
+    color: #222222;
+    caret-color: #C96D09;
+}
 ul li {
     font-size: x-large;
     cursor: pointer;
-    margin-top: 40px;
     list-style: none;
 }
+
 
 img {
     height: 20%;
@@ -84,35 +137,44 @@ img {
 
 #titulo {
     height: 9rem;
-    border-bottom: black 8px;
 }
 
 #titulo h1 {
     letter-spacing: 2px;
-    padding: 1.2rem;
-    border-bottom: solid 4px rgba(0, 0, 0, 0.15);
     font-size: 2em;
 }
 
 #labelError {
     color: red;
-    font-family: 'Sarabun', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
-.fieldset-dados-bancarios>legend>h1 {
-    font-size: 1.0em;
-    font-weight: lighter;
-}
 
-#cnh-inputbox>label {
+#prioridade>p{
+    margin-bottom: 1rem;
+}
+#restricao>label{
+    margin-right: 1rem;
+}
+#cnh-inputbox>label,
+#prioridade>p{
     text-transform: uppercase;
-    font-size: 1rem;
-    letter-spacing: 0.8px;
+    font-size: 0.9rem;
+    /* font-weight: 700; */
+    display: block;
+    letter-spacing: 1px;
+    font-weight: 600;
+    text-align: left;
 }
-
+.labelInputRestricao{
+    display: flex;
+}
 #cnh-inputbox>div>input {
     width: 1.2em;
     height: 1.2em;
+}
+#cnh{
+    margin-top: 10px;
 }
 
 #restricao {
@@ -128,36 +190,50 @@ img {
 
 .fieldset-dados-bancarios {
     padding: 10px;
-    border-radius: 5px;
+    border:none;
     display: grid;
     grid-template-columns: auto auto;
-    row-gap: 1.2rem;
-    column-gap: 1rem;
+
     text-transform: uppercase;
-    width: 15rem;
-    font-family: 'Martian Mono', monospace;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+
+
 }
 
 fieldset div {
-    font-family: 'Anton', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .input-normal-dados-bancarios>input {
-    width: 8rem;
-    height: 2.20rem;
-    border-radius: 6px;
+    width: 100%;
+    height: 2.5rem;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #C96D09;
+    background-color: #fff;
+    color: #222222;
+    caret-color: #C96D09;
+}
+.input-normal-dados-bancarios{
+    margin: 1rem;
 }
 
-.input-normal-dados-bancarios>label {
+.input-normal-dados-bancarios>label,
+legend>h1{
     text-transform: uppercase;
     font-size: 0.9rem;
-    letter-spacing: 0.8px;
+    /* font-weight: 700; */
+    display: block;
+    letter-spacing: 1px;
+    font-weight: 600;
+    text-align: left;
 }
 
 #div-sinalizacao {
     padding-top: 10px;
-    padding-left: 10px;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 #sinal {
@@ -165,43 +241,27 @@ fieldset div {
 }
 
 
-/* #botao-cadastrar {
-    margin-top: 20px;
+#botao-cadastrar {
     display: flex;
     justify-content: end;
-    width: 170%;
-} */
-
-#botao-cadastrar button {
-    background-color: rgb(255, 119, 0);
-    color: white;
-    /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5)); */
-    width: auto;
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-size: 1.2rem;
-    line-height: 45px;
-    letter-spacing: 0.08em;
-    border: none;
-    border-radius: 5px;
-    padding: 0 10px;
-    text-decoration: none;
-    text-align: center;
-    margin-left: 10px;
 }
 
-#botao-cadastrar button:hover {
-    background-color: rgb(152, 71, 1);
-    /* Cor de fundo quando passa o mouse */
+#botao-cadastrar button {
+    background-color: rgba(246, 130, 31, 1);
+    color: #ffffff;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
 }
 
 
 /* Estilo quando o botão é pressionado */
 
-#botao-cadastrar button:active {
-    background-color: rgb(103, 48, 0);
-    /* Cor de fundo quando pressionado */
-}
 
 select:hover {
     cursor: pointer;
@@ -214,16 +274,18 @@ select {
     font-size: 1.0rem;
     padding-left: 5px;
     outline-color: rgba(246, 130, 31, 1);
-    font-family: Arial;
+    font-family: 'Roboto', sans-serif;
 }
 
 textarea {
-    border-radius: 5px 5px 5px 5px;
-    width: 18rem;
+    border-radius: 5px;
+    width: 100%;
     height: 6.5rem;
     padding: 10px;
-    max-height: 6.5rem;
     border-radius: 4px;
+    margin-top: 1rem;
+    resize: none;
+    border-color: #C96D09;
 }
 
 #grupo-input-pessoais,
@@ -238,12 +300,12 @@ textarea {
     margin: 0 auto;
 }
 
-.input-normal>input,
-.input-normal>select {
-    width: 18rem;
-    height: 2.5rem;
-    border-radius: 6px;
-}
+/*.input-normal>input,*/
+/*.input-normal>select {*/
+/*    width: 18rem;*/
+/*    height: 2.5rem;*/
+/*    border-radius: 6px;*/
+/*}*/
 
 ::-webkit-scrollbar-track {
     background-color: #F4F4F4;
@@ -260,20 +322,23 @@ textarea {
 }
 
 select[multiple=multiple] {
-    max-width: 15.8em;
     height: 2.5rem;
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 0px;
-    border-top-right-radius: 0px;
-    /*scrollbar-width: 1px;*/
+    margin-right: 10px;
 }
-
-.input-normal>label {
+.inputCursos,
+.inputArtigo{
+    display: flex;
+    width: 100%;
+}
+.input-normal>label,
+label{
     text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 0.8px;
+    font-size: 0.9rem;
+    /* font-weight: 700; */
     display: block;
+    letter-spacing: 1px;
+    font-weight: 600;
+    text-align: left;
 }
 
 #prioridade {
@@ -442,7 +507,7 @@ dialog::backdrop {
 }
 
 .modalHabilidadeLabel {
-    font-family: 'Staatliches', cursive;
+    font-family: 'Roboto', sans-serif;
     font-size: x-large;
 }
 
@@ -464,8 +529,8 @@ dialog::backdrop {
 }
 
 .labelAddHabilidade {
-    font-family: 'Jaldi', sans-serif;
-    font-weight: 800;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
     font-size: 18px;
 }
 
@@ -626,7 +691,7 @@ button a{
     section{
         width: 98%;
     }
-    #menu-lateral{
+    #menu-rodape{
         display: flex;
         flex-direction: column;
         width: 98%;

@@ -31,7 +31,7 @@ areaRestricaoBehavior();
 //Fim da Implementação do campo dinâmico
 
 function exibirTela(evt) {
-    let menuItems = Array.prototype.slice.call(document.querySelector("#menu-lateral ul").children);
+    let menuItems = Array.prototype.slice.call(document.querySelector("#menu-rodape ul").children);
     let index = evt ? menuItems.indexOf(evt.target) : 0;
     let inputs = document.querySelectorAll("#container-inputs > div");
 
@@ -50,7 +50,8 @@ function exibirTela(evt) {
     });
 }
 exibirTela();
-let menuItems = document.querySelectorAll("#menu-lateral li");
+let menuItems = document.querySelectorAll("#menu-rodape li");
+
 menuItems.forEach(i => i.onclick = exibirTela);
 
 function mudarTitulo() {
