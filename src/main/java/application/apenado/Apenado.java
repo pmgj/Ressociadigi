@@ -471,7 +471,7 @@ class ApenadoWithDataNascimento implements Specification<Apenado> {
 			return null;
 		}
 
-		return cb.like(root.get("dataNascimento"),  this.dataNascimento + "%");
+		return cb.equal(root.get("dataNascimento"),  this.dataNascimento);
 	}
 }
 
