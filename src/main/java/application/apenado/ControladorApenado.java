@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -54,12 +55,16 @@ public class ControladorApenado {
 
         Specification<Apenado> spec = apenadoRepository.gerarSpec(cpf, nome, telefone, dataNascimento, nomeDaMae);
 
-        Page<Apenado> pgApenado = repo.findAll(spec, pageable);
+        Sort sort = Sort.by(Sort.Direction.ASC, "nome");
 
-        apenadoRepository.gerarModel(model, pageable, pgApenado);
+        PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort);
+
+        Page<Apenado> pgApenado = repo.findAll(spec, pageRequest);
+
+        apenadoRepository.gerarModel(model, pageRequest, pgApenado);
 
         return "listarApenados";
-}
+    }
 
     @ModelAttribute("cnhsList")
     public List<CNH> cnhsList() {
