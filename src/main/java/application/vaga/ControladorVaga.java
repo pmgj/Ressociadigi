@@ -130,6 +130,9 @@ public class ControladorVaga {
 			model.addAttribute("listaApenados", repApenado.findAll());
 			model.addAttribute("listaVagas", service.findAll());
 
+			model.addAttribute("vagasMasculinasDisponiveis",vagasMasculinas);
+			model.addAttribute("vagasFemininasDisponiveis", vagasFemininas);
+
 			return "alocarVagaApenado";
 		}
 
