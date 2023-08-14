@@ -9,7 +9,9 @@ import javax.validation.Valid;
 import application.apenado.Apenado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
@@ -75,9 +77,13 @@ public class ControladorEmpresa {
 
 		Specification<Empresa> spec = apenadoRepositoryCustom.gerarSpec(cnpj, nome, responsavel, interlocutor, telefone, email, cidade);
 
-		Page<Empresa> pgEmpresa = service.findAll(spec, pageable);
+		Sort sort = Sort.by(Sort.Direction.ASC, "nome");
 
-		apenadoRepositoryCustom.gerarModel(model, pageable, pgEmpresa);
+		PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort);
+
+		Page<Empresa> pgEmpresa = service.findAll(spec, pageRequest);
+
+		apenadoRepositoryCustom.gerarModel(model, pageRequest, pgEmpresa);
 
 		return "listarEmpresas";
 	}
