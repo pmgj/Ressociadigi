@@ -48,6 +48,26 @@
                 <button type="button" class="botao laranja">Cadastrar Apenado</button>
             </a>
 
+<!--            <form method="get" action="/listarApenados">-->
+<!--                <select id="tamanho_da_lista" class="form-select" name="limite">-->
+<!--                    <option value="2" th:selected="${limite == 2}">2</option>-->
+<!--                    <option value="4" th:selected="${limite == 4}">4</option>-->
+<!--                    <option value="8" th:selected="${limite == 8}">8</option>-->
+<!--                    <option value="10" th:selected="${limite == 10}">10</option>-->
+<!--                    <option value="20" th:selected="${limite == 20}">20</option>-->
+<!--                </select>-->
+<!--            </form>-->
+
+
+            <form method="get" action="/listarApenados">
+                <select id="limiteSelect" class="form-select" name="limite">
+                    <span th:each="item : ${limites}">
+                         <option th:value="${item}" class="value-option" th:text="${item}" th:selected="${item} == ${limite}"></option>
+                    </span>
+                </select>
+            </form>
+
+
         </div>
 
         <div id="filtroModal" class="modal fade" role="dialog">
@@ -176,6 +196,27 @@
         </div>
 
     </main>
+
+<!--    <script>-->
+<!--        $(document).ready(function() {-->
+<!--            $("#limiteSelect").change(function() {-->
+<!--                var selectedValue = $(this).val();-->
+<!--                $.ajax({-->
+<!--                    type: "GET",-->
+<!--                    url: "/listarApenados",-->
+<!--                    data: { limite: selectedValue },-->
+<!--                    success: function(response) {-->
+<!--                        // Handle the response from the server if needed-->
+<!--                    },-->
+<!--                    error: function(xhr, status, error) {-->
+<!--                        // Handle errors if needed-->
+<!--                    }-->
+<!--                });-->
+<!--            });-->
+<!--        });-->
+<!--    </script>-->
+
+
 </body>
 
 </html>

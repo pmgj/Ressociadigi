@@ -49,15 +49,17 @@ public class ControladorApenado {
                                  @RequestParam(value = "telefone", required = false) String telefone,
                                  @RequestParam(value = "dataNascimento", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataNascimento,
                                  @RequestParam(value = "nomeDaMae", required = false) String nomeDaMae,
+                                 @RequestParam(value = "limite", required = false, defaultValue = "8") String limite,
                                  Model model,
-                                 @PageableDefault(page = 0, size = 8) Pageable pageable) {
+                                 @PageableDefault(page = 0, size = 10) Pageable pageable) {
 
+        System.out.println("TESTE LIMITE: " + limite);
 
         Specification<Apenado> spec = apenadoRepository.gerarSpec(cpf, nome, telefone, dataNascimento, nomeDaMae);
 
         Sort sort = Sort.by(Sort.Direction.ASC, "nome");
 
-        PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort);
+        PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), Integer.parseInt(limite), sort);
 
         Page<Apenado> pgApenado = repo.findAll(spec, pageRequest);
 

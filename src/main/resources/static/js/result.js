@@ -55,8 +55,6 @@ $(document).on("click", "#ver-mais", function () {
 	getUserDetails(cpf)
 });
 
-
-
 function getUserDetails(cpf) {
 	$.ajax({
 		url: '/detalharApenado?cpf=' + encodeURIComponent(cpf),
@@ -87,4 +85,28 @@ function exibirDetalhesUsuario(user) {
 	// Exemplo de inserção dos dados em um modal usando Bootstrap
 
 }
+
+
+// $(document).on("click", ".form-select", function ()
+// {
+//
+// 	var value = $(this).data('option').val;
+// 	console.log("TESTE LIMITE 22: " + value)
+// 	getLimite(value);
+// })
+//
+// function getLimite(value) {
+//
+// 	$.ajax({
+// 		url: '/listarApenados?limite=' + encodeURIComponent(value),
+// 		type: 'POST',
+// 		success: function (response) {
+// 			console.log("aiaiaia");
+// 		},
+// 		error: function(xhr, status, error) {
+// 			console.error(error);
+// 		}
+// 	})
+//
+// }
 
