@@ -48,24 +48,24 @@
                 <button type="button" class="botao laranja">Cadastrar Apenado</button>
             </a>
 
-<!--            <form method="get" action="/listarApenados">-->
-<!--                <select id="tamanho_da_lista" class="form-select" name="limite">-->
-<!--                    <option value="2" th:selected="${limite == 2}">2</option>-->
-<!--                    <option value="4" th:selected="${limite == 4}">4</option>-->
-<!--                    <option value="8" th:selected="${limite == 8}">8</option>-->
-<!--                    <option value="10" th:selected="${limite == 10}">10</option>-->
-<!--                    <option value="20" th:selected="${limite == 20}">20</option>-->
-<!--                </select>-->
-<!--            </form>-->
-
-
             <form method="get" action="/listarApenados">
-                <select id="limiteSelect" class="form-select" name="limite">
-                    <span th:each="item : ${limites}">
-                         <option th:value="${item}" class="value-option" th:text="${item}" th:selected="${item} == ${limite}"></option>
-                    </span>
+                <select id="tamanho_da_lista" name="limite">
+                    <option value="2" th:selected="${limite == 2}">2</option>
+                    <option value="4" th:selected="${limite == 4}">4</option>
+                    <option value="8" th:selected="${limite == 8}">8</option>
+                    <option value="10" th:selected="${limite == 10}">10</option>
+                    <option value="20" th:selected="${limite == 20}">20</option>
                 </select>
             </form>
+
+
+            <!--            <form method="get" action="/listarApenados">-->
+<!--                <select id="limiteSelect" class="form-select" name="limite">-->
+<!--                    <span th:each="item : ${limites}">-->
+<!--                         <option th:value="${item}" class="value-option" th:text="${item}" th:selected="${item} == ${limite}"></option>-->
+<!--                    </span>-->
+<!--                </select>-->
+<!--            </form>-->
 
 
         </div>
@@ -179,16 +179,16 @@
                 </div>
 
                 <div id="previousAndNextButtons">
-                    <a th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},page=0)}">
+                    <a th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},limite=${#httpServletRequest.getParameter('limite')?:''},page=0)}">
                         <button type="button" class="botao laranja"><<</button>
                     </a>
-                    <a class="a" th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},page=${previousPage})}">
+                    <a class="a" th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},limite=${#httpServletRequest.getParameter('limite')?:''},page=${previousPage})}">
                         <button type="button" class="botao laranja"><</button>
                     </a>
-                    <a th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},page=${nextPage})}">
+                    <a th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},limite=${#httpServletRequest.getParameter('limite')?:''},page=${nextPage})}">
                         <button type="button" class="botao laranja">></button>
                     </a>
-                    <a th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},page=${quantidadePaginas - 1})}">
+                    <a th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},limite=${#httpServletRequest.getParameter('limite')?:''},page=${quantidadePaginas - 1})}">
                         <button type="button" class="botao laranja">>></button>
                     </a>
                 </div>
@@ -196,25 +196,6 @@
         </div>
 
     </main>
-
-<!--    <script>-->
-<!--        $(document).ready(function() {-->
-<!--            $("#limiteSelect").change(function() {-->
-<!--                var selectedValue = $(this).val();-->
-<!--                $.ajax({-->
-<!--                    type: "GET",-->
-<!--                    url: "/listarApenados",-->
-<!--                    data: { limite: selectedValue },-->
-<!--                    success: function(response) {-->
-<!--                        // Handle the response from the server if needed-->
-<!--                    },-->
-<!--                    error: function(xhr, status, error) {-->
-<!--                        // Handle errors if needed-->
-<!--                    }-->
-<!--                });-->
-<!--            });-->
-<!--        });-->
-<!--    </script>-->
 
 
 </body>

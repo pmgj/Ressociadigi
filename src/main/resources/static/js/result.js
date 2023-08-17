@@ -86,27 +86,9 @@ function exibirDetalhesUsuario(user) {
 
 }
 
+document.getElementById('tamanho_da_lista').addEventListener('change', function(evt) {
+	evt.currentTarget.parentNode.submit();
+});
 
-// $(document).on("click", ".form-select", function ()
-// {
-//
-// 	var value = $(this).data('option').val;
-// 	console.log("TESTE LIMITE 22: " + value)
-// 	getLimite(value);
-// })
-//
-// function getLimite(value) {
-//
-// 	$.ajax({
-// 		url: '/listarApenados?limite=' + encodeURIComponent(value),
-// 		type: 'POST',
-// 		success: function (response) {
-// 			console.log("aiaiaia");
-// 		},
-// 		error: function(xhr, status, error) {
-// 			console.error(error);
-// 		}
-// 	})
-//
-// }
+
 
