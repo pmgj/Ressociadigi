@@ -8,6 +8,7 @@ import application.vaga.validation.QuantidadeVagasValidator;
 import application.vaga.validation.SexoVagaValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
@@ -55,15 +56,20 @@ public class ControladorVaga {
 	public String listarVagasPreenchidas(@RequestParam(value = "empresa", required = false)String empresa,
 										 @RequestParam(value = "apenado", required = false)String apenado,
 										 @RequestParam(value = "tipo", required = false)String tipo,
+										 @RequestParam(value = "limite", required = false, defaultValue = "8") String limite,
 										 Model model,
 										 @PageableDefault(page = 0, size = 8) Pageable pageable) {
 
 
 		Specification<VagaPreenchida> spec = vagaRepositoryCustom.gerarSpecVagaPreenchida(empresa, apenado, tipo);
 
-		Page<VagaPreenchida> pgVagas = repVagaPreenchida.findAll(spec, pageable);
+		Sort sort = Sort.by(Sort.Direction.ASC, "tipo");
 
-		vagaRepositoryCustom.gerarModel(model,pageable,pgVagas);
+		PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), Integer.parseInt(limite), sort);
+
+		Page<VagaPreenchida> pgVagas = repVagaPreenchida.findAll(spec, pageRequest);
+
+		vagaRepositoryCustom.gerarModel(model,pageRequest,pgVagas);
 
 		return "listarVagasPreenchidas";
 	}
@@ -73,9 +79,6 @@ public class ControladorVaga {
 		VagaPreenchida vagaPreenchida = new VagaPreenchida();
 
 		List<Vaga> vagas = service.findAll();
-
-//		List<Integer> vagasMasculinas = new ArrayList<>();
-//		List<Integer> vagasFemininas = new ArrayList<>();
 
 		var map = vagaRepositoryCustom.reduzirNumeroDeVagas(vagas);
 
@@ -212,15 +215,20 @@ public class ControladorVaga {
 							  @RequestParam(value = "quantidadeVagasMasculinas", required = false) String quantidadeVagasMasculinas,
 							  @RequestParam(value = "quantidadeVagasFemininas", required = false) String quantidadeVagasFemininas,
 	                          @RequestParam(value = "cargaHoraria", required = false) String cargaHoraria,
+							  @RequestParam(value = "limite", required = false, defaultValue = "8") String limite,
 	                          Model model,
 	                         @PageableDefault(page = 0, size = 8) Pageable pageable) {
 
 
 		Specification<Vaga> spec = vagaRepositoryCustom.gerarSpec(empresa, tipo, interlocutor, quantidadeVagasMasculinas, quantidadeVagasFemininas, cargaHoraria);
 
-		Page<Vaga> pgVagas = service.findAll(spec, pageable);
+		Sort sort = Sort.by(Sort.Direction.ASC, "tipo");
 
-		vagaRepositoryCustom.gerarModel(model,pageable,pgVagas);
+		PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), Integer.parseInt(limite), sort);
+
+		Page<Vaga> pgVagas = service.findAll(spec, pageRequest);
+
+		vagaRepositoryCustom.gerarModel(model,pageRequest,pgVagas);
 
 		return "listarVagas";
 

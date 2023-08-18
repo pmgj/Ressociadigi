@@ -46,6 +46,14 @@
             <a th:href="@{/inserirVaga}">
                 <button type="button" class="botao laranja">Cadastrar Vagas</button>
             </a>
+
+            <form method="get" action="/listarVagas">
+                <select id="tamanho_da_lista" class="form-select" name="limite">
+                    <span th:each="item : ${limites}">
+                         <option th:value="${item}" class="value-option" th:text="${item}" th:selected="${item} == ${limite}"></option>
+                    </span>
+                </select>
+            </form>
         </div>
 
         <div id="filtroModal" class="modal fade" role="dialog">
