@@ -63,7 +63,7 @@ public class ControladorVaga {
 
 		Specification<VagaPreenchida> spec = vagaRepositoryCustom.gerarSpecVagaPreenchida(empresa, apenado, tipo);
 
-		Sort sort = Sort.by(Sort.Direction.ASC, "id");
+		Sort sort = Sort.by(Sort.Direction.ASC, "apenado.nome");
 
 		PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), Integer.parseInt(limite), sort);
 
@@ -222,7 +222,7 @@ public class ControladorVaga {
 
 		Specification<Vaga> spec = vagaRepositoryCustom.gerarSpec(empresa, tipo, interlocutor, quantidadeVagasMasculinas, quantidadeVagasFemininas, cargaHoraria);
 
-		Sort sort = Sort.by(Sort.Direction.ASC, "tipo");
+		Sort sort = Sort.by(Sort.Direction.ASC, "empresa.nome");
 
 		PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), Integer.parseInt(limite), sort);
 
