@@ -46,3 +46,8 @@ function exibirDetalhesVagaPreenchida(vaga) {
     // Exemplo de inserção dos dados em um modal usando Bootstrap
 
 }
+
+
+document.getElementById('tamanho_da_lista').addEventListener('change', function(evt) {
+    evt.currentTarget.parentNode.submit();
+});

@@ -43,6 +43,15 @@
 			<a th:href="@{/preencherVaga}">
 				<button type="button" class="botao laranja">Preencher Vagas</button>
 			</a>
+
+			<form method="get" action="/listarVagasPreenchidas">
+				<select id="tamanho_da_lista" class="form-select" name="limite">
+                    <span th:each="item : ${limites}">
+                         <option th:value="${item}" class="value-option" th:text="${item}" th:selected="${item} == ${limite}"></option>
+                    </span>
+				</select>
+			</form>
+
 		</div>
 		<div id="filtroModal" class="modal fade" role="dialog">
 			<div class="modal-dialog modal-lg">
