@@ -48,24 +48,23 @@
                 <button type="button" class="botao laranja">Cadastrar Apenado</button>
             </a>
 
-            <form method="get" action="/listarApenados">
-                <select id="tamanho_da_lista" name="limite">
-                    <option value="2" th:selected="${limite == 2}">2</option>
-                    <option value="4" th:selected="${limite == 4}">4</option>
-                    <option value="8" th:selected="${limite == 8}">8</option>
-                    <option value="10" th:selected="${limite == 10}">10</option>
-                    <option value="20" th:selected="${limite == 20}">20</option>
-                </select>
-            </form>
-
-
-            <!--            <form method="get" action="/listarApenados">-->
-<!--                <select id="limiteSelect" class="form-select" name="limite">-->
-<!--                    <span th:each="item : ${limites}">-->
-<!--                         <option th:value="${item}" class="value-option" th:text="${item}" th:selected="${item} == ${limite}"></option>-->
-<!--                    </span>-->
+<!--            <form method="get" action="/listarApenados">-->
+<!--                <select id="tamanho_da_lista" name="limite">-->
+<!--                    <option value="2" th:selected="${limite == 2}">2</option>-->
+<!--                    <option value="4" th:selected="${limite == 4}">4</option>-->
+<!--                    <option value="8" th:selected="${limite == 8}">8</option>-->
+<!--                    <option value="10" th:selected="${limite == 10}">10</option>-->
+<!--                    <option value="20" th:selected="${limite == 20}">20</option>-->
 <!--                </select>-->
 <!--            </form>-->
+
+            <form method="get" action="/listarApenados">
+                <select id="tamanho_da_lista" class="form-select" name="limite">
+                    <span th:each="item : ${limites}">
+                         <option th:value="${item}" class="value-option" th:text="${item}" th:selected="${item} == ${limite}"></option>
+                    </span>
+                </select>
+            </form>
 
 
         </div>

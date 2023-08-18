@@ -53,8 +53,6 @@ public class ControladorApenado {
                                  Model model,
                                  @PageableDefault(page = 0, size = 10) Pageable pageable) {
 
-        System.out.println("TESTE LIMITE: " + limite);
-
         Specification<Apenado> spec = apenadoRepository.gerarSpec(cpf, nome, telefone, dataNascimento, nomeDaMae);
 
         Sort sort = Sort.by(Sort.Direction.ASC, "nome");

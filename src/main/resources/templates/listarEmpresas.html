@@ -46,6 +46,14 @@
             <a th:href="@{/inserirEmpresa}">
                 <button type="button" class="botao laranja">Cadastrar Empresa</button>
             </a>
+
+            <form method="get" action="/listarApenados">
+                <select id="tamanho_da_lista" class="form-select" name="limite">
+                    <span th:each="item : ${limites}">
+                         <option th:value="${item}" class="value-option" th:text="${item}" th:selected="${item} == ${limite}"></option>
+                    </span>
+                </select>
+            </form>
 			
         </div>
 

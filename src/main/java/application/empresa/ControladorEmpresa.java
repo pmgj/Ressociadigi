@@ -72,6 +72,7 @@ public class ControladorEmpresa {
 								 @RequestParam(value = "telefone", required = false) String telefone,
 								 @RequestParam(value = "email", required = false) String email,
 								 @RequestParam(value = "cidade", required = false) String cidade,
+								 @RequestParam(value = "limite", required = false, defaultValue = "8") String limite,
 								 Model model,
 								 @PageableDefault(page = 0, size = 8) Pageable pageable) {
 
@@ -79,7 +80,7 @@ public class ControladorEmpresa {
 
 		Sort sort = Sort.by(Sort.Direction.ASC, "nome");
 
-		PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort);
+		PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), Integer.parseInt(limite), sort);
 
 		Page<Empresa> pgEmpresa = service.findAll(spec, pageRequest);
 
