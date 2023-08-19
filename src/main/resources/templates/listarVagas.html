@@ -54,6 +54,12 @@
                     </span>
                 </select>
             </form>
+            <a th:href="@{/preencherVaga}">
+                <button type="button" class="botao laranja">Preencher Vagas</button>
+            </a>
+            <a th:href="@{/listarVagasPreenchidas}">
+                <button type="button" class="botao laranja">Histórico de Vagas</button>
+            </a>
         </div>
 
         <div id="filtroModal" class="modal fade" role="dialog">
@@ -73,10 +79,10 @@
                                 <label for="inputTipo">Tipo</label>
                                 <input type="text" class="form-control" id="inputTipo" placeholder="Tipo" name="tipo">
                             </div>
-                            <div class="form-group">
-                                <label for="inputInterlocutor">Interlocutor</label>
-                                <input type="text" class="form-control" id="inputInterlocutor" placeholder="Interlocutor" name="interlocutor">
-                            </div>
+<!--                            <div class="form-group">-->
+<!--                                <label for="inputInterlocutor">Interlocutor</label>-->
+<!--                                <input type="text" class="form-control" id="inputInterlocutor" placeholder="Interlocutor" name="interlocutor">-->
+<!--                            </div>-->
                             <div class="form-group">
                                 <label for="inputVagasMasculinas">Vagas Masculinas</label>
                                 <input type="number" value="0" class="form-control" id="inputVagasMasculinas" placeholder="Vagas Masculinas" name="quantidadeVagasMasculinas">
@@ -102,7 +108,7 @@
                 <tr>
                     <th>NOME DA EMPRESA</th>
                     <th>TIPO</th>
-                    <th>INTERLOCUTOR</th>
+<!--                    <th>INTERLOCUTOR</th>-->
                     <th>VAGAS MASCULINAS</th>
                     <th>VAGAS FEMININAS</th>
                     <th>CARGA HORÁRIA</th>
@@ -117,7 +123,7 @@
                 <tr th:each="vaga : ${listaVagas}">
                     <td data-label="NOME DA EMPRESA"><span th:text="${vaga.empresa.nome}">NOME DA EMPRESA</span></td>
                     <td data-label="TIPO"><span th:text="${vaga.tipo}">TIPO</span></td>
-                    <td data-label="INTERLOCUTOR"><span th:text="${vaga.interlocutor}">INTERLOCUTOR</span></td>
+<!--                    <td data-label="INTERLOCUTOR"><span th:text="${vaga.interlocutor}">INTERLOCUTOR</span></td>-->
                     <td data-label="VAGAS MASCULINAS"><span th:text="${vaga.quantidadeVagasMasculinas}">VAGAS MASCULINAS</span></td>
                     <td data-label="VAGAS FEMININAS"><span th:text="${vaga.quantidadeVagasFemininas}">VAGAS FEMININAS</span></td>
                     <td data-label="CARGA HORÁRIA"><span th:text="${vaga.cargaHoraria}">CARGA HORÁRIA</span></td>

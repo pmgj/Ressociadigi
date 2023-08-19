@@ -12,12 +12,14 @@
 	<div class="fade-modal"></div>
 	<!-- Modal de confirmação + fade-->
 
-	<div class="modal-confirm">
-		<h2>Tem certeza que deseja voltar?</h2>
-		<h3>Todo o preenchimento será perdido.</h3>
-		<div class="botao-modal-confirm">
-			<button id="cancelar">Não, preencher formulário</button>
-			<a th:href="@{/}">Sim, voltar</a>
+
+		<div class="modal-confirm">
+			<h2>Tem certeza que deseja voltar?</h2>
+			<h3>Todo o preenchimento será perdido.</h3>
+			<div class="botao-modal-confirm">
+				<button id="cancelar">Não, preencher formulário</button>
+				<a th:href="@{/listarVagas}">Sim, voltar</a>
+			</div>
 		</div>
 	</div>
 	<main>
@@ -25,7 +27,7 @@
 
 		<header>
 			<div class="title">
-				<a th:href="@{/}">
+				<a th:href="@{/listarVagas}">
 					<h1>RessociaDigi</h1>
 					<hr>
 				</a>
@@ -50,7 +52,7 @@
 							+ ' F: ' + vagasFemininasDisponiveis[iterStat.index] + ' | ' + vaga.empresa.nome}"></option>
 						</select>
 						 <label id="labelError" th:if="${#fields.hasErrors('vaga.id')}" th:errors="*{vaga.id}">Erro na vaga</label>
-					</div>
+					 </div>
 					
 					<div class="input-normal" id="nomeApenado">
 						<label for="apenadoSelect">Selecione o apenado</label> 
