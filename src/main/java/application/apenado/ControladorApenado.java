@@ -1,11 +1,13 @@
 package application.apenado;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 
 import javax.validation.Valid;
 
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -44,16 +46,21 @@ public class ControladorApenado {
     }
 
     @RequestMapping("listarApenados")
-    public String listarApenados(@RequestParam(value = "cpf", required = false) String cpf,
-                                 @RequestParam(value = "nome", required = false) String nome,
-                                 @RequestParam(value = "telefone", required = false) String telefone,
-                                 @RequestParam(value = "dataNascimento", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataNascimento,
-                                 @RequestParam(value = "nomeDaMae", required = false) String nomeDaMae,
+    public String listarApenados(@Valid @ModelAttribute("apenadoDTO") ApenadoDTO apenadoDTO,
                                  @RequestParam(value = "limite", required = false, defaultValue = "8") String limite,
                                  Model model,
                                  @PageableDefault(page = 0, size = 10) Pageable pageable) {
 
-        Specification<Apenado> spec = apenadoRepository.gerarSpec(cpf, nome, telefone, dataNascimento, nomeDaMae);
+        if(apenadoDTO != null) {
+            if (apenadoDTO.getDataNascimento() != null) {
+                DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                LocalDate parsedDate = apenadoDTO.getDataNascimento();
+                String dataNascimento = parsedDate.format(dateFormat);
+                apenadoDTO.setDataNascimento(dataNascimento);
+            }
+        }
+
+        Specification<Apenado> spec = apenadoRepository.gerarSpec(apenadoDTO.getCpf(), apenadoDTO.getNome(), apenadoDTO.getTelefone(), apenadoDTO.getDataNascimento(), apenadoDTO.getNomeDaMae());
 
         Sort sort = Sort.by(Sort.Direction.ASC, "nome");
 
