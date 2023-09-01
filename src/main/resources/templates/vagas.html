@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=10, minimum-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/vagas.css}" />
+    <link rel="stylesheet" th:href="@{/css/menu-lateral.css}" />
     <link rel="icon" th:href="@{/imgs/logoRD.png}">
-    <script defer="defer" th:src="@{/js/alertReturnModal.js}"></script>
     <title>Cadastro de Vaga</title>
 </head>
 <body>
@@ -19,12 +19,11 @@
             <a th:href="@{/listarVagas}">Sim, voltar</a>
         </div>
     </div>
+
+    <div th:insert="fragments/menuLateral.html :: menuLateral"></div>
+
    <main>
        <!-- Modal de confirmação + fade-->
-
-
-
-
        <header>
            <div class="title">
                <a th:href="@{/listarVagas}">
@@ -98,6 +97,8 @@
         </form>
     </section>
    </main>
-    
+
+    <script defer="defer" th:src="@{/js/alertReturnModal.js}"></script>
+    <script defer="defer"  th:src="@{/js/menuLateral.js}"></script>
 </body>
 </html>

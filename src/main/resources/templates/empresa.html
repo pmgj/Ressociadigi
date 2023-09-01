@@ -5,14 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" th:href="@{/css/empresa.css}">
+    <link rel="stylesheet" th:href="@{/css/menu-lateral.css}" />
     <link rel="icon" th:href="@{/imgs/logoRD.png}">
-    <script defer="defer" th:src="@{/js/alertReturnModal.js}"></script>
+
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=10, minimum-scale=1.0">
     <title>Cadastro de Empresa</title>
 </head>
 
 <body>
     <div class="fade-modal"></div>
+
+    <div th:insert="fragments/menuLateral.html :: menuLateral"></div>
+
     <main>
 
         <header>
@@ -187,6 +191,8 @@
         </section>
     </main>
 
+    <script defer="defer" th:src="@{/js/alertReturnModal.js}"></script>
+    <script defer="defer"  th:src="@{/js/menuLateral.js}"></script>
 </body>
 
 </html>
