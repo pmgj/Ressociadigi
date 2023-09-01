@@ -1,4 +1,4 @@
-nav{
+#barra-lateral{
     width: 70px;
     height: 100%;
     position: fixed;
@@ -12,7 +12,7 @@ nav{
     justify-content: flex-start;
     align-items: center;
 }
-nav>div{
+#barra-lateral>div{
     width: 100%;
     margin:15px 0;
 }

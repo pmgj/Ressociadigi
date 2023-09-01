@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+  <div th:fragment="menuLateral" id="barra-lateral">
+
+    <div id="apenado" class="caixa">
+      <a th:href="@{/listarApenados}">
+        <img src="/imgs/user-orange.png" alt="Apenado" id="user-orange" width="50" height="50"/>
+        <div class="dicas" id="dicaApenado">
+          <p>Cadastro e Listagem de Apenados</p>
+        </div>
+        <!--                    <img src="../static/imgs/user-white.png" alt="Apenado selecionado" id="user-white"/>-->
+      </a>
+    </div>
+    <div id="empresa" class="caixa">
+      <a th:href="@{/listarEmpresas}">
+        <img src="/imgs/company-orange.png" alt="Empresa" id="company-orange" width="50" height="50"/>
+        <div class="dicas" id="dicaApenado">
+          <p>Cadastro e Listagem de Empresas</p>
+        </div>
+        <!--                    <img src="../static/imgs/company-white.png" alt="Empresa selecionada" id="company-white"/>-->
+      </a>
+    </div>
+    <div id="vagas" class="caixa">
+      <a th:href="@{/listarVagas}">
+        <img src="/imgs/work-orange.png" alt="Vagas" id="work-orange" width="50" height="50"/>
+        <div class="dicas" id="dicaApenado">
+          <p>Cadastro e Listagem de Vagas</p>
+        </div>
+        <!--                    <img src="../static/imgs/work-white.png" alt="Vagas selecionada" id="work-white"/>-->
+      </a>
+    </div>
+  </div>
+
+</body>
+
+</html>

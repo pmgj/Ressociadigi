@@ -8,7 +8,6 @@
     <link rel="stylesheet" th:href="@{/css/index-style.css}">
     <link rel="stylesheet" th:href="@{/css/menu-lateral.css}" />
     <link rel="icon" th:href="@{/imgs/logoRD.png}">
-    <script defer="defer"  th:src="@{/js/menuLateral.js}"></script>
     <title>Página Principal</title>
 </head>
 
@@ -207,44 +206,49 @@
             </section>
         </div>
 
-        <nav id="barra-lateral">
-<!--            <div id="home">-->
-<!--                <a href="">-->
-<!--                    <img src="../static/imgs/home-orange.png" alt="Tela inicial" id="home-orange"/>-->
-<!--                    <img src="../static/imgs/home-white.png" alt="Tela Inicial selecionada" id="home-white"/>-->
+        <div th:insert="fragments/menuLateral.html :: menuLateral"></div>
+
+<!--        <nav id="barra-lateral">-->
+<!--            &lt;!&ndash;            <div id="home">&ndash;&gt;-->
+<!--            &lt;!&ndash;                <a href="">&ndash;&gt;-->
+<!--            &lt;!&ndash;                    <img src="../static/imgs/home-orange.png" alt="Tela inicial" id="home-orange"/>&ndash;&gt;-->
+<!--            &lt;!&ndash;                    <img src="../static/imgs/home-white.png" alt="Tela Inicial selecionada" id="home-white"/>&ndash;&gt;-->
+<!--            &lt;!&ndash;                </a>&ndash;&gt;-->
+<!--            &lt;!&ndash;            </div>&ndash;&gt;-->
+
+<!--            <div id="apenado" class="caixa">-->
+<!--                <a th:href="@{/listarApenados}">-->
+<!--                    <img src="/imgs/user-orange.png" alt="Apenado" id="user-orange"/>-->
+<!--                    <div class="dicas" id="dicaApenado">-->
+<!--                        <p>Cadastro e Listagem de Apenados</p>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash;                    <img src="../static/imgs/user-white.png" alt="Apenado selecionado" id="user-white"/>&ndash;&gt;-->
 <!--                </a>-->
 <!--            </div>-->
+<!--            <div id="empresa" class="caixa">-->
+<!--                <a th:href="@{/listarEmpresas}">-->
+<!--                    <img src="/imgs/company-orange.png" alt="Empresa" id="company-orange"/>-->
+<!--                    <div class="dicas" id="dicaApenado">-->
+<!--                        <p>Cadastro e Listagem de Empresas</p>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash;                    <img src="../static/imgs/company-white.png" alt="Empresa selecionada" id="company-white"/>&ndash;&gt;-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div id="vagas" class="caixa">-->
+<!--                <a th:href="@{/listarVagas}">-->
+<!--                    <img src="/imgs/work-orange.png" alt="Vagas" id="work-orange"/>-->
+<!--                    <div class="dicas" id="dicaApenado">-->
+<!--                        <p>Cadastro e Listagem de Vagas</p>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash;                    <img src="../static/imgs/work-white.png" alt="Vagas selecionada" id="work-white"/>&ndash;&gt;-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </nav>-->
 
-                <div id="apenado" class="caixa">
-                    <a th:href="@{/listarApenados}">
-                        <img src="/imgs/user-orange.png" alt="Apenado" id="user-orange"/>
-                        <div class="dicas" id="dicaApenado">
-                            <p>Cadastro e Listagem de Apenados</p>
-                        </div>
-                        <!--                    <img src="../static/imgs/user-white.png" alt="Apenado selecionado" id="user-white"/>-->
-                    </a>
-                </div>
-                <div id="empresa" class="caixa">
-                    <a th:href="@{/listarEmpresas}">
-                        <img src="/imgs/company-orange.png" alt="Empresa" id="company-orange"/>
-                        <div class="dicas" id="dicaApenado">
-                            <p>Cadastro e Listagem de Empresas</p>
-                        </div>
-                        <!--                    <img src="../static/imgs/company-white.png" alt="Empresa selecionada" id="company-white"/>-->
-                    </a>
-                </div>
-                <div id="vagas" class="caixa">
-                    <a th:href="@{/listarVagas}">
-                        <img src="/imgs/work-orange.png" alt="Vagas" id="work-orange"/>
-                        <div class="dicas" id="dicaApenado">
-                            <p>Cadastro e Listagem de Vagas</p>
-                        </div>
-                        <!--                    <img src="../static/imgs/work-white.png" alt="Vagas selecionada" id="work-white"/>-->
-                    </a>
-                </div>
-        </nav>
     </main>
 
+
+    <script defer="defer"  th:src="@{/js/menuLateral.js}"></script>
 </body>
 
 
