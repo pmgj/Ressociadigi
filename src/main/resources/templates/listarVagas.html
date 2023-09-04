@@ -40,13 +40,19 @@
 
         <div class="header-tabela">
             <div class="buscador">
-                <button id="icone-filtro" type="button" class="botao laranja">Filtrar</button>
+                <button id="icone-filtro" type="button" class="botaoVaga botao laranja">Filtrar</button>
             </div>
 
-            <a th:href="@{/inserirVaga}">
-                <button type="button" class="botao laranja">Cadastrar Vagas</button>
-            </a>
 
+            <a th:href="@{/inserirVaga}">
+                <button type="button" class="botaoVaga  botao laranja">Cadastrar Vagas</button>
+            </a>
+            <a th:href="@{/preencherVaga}">
+                <button type="button" class="botaoVaga  botao laranja">Preencher Vagas</button>
+            </a>
+            <a th:href="@{/listarVagasPreenchidas}">
+                <button type="button" class="botaoVaga  botao laranja">Histórico de Vagas</button>
+            </a>
             <form method="get" action="/listarVagas">
                 <select id="tamanho_da_lista" class="form-select" name="limite">
                     <span th:each="item : ${limites}">
@@ -54,12 +60,6 @@
                     </span>
                 </select>
             </form>
-            <a th:href="@{/preencherVaga}">
-                <button type="button" class="botao laranja">Preencher Vagas</button>
-            </a>
-            <a th:href="@{/listarVagasPreenchidas}">
-                <button type="button" class="botao laranja">Histórico de Vagas</button>
-            </a>
         </div>
 
         <div id="filtroModal" class="modal fade" role="dialog">
