@@ -48,8 +48,13 @@ public class ApenadoDTO {
     }
 
     public void setDataNascimento(String dataNascimento) {
-        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        this.dataNascimento = LocalDate.parse(dataNascimento, dateFormat);
+        System.out.println("AAAAAAAAAAA"+dataNascimento);
+        if(dataNascimento == null|| dataNascimento.isEmpty()){
+            this.dataNascimento = null;
+        }else{
+            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            this.dataNascimento = LocalDate.parse(dataNascimento, dateFormat);
+        }
     }
     public LocalDate getDataNascimento() {
         return dataNascimento;

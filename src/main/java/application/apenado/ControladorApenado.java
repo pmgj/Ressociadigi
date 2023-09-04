@@ -51,15 +51,6 @@ public class ControladorApenado {
                                  Model model,
                                  @PageableDefault(page = 0, size = 10) Pageable pageable) {
 
-        if(apenadoDTO != null) {
-            if (apenadoDTO.getDataNascimento() != null) {
-                DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                LocalDate parsedDate = apenadoDTO.getDataNascimento();
-                String dataNascimento = parsedDate.format(dateFormat);
-                apenadoDTO.setDataNascimento(dataNascimento);
-            }
-        }
-
         Specification<Apenado> spec = apenadoRepository.gerarSpec(apenadoDTO.getCpf(), apenadoDTO.getNome(), apenadoDTO.getTelefone(), apenadoDTO.getDataNascimento(), apenadoDTO.getNomeDaMae());
 
         Sort sort = Sort.by(Sort.Direction.ASC, "nome");

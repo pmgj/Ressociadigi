@@ -12,7 +12,7 @@ import java.util.Map;
 public interface RepositorioVagaCustom {
    public void gerarModel(Model model, Pageable pageable, Page pgApenado);
 
-   Specification<Vaga> gerarSpec(String empresa, String tipo, String interlocutor,String vagasMasculinas, String vagasFemininas, String cargaHoraria);
+   Specification<Vaga> gerarSpec(String empresa, String tipo,String vagasMasculinas, String vagasFemininas, String cargaHoraria);
 
    Specification<VagaPreenchida> gerarSpecVagaPreenchida(String empresa, String apenado, String tipo);
    Integer converterStringParaInteger(String valor);

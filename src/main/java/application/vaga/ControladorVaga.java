@@ -16,10 +16,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import application.apenado.RepositorioApenado;
@@ -209,18 +206,18 @@ public class ControladorVaga {
 		return "redirect:/listarVagas";
 	}
 	@RequestMapping("listarVagas")
-	public String searchVagas(@RequestParam(value = "empresa", required = false) String empresa,
-							  @RequestParam(value = "tipo", required = false) String tipo,
-							  @RequestParam(value = "interlocutor", required = false) String interlocutor,
-							  @RequestParam(value = "quantidadeVagasMasculinas", required = false) String quantidadeVagasMasculinas,
-							  @RequestParam(value = "quantidadeVagasFemininas", required = false) String quantidadeVagasFemininas,
-	                          @RequestParam(value = "cargaHoraria", required = false) String cargaHoraria,
+	public String searchVagas(@Valid @ModelAttribute("vagaDTO") VagaDTO vagaDTO,
 							  @RequestParam(value = "limite", required = false, defaultValue = "8") String limite,
 	                          Model model,
 	                         @PageableDefault(page = 0, size = 8) Pageable pageable) {
 
 
-		Specification<Vaga> spec = vagaRepositoryCustom.gerarSpec(empresa, tipo, interlocutor, quantidadeVagasMasculinas, quantidadeVagasFemininas, cargaHoraria);
+
+		Specification<Vaga> spec = vagaRepositoryCustom.gerarSpec(vagaDTO.getEmpresa(),
+				vagaDTO.getTipo(),
+				vagaDTO.getQuantidadeVagasMasculinas(),
+				vagaDTO.getQuantidadeVagasFemininas(),
+				vagaDTO.getCargaHoraria());
 
 		Sort sort = Sort.by(Sort.Direction.ASC, "empresa.nome");
 

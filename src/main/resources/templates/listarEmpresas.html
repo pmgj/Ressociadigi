@@ -64,35 +64,35 @@
                         <h4 class="modal-title">Busca Personalizada</h4>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="/listarEmpresas">
+                        <form method="post" th:action="@{/listarEmpresas}" th:object="${empresaDTO}">
 
                             <div class="form-group">
                                 <label for="inputCnpj">CNPJ</label>
-                                <input type="text" class="form-control" id="inputCnpj" placeholder="CNPJ" name="cnpj">
+                                <input type="text" class="form-control" id="inputCnpj" placeholder="CNPJ" name="cnpj" th:field="*{cnpj}">
                             </div>
                             <div class="form-group">
                                 <label for="inputNome">Nome</label>
-                                <input type="text" class="form-control" id="inputNome" placeholder="Nome" name="nome">
+                                <input type="text" class="form-control" id="inputNome" placeholder="Nome" name="nome" th:field="*{nome}">
                             </div>
                             <div class="form-group">
                                 <label for="inputResponsavel">Responsavel</label>
-                                <input type="text" class="form-control" id="inputResponsavel" placeholder="Responsavel" name="responsavel">
+                                <input type="text" class="form-control" id="inputResponsavel" placeholder="Responsavel" name="responsavel" th:field="*{responsavel}">
                             </div>
                             <div class="form-group">
                                 <label for="inputInterlocutor">Interlocutor</label>
-                                <input type="text" class="form-control" id="inputInterlocutor" placeholder="Interlocutor" name="interlocutor">
+                                <input type="text" class="form-control" id="inputInterlocutor" placeholder="Interlocutor" name="interlocutor" th:field="*{interlocutor}">
                             </div>
                             <div class="form-group">
                                 <label for="inputTelefone">Telefone</label>
-                                <input type="text" class="form-control" id="inputTelefone" placeholder="Telefone" name="telefone">
+                                <input type="text" class="form-control" id="inputTelefone" placeholder="Telefone" name="telefone" th:field="*{telefone}">
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail">Email</label>
-                                <input type="text" class="form-control" id="inputEmail" placeholder="Email" name="email">
+                                <input type="text" class="form-control" id="inputEmail" placeholder="Email" name="email" th:field="*{email}">
                             </div>
                             <div class="form-group">
                                 <label for="inputCidade">Cidade</label>
-                                <input type="text" class="form-control" id="inputCidade" placeholder="Cidade" name="cidade">
+                                <input type="text" class="form-control" id="inputCidade" placeholder="Cidade" name="cidade" th:field="*{cidade}">
                             </div>
 
                             <button type="submit" class="btn btn-primary">Submit</button>
