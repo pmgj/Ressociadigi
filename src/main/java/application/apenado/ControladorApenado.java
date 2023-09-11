@@ -55,7 +55,7 @@ public class ControladorApenado {
 
         Sort sort = Sort.by(Sort.Direction.ASC, "nome");
 
-        PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), Integer.parseInt(limite), sort);
+        PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), Integer.parseInt(apenadoDTO.getLimite()), sort);
 
         Page<Apenado> pgApenado = repo.findAll(spec, pageRequest);
 

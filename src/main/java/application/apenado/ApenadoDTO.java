@@ -11,6 +11,8 @@ public class ApenadoDTO {
     private String telefone;
     private LocalDate dataNascimento;
     private String nomeDaMae;
+    private String limite;
+    private static ApenadoDTO apenadoDTO;
 
 
     //Métodos básicos
@@ -69,5 +71,22 @@ public class ApenadoDTO {
         this.nomeDaMae = nomeDaMae;
     }
 
+    public String getLimite() {
+        return limite;
+    }
+    public void setLimite(String limite) {
+        if(limite == null || limite.isEmpty()){
+            this.limite = "8";
+        }
+        this.limite = limite;
+    }
 
+
+
+    public static ApenadoDTO getApenadoDTO(){
+        if(apenadoDTO == null){
+            apenadoDTO = new ApenadoDTO();
+        }
+        return apenadoDTO;
+    }
 }

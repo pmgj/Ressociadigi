@@ -52,9 +52,12 @@ public class RepositorioApenadoImpl implements RepositorioApenadoCustom {
         limiteValues.add(10);
         limiteValues.add(20);
 
+
+        ApenadoDTO apenadoDTO = ApenadoDTO.getApenadoDTO();
+
         model.addAttribute("limites", limiteValues);
         model.addAttribute("limite", pageable.getPageSize());
-        model.addAttribute("apenadoDTO", new ApenadoDTO());
+        model.addAttribute("apenadoDTO", apenadoDTO);
         model.addAttribute("lista", pgApenado);
     }
 
