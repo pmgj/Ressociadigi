@@ -132,7 +132,9 @@ body {
     margin-bottom: 1rem;
 }
 
-
+select{
+    width: 70px !important;
+}
 .botao {
     background-color: #fff;
     text-transform: uppercase;
@@ -146,6 +148,12 @@ body {
     border-radius: 8px;
     width: fit-content;
     padding: 0px 10px;
+}
+.botaoVaga{
+    line-height: 25px !important;
+}
+.botaoVaga:last-child{
+    margin-right: 20px;
 }
 
 .laranja {

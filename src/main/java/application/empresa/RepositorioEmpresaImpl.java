@@ -44,6 +44,7 @@ public class RepositorioEmpresaImpl  implements RepositorioEmpresaCustom{
         model.addAttribute("previousPage", pageable.getPageNumber() - 1);
         model.addAttribute("quantidadePaginas", numTotalPaginas);
         model.addAttribute("listaEmpresas", pgEmpresa);
+        model.addAttribute("empresaDTO", new EmpresaDTO());
 
         List<Integer> limiteValues = new ArrayList<>();
 

@@ -77,30 +77,29 @@
                     <h4 class="modal-title">Busca Personalizada</h4>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="/listarApenados">
+                    <form method="post" th:action="@{/listarApenados}" th:object="${apenadoDTO}">
 
                         <div class="form-group">
-                            <label for="inputCpf">CPF</label>
-                            <input type="text" class="form-control" id="inputCpf" placeholder="Empresa" name="cpf">
+                            <label for="cpf">CPF</label>
+                            <input type="text" class="form-control" id="cpf" placeholder="Cpf" name="cpf" th:field="*{cpf}">
                         </div>
                         <div class="form-group">
                             <label for="inputNome">Nome</label>
-                            <input type="text" class="form-control" id="inputNome" placeholder="Nome" name="nome">
+                            <input type="text" class="form-control" id="inputNome" placeholder="Nome" name="nome" th:field="*{nome}">
                         </div>
                         <div class="form-group">
                             <label for="inputTelefone">Telefone</label>
-                            <input type="text" class="form-control" id="inputTelefone" placeholder="Telefone" name="telefone">
+                            <input type="text" class="form-control" id="inputTelefone" placeholder="Telefone" name="telefone" th:field="*{telefone}">
                         </div>
                         <div class="form-group">
                             <label for="inputDataNascimento">Data de Nascimento</label>
-                            <input type="date" class="form-control" id="inputDataNascimento" placeholder="Data de Nascimento" name="dataNascimento">
+                            <input type="date" class="form-control" id="inputDataNascimento" placeholder="Data de Nascimento" name="dataNascimento" th:field="*{dataNascimento}">
                         </div>
                         <div class="form-group">
                             <label for="inputNomeMae">Nome da Mae</label>
-                            <input type="text" class="form-control" id="inputNomeMae" placeholder="Nome da Mae" name="nomeMae">
+                            <input type="text" class="form-control" id="inputNomeMae" placeholder="Nome da Mae" name="nomeMae" th:field="*{nomeDaMae}">
                         </div>
-
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary" >Submit</button>
                     </form>
                 </div>
             </div>

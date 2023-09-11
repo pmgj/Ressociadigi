@@ -1,7 +1,6 @@
 package application.vaga;
 
 import application.apenado.Apenado;
-import org.atteo.evo.inflector.English;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -40,6 +39,7 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
                 : pageable.getPageNumber() + 1 );
         model.addAttribute("previousPage", pageable.getPageNumber() - 1);
         model.addAttribute("quantidadePaginas", numTotalPaginas);
+        model.addAttribute("vagaDTO", new VagaDTO());
 
         List<Integer> limiteValues = new ArrayList<>();
 
@@ -57,7 +57,7 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
     }
 
     @Override
-    public Specification<Vaga> gerarSpec(String empresa, String tipo, String interlocutor, String vagasMasculinas, String vagasFemininas, String cargaHoraria) {
+    public Specification<Vaga> gerarSpec(String empresa, String tipo, String vagasMasculinas, String vagasFemininas, String cargaHoraria) {
 
         Specification<Vaga> spec = Specification.where(null);
 
@@ -76,9 +76,9 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
             spec = spec.and(new VagaWithTipo(tipo));
         }
 
-        if(interlocutor != null && !interlocutor.isEmpty()) {
-            spec = spec.and(new VagaWithInterlocutor(interlocutor));
-        }
+//        if(interlocutor != null && !interlocutor.isEmpty()) {
+//            spec = spec.and(new VagaWithInterlocutor(interlocutor));
+//        }
 
         if(vagasMasculinasConvertido != 0) {
             spec = spec.and(new VagaWithCargosMasculinos(vagasMasculinasConvertido));
@@ -118,7 +118,6 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
     @Override
     public Integer converterStringParaInteger(String valor) {
         int valorConvertido;
-
         if(valor == null) {
             valorConvertido = 0;
         } else {

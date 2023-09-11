@@ -17,10 +17,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -65,18 +62,18 @@ public class ControladorEmpresa {
 	}
 
 	@RequestMapping("listarEmpresas")
-	public String searchEmpresas(@RequestParam(value = "cnpj", required = false) String cnpj,
-								 @RequestParam(value = "nome", required = false) String nome,
-								 @RequestParam(value = "responsavel", required = false) String responsavel,
-								 @RequestParam(value = "interlocutor", required = false) String interlocutor,
-								 @RequestParam(value = "telefone", required = false) String telefone,
-								 @RequestParam(value = "email", required = false) String email,
-								 @RequestParam(value = "cidade", required = false) String cidade,
+	public String searchEmpresas(@Valid @ModelAttribute("empresaDTO") EmpresaDTO empresaDTO,
 								 @RequestParam(value = "limite", required = false, defaultValue = "8") String limite,
 								 Model model,
 								 @PageableDefault(page = 0, size = 8) Pageable pageable) {
 
-		Specification<Empresa> spec = apenadoRepositoryCustom.gerarSpec(cnpj, nome, responsavel, interlocutor, telefone, email, cidade);
+		Specification<Empresa> spec = apenadoRepositoryCustom.gerarSpec(empresaDTO.getCnpj(),
+				empresaDTO.getNome(),
+				empresaDTO.getResponsavel(),
+				empresaDTO.getInterlocutor(),
+				empresaDTO.getTelefone(),
+				empresaDTO.getEmail(),
+				empresaDTO.getCidade());
 
 		Sort sort = Sort.by(Sort.Direction.ASC, "nome");
 

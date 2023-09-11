@@ -43,13 +43,19 @@
 
         <div class="header-tabela">
             <div class="buscador">
-                <button id="icone-filtro" type="button" class="botao laranja">Filtrar</button>
+                <button id="icone-filtro" type="button" class="botaoVaga botao laranja">Filtrar</button>
             </div>
 
-            <a th:href="@{/inserirVaga}">
-                <button type="button" class="botao laranja">Cadastrar Vagas</button>
-            </a>
 
+            <a th:href="@{/inserirVaga}">
+                <button type="button" class="botaoVaga  botao laranja">Cadastrar Vagas</button>
+            </a>
+            <a th:href="@{/preencherVaga}">
+                <button type="button" class="botaoVaga  botao laranja">Preencher Vagas</button>
+            </a>
+            <a th:href="@{/listarVagasPreenchidas}">
+                <button type="button" class="botaoVaga  botao laranja">Histórico de Vagas</button>
+            </a>
             <form method="get" action="/listarVagas">
                 <select id="tamanho_da_lista" class="form-select" name="limite">
                     <span th:each="item : ${limites}">
@@ -57,12 +63,6 @@
                     </span>
                 </select>
             </form>
-            <a th:href="@{/preencherVaga}">
-                <button type="button" class="botao laranja">Preencher Vagas</button>
-            </a>
-            <a th:href="@{/listarVagasPreenchidas}">
-                <button type="button" class="botao laranja">Histórico de Vagas</button>
-            </a>
         </div>
 
         <div id="filtroModal" class="modal fade" role="dialog">
@@ -72,15 +72,15 @@
                         <h4 class="modal-title">Busca Personalizada</h4>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="/listarVagas">
+                        <form method="post" th:action="@{/listarVagas}" th:object="${vagaDTO}">
 
                             <div class="form-group">
                                 <label for="inputEmpresa">Empresa</label>
-                                <input type="text" class="form-control" id="inputEmpresa" placeholder="Empresa" name="empresa">
+                                <input type="text" class="form-control" id="inputEmpresa" placeholder="Empresa" name="empresa" th:field="*{empresa}">
                             </div>
                             <div class="form-group">
                                 <label for="inputTipo">Tipo</label>
-                                <input type="text" class="form-control" id="inputTipo" placeholder="Tipo" name="tipo">
+                                <input type="text" class="form-control" id="inputTipo" placeholder="Tipo" name="tipo" th:field="*{tipo}">
                             </div>
 <!--                            <div class="form-group">-->
 <!--                                <label for="inputInterlocutor">Interlocutor</label>-->
@@ -88,15 +88,15 @@
 <!--                            </div>-->
                             <div class="form-group">
                                 <label for="inputVagasMasculinas">Vagas Masculinas</label>
-                                <input type="number" value="0" class="form-control" id="inputVagasMasculinas" placeholder="Vagas Masculinas" name="quantidadeVagasMasculinas">
+                                <input type="number" value="0" class="form-control" id="inputVagasMasculinas" placeholder="Vagas Masculinas" name="quantidadeVagasMasculinas" th:field="*{quantidadeVagasMasculinas}">
                             </div>
                             <div class="form-group">
                                 <label for="inputVagasFemininas">Vagas Femininas</label>
-                                <input type="number" value="0" class="form-control" id="inputVagasFemininas" placeholder="Vagas Femininas" name="quantidadeVagasFemininas">
+                                <input type="number" value="0" class="form-control" id="inputVagasFemininas" placeholder="Vagas Femininas" name="quantidadeVagasFemininas" th:field="*{quantidadeVagasFemininas}">
                             </div>
                             <div class="form-group">
                                 <label for="inputCargaHoraria">Carga Horaria</label>
-                                <input type="number" value="0" class="form-control" id="inputCargaHoraria" placeholder="Carga Horaria" name="cargaHoraria">
+                                <input type="number" value="0" class="form-control" id="inputCargaHoraria" placeholder="Carga Horaria" name="cargaHoraria" th:field="*{cargaHoraria}">
                             </div>
 
                             <button type="submit" class="btn btn-primary">Submit</button>
