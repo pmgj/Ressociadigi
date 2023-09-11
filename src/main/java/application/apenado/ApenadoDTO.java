@@ -12,6 +12,7 @@ public class ApenadoDTO {
     private LocalDate dataNascimento;
     private String nomeDaMae;
 
+
     //Métodos básicos
     public void setCpf(String cpf) {
         this.cpf = cpf;
