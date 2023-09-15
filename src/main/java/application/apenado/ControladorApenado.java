@@ -20,10 +20,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Controller
+@SessionAttributes("apenadoDTO")
 public class ControladorApenado {
 
     @Autowired
@@ -47,20 +49,27 @@ public class ControladorApenado {
 
     @RequestMapping("listarApenados")
     public String listarApenados(@Valid @ModelAttribute("apenadoDTO") ApenadoDTO apenadoDTO,
-                                 @RequestParam(value = "limite", required = false, defaultValue = "8") String limite,
+//                                 @RequestParam(value = "limite", required = false, defaultValue = "8") String limite,
                                  Model model,
-                                 @PageableDefault(page = 0, size = 10) Pageable pageable) {
+                                 @PageableDefault(page = 0, size = 10) Pageable pageable,
+                                 SessionStatus sessionStatus) {
 
+        if(apenadoDTO == null){
+            apenadoDTO = new ApenadoDTO();
+            System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB   apenado refeito");
+        }
+        model.addAttribute("apenadoDTO", apenadoDTO);
         Specification<Apenado> spec = apenadoRepository.gerarSpec(apenadoDTO.getCpf(), apenadoDTO.getNome(), apenadoDTO.getTelefone(), apenadoDTO.getDataNascimento(), apenadoDTO.getNomeDaMae());
-
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"+apenadoDTO.getLimite());
         Sort sort = Sort.by(Sort.Direction.ASC, "nome");
+
 
         PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), Integer.parseInt(apenadoDTO.getLimite()), sort);
 
         Page<Apenado> pgApenado = repo.findAll(spec, pageRequest);
 
-        apenadoRepository.gerarModel(model, pageRequest, pgApenado);
-
+        apenadoRepository.gerarModel(model, pageRequest, pgApenado, apenadoDTO);
+        sessionStatus.setComplete();
         return "listarApenados";
     }
 

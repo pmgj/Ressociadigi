@@ -11,7 +11,7 @@ import java.time.LocalDate;
 
 public interface RepositorioApenadoCustom{
 
-    void gerarModel(Model model, Pageable pageable, Page pgApenado);
+    void gerarModel(Model model, Pageable pageable, Page pgApenado, ApenadoDTO apenadoDTO);
 
     Specification<Apenado> gerarSpec(String cpf, String nome, String telefone, LocalDate dataNascimento, String nomeDaMae);
 

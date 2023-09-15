@@ -178,16 +178,16 @@
                 </div>
 
                 <div id="previousAndNextButtons">
-                    <a th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},limite=${#httpServletRequest.getParameter('limite')?:''},page=0)}">
+                    <a th:href="@{/listarApenados(apenadoDTO=${apenadoDTO}, page=0)}">
                         <button type="button" class="botao laranja"><<</button>
                     </a>
-                    <a class="a" th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},limite=${#httpServletRequest.getParameter('limite')?:''},page=${previousPage})}">
+                    <a class="a" th:href="@{/listarApenados(apenadoDTO=${apenadoDTO},page=${previousPage})}">
                         <button type="button" class="botao laranja"><</button>
                     </a>
-                    <a th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},limite=${#httpServletRequest.getParameter('limite')?:''},page=${nextPage})}">
+                    <a th:href="@{/listarApenados(apenadoDTO=${apenadoDTO},page=${nextPage})}">
                         <button type="button" class="botao laranja">></button>
                     </a>
-                    <a th:href="@{/listarApenados(cpf=${#httpServletRequest.getParameter('cpf')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},telefone=${#httpServletRequest.getParameter('telefone')?:''},dataNascimento=${#httpServletRequest.getParameter('dataNascimento')?:''},nomeDaMae=${#httpServletRequest.getParameter('nomeDaMae')?:''},limite=${#httpServletRequest.getParameter('limite')?:''},page=${quantidadePaginas - 1})}">
+                    <a th:href="@{/listarApenados(apenadoDTO=${apenadoDTO},page=${quantidadePaginas - 1})}">
                         <button type="button" class="botao laranja">>></button>
                     </a>
                 </div>

@@ -31,7 +31,7 @@ public class RepositorioApenadoImpl implements RepositorioApenadoCustom {
 
 
     @Override
-    public void gerarModel(Model model, Pageable pageable, Page pgApenado) {
+    public void gerarModel(Model model, Pageable pageable, Page pgApenado, ApenadoDTO apenadoDTO) {
 
         // Manipulação das Páginas
         int numPaginaAtual = pageable.getPageNumber() + 1;
@@ -53,11 +53,10 @@ public class RepositorioApenadoImpl implements RepositorioApenadoCustom {
         limiteValues.add(20);
 
 
-        ApenadoDTO apenadoDTO = ApenadoDTO.getApenadoDTO();
 
         model.addAttribute("limites", limiteValues);
-        model.addAttribute("limite", pageable.getPageSize());
-        model.addAttribute("apenadoDTO", apenadoDTO);
+
+        model.addAttribute("limite", Integer.parseInt(apenadoDTO.getLimite()));
         model.addAttribute("lista", pgApenado);
     }
 

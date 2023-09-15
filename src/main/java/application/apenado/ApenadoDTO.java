@@ -11,7 +11,7 @@ public class ApenadoDTO {
     private String telefone;
     private LocalDate dataNascimento;
     private String nomeDaMae;
-    private String limite;
+    private String limite = "8";
     private static ApenadoDTO apenadoDTO;
 
 
@@ -83,7 +83,7 @@ public class ApenadoDTO {
 
 
 
-    public static ApenadoDTO getApenadoDTO(){
+    public static ApenadoDTO getApenadoDTO(ApenadoDTO apenadoDTO){
         if(apenadoDTO == null){
             apenadoDTO = new ApenadoDTO();
         }
