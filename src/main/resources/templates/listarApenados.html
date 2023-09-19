@@ -61,7 +61,7 @@
 <!--                </select>-->
 <!--            </form>-->
 
-            <form method="get" th:action="@{/listarApenados}">
+            <form method="post" th:action="@{/listarApenados}">
                 <select id="tamanho_da_lista" class="form-select" name="limite">
                     <span th:each="item : ${limites}">
                          <option th:value="${item}" class="value-option" th:text="${item}" th:selected="${item} == ${limite}" ></option>

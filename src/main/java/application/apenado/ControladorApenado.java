@@ -27,6 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Controller
+@SessionAttributes("apenadoDTO")
 public class ControladorApenado {
 
     @Autowired
@@ -48,7 +49,7 @@ public class ControladorApenado {
         return "signIn";
     }
 
-    @RequestMapping("listarApenados")
+    @PostMapping("listarApenados")
     public String listarApenados(@Valid @ModelAttribute("apenadoDTO") ApenadoDTO apenadoDTO,
                                  @RequestParam(value = "limite", required = false, defaultValue = "8") String limite,
                                  Model model,
@@ -56,16 +57,14 @@ public class ControladorApenado {
                                  HttpServletRequest request) {
 
 
-        if(apenadoDTO == null){
-            apenadoDTO = (ApenadoDTO) request.getSession().getAttribute("apenadoDTO");
-            if(apenadoDTO == null){
-                apenadoDTO = new ApenadoDTO();
-            }
-        }else{
-            request.getSession().setAttribute("apenadoDTO", apenadoDTO);
-            model.addAttribute("filtro", "filtro");
-
-        }
+//        if(apenadoDTO == null){
+//            apenadoDTO = (ApenadoDTO) request.getSession().getAttribute("apenadoDTO");
+//            if(apenadoDTO == null){
+//                apenadoDTO = new ApenadoDTO();
+//            }
+//        }else{
+//            model.addAttribute("filtro", "filtro");
+//        }
 
         Specification<Apenado> spec = apenadoRepository.gerarSpec(apenadoDTO.getCpf(), apenadoDTO.getNome(), apenadoDTO.getTelefone(), apenadoDTO.getDataNascimento(), apenadoDTO.getNomeDaMae());
 
@@ -79,9 +78,23 @@ public class ControladorApenado {
 
         return "listarApenados";
     }
+
+    @GetMapping("listarApenados")
+    public String listarApenados(@RequestParam(value = "limite", required = false, defaultValue = "8") String limite,
+                                 Model model,
+                                 @PageableDefault(page = 0, size = 10) Pageable pageable) {
+        Sort sort = Sort.by(Sort.Direction.ASC, "nome");
+        PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), Integer.parseInt(limite), sort);
+        Page<Apenado> pgApenado = repo.findAll(pageRequest);
+        ApenadoDTO apenadoDTO = new ApenadoDTO();
+        apenadoRepository.gerarModel(model, pageRequest, pgApenado, apenadoDTO);
+        return "listarApenados";
+    }
+
+
     @RequestMapping("limpaFiltro")
-    public String limpaFiltroApenados(HttpServletRequest request){
-        request.getSession().setAttribute("apenadoDTO", new ApenadoDTO());
+    public String limpaFiltroApenados(SessionStatus status){
+        status.setComplete();
         return "redirect:/listarApenados";
     }
 
