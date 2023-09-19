@@ -43,7 +43,8 @@
         <div class="header-tabela">
 
             <div class="buscador">
-               <button id="icone-filtro" type="button" class="botao laranja">Filtrar</button>
+                <button id="icone-filtro" type="button" class="botao laranja">Filtrar</button>
+                <a id="excluir-filtro" type="button" class="botao vermelho" th:if="${filtro}" th:href="@{limpaFiltro}">X</a>
             </div>
 
             <a th:href="@{/inserirApenado}">
@@ -60,10 +61,10 @@
 <!--                </select>-->
 <!--            </form>-->
 
-            <form method="get" th:action="@{/listarApenados}" th:object="${apenadoDTO}">
+            <form method="get" th:action="@{/listarApenados}">
                 <select id="tamanho_da_lista" class="form-select" name="limite">
                     <span th:each="item : ${limites}">
-                         <option th:value="${item}" class="value-option" th:text="${item}" th:selected="${item} == ${limite}" th:field="*{limite}"></option>
+                         <option th:value="${item}" class="value-option" th:text="${item}" th:selected="${item} == ${limite}" ></option>
                     </span>
                 </select>
             </form>

@@ -11,7 +11,6 @@ public class ApenadoDTO {
     private String telefone;
     private LocalDate dataNascimento;
     private String nomeDaMae;
-    private String limite = "8";
     private static ApenadoDTO apenadoDTO;
 
 
@@ -71,15 +70,7 @@ public class ApenadoDTO {
         this.nomeDaMae = nomeDaMae;
     }
 
-    public String getLimite() {
-        return limite;
-    }
-    public void setLimite(String limite) {
-        if(limite == null || limite.isEmpty()){
-            this.limite = "8";
-        }
-        this.limite = limite;
-    }
+
 
 
 
