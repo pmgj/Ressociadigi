@@ -44,7 +44,9 @@
 
             <div class="buscador">
                 <button id="icone-filtro" type="button" class="botao laranja">Filtrar</button>
-                <a id="excluir-filtro" type="button" class="botao vermelho" th:if="${filtro}" th:href="@{limpaFiltro}">X</a>
+                <a  th:if="${excluirFiltro}" th:href="@{limpaFiltro}">
+                    <button id="excluir-filtro" type="button" class="botao vermelho"><img src="/imgs/remove-orange.png"/></button>
+                </a>
             </div>
 
             <a th:href="@{/inserirApenado}">
@@ -179,18 +181,18 @@
                 </div>
 
                 <div id="previousAndNextButtons">
-                    <a th:href="@{/listarApenados(apenadoDTO=${apenadoDTO}, page=0)}">
-                        <button type="button" class="botao laranja"><<</button>
-                    </a>
-                    <a class="a" th:href="@{/listarApenados(apenadoDTO=${apenadoDTO},page=${previousPage})}">
-                        <button type="button" class="botao laranja"><</button>
-                    </a>
-                    <a th:href="@{/listarApenados(apenadoDTO=${apenadoDTO},page=${nextPage})}">
-                        <button type="button" class="botao laranja">></button>
-                    </a>
-                    <a th:href="@{/listarApenados(apenadoDTO=${apenadoDTO},page=${quantidadePaginas - 1})}">
-                        <button type="button" class="botao laranja">>></button>
-                    </a>
+                    <form method="post" th:action="@{/listarApenados(apenadoDTO=${apenadoDTO}, limite=${limiteStorage}, page=0)}">
+                        <button type="submit" class="botao laranja"><<</button>
+                    </form>
+                    <form method="post" th:action="@{/listarApenados(apenadoDTO=${apenadoDTO},limite=${limiteStorage},page=${previousPage})}">
+                        <button type="submit" class="botao laranja"><</button>
+                    </form>
+                    <form method="post" th:action="@{/listarApenados(apenadoDTO=${apenadoDTO},limite=${limiteStorage},page=${nextPage})}">
+                        <button type="submit" class="botao laranja">></button>
+                    </form>
+                    <form method="post" th:action="@{/listarApenados(apenadoDTO=${apenadoDTO},limite=${limiteStorage},page=${quantidadePaginas - 1})}">
+                        <button type="submit" class="botao laranja">>></button>
+                    </form>
                 </div>
             </div>
         </div>

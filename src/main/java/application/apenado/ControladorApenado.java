@@ -27,7 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Controller
-@SessionAttributes("apenadoDTO")
+@SessionAttributes({"apenadoDTO", "limite"})
 public class ControladorApenado {
 
     @Autowired
@@ -53,18 +53,15 @@ public class ControladorApenado {
     public String listarApenados(@Valid @ModelAttribute("apenadoDTO") ApenadoDTO apenadoDTO,
                                  @RequestParam(value = "limite", required = false, defaultValue = "8") String limite,
                                  Model model,
-                                 @PageableDefault(page = 0, size = 10) Pageable pageable,
-                                 HttpServletRequest request) {
+                                 @PageableDefault(page = 0, size = 10) Pageable pageable) {
 
 
-//        if(apenadoDTO == null){
-//            apenadoDTO = (ApenadoDTO) request.getSession().getAttribute("apenadoDTO");
-//            if(apenadoDTO == null){
-//                apenadoDTO = new ApenadoDTO();
-//            }
-//        }else{
-//            model.addAttribute("filtro", "filtro");
-//        }
+
+        model.addAttribute("limiteStorage", limite);
+
+        if(apenadoDTO.getCpf() != null || apenadoDTO.getNome() != null || apenadoDTO.getTelefone() != null || apenadoDTO.getNomeDaMae() != null || apenadoDTO.getDataNascimento() != null){
+            model.addAttribute("excluirFiltro", "Excluir Filtro");
+        }
 
         Specification<Apenado> spec = apenadoRepository.gerarSpec(apenadoDTO.getCpf(), apenadoDTO.getNome(), apenadoDTO.getTelefone(), apenadoDTO.getDataNascimento(), apenadoDTO.getNomeDaMae());
 
@@ -80,11 +77,10 @@ public class ControladorApenado {
     }
 
     @GetMapping("listarApenados")
-    public String listarApenados(@RequestParam(value = "limite", required = false, defaultValue = "8") String limite,
-                                 Model model,
+    public String listarApenados(Model model,
                                  @PageableDefault(page = 0, size = 10) Pageable pageable) {
         Sort sort = Sort.by(Sort.Direction.ASC, "nome");
-        PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), Integer.parseInt(limite), sort);
+        PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), 8, sort);
         Page<Apenado> pgApenado = repo.findAll(pageRequest);
         ApenadoDTO apenadoDTO = new ApenadoDTO();
         apenadoRepository.gerarModel(model, pageRequest, pgApenado, apenadoDTO);

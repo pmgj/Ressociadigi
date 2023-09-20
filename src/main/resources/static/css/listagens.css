@@ -65,7 +65,7 @@ body {
 
 .buscador {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: 35rem;
 }
 
@@ -135,6 +135,9 @@ body {
 select{
     width: 70px !important;
 }
+#previousAndNextButtons{
+    display: flex;
+}
 .botao {
     background-color: #fff;
     text-transform: uppercase;
@@ -165,7 +168,12 @@ select{
     background-color:  #FFBF00;
     color: white;
 }
-
+#excluir-filtro>img{
+    width:2rem;
+}
+#excluir-filtro{
+    border: none !important;
+}
 
 thead th td {
     display: flex;
