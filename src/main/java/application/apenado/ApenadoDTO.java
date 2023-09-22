@@ -11,7 +11,6 @@ public class ApenadoDTO {
     private String telefone;
     private LocalDate dataNascimento;
     private String nomeDaMae;
-    private static ApenadoDTO apenadoDTO;
 
 
     //Métodos básicos
@@ -68,16 +67,5 @@ public class ApenadoDTO {
     }
     public void setNomeDaMae(String nomeDaMae) {
         this.nomeDaMae = nomeDaMae;
-    }
-
-
-
-
-
-    public static ApenadoDTO getApenadoDTO(ApenadoDTO apenadoDTO){
-        if(apenadoDTO == null){
-            apenadoDTO = new ApenadoDTO();
-        }
-        return apenadoDTO;
     }
 }

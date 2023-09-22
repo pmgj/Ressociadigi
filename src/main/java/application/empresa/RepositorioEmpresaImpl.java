@@ -31,7 +31,7 @@ public class RepositorioEmpresaImpl  implements RepositorioEmpresaCustom{
     }
 
     @Override
-    public void gerarModel(Model model, Pageable pageable, Page pgEmpresa) {
+    public void gerarModel(Model model, Pageable pageable, Page pgEmpresa, EmpresaDTO empresaDTO) {
 
         int numPaginaAtual = pageable.getPageNumber() + 1;
         int numTotalPaginas = pgEmpresa.getTotalPages();
@@ -44,7 +44,7 @@ public class RepositorioEmpresaImpl  implements RepositorioEmpresaCustom{
         model.addAttribute("previousPage", pageable.getPageNumber() - 1);
         model.addAttribute("quantidadePaginas", numTotalPaginas);
         model.addAttribute("listaEmpresas", pgEmpresa);
-        model.addAttribute("empresaDTO", new EmpresaDTO());
+        model.addAttribute("empresaDTO", empresaDTO);
 
         List<Integer> limiteValues = new ArrayList<>();
 
@@ -53,6 +53,7 @@ public class RepositorioEmpresaImpl  implements RepositorioEmpresaCustom{
         limiteValues.add(8);
         limiteValues.add(10);
         limiteValues.add(20);
+
 
         model.addAttribute("limites", limiteValues);
         model.addAttribute("limite", pageable.getPageSize());

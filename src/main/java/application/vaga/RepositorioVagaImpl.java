@@ -27,7 +27,7 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
     }
 
     @Override
-    public void gerarModel(Model model, Pageable pageable, Page pgVaga) {
+    public void gerarModel(Model model, Pageable pageable, Page pgVaga, VagaDTO vagaDTO) {
 
         int numPaginaAtual = pageable.getPageNumber() + 1;
         int numTotalPaginas = pgVaga.getTotalPages();
@@ -39,7 +39,7 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
                 : pageable.getPageNumber() + 1 );
         model.addAttribute("previousPage", pageable.getPageNumber() - 1);
         model.addAttribute("quantidadePaginas", numTotalPaginas);
-        model.addAttribute("vagaDTO", new VagaDTO());
+        model.addAttribute("vagaDTO", vagaDTO);
 
         List<Integer> limiteValues = new ArrayList<>();
 

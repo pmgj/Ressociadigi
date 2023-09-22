@@ -18,9 +18,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@SessionAttributes({"empresaDTO", "limite"})
 public class ControladorEmpresa {
 	
 	@Autowired
@@ -61,11 +63,25 @@ public class ControladorEmpresa {
 		return "redirect:/listarEmpresas";
 	}
 
-	@RequestMapping("listarEmpresas")
+	@PostMapping("listarEmpresas")
 	public String searchEmpresas(@Valid @ModelAttribute("empresaDTO") EmpresaDTO empresaDTO,
 								 @RequestParam(value = "limite", required = false, defaultValue = "8") String limite,
 								 Model model,
 								 @PageableDefault(page = 0, size = 8) Pageable pageable) {
+
+
+		model.addAttribute("limiteStorage", limite);
+
+		if(empresaDTO.getCnpj() != null ||
+			empresaDTO.getCidade() != null ||
+			empresaDTO.getTelefone() != null ||
+			empresaDTO.getEmail() != null ||
+			empresaDTO.getResponsavel() != null||
+			empresaDTO.getInterlocutor() != null ||
+			empresaDTO.getNome() != null)
+		{
+			model.addAttribute("excluirFiltro", "Excluir Filtro");
+		}
 
 		Specification<Empresa> spec = apenadoRepositoryCustom.gerarSpec(empresaDTO.getCnpj(),
 				empresaDTO.getNome(),
@@ -81,9 +97,27 @@ public class ControladorEmpresa {
 
 		Page<Empresa> pgEmpresa = service.findAll(spec, pageRequest);
 
-		apenadoRepositoryCustom.gerarModel(model, pageRequest, pgEmpresa);
+		apenadoRepositoryCustom.gerarModel(model, pageRequest, pgEmpresa, empresaDTO);
 
 		return "listarEmpresas";
+	}
+
+	@GetMapping("listarEmpresas")
+	public String searchEmpresas(Model model,
+								 @PageableDefault(page = 0, size = 8) Pageable pageable){
+		Sort sort = Sort.by(Sort.Direction.ASC, "nome");
+		PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), 8, sort);
+		Page<Empresa> pgEmpresa = service.findAll(pageRequest);
+		EmpresaDTO empresaDTO = new EmpresaDTO();
+		apenadoRepositoryCustom.gerarModel(model, pageRequest, pgEmpresa, empresaDTO);
+
+		return "listarEmpresas";
+	}
+
+	@RequestMapping("limpaFiltroEmpresa")
+	public String limpaFiltroEmpresa(SessionStatus status){
+		status.setComplete();
+		return "redirect:/listarEmpresas";
 	}
 
 	@GetMapping("/detalharEmpresa")

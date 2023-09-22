@@ -88,7 +88,7 @@ public class ControladorApenado {
     }
 
 
-    @RequestMapping("limpaFiltro")
+    @RequestMapping("limpaFiltroApenado")
     public String limpaFiltroApenados(SessionStatus status){
         status.setComplete();
         return "redirect:/listarApenados";

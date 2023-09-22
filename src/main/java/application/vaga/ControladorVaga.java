@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import application.apenado.RepositorioApenado;
@@ -28,6 +29,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@SessionAttributes({"vagaDTO", "limite"})
 public class ControladorVaga {
 
 	@Autowired
@@ -49,16 +51,23 @@ public class ControladorVaga {
 	private RepositorioApenado repApenado;
 
 
-	@RequestMapping("listarVagasPreenchidas")
-	public String listarVagasPreenchidas(@RequestParam(value = "empresa", required = false)String empresa,
-										 @RequestParam(value = "apenado", required = false)String apenado,
-										 @RequestParam(value = "tipo", required = false)String tipo,
+	@PostMapping("listarVagasPreenchidas")
+	public String listarVagasPreenchidas(@Valid @ModelAttribute("vagaDTO") VagaDTO vagaDTO,
 										 @RequestParam(value = "limite", required = false, defaultValue = "8") String limite,
 										 Model model,
 										 @PageableDefault(page = 0, size = 8) Pageable pageable) {
 
 
-		Specification<VagaPreenchida> spec = vagaRepositoryCustom.gerarSpecVagaPreenchida(empresa, apenado, tipo);
+		model.addAttribute("limiteStorage", limite);
+
+		if(vagaDTO.getEmpresa() != null ||
+				vagaDTO.getApenado() != null ||
+				vagaDTO.getTipo() != null)
+		{
+			model.addAttribute("excluirFiltro", "Excluir Filtro");
+		}
+
+		Specification<VagaPreenchida> spec = vagaRepositoryCustom.gerarSpecVagaPreenchida(vagaDTO.getEmpresa(), vagaDTO.getApenado(), vagaDTO.getTipo());
 
 		Sort sort = Sort.by(Sort.Direction.ASC, "apenado.nome");
 
@@ -66,10 +75,28 @@ public class ControladorVaga {
 
 		Page<VagaPreenchida> pgVagas = repVagaPreenchida.findAll(spec, pageRequest);
 
-		vagaRepositoryCustom.gerarModel(model,pageRequest,pgVagas);
+		vagaRepositoryCustom.gerarModel(model,pageRequest,pgVagas, vagaDTO);
 
 		return "listarVagasPreenchidas";
 	}
+
+	@GetMapping("listarVagasPreenchidas")
+	public String listarVagasPreenchidas(Model model,
+										 @PageableDefault(page = 0, size = 8) Pageable pageable) {
+		Sort sort = Sort.by(Sort.Direction.ASC, "apenado.nome");
+		PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), 8, sort);
+		Page<VagaPreenchida> pgVagas = repVagaPreenchida.findAll(pageRequest);
+		VagaDTO vagaDTO = new VagaDTO();
+		vagaRepositoryCustom.gerarModel(model,pageRequest,pgVagas, vagaDTO);
+		return "listarVagasPreenchidas";
+	}
+
+	@RequestMapping("limpaFiltroVagaPreenchida")
+	public String limpaFiltroVagasPreenchidas(SessionStatus status){
+		status.setComplete();
+		return "redirect:/listarVagasPreenchidas";
+	}
+
 
 	@GetMapping("/preencherVaga")
 	public ModelAndView preencherVaga(Model model) {
@@ -205,13 +232,22 @@ public class ControladorVaga {
 		service.save(vaga);
 		return "redirect:/listarVagas";
 	}
-	@RequestMapping("listarVagas")
+	@PostMapping("listarVagas")
 	public String searchVagas(@Valid @ModelAttribute("vagaDTO") VagaDTO vagaDTO,
 							  @RequestParam(value = "limite", required = false, defaultValue = "8") String limite,
 	                          Model model,
-	                         @PageableDefault(page = 0, size = 8) Pageable pageable) {
+	                          @PageableDefault(page = 0, size = 8) Pageable pageable) {
 
+		model.addAttribute("limiteStorage", limite);
 
+		if(vagaDTO.getEmpresa() != null ||
+			vagaDTO.getQuantidadeVagasFemininas() != null ||
+			vagaDTO.getQuantidadeVagasMasculinas() != null ||
+			vagaDTO.getCargaHoraria() != null ||
+			vagaDTO.getTipo() != null)
+		{
+			model.addAttribute("excluirFiltro", "Excluir Filtro");
+		}
 
 		Specification<Vaga> spec = vagaRepositoryCustom.gerarSpec(vagaDTO.getEmpresa(),
 				vagaDTO.getTipo(),
@@ -225,11 +261,30 @@ public class ControladorVaga {
 
 		Page<Vaga> pgVagas = service.findAll(spec, pageRequest);
 
-		vagaRepositoryCustom.gerarModel(model,pageRequest,pgVagas);
+		vagaRepositoryCustom.gerarModel(model,pageRequest,pgVagas, vagaDTO);
 
 		return "listarVagas";
 
 	}
+
+	@GetMapping("listarVagas")
+	public String searchVagas(Model model,
+							  @PageableDefault(page = 0, size = 8) Pageable pageable) {
+		Sort sort = Sort.by(Sort.Direction.ASC, "empresa.nome");
+		PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), 8, sort);
+		Page<Vaga> pgVagas = service.findAll(pageRequest);
+		VagaDTO vagaDTO = new VagaDTO();
+		vagaRepositoryCustom.gerarModel(model,pageRequest,pgVagas, vagaDTO);
+		return "listarVagas";
+	}
+
+
+	@RequestMapping("limpaFiltroVaga")
+	public String limpaFiltroVagas(SessionStatus status){
+		status.setComplete();
+		return "redirect:/listarVagas";
+	}
+
 
 	@GetMapping("/alterarVaga")
 	public String alterarVaga(@RequestParam int id, Model model) {

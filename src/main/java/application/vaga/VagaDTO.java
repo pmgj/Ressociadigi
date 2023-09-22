@@ -9,6 +9,8 @@ public class VagaDTO {
     private String quantidadeVagasFemininas;
     private String cargaHoraria;
 
+    private String apenado;
+
 
 
     //Métodos
@@ -73,4 +75,15 @@ public class VagaDTO {
             this.cargaHoraria = cargaHoraria;
         }
     }
+
+
+
+    public void setApenado(String apenado){
+        if(apenado == null || apenado.isEmpty()){
+            this.apenado = null;
+        }else{
+            this.apenado = apenado;
+        }
+    }
+    public String getApenado(){ return this.apenado; }
 }

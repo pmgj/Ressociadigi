@@ -44,6 +44,9 @@
         <div class="header-tabela">
             <div class="buscador">
                 <button id="icone-filtro" type="button" class="botaoVaga botao laranja">Filtrar</button>
+                <a  th:if="${excluirFiltro}" th:href="@{limpaFiltroVaga}">
+                    <button id="excluir-filtro" type="button" class="botao vermelho"><img src="/imgs/remove-orange.png"/></button>
+                </a>
             </div>
 
 
@@ -56,7 +59,7 @@
             <a th:href="@{/listarVagasPreenchidas}">
                 <button type="button" class="botaoVaga  botao laranja">Histórico de Vagas</button>
             </a>
-            <form method="get" action="/listarVagas">
+            <form method="post" th:action="@{/listarVagas}">
                 <select id="tamanho_da_lista" class="form-select" name="limite">
                     <span th:each="item : ${limites}">
                          <option th:value="${item}" class="value-option" th:text="${item}" th:selected="${item} == ${limite}"></option>
@@ -170,18 +173,18 @@
                 </div>
 
                 <div id="previousAndNextButtons">
-                    <a th:href="@{listarVagas(empresa=${#httpServletRequest.getParameter('empresa')?:''},tipo=${#httpServletRequest.getParameter('tipo')?:''},interlocutor=${#httpServletRequest.getParameter('interlocutor')?:''},vagasMasculinas=${#httpServletRequest.getParameter('vagasMasculinas')?:'0'},vagasFemininas=${#httpServletRequest.getParameter('vagasFeminas')?:'0'},cargaHoraria=${#httpServletRequest.getParameter('cargaHoraria')?:'0'},limite=${#httpServletRequest.getParameter('limite')?:''}, page=0)}">
-                        <button type="button" class="botao laranja"><<</button>
-                    </a>
-                    <a th:href="@{listarVagas(empresa=${#httpServletRequest.getParameter('empresa')?:''},tipo=${#httpServletRequest.getParameter('tipo')?:''},interlocutor=${#httpServletRequest.getParameter('interlocutor')?:''},vagasMasculinas=${#httpServletRequest.getParameter('vagasMasculinas')?:'0'},vagasFemininas=${#httpServletRequest.getParameter('vagasFeminas')?:'0'},cargaHoraria=${#httpServletRequest.getParameter('cargaHoraria')?:'0'},limite=${#httpServletRequest.getParameter('limite')?:''}, page=${previousPage})}">
-                        <button type="button" class="botao laranja"><</button>
-                    </a>
-                    <a th:href="@{listarVagas(empresa=${#httpServletRequest.getParameter('empresa')?:''},tipo=${#httpServletRequest.getParameter('tipo')?:''},interlocutor=${#httpServletRequest.getParameter('interlocutor')?:''},vagasMasculinas=${#httpServletRequest.getParameter('vagasMasculinas')?:'0'},vagasFemininas=${#httpServletRequest.getParameter('vagasFeminas')?:'0'},cargaHoraria=${#httpServletRequest.getParameter('cargaHoraria')?:'0'},limite=${#httpServletRequest.getParameter('limite')?:''}, page=${nextPage})}">
-                        <button type="button" class="botao laranja">></button>
-                    </a>
-                    <a th:href="@{listarVagas(empresa=${#httpServletRequest.getParameter('empresa')?:''},tipo=${#httpServletRequest.getParameter('tipo')?:''},interlocutor=${#httpServletRequest.getParameter('interlocutor')?:''},vagasMasculinas=${#httpServletRequest.getParameter('vagasMasculinas')?:'0'},vagasFemininas=${#httpServletRequest.getParameter('vagasFeminas')?:'0'},cargaHoraria=${#httpServletRequest.getParameter('cargaHoraria')?:'0'},limite=${#httpServletRequest.getParameter('limite')?:''}, page=${quantidadePaginas - 1})}">
-                        <button type="button" class="botao laranja">>></button>
-                    </a>
+                    <form method="post" th:action="@{listarVagas(vagaDTO=${vagaDTO}, limite=${limiteStorage}, page=0)}">
+                        <button type="submit" class="botao laranja"><<</button>
+                    </form>
+                    <form method="post" th:action="@{listarVagas(vagaDTO=${vagaDTO}, limite=${limiteStorage}, page=${previousPage})}">
+                        <button type="submit" class="botao laranja"><</button>
+                    </form>
+                    <form method="post" th:action="@{listarVagas(vagaDTO=${vagaDTO}, limite=${limiteStorage}, page=${nextPage})}">
+                        <button type="submit" class="botao laranja">></button>
+                    </form>
+                    <form method="post" th:action="@{listarVagas(vagaDTO=${vagaDTO}, limite=${limiteStorage}, page=${quantidadePaginas - 1})}">
+                        <button type="submit" class="botao laranja">>></button>
+                    </form>
                 </div>
 
             </div>
