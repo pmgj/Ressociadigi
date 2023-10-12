@@ -47,21 +47,13 @@
                 <a  th:if="${excluirFiltro}" th:href="@{limpaFiltroApenado}">
                     <button id="excluir-filtro" type="button" class="botao vermelho"><img src="/imgs/remove-orange.png"/></button>
                 </a>
+                <p th:if="${erro}" th:text="${erro}"></p>
             </div>
 
             <a th:href="@{/inserirApenado}">
                 <button type="button" class="botao laranja">Cadastrar Apenado</button>
             </a>
 
-<!--            <form method="get" action="/listarApenados">-->
-<!--                <select id="tamanho_da_lista" name="limite">-->
-<!--                    <option value="2" th:selected="${limite == 2}">2</option>-->
-<!--                    <option value="4" th:selected="${limite == 4}">4</option>-->
-<!--                    <option value="8" th:selected="${limite == 8}">8</option>-->
-<!--                    <option value="10" th:selected="${limite == 10}">10</option>-->
-<!--                    <option value="20" th:selected="${limite == 20}">20</option>-->
-<!--                </select>-->
-<!--            </form>-->
 
             <form method="post" th:action="@{/listarApenados}">
                 <select id="tamanho_da_lista" class="form-select" name="limite">
@@ -137,9 +129,7 @@
                             <li id="habilidades" th:each="habilidade : ${item.habilidades}" th:text="${habilidade}"></li>
                         </ul>
 
-<!--                        <span >Habilidades</span>-->
                     </td>
-<!--                    <td data-label="ARTIGOS"><span id="artigos" th:text="${item.artigos}">Artigos</span></td>-->
                     <td id="Btn-remove-edit" width="180">
                         <button id="ver-mais" th:attr="data-cpf=${item.cpf}"><img class="icones-lista" src="/imgs/view.png" alt="detalhamento"></button>
                         <a th:href="@{/alterarApenado(cpf=${item.cpf})}"><button><img class="icones-lista" src="/imgs/edit.png" alt="editar"></button></a>

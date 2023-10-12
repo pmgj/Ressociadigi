@@ -1,15 +1,11 @@
 package application.apenado;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+
 import java.util.Arrays;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,45 +13,45 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.util.UriComponentsBuilder;
 
 @Controller
 @SessionAttributes({"apenadoDTO", "limite"})
 public class ControladorApenado {
 
-    @Autowired
-    private RepositorioApenado service;
+    private final RepositorioApenado service;
+    private final RepositorioApenadoImpl apenadoRepository;
+    private final ApenadoRepo repo;
 
     @Autowired
-    private RepositorioApenadoImpl apenadoRepository;
-
-    @Autowired
-    private ApenadoRepo repo;
+    public ControladorApenado(RepositorioApenado service,
+                              RepositorioApenadoImpl apenadoRepository,
+                              ApenadoRepo repo){
+        this.service = service;
+        this.apenadoRepository = apenadoRepository;
+        this.repo = repo;
+    }
 
     @GetMapping("/mainPage")
-    public String mainPage(Model model) {
+    public String mainPage() {
         return "index";
     }
 
     @GetMapping("/signIn")
-    public String loginPage(Model model) {
+    public String loginPage() {
         return "signIn";
-    }
+    } //Descontinuado
 
     @PostMapping("listarApenados")
     public String listarApenados(@Valid @ModelAttribute("apenadoDTO") ApenadoDTO apenadoDTO,
                                  @RequestParam(value = "limite", required = false, defaultValue = "8") String limite,
                                  Model model,
                                  @PageableDefault(page = 0, size = 10) Pageable pageable) {
-
-
 
         model.addAttribute("limiteStorage", limite);
 
@@ -118,7 +114,7 @@ public class ControladorApenado {
     }
 
     @PostMapping("/armazenarApenado")
-    public String armazenarApenado(@Valid Apenado apenado, BindingResult bindingResult, Model model) {
+    public String armazenarApenado(@Valid Apenado apenado, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "apenado";
         }
@@ -128,19 +124,27 @@ public class ControladorApenado {
 
     @GetMapping("/alterarApenado")
     public String alterarApenadoForm(@RequestParam String cpf, Model model) {
-        Apenado apenado = service.findById(cpf).get();
+        Apenado apenado = service.findById(cpf).orElse(null);
+        if(apenado == null){
+            model.addAttribute("erro", "Apenado não localizado");
+            return "redirect:/listarApenados";
+        }
         model.addAttribute("apenado", apenado);
         return "apenado";
     }
 
     @GetMapping("/removerApenado")
-    public String removerApenado(@RequestParam String cpf, Model model) {
+    public String removerApenado(@RequestParam String cpf) {
         service.deleteById(cpf);
         return "redirect:/listarApenados";
     }
     @GetMapping("/detalharApenado")
     public String getUserByCPF(@RequestParam("cpf") String cpf, Model model) {
-        Apenado apenado = service.findById(cpf).get();
+        Apenado apenado = service.findById(cpf).orElse(null);
+        if(apenado == null){
+            model.addAttribute("erro", "Detalhamento não localizado");
+            return "redirect:/listarApenados";
+        }
         model.addAttribute("detalhamento", apenado);
         return "detalhamento";
     }
