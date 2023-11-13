@@ -65,13 +65,15 @@ html, body {
 }
 span{
     font-weight: 800;
+    padding: 0 6px;
 }
 @page {size:auto; margin: 0mm;}
 @media print{
     .title,
     .top-layer,
     #footer,
-    #menu-lateral-print{
+    #menu-lateral-print,
+    #edicao{
         display: none;
     }
     #print-box{

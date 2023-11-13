@@ -143,7 +143,6 @@
                     <td id="Btn-remove-edit" width="180">
                         <button id="ver-mais" th:attr="data-cpf=${item.cpf}"><img class="icones-lista" src="/imgs/view.png" alt="detalhamento"></button>
                         <a th:href="@{/alterarApenado(cpf=${item.cpf})}"><button><img class="icones-lista" src="/imgs/edit.png" alt="editar"></button></a>
-                        <a th:href="@{/certificado(cpf=${item.cpf})}"><button><img class="icones-lista" src="/imgs/imprimir.png" alt="imprimir"></button></a>
                         <a id="botao-remover" href="#" th:attr="data-nome=${item.nome}, data-cpf=${item.cpf}" data-toggle="modal" data-target="#confirmModal"><button><img class="icones-lista" src="/imgs/remove.png" alt="remover"></button></a>
                     </td>
                 </tr>

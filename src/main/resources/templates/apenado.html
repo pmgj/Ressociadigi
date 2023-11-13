@@ -81,6 +81,11 @@
                             <label id="labelError" th:if="${#fields.hasErrors('telefone2')}" th:errors="*{telefone2}">Erro no Telefone
                                 2</label>
                         </div>
+                        <div id="prontuario" class="input-normal">
+                            <label for="prontuario">Prontuário</label>
+                            <input type="text" th:field="*{prontuario}" id="prontuario" maxlength="15">
+                            <label id="labelError" th:if="${#fields.hasErrors('prontuario')}" th:errors="*{prontuario}">Erro no Prontuário</label>
+                        </div>
 
                         <div id="nomeMae" class="input-normal">
                             <label for="nomeMae">Nome da mãe</label>

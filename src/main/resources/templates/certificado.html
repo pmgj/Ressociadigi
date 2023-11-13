@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=10, minimum-scale=1.0">
     <link rel="stylesheet" th:href="@{css/listagens.css}" />
     <link rel="stylesheet" th:href="@{css/telacertificado.css}" media="all"/>
-    <link rel="stylesheet" th:href="@{css/printcertificado.css}" media="print" />
     <link rel="stylesheet" th:href="@{/css/menu-lateral.css}" />
     <link rel="icon" th:href="@{/imgs/logoRD.png}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
@@ -35,19 +34,24 @@
         <h3>Imprimir Certificado de <span th:text="${apenado.nome}"></span></h3>
     </div>
 
+    <div id="edicao">
+        <label for="dataHoraApresentation">Data e hora para apresentação:</label>
+        <input type="datetime-local" id="dataHoraApresentation" name="dataHoraApresentation">
+    </div>
+
     <div id="print-box">
         <header class="print-header">
-            <img src="" class="print-logo"/>
-            <img src="/imgs/estado.png" class="print-logo"/>
+            <img src="" class="print-logo" alt="Patronato do Estado de Pernambuco"/>
+            <img src="/imgs/estado.png" class="print-logo" alt="Secretaria de Justiça e Direitos Humanos"/>
         </header>
         <section class="print-body">
                 <h1>CAEF EMPREGO</h1>
                 <h2>Encaminhamento de Mão de Obra Reeducanda</h2>
                 <p>Encaminhamos o(a) reeducando(a) <span th:text="${apenado.nome}"></span>, Prontuário
-                    <span th:text="${apenado.numeroProcesso}"></span> para se apresentar dia ________, às ____,
-                na empresa _________________________________________, apto à função de _________________________________________.</p>
+                    <span th:text="${apenado.prontuario}"></span> para se apresentar dia <span id="diaApresentacao"></span>/<span id="mesApresentacao"></span>, às <span id="horaApresentacao"></span>,
+                    na empresa <span th:text="${vaga.empresa.nome}"></span>, apto(a) à função de <span th:text="${vaga.tipo}"></span>(a).</p>
                 <div class="print-data">
-                    Recife, PE, ____ de _________________ de _______.
+                    Recife, PE, <span th:text="${dia}"></span> de <span th:text="${mes}"></span> de <span th:text="${ano}"></span>.
                 </div>
                 <div class="print-assinatura">
                     <div class="print-campo-assinatura">______________________________________________________</div>
@@ -70,12 +74,14 @@
         <div class="botao-container">
             <a th:href="@{/listarApenados}" ><button type="button" class="botao laranja">Voltar</button></a>
             <button onclick="window.print()" type="button" class="botao laranja">Imprimir Certificado</button>
+            <a th:href="@{/listarVagas}" ><button type="button" class="botao laranja">Lista de Vagas</button></a>
         </div>
     </div>
 
 </main>
 
 <script defer="defer"  th:src="@{/js/menuLateral.js}"></script>
+<script defer="defer"  th:src="@{/js/printJS.js}"></script>
 </body>
 
 </html>
