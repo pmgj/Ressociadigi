@@ -97,7 +97,7 @@
 					<th>VAGA</th>
 					<th>DATA DE INÍCIO</th>
 					<th>DATA DE TÉRMINO</th>
-					<th>OPERAÇÕES</th>
+					<th id="acoes-box">AÇÕES</th>
 				</tr>
 			</thead>
 
@@ -122,6 +122,7 @@
 					<td data-label="DATA DE TERMINO"><span
 						th:text="${vagaPreenchida.dataFim}">DATA DE TÉRMINO</span></td>
 					<td id="Btn-remove-edit" width="180">
+						<a th:href="@{/emitirCertificado(id=${vagaPreenchida.getId()})}"><button><img class="icones-lista" src="/imgs/print.png" alt="Imprimir 2°via"></button></a>
 						<button id="ver-mais" th:attr="data-id=${vagaPreenchida.getId()}"><img class="icones-lista" src="/imgs/view.png" alt="detalhamento"></button>
 						<a th:href="@{/alterarVagaPreenchida(id=${vagaPreenchida.getId()})}"><button><img class="icones-lista" src="/imgs/edit.png" alt="editar item"></button></a>
 						<a id="botao-remover" href="#" th:attr="data-id=${vagaPreenchida.getId()}" data-toggle="modal" data-target="#confirmModal"><button><img class="icones-lista" src="/imgs/remove.png" alt="remover item"></button></a>

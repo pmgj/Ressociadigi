@@ -15,7 +15,9 @@ button a{
     margin: 0;
     padding: 0;
 }
-
+.acoes-box{
+    min-width: 250px;
+}
 .modal-detalhamento > h2{
     margin-top: 15px;
     margin-bottom: -10px;
@@ -427,7 +429,8 @@ table tbody tr td:before {
 }
 #Btn-remove-edit {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    min-width: 240px;
 }
 
 .top-layer {

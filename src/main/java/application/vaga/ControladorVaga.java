@@ -90,6 +90,59 @@ public class ControladorVaga {
 		vagaRepositoryCustom.gerarModel(model,pageRequest,pgVagas, vagaDTO);
 		return "listarVagasPreenchidas";
 	}
+	@GetMapping("/emitirCertificado")
+	public String emitirCertificado(@RequestParam int id, Model model){
+		Vaga v = repVagaPreenchida.getById(id).getVaga();
+		Apenado a = repVagaPreenchida.getById(id).getApenado();
+		model.addAttribute("vaga", v);
+		model.addAttribute("apenado", a);
+		Date dataAtual = new Date();
+		String dia = new SimpleDateFormat("dd").format(dataAtual);
+		String mes = new SimpleDateFormat("MM").format(dataAtual);
+		String ano = new SimpleDateFormat("yyyy").format(dataAtual);
+		switch (mes){
+			case "1":
+				mes = "janeiro";
+				break;
+			case "2":
+				mes = "fevereiro";
+				break;
+			case "3":
+				mes = "março";
+				break;
+			case "4":
+				mes = "abril";
+				break;
+			case "5":
+				mes = "maio";
+				break;
+			case "6":
+				mes = "junho";
+				break;
+			case "7":
+				mes = "julho";
+				break;
+			case "8":
+				mes = "agosto";
+				break;
+			case "9":
+				mes = "setembro";
+				break;
+			case "10":
+				mes = "outubro";
+				break;
+			case "11":
+				mes = "novembro";
+				break;
+			case "12":
+				mes = "dezembro";
+				break;
+		}
+		model.addAttribute("dia", dia);
+		model.addAttribute("mes", mes);
+		model.addAttribute("ano", ano);
+		return "certificado";
+	}
 
 	@RequestMapping("limpaFiltroVagaPreenchida")
 	public String limpaFiltroVagasPreenchidas(SessionStatus status){
@@ -188,7 +241,7 @@ public class ControladorVaga {
 			System.err.print(e.getMessage());
 			return "alocarVagaApenado";
 		}
-		//ControladorApenado control = new ControladorApenado();
+
 		model.addAttribute("apenado", apenadoEscolhido);
 		model.addAttribute("vaga", vagaEscolhida);
 		Date dataAtual = new Date();
