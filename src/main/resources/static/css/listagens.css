@@ -47,6 +47,7 @@ body {
     justify-content: center;
     padding: 30px;
     width: 100vw;
+    overflow-x: hidden;
 }
 
 .title h1 {

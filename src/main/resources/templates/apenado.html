@@ -43,7 +43,8 @@
 
         <section>
 
-            <form action="#" th:action="@{/armazenarApenado}" th:object="${apenado}" method="post" id="formulario">
+            <form action="#" th:action="@{/armazenarApenado}" th:object="${apenado}" enctype="multipart/form-data" method="post" id="formulario">
+
                 <div id="titulo">
                     <h1 onclick="mudarTitulo()" id="titulox">Dados Pessoais</h1>
                     <div id="div-sinalizacao">Os dados que contém a sinalização <span id="sinal">(*)</span> são obrigatórios!
@@ -67,12 +68,26 @@
                             <label id="cpfInvalido">CPF inválido! Por favor, verifique o CPF inserido.</label>
                         </div>
 
+
+                        <div id="Imagem-Cpf-inputbox" class="input-upload" >
+                            <label for="cpfIMG">Imagem do CPF</label>
+                            <input type="file" name="imagemTransferCPF" accept="image/*" id="cpfIMG">
+                            <label id="labelError" th:if="${erroImgCpf}" >Documento não anexado</label>
+                        </div>
+                        <div id="Imagem-RG-inputbox" class="input-upload" >
+                            <label for="rgIMG">Imagem do RG</label>
+                            <input type="file"  name="imagemTransferRG" accept="image/*" id="rgIMG" >
+                            <label id="labelError" th:if="${erroImgRG}" >Documento não anexado</label>
+                        </div>
+
+
                         <div id="telefone-input" class="input-normal">
                             <label for="telefone">Telefone <a id="sinal">*</a></label>
                             <input type="text" th:field="*{telefone}" id="telefone" maxlength="15">
-                            <label id="labelError" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}">Erro
+                            <label id="labelError" th:if="${#fields.hasErrors('telefone')}" >Erro
                                 no
                                 Telefone</label>
+<!--                            th:errors="*{telefone}"-->
                         </div>
 
                         <div id="telefone2-inpubox" class="input-normal">
@@ -220,6 +235,11 @@
                             <label id="labelError" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}">Erro
                                 no Estado</label>
                         </div>
+                        <div id="Imagem-Endereco-inputbox" class="input-upload" >
+                            <label for="enderecoIMG">Imagem do Comprovante de Residência</label>
+                            <input type="file" name="imagemTransferComprovanteResidencia" accept="image/*" id="enderecoIMG" >
+                            <label id="labelError" th:if="${erroImgComprovanteResidencia}" >Documento não anexado</label>
+                        </div>
                     </div>
                     <!-----------------------SEÇÃO INSTRUÇÃO------------------------------>
                     <div id="grupo-input-instrucao">
@@ -311,6 +331,12 @@
                             <label id="labelError" th:if="${#fields.hasErrors('dataTerminoPena')}" th:errors="*{dataTerminoPena}">Erro no Termino de Pena</label>
                         </div>
 
+                        <div id="Imagem-AtestadoDePena-inputbox" class="input-upload" >
+                            <label for="atestadoDePenaIMG">Atestado de Pena</label>
+                            <input type="file"  name="imagemTransferAtestadoPena" accept="image/*" id="atestadoDePenaIMG" >
+                            <label id="labelError" th:if="${erroImgAtestadoPena}" >Documento não anexado</label>
+                        </div>
+
                         <div id="prioridade">
                             <p>Prioridade</p>
                             <div id="prioridades">
@@ -351,7 +377,13 @@
                                 <label id="labelError" th:if="${#fields.hasErrors('operacao')}" th:errors="*{operacao}">Erro na
                                     Operação</label>
                             </div>
+
                         </fieldset>
+                        <div id="Imagem-ContaBancaria-inputbox" class="input-upload" >
+                            <label for="contaBancariaIMG">Comprovante da Conta Bancária</label>
+                            <input type="file" name="imagemTransferComprovanteBancario" accept="image/*" id="contaBancariaIMG" >
+                            <label id="labelError" th:if="${erroImgComprovanteBancario}" >Documento não anexado</label>
+                        </div>
                         <div></div><div></div>
                         <div id="botao-cadastrar">
                             <button type="submit">Cadastrar</button>

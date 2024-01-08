@@ -4,14 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -31,6 +24,7 @@ import application.vaga.VagaPreenchida;
 import org.springframework.stereotype.Component;
 
 @Entity
+@Embeddable
 @Cpf
 public class Apenado {
 
@@ -41,6 +35,13 @@ public class Apenado {
 	@NotEmpty(message = "Este campo não pode estar vazio")
 	@Pattern(regexp = "[0-9]{11}", message = "CPF deve possuir 11 dígitos")
 	private String cpf;
+
+	@Embedded
+	@AttributeOverride( name = "enderecoDoDiretorio", column = @Column( name = "enderecoImagemCpf"))
+	private ImagemDocumento imagemCPF;
+
+	@Embedded
+	private ImagemDocumento imagemRG;
 
 	@NotNull(message = "Este campo não pode ser nulo")
 	@NotEmpty(message = "Este campo não pode estar vazio")
@@ -76,6 +77,9 @@ public class Apenado {
 	private String numeroDaCasa;
 	private String complemento;
 
+	@Embedded
+	private ImagemDocumento imagemComprovanteDeResidencia;
+
 	// Atributos relacionados à seção de Instrução.
 
 	private String escolaridade;
@@ -95,6 +99,9 @@ public class Apenado {
 
 	private Prioridade prioridade = Prioridade.BAIXA;
 	private String numeroProcesso;
+
+	@Embedded
+	private ImagemDocumento imagemAtestadoDePena;
 	
 	@ElementCollection
 	@Column(name="artigo")
@@ -107,6 +114,9 @@ public class Apenado {
 	private String agencia;
 	private String banco;
 	private String operacao;
+
+	@Embedded
+	private ImagemDocumento imagemCartaoContaBancaria;
 
 	@OneToOne(mappedBy = "apenado", cascade = CascadeType.ALL)
 	@JsonBackReference(value = "apenado-vagaPreenchida")
@@ -402,8 +412,46 @@ public class Apenado {
 	public void setProntuario(String prontuario) { this.prontuario = prontuario; }
 
 	public String getProntuario() { return this.prontuario; }
-	
-	
+
+	public ImagemDocumento getImagemCPF() {
+		return imagemCPF;
+	}
+
+	public void setImagemCPF(ImagemDocumento imagemCPF) {
+		this.imagemCPF = imagemCPF;
+	}
+
+	public ImagemDocumento getImagemRG() {
+		return imagemRG;
+	}
+
+	public void setImagemRG(ImagemDocumento imagemRG) {
+		this.imagemRG = imagemRG;
+	}
+
+	public ImagemDocumento getImagemComprovanteDeResidencia() {
+		return imagemComprovanteDeResidencia;
+	}
+
+	public void setImagemComprovanteDeResidencia(ImagemDocumento imagemComprovanteDeResidencia) {
+		this.imagemComprovanteDeResidencia = imagemComprovanteDeResidencia;
+	}
+
+	public ImagemDocumento getImagemAtestadoDePena() {
+		return imagemAtestadoDePena;
+	}
+
+	public void setImagemAtestadoDePena(ImagemDocumento imagemAtestadoDePena) {
+		this.imagemAtestadoDePena = imagemAtestadoDePena;
+	}
+
+	public ImagemDocumento getImagemCartaoContaBancaria() {
+		return imagemCartaoContaBancaria;
+	}
+
+	public void setImagemCartaoContaBancaria(ImagemDocumento imagemCartaoContaBancaria) {
+		this.imagemCartaoContaBancaria = imagemCartaoContaBancaria;
+	}
 }
 
 class ApenadoWithCpf implements Specification<Apenado> {
