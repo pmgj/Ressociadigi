@@ -91,15 +91,8 @@ public class ControladorEmpresa {
 			model.addAttribute("excluirFiltro", "Excluir Filtro");
 		}
 
-		Specification<Empresa> spec = apenadoRepositoryCustom.gerarSpec(empresaDTO.getCnpj(),
-				empresaDTO.getNome(),
-				empresaDTO.getResponsavel(),
-				empresaDTO.getInterlocutor(),
-				empresaDTO.getTelefone(),
-				empresaDTO.getEmail(),
-				empresaDTO.getCidade());
 
-		Specification<Empresa> spec = a
+		Specification<Empresa> spec = empresaRepositoryImpl.gerarSpec(empresaDTO);
 
 		Sort sort = Sort.by(Sort.Direction.ASC, "nome");
 
