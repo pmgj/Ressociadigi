@@ -32,23 +32,27 @@ import java.util.*;
 @SessionAttributes({"vagaDTO", "limite"})
 public class ControladorVaga {
 
-	@Autowired
-	private RepositorioVaga service;
+	private final RepositorioVaga service;
 
-	@Autowired
-	private RepositorioVagaCustom vagaRepositoryCustom;
+	private final RepositorioVagaCustom vagaRepositoryCustom;
 
-	@Autowired
-	private RepositorioVaga repVaga;
+	private final RepositorioEmpresa repEmpresa;
 
-	@Autowired
-	private RepositorioEmpresa repEmpresa;
+	private final RepositorioVagaPreenchida repVagaPreenchida;
 
-	@Autowired
-	private RepositorioVagaPreenchida repVagaPreenchida;
+	private final RepositorioApenado repApenado;
 
-	@Autowired
-	private RepositorioApenado repApenado;
+	private ControladorVaga(RepositorioVaga service,
+							RepositorioVagaCustom vagaRepositoryCustom,
+							RepositorioEmpresa repEmpresa,
+							RepositorioVagaPreenchida repVagaPreenchida,
+							RepositorioApenado repApenado) {
+		this.service = service;
+		this.vagaRepositoryCustom = vagaRepositoryCustom;
+		this.repEmpresa = repEmpresa;
+		this.repVagaPreenchida = repVagaPreenchida;
+		this.repApenado = repApenado;
+	}
 
 
 	@PostMapping("listarVagasPreenchidas")
@@ -180,7 +184,7 @@ public class ControladorVaga {
 	) {
 
 		Apenado apenadoEscolhido = repApenado.findById(vagaPreenchida.getApenado().getCpf()).orElse(null);
-		Vaga vagaEscolhida = repVaga.findById(vagaPreenchida.getVaga().getId()).orElse(null);
+		Vaga vagaEscolhida = service.findById(vagaPreenchida.getVaga().getId()).orElse(null);
 
 		List<Vaga> vagas = service.findAll();
 
