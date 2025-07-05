@@ -24,13 +24,21 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @SessionAttributes({"empresaDTO", "limite"})
 public class ControladorEmpresa {
-	
-	@Autowired
-	private RepositorioEmpresa service;
 
-	@Autowired
-	private RepositorioEmpresaCustom apenadoRepositoryCustom;
-	
+	private final RepositorioEmpresa service;
+
+	private final RepositorioEmpresaCustom apenadoRepositoryCustom;
+
+	private final RepositorioEmpresaImpl empresaRepositoryImpl;
+
+	private ControladorEmpresa(RepositorioEmpresa repositorioEmpresa,
+	                           RepositorioEmpresaCustom repositorioEmpresaCustom,
+							   RepositorioEmpresaImpl empresaRepositoryImpl
+							   ) {
+		this.service = repositorioEmpresa;
+		this.apenadoRepositoryCustom = repositorioEmpresaCustom;
+		this.empresaRepositoryImpl = empresaRepositoryImpl;
+	}
 		
 	@GetMapping("/inserirEmpresa")
 	public ModelAndView inserirVagaForm() {
@@ -90,6 +98,8 @@ public class ControladorEmpresa {
 				empresaDTO.getTelefone(),
 				empresaDTO.getEmail(),
 				empresaDTO.getCidade());
+
+		Specification<Empresa> spec = a
 
 		Sort sort = Sort.by(Sort.Direction.ASC, "nome");
 
