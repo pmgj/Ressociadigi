@@ -42,16 +42,20 @@ public class ControladorVaga {
 
 	private final RepositorioApenado repApenado;
 
+	private final RepositorioVagaImpl repVagaImpl;
+
 	private ControladorVaga(RepositorioVaga service,
 							RepositorioVagaCustom vagaRepositoryCustom,
 							RepositorioEmpresa repEmpresa,
 							RepositorioVagaPreenchida repVagaPreenchida,
-							RepositorioApenado repApenado) {
+							RepositorioApenado repApenado,
+							RepositorioVagaImpl repVagaImpl) {
 		this.service = service;
 		this.vagaRepositoryCustom = vagaRepositoryCustom;
 		this.repEmpresa = repEmpresa;
 		this.repVagaPreenchida = repVagaPreenchida;
 		this.repApenado = repApenado;
+		this.repVagaImpl = repVagaImpl;
 	}
 
 
@@ -71,7 +75,7 @@ public class ControladorVaga {
 			model.addAttribute("excluirFiltro", "Excluir Filtro");
 		}
 
-		Specification<VagaPreenchida> spec = vagaRepositoryCustom.gerarSpecVagaPreenchida(vagaDTO.getEmpresa(), vagaDTO.getApenado(), vagaDTO.getTipo());
+		Specification<VagaPreenchida> spec = vagaRepositoryCustom.gerarSpecVagaPreenchida(vagaDTO);
 
 		Sort sort = Sort.by(Sort.Direction.ASC, "apenado.nome");
 
@@ -314,7 +318,6 @@ public class ControladorVaga {
 		//Aumento de quantidade de vagas disponiveis ao remover uma vaga(Nao esta funcionando)
 //		vagaRepositoryCustom.aumentarVagaPorGenero(vagaPreenchida);
 
-
 		repVagaPreenchida.delete(vagaPreenchida);
 		return "redirect:/listarVagasPreenchidas";
 	}
@@ -354,11 +357,7 @@ public class ControladorVaga {
 			model.addAttribute("excluirFiltro", "Excluir Filtro");
 		}
 
-		Specification<Vaga> spec = vagaRepositoryCustom.gerarSpec(vagaDTO.getEmpresa(),
-				vagaDTO.getTipo(),
-				vagaDTO.getQuantidadeVagasMasculinas(),
-				vagaDTO.getQuantidadeVagasFemininas(),
-				vagaDTO.getCargaHoraria());
+		Specification<Vaga> spec = repVagaImpl.gerarSpec(vagaDTO);
 
 		Sort sort = Sort.by(Sort.Direction.ASC, "empresa.nome");
 

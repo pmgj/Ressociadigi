@@ -57,23 +57,23 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
     }
 
     @Override
-    public Specification<Vaga> gerarSpec(String empresa, String tipo, String vagasMasculinas, String vagasFemininas, String cargaHoraria) {
+    public Specification<Vaga> gerarSpec(VagaDTO vagaDTO) {
 
         Specification<Vaga> spec = Specification.where(null);
 
-        int vagasMasculinasConvertido = converterStringParaInteger(vagasMasculinas);
+        int vagasMasculinasConvertido = converterStringParaInteger(vagaDTO.getQuantidadeVagasMasculinas());
 
-        int vagasFemininasConvertido = converterStringParaInteger(vagasFemininas);
+        int vagasFemininasConvertido = converterStringParaInteger(vagaDTO.getQuantidadeVagasFemininas());
 
-        int cargaHorariaConvertido = converterStringParaInteger(cargaHoraria);
+        int cargaHorariaConvertido = converterStringParaInteger(vagaDTO.getQuantidadeVagasMasculinas());
 
 
-        if(empresa != null && !empresa.isEmpty()) {
-            spec = spec.and(new VagaWithEmpresa(empresa));
+        if(vagaDTO.getEmpresa() != null && !vagaDTO.getEmpresa().isEmpty()) {
+            spec = spec.and(new VagaWithEmpresa(vagaDTO.getEmpresa()));
         }
 
-        if(tipo != null && !tipo.isEmpty()) {
-            spec = spec.and(new VagaWithTipo(tipo));
+        if(vagaDTO.getTipo() != null && !vagaDTO.getTipo().isEmpty()) {
+            spec = spec.and(new VagaWithTipo(vagaDTO.getTipo()));
         }
 
 //        if(interlocutor != null && !interlocutor.isEmpty()) {
@@ -96,20 +96,20 @@ public class RepositorioVagaImpl implements RepositorioVagaCustom {
     }
 
     @Override
-    public Specification<VagaPreenchida> gerarSpecVagaPreenchida(String empresa, String apenado, String tipo) {
+    public Specification<VagaPreenchida> gerarSpecVagaPreenchida(VagaDTO vagaDTO) {
 
         Specification<VagaPreenchida> spec = Specification.where(null);
 
-        if(apenado != null && !apenado.isEmpty()) {
-            spec = spec.and(new VagaPreenchidaWithApenado(apenado));
+        if(vagaDTO.getApenado() != null && !vagaDTO.getApenado().isEmpty()) {
+            spec = spec.and(new VagaPreenchidaWithApenado(vagaDTO.getApenado()));
         }
 
-        if(empresa != null && !empresa.isEmpty()) {
-            spec = spec.and(new VagaPreenchidaWithEmpresa(empresa));
+        if(vagaDTO.getEmpresa() != null && !vagaDTO.getEmpresa().isEmpty()) {
+            spec = spec.and(new VagaPreenchidaWithEmpresa(vagaDTO.getEmpresa()));
         }
 
-        if(tipo != null && !tipo.isEmpty()) {
-            spec = spec.and(new VagaPreenchidaWithTipo(tipo));
+        if(vagaDTO.getTipo() != null && !vagaDTO.getTipo().isEmpty()) {
+            spec = spec.and(new VagaPreenchidaWithTipo(vagaDTO.getTipo()));
         }
 
         return spec;
