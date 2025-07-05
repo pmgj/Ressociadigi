@@ -46,7 +46,7 @@
             <form action="#" th:action="@{/armazenarApenado}" th:object="${apenado}" method="post" id="formulario">
                 <div id="titulo">
                     <h1 onclick="mudarTitulo()" id="titulox">Dados Pessoais</h1>
-                    <div id="div-sinalizacao">Os dados que contém a sinalização <a id="sinal">(*)</a> são obrigatórios!
+                    <div id="div-sinalizacao">Os dados que contém a sinalização <span id="sinal">(*)</span> são obrigatórios!
                     </div>
                 </div>
                 <div id="container-inputs">
@@ -80,6 +80,11 @@
                             <input type="text" th:field="*{telefone2}" id="telefone2" maxlength="15">
                             <label id="labelError" th:if="${#fields.hasErrors('telefone2')}" th:errors="*{telefone2}">Erro no Telefone
                                 2</label>
+                        </div>
+                        <div id="prontuario" class="input-normal">
+                            <label for="prontuario">Prontuário</label>
+                            <input type="text" th:field="*{prontuario}" id="prontuario" maxlength="15">
+                            <label id="labelError" th:if="${#fields.hasErrors('prontuario')}" th:errors="*{prontuario}">Erro no Prontuário</label>
                         </div>
 
                         <div id="nomeMae" class="input-normal">

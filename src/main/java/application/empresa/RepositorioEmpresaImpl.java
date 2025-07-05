@@ -31,7 +31,7 @@ public class RepositorioEmpresaImpl  implements RepositorioEmpresaCustom{
     }
 
     @Override
-    public void gerarModel(Model model, Pageable pageable, Page pgEmpresa) {
+    public void gerarModel(Model model, Pageable pageable, Page pgEmpresa, EmpresaDTO empresaDTO) {
 
         int numPaginaAtual = pageable.getPageNumber() + 1;
         int numTotalPaginas = pgEmpresa.getTotalPages();
@@ -44,6 +44,7 @@ public class RepositorioEmpresaImpl  implements RepositorioEmpresaCustom{
         model.addAttribute("previousPage", pageable.getPageNumber() - 1);
         model.addAttribute("quantidadePaginas", numTotalPaginas);
         model.addAttribute("listaEmpresas", pgEmpresa);
+        model.addAttribute("empresaDTO", empresaDTO);
 
         List<Integer> limiteValues = new ArrayList<>();
 
@@ -53,37 +54,38 @@ public class RepositorioEmpresaImpl  implements RepositorioEmpresaCustom{
         limiteValues.add(10);
         limiteValues.add(20);
 
+
         model.addAttribute("limites", limiteValues);
         model.addAttribute("limite", pageable.getPageSize());
     }
 
     @Override
-    public Specification<Empresa> gerarSpec(String cnpj, String nome, String responsavel, String interlocutor, String telefone, String email, String cidade) {
+    public Specification<Empresa> gerarSpec(EmpresaDTO empresaDTO) {
 
         Specification<Empresa> spec = Specification.where(null);
 
-        if(cnpj != null && !cnpj.isEmpty()) {
-            spec = spec.and(new EmpresaWithCnpj(cnpj));
+        if(empresaDTO.getCnpj() != null && !empresaDTO.getCnpj().isEmpty()) {
+            spec = spec.and(new EmpresaWithCnpj(empresaDTO.getCnpj()));
         }
 
-        if(nome != null && !nome.isEmpty()) {
-            spec = spec.and(new EmpresaWithNome(nome));
+        if(empresaDTO.getNome() != null && !empresaDTO.getNome().isEmpty()) {
+            spec = spec.and(new EmpresaWithNome(empresaDTO.getNome()));
         }
 
-        if(responsavel != null && !responsavel.isEmpty()) {
-            spec = spec.and(new EmpresaWithResponsavel(responsavel));
+        if(empresaDTO.getResponsavel() != null && !empresaDTO.getResponsavel().isEmpty()) {
+            spec = spec.and(new EmpresaWithResponsavel(empresaDTO.getResponsavel()));
         }
 
-        if(interlocutor != null && !interlocutor.isEmpty()) {
-            spec = spec.and(new EmpresaWithInterlocutor(interlocutor));
+        if(empresaDTO.getInterlocutor() != null && !empresaDTO.getInterlocutor().isEmpty()) {
+            spec = spec.and(new EmpresaWithInterlocutor(empresaDTO.getInterlocutor()));
         }
 
-        if(email != null && !email.isEmpty()) {
-            spec = spec.and(new EmpresaWithEmail(email));
+        if(empresaDTO.getEmail() != null && !empresaDTO.getEmail().isEmpty()) {
+            spec = spec.and(new EmpresaWithEmail(empresaDTO.getEmail()));
         }
 
-        if(cidade != null && !cidade.isEmpty()) {
-            spec = spec.and(new EmpresaWithCidade(cidade));
+        if(empresaDTO.getCidade() != null && !empresaDTO.getCidade().isEmpty()) {
+            spec = spec.and(new EmpresaWithCidade(empresaDTO.getCidade()));
         }
 
         return spec;

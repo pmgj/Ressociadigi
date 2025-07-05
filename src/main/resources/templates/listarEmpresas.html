@@ -44,13 +44,17 @@
 
             <div class="buscador">
                 <button id="icone-filtro" type="button" class="botao laranja">Filtrar</button>
+                <a  th:if="${excluirFiltro}" th:href="@{limpaFiltroEmpresa}">
+                    <button id="excluir-filtro" type="button" class="botao vermelho"><img src="/imgs/remove-orange.png"/></button>
+                </a>
             </div>
+
 
             <a th:href="@{/inserirEmpresa}">
                 <button type="button" class="botao laranja">Cadastrar Empresa</button>
             </a>
 
-            <form method="get" action="/listarEmpresas">
+            <form method="post" th:action="@{/listarEmpresas}">
                 <select id="tamanho_da_lista" class="form-select" name="limite">
                     <span th:each="item : ${limites}">
                          <option th:value="${item}" class="value-option" th:text="${item}" th:selected="${item} == ${limite}"></option>
@@ -67,35 +71,35 @@
                         <h4 class="modal-title">Busca Personalizada</h4>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="/listarEmpresas">
+                        <form method="post" th:action="@{/listarEmpresas}" th:object="${empresaDTO}">
 
                             <div class="form-group">
                                 <label for="inputCnpj">CNPJ</label>
-                                <input type="text" class="form-control" id="inputCnpj" placeholder="CNPJ" name="cnpj">
+                                <input type="text" class="form-control" id="inputCnpj" placeholder="CNPJ" name="cnpj" th:field="*{cnpj}">
                             </div>
                             <div class="form-group">
                                 <label for="inputNome">Nome</label>
-                                <input type="text" class="form-control" id="inputNome" placeholder="Nome" name="nome">
+                                <input type="text" class="form-control" id="inputNome" placeholder="Nome" name="nome" th:field="*{nome}">
                             </div>
                             <div class="form-group">
                                 <label for="inputResponsavel">Responsavel</label>
-                                <input type="text" class="form-control" id="inputResponsavel" placeholder="Responsavel" name="responsavel">
+                                <input type="text" class="form-control" id="inputResponsavel" placeholder="Responsavel" name="responsavel" th:field="*{responsavel}">
                             </div>
                             <div class="form-group">
                                 <label for="inputInterlocutor">Interlocutor</label>
-                                <input type="text" class="form-control" id="inputInterlocutor" placeholder="Interlocutor" name="interlocutor">
+                                <input type="text" class="form-control" id="inputInterlocutor" placeholder="Interlocutor" name="interlocutor" th:field="*{interlocutor}">
                             </div>
                             <div class="form-group">
                                 <label for="inputTelefone">Telefone</label>
-                                <input type="text" class="form-control" id="inputTelefone" placeholder="Telefone" name="telefone">
+                                <input type="text" class="form-control" id="inputTelefone" placeholder="Telefone" name="telefone" th:field="*{telefone}">
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail">Email</label>
-                                <input type="text" class="form-control" id="inputEmail" placeholder="Email" name="email">
+                                <input type="text" class="form-control" id="inputEmail" placeholder="Email" name="email" th:field="*{email}">
                             </div>
                             <div class="form-group">
                                 <label for="inputCidade">Cidade</label>
-                                <input type="text" class="form-control" id="inputCidade" placeholder="Cidade" name="cidade">
+                                <input type="text" class="form-control" id="inputCidade" placeholder="Cidade" name="cidade" th:field="*{cidade}">
                             </div>
 
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -170,18 +174,18 @@
                 <div id="pageCounter"><p th:text="${'Pagina ' + numPaginaAtual + ' de ' + numTotalPaginas}"> </p></div>
 
                 <div id="previousAndNextButtons">
-                        <a th:href="@{listarEmpresas(cnpj=${#httpServletRequest.getParameter('cnpj')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},responsavel=${#httpServletRequest.getParameter('responsavel')?:''},interlocutor=${#httpServletRequest.getParameter('interlocutor')?:''},email=${#httpServletRequest.getParameter('email')?:''},cidade=${#httpServletRequest.getParameter('cidade')?:''},limite=${#httpServletRequest.getParameter('limite')?:''}, page=0)}">
-                            <button type="button" class="botao laranja"><<</button>
-                        </a>
-                        <a th:href="@{listarEmpresas(cnpj=${#httpServletRequest.getParameter('cnpj')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},responsavel=${#httpServletRequest.getParameter('responsavel')?:''},interlocutor=${#httpServletRequest.getParameter('interlocutor')?:''},email=${#httpServletRequest.getParameter('email')?:''},cidade=${#httpServletRequest.getParameter('cidade')?:''},limite=${#httpServletRequest.getParameter('limite')?:''}, page=${previousPage})}">
-                            <button type="button" class="botao laranja"><</button>
-                        </a>
-                        <a th:href="@{listarEmpresas(cnpj=${#httpServletRequest.getParameter('cnpj')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},responsavel=${#httpServletRequest.getParameter('responsavel')?:''},interlocutor=${#httpServletRequest.getParameter('interlocutor')?:''},email=${#httpServletRequest.getParameter('email')?:''},cidade=${#httpServletRequest.getParameter('cidade')?:''},limite=${#httpServletRequest.getParameter('limite')?:''}, page=${nextPage})}">
-                            <button type="button" class="botao laranja">></button>
-                        </a>
-                        <a th:href="@{listarEmpresas(cnpj=${#httpServletRequest.getParameter('cnpj')?:''},nome=${#httpServletRequest.getParameter('nome')?:''},responsavel=${#httpServletRequest.getParameter('responsavel')?:''},interlocutor=${#httpServletRequest.getParameter('interlocutor')?:''},email=${#httpServletRequest.getParameter('email')?:''},cidade=${#httpServletRequest.getParameter('cidade')?:''},limite=${#httpServletRequest.getParameter('limite')?:''}, page=${quantidadePaginas - 1})}">
-                            <button type="button" class="botao laranja">>></button>
-                        </a>
+                        <form method="post" th:action="@{listarEmpresas(empresaDTO=${empresaDTO}, limite=${limiteStorage}, page=0)}">
+                            <button type="submit" class="botao laranja"><<</button>
+                        </form>
+                        <form method="post" th:action="@{listarEmpresas(empresaDTO=${empresaDTO}, limite=${limiteStorage}, page=${previousPage})}">
+                            <button type="submit" class="botao laranja"><</button>
+                        </form>
+                        <form method="post" th:action="@{listarEmpresas(empresaDTO=${empresaDTO}, limite=${limiteStorage}, page=${nextPage})}">
+                            <button type="submit" class="botao laranja">></button>
+                        </form>
+                        <form method="post" th:action="@{listarEmpresas(empresaDTO=${empresaDTO}, limite=${limiteStorage}, page=${quantidadePaginas - 1})}">
+                            <button type="submit" class="botao laranja">>></button>
+                        </form>
                 </div>
 
                 </div>

@@ -41,13 +41,16 @@
 
 			<div class="buscador">
 				<button id="icone-filtro" type="button" class="botao laranja" data-toggle="modal" data-target="#confirmModal">Filtrar</button>
+				<a  th:if="${excluirFiltro}" th:href="@{limpaFiltroVagaPreenchida}">
+					<button id="excluir-filtro" type="button" class="botao vermelho"><img src="/imgs/remove-orange.png"/></button>
+				</a>
 			</div>
 
 			<a th:href="@{/preencherVaga}">
 				<button type="button" class="botao laranja">Preencher Vagas</button>
 			</a>
 
-			<form method="get" action="/listarVagasPreenchidas">
+			<form method="post" th:action="@{/listarVagasPreenchidas}">
 				<select id="tamanho_da_lista" class="form-select" name="limite">
                     <span th:each="item : ${limites}">
                          <option th:value="${item}" class="value-option" th:text="${item}" th:selected="${item} == ${limite}"></option>
@@ -63,19 +66,19 @@
 						<h4 class="modal-title">Busca Personalizada</h4>
 					</div>
 					<div class="modal-body">
-						<form method="post" action="/listarVagasPreenchidas">
+						<form method="post" th:action="@{/listarVagasPreenchidas}" th:object="${vagaDTO}">
 
 							<div class="form-group">
 								<label for="inputEmpresa">Empresa</label>
-								<input type="text" class="form-control" id="inputEmpresa" placeholder="Empresa" name="empresa">
+								<input type="text" class="form-control" id="inputEmpresa" placeholder="Empresa" name="empresa" th:field="*{empresa}">
 							</div>
 							<div class="form-group">
 								<label for="inputApenado">Apenado</label>
-								<input type="text" class="form-control" id="inputApenado" placeholder="Apenado" name="apenado">
+								<input type="text" class="form-control" id="inputApenado" placeholder="Apenado" name="apenado" th:field="*{apenado}">
 							</div>
 							<div class="form-group">
 								<label for="inputTipo">Tipo</label>
-								<input type="text" class="form-control" id="inputTipo" placeholder="Tipo" name="tipo">
+								<input type="text" class="form-control" id="inputTipo" placeholder="Tipo" name="tipo" th:field="*{tipo}">
 							</div>
 
 							<button type="submit" class="btn btn-primary">Submit</button>
@@ -88,13 +91,13 @@
 		<table>
 			<thead>
 				<tr>
-					<th>ID DA VAGA</th>
+
 					<th>APENADO</th>
 					<th>EMPRESA</th>
 					<th>VAGA</th>
 					<th>DATA DE INÍCIO</th>
 					<th>DATA DE TÉRMINO</th>
-					<th>OPERAÇÕES</th>
+					<th id="acoes-box">AÇÕES</th>
 				</tr>
 			</thead>
 
@@ -105,7 +108,7 @@
 				</tr>
 
 				<tr th:each="vagaPreenchida : ${listaVagas}">
-					<td data-label="ID"><span th:text="${vagaPreenchida.getId()}">ID</span></td>
+
 					<td data-label="APENADO"><span
 						th:text="${vagaPreenchida.apenado.getNome()}">NOME DO
 							APENADO</span></td>
@@ -119,6 +122,7 @@
 					<td data-label="DATA DE TERMINO"><span
 						th:text="${vagaPreenchida.dataFim}">DATA DE TÉRMINO</span></td>
 					<td id="Btn-remove-edit" width="180">
+						<a th:href="@{/emitirCertificado(id=${vagaPreenchida.getId()})}"><button><img class="icones-lista" src="/imgs/print.png" alt="Imprimir 2°via"></button></a>
 						<button id="ver-mais" th:attr="data-id=${vagaPreenchida.getId()}"><img class="icones-lista" src="/imgs/view.png" alt="detalhamento"></button>
 						<a th:href="@{/alterarVagaPreenchida(id=${vagaPreenchida.getId()})}"><button><img class="icones-lista" src="/imgs/edit.png" alt="editar item"></button></a>
 						<a id="botao-remover" href="#" th:attr="data-id=${vagaPreenchida.getId()}" data-toggle="modal" data-target="#confirmModal"><button><img class="icones-lista" src="/imgs/remove.png" alt="remover item"></button></a>
@@ -156,19 +160,18 @@
 				<div id="pageCounter"><p th:text="${'Pagina ' + numPaginaAtual + ' de ' + numTotalPaginas}"> </p></div>
 
 				<div id="previousAndNextButtons">
-					<a th:href="@{listarVagasPreenchidas(empresa=${#httpServletRequest.getParameter('empresa')?:''},tipo=${#httpServletRequest.getParameter('tipo')?:''},interlocutor=${#httpServletRequest.getParameter('interlocutor')?:''},vagasMasculinas=${#httpServletRequest.getParameter('vagasMasculinas')?:'0'},vagasFemininas=${#httpServletRequest.getParameter('vagasFeminas')?:'0'},cargaHoraria=${#httpServletRequest.getParameter('cargaHoraria')?:'0'},limite=${#httpServletRequest.getParameter('limite')?:''}, page=0)}">
-						<button type="button" class="botao laranja"><<</button>
-					</a>
-					<a th:href="@{listarVagasPreenchidas(empresa=${#httpServletRequest.getParameter('empresa')?:''},tipo=${#httpServletRequest.getParameter('tipo')?:''},interlocutor=${#httpServletRequest.getParameter('interlocutor')?:''},vagasMasculinas=${#httpServletRequest.getParameter('vagasMasculinas')?:'0'},vagasFemininas=${#httpServletRequest.getParameter('vagasFeminas')?:'0'},cargaHoraria=${#httpServletRequest.getParameter('cargaHoraria')?:'0'},limite=${#httpServletRequest.getParameter('limite')?:''}, page=${previousPage})}">
-						<button type="button" class="botao laranja"><</button>
-					</a>
-					<a th:href="@{listarVagasPreenchidas(empresa=${#httpServletRequest.getParameter('empresa')?:''},tipo=${#httpServletRequest.getParameter('tipo')?:''},interlocutor=${#httpServletRequest.getParameter('interlocutor')?:''},vagasMasculinas=${#httpServletRequest.getParameter('vagasMasculinas')?:'0'},vagasFemininas=${#httpServletRequest.getParameter('vagasFeminas')?:'0'},cargaHoraria=${#httpServletRequest.getParameter('cargaHoraria')?:'0'},limite=${#httpServletRequest.getParameter('limite')?:''}, page=${nextPage})}">
-						<button type="button" class="botao laranja">></button>
-					</a>
-					<a th:href="@{listarVagasPreenchidas(empresa=${#httpServletRequest.getParameter('empresa')?:''},tipo=${#httpServletRequest.getParameter('tipo')?:''},interlocutor=${#httpServletRequest.getParameter('interlocutor')?:''},vagasMasculinas=${#httpServletRequest.getParameter('vagasMasculinas')?:'0'},vagasFemininas=${#httpServletRequest.getParameter('vagasFeminas')?:'0'},cargaHoraria=${#httpServletRequest.getParameter('cargaHoraria')?:'0'},limite=${#httpServletRequest.getParameter('limite')?:''}, page=${quantidadePaginas - 1})}">
-						<button type="button" class="botao laranja">>></button>
-					</a>
-					</a>
+					<form method="post" th:action="@{listarVagasPreenchidas(vagaDTO=${vagaDTO}, limite=${limiteStorage}, page=0)}">
+						<button type="submit" class="botao laranja"><<</button>
+					</form>
+					<form method="post" th:action="@{listarVagasPreenchidas(vagaDTO=${vagaDTO}, limite=${limiteStorage}, page=${previousPage})}">
+						<button type="submit" class="botao laranja"><</button>
+					</form>
+					<form method="post" th:action="@{listarVagasPreenchidas(vagaDTO=${vagaDTO}, limite=${limiteStorage}, page=${nextPage})}">
+						<button type="submit" class="botao laranja">></button>
+					</form>
+					<form method="post" th:action="@{listarVagasPreenchidas(vagaDTO=${vagaDTO}, limite=${limiteStorage}, page=${quantidadePaginas - 1})}">
+						<button type="submit" class="botao laranja">>></button>
+					</form>
 				</div>
 			</div>
 		</div>

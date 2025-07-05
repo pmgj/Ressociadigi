@@ -18,17 +18,30 @@
 }
 
 .dicas{
-    padding:0 10px;
+    padding:0 10px !important;
     color: #fff;
     z-index:3;
-    width: 300px;
+    /*width: 300px;*/
     border-radius:5px;
     position:relative;
     display:none;
     background-color: #222222;
     margin-left: 1rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 14px !important;
+    align-items: center;
+    justify-content: center;
+}
+.caixa>a{
+    display: flex;
+    width: 100%;
+    text-decoration: none !important;
+}
+a>div>p{
+    width: 300px;
+    text-decoration: none !important;
+    align-items: center;
 }
 
-/*img {*/
-/*    object-fit: cover;*/
-/*}*/
+

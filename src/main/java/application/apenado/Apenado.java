@@ -55,6 +55,8 @@ public class Apenado {
 	private String telefone;
 
 	private String telefone2;
+
+	private String prontuario;
 	private String nomeDaMae;
 	private String email;
 	private String sexoBiologico;
@@ -396,6 +398,10 @@ public class Apenado {
 	public void setArtigos(List<String> artigos) {
 		this.artigos = artigos;
 	}
+
+	public void setProntuario(String prontuario) { this.prontuario = prontuario; }
+
+	public String getProntuario() { return this.prontuario; }
 	
 	
 }

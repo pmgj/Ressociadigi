@@ -56,7 +56,9 @@ li{
     padding: 5px;
     cursor:pointer;
 }
-
+#container-inputs{
+    margin-bottom: 1rem;
+}
 #titulox {
     font-family: 'Roboto', sans-serif;
 }
@@ -81,7 +83,7 @@ nav {
     width: 80%;
     padding: 5px;
     border-radius: 5px;
-    margin: 40px auto;
+    margin: 60px auto;
     display: flex;
     justify-content: space-around;
 }

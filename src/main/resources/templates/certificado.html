@@ -1,0 +1,84 @@
+    <!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<!--teste -->
+
+<head>
+    <title>Imprimir Certificado</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=10, minimum-scale=1.0">
+    <link rel="stylesheet" th:href="@{css/listagens.css}" />
+    <link rel="stylesheet" th:href="@{css/telacertificado.css}" media="all"/>
+    <link rel="stylesheet" th:href="@{/css/menu-lateral.css}" />
+    <link rel="icon" th:href="@{/imgs/logoRD.png}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+</head>
+
+<body>
+
+<div th:insert="fragments/menuLateral.html :: menuLateral" id="menu-lateral-print"> </div>
+
+<main>
+    <div class="title">
+        <a th:href="@{/}">
+            <h1>RessociaDigi</h1>
+            <hr>
+        </a>
+    </div>
+    <div class="top-layer">
+        <h3>Imprimir Certificado de <span th:text="${apenado.nome}"></span></h3>
+    </div>
+
+    <div id="edicao">
+        <label for="dataHoraApresentation">Data e hora para apresentação:</label>
+        <input type="datetime-local" id="dataHoraApresentation" name="dataHoraApresentation">
+    </div>
+
+    <div id="print-box">
+        <header class="print-header">
+            <img src="/imgs/patronato-logo.png" class="print-logo" alt="Patronato do Estado de Pernambuco"/>
+            <img src="/imgs/secretaria.jpeg" class="print-logo" alt="Secretaria de Justiça e Direitos Humanos"/>
+        </header>
+        <section class="print-body">
+                <h1>CAEF EMPREGO</h1>
+                <h2>Encaminhamento de Mão de Obra Reeducanda</h2>
+                <p>Encaminhamos o(a) reeducando(a) <span th:text="${apenado.nome}"></span>, Prontuário
+                    <span th:text="${apenado.prontuario}"></span> para se apresentar dia <span id="diaApresentacao"></span>/<span id="mesApresentacao"></span>, às <span id="horaApresentacao"></span>
+<!--                    na empresa <span th:text="${vaga.empresa.nome}"></span>, apto(a) à função de <span th:text="${vaga.tipo}"></span>(a).</p>-->
+                <div class="print-data">
+                    Recife, PE, <span th:text="${dia}"></span> de <span th:text="${mes}"></span> de <span th:text="${ano}"></span>.
+                </div>
+                <div class="print-assinatura">
+                    <div class="print-campo-assinatura">______________________________________________________</div>
+                    <div class="print-cargo">Servidor</div>
+                </div>
+            <div class="print-footer">
+                <div>
+                    PATRONATO PENITENCIÁRIO DE PERNAMBUCO
+                </div>
+                <div class="print-endereco">
+                    Rua Floriano Peixoto, n° 141, Bairro Santo Antônio, Recife - PE, CEP: 50.020-060. <br>Fone:(81) 3182-7688
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="footer">
+        <div class="botao-container">
+            <a th:href="@{/listarVagas}" ><button type="button" class="botao laranja">Lista de Vagas</button></a>
+            <button onclick="window.print()" type="button" class="botao laranja">Imprimir Certificado</button>
+
+        </div>
+    </div>
+
+</main>
+
+<script defer="defer"  th:src="@{/js/menuLateral.js}"></script>
+<script defer="defer"  th:src="@{/js/printJS.js}"></script>
+</body>
+
+</html>

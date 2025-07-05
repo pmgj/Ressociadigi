@@ -15,7 +15,9 @@ button a{
     margin: 0;
     padding: 0;
 }
-
+.acoes-box{
+    min-width: 250px;
+}
 .modal-detalhamento > h2{
     margin-top: 15px;
     margin-bottom: -10px;
@@ -65,7 +67,7 @@ body {
 
 .buscador {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: 35rem;
 }
 
@@ -132,7 +134,12 @@ body {
     margin-bottom: 1rem;
 }
 
-
+select{
+    width: 70px !important;
+}
+#previousAndNextButtons{
+    display: flex;
+}
 .botao {
     background-color: #fff;
     text-transform: uppercase;
@@ -147,6 +154,12 @@ body {
     width: fit-content;
     padding: 0px 10px;
 }
+.botaoVaga{
+    line-height: 25px !important;
+}
+.botaoVaga:last-child{
+    margin-right: 20px;
+}
 
 .laranja {
     border-color: #CD7F32;
@@ -157,7 +170,12 @@ body {
     background-color:  #FFBF00;
     color: white;
 }
-
+#excluir-filtro>img{
+    width:2rem;
+}
+#excluir-filtro{
+    border: none !important;
+}
 
 thead th td {
     display: flex;
@@ -411,7 +429,8 @@ table tbody tr td:before {
 }
 #Btn-remove-edit {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    min-width: 240px;
 }
 
 .top-layer {

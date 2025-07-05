@@ -1,0 +1,110 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden !important;
+}
+.botao-container{
+    margin-bottom: 40px;
+}
+#print-box{
+    width: 840px;
+    padding: 30px;
+    height: 1148px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin:20px auto;
+    border: 1px solid black;
+    box-shadow: 2px 5px 5px black;
+    background-color: white;
+}
+.print-logo{
+    height: 100px;
+}
+.print-header{
+    display: flex;
+    justify-content: space-between;
+}
+.print-body>h1{
+    font-size: 1.8rem;
+    text-align: center;
+}
+.print-body>h2{
+    font-size: 1.4rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.print-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    margin: 30px auto;
+    line-height: 200%;
+}
+.print-data{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+.print-assinatura{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.print-footer{
+    display: flex;
+    flex-direction: column;
+    margin: 300px auto 20px auto;
+    text-align: center;
+}
+.print-endereco{
+    font-size: 0.8rem;
+}
+span{
+    font-weight: 800;
+    padding: 0 6px;
+}
+@page {size:auto; margin: 0mm;}
+@media print{
+    .title,
+    .top-layer,
+    #footer,
+    #menu-lateral-print,
+    #edicao{
+        display: none;
+    }
+    #print-box{
+        border: none;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        box-shadow: none;
+        margin-top: 0px;
+        line-height: 200%;
+    }
+    .print-logo{
+        height: 70px;
+    }
+    .print-header{
+        margin-top: 100px;
+    }
+    .print-assinatura{
+        margin-top: 50px;
+    }
+    .print-data{
+        margin-top: 50px;
+    }
+    .print-body{
+        width: 100%;
+        margin-top: 80px;
+    }
+    .print-footer{
+        margin-top: 300px;
+    }
+    p{
+        text-align: justify;
+    }
+}

@@ -1,11 +1,16 @@
 package application.apenado;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,10 +23,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Controller
+@SessionAttributes({"apenadoDTO", "limite"})
 public class ControladorApenado {
 
     @Autowired
@@ -43,17 +50,33 @@ public class ControladorApenado {
         return "signIn";
     }
 
-    @RequestMapping("listarApenados")
-    public String listarApenados(@RequestParam(value = "cpf", required = false) String cpf,
-                                 @RequestParam(value = "nome", required = false) String nome,
-                                 @RequestParam(value = "telefone", required = false) String telefone,
-                                 @RequestParam(value = "dataNascimento", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dataNascimento,
-                                 @RequestParam(value = "nomeDaMae", required = false) String nomeDaMae,
+    @GetMapping("/certificado")
+    public String certificado(Model model) {
+        Apenado apenado = new Apenado();
+        apenado.setNome("Arnaldo");
+        apenado.setEmail("arnaldo@gmail.com");
+        apenado.setProntuario("Não sei o que é isso");
+        model.addAttribute("dia", LocalDate.now().getDayOfMonth());
+        model.addAttribute("mes", LocalDate.now().getMonth());
+        model.addAttribute("ano", LocalDate.now().getYear());
+        model.addAttribute("apenado", apenado);
+        return "certificado"; }
+
+    @PostMapping("listarApenados")
+    public String listarApenados(@Valid @ModelAttribute("apenadoDTO") ApenadoDTO apenadoDTO,
                                  @RequestParam(value = "limite", required = false, defaultValue = "8") String limite,
                                  Model model,
                                  @PageableDefault(page = 0, size = 10) Pageable pageable) {
 
-        Specification<Apenado> spec = apenadoRepository.gerarSpec(cpf, nome, telefone, dataNascimento, nomeDaMae);
+
+
+        model.addAttribute("limiteStorage", limite);
+
+        if(apenadoDTO.getCpf() != null || apenadoDTO.getNome() != null || apenadoDTO.getTelefone() != null || apenadoDTO.getNomeDaMae() != null || apenadoDTO.getDataNascimento() != null){
+            model.addAttribute("excluirFiltro", "Excluir Filtro");
+        }
+
+        Specification<Apenado> spec = apenadoRepository.gerarSpec(apenadoDTO);
 
         Sort sort = Sort.by(Sort.Direction.ASC, "nome");
 
@@ -61,9 +84,27 @@ public class ControladorApenado {
 
         Page<Apenado> pgApenado = repo.findAll(spec, pageRequest);
 
-        apenadoRepository.gerarModel(model, pageRequest, pgApenado);
+        apenadoRepository.gerarModel(model, pageRequest, pgApenado, apenadoDTO);
 
         return "listarApenados";
+    }
+
+    @GetMapping("listarApenados")
+    public String listarApenados(Model model,
+                                 @PageableDefault(page = 0, size = 10) Pageable pageable) {
+        Sort sort = Sort.by(Sort.Direction.ASC, "nome");
+        PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), 8, sort);
+        Page<Apenado> pgApenado = repo.findAll(pageRequest);
+        ApenadoDTO apenadoDTO = new ApenadoDTO();
+        apenadoRepository.gerarModel(model, pageRequest, pgApenado, apenadoDTO);
+        return "listarApenados";
+    }
+
+
+    @RequestMapping("limpaFiltroApenado")
+    public String limpaFiltroApenados(SessionStatus status){
+        status.setComplete();
+        return "redirect:/listarApenados";
     }
 
     @ModelAttribute("cnhsList")
