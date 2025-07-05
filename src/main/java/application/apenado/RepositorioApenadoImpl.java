@@ -62,28 +62,28 @@ public class RepositorioApenadoImpl implements RepositorioApenadoCustom {
     }
 
     @Override
-    public Specification<Apenado> gerarSpec(String cpf, String nome, String telefone, LocalDate dataNascimento, String nomeDaMae) {
+    public Specification<Apenado> gerarSpec(ApenadoDTO apenadoDTO) {
 
         Specification<Apenado> spec = Specification.where(null);
 
-        if (cpf != null && !cpf.isEmpty()) {
-            spec = spec.and(new ApenadoWithCpf(cpf));
+        if (apenadoDTO.getCpf() != null && !apenadoDTO.getCpf().isEmpty()) {
+            spec = spec.and(new ApenadoWithCpf(apenadoDTO.getCpf()));
         }
 
-        if (nome != null && !nome.isEmpty()) {
-            spec = spec.and(new ApenadoWithNome(nome));
+        if (apenadoDTO.getNome() != null && !apenadoDTO.getNome().isEmpty()) {
+            spec = spec.and(new ApenadoWithNome(apenadoDTO.getNome()));
         }
 
-        if (telefone != null && !telefone.isEmpty()) {
-            spec = spec.and(new ApenadoWithTelefone(telefone));
+        if (apenadoDTO.getTelefone() != null && !apenadoDTO.getTelefone().isEmpty()) {
+            spec = spec.and(new ApenadoWithTelefone(apenadoDTO.getTelefone()));
         }
 
-        if (dataNascimento != null) {
-            spec = spec.and(new ApenadoWithDataNascimento(dataNascimento));
+        if (apenadoDTO.getDataNascimento() != null) {
+            spec = spec.and(new ApenadoWithDataNascimento(apenadoDTO.getDataNascimento()));
         }
 
-        if (nomeDaMae != null && !nomeDaMae.isEmpty()) {
-            spec = spec.and(new ApenadoWithNomeDaMae(nomeDaMae));
+        if (apenadoDTO.getNomeDaMae() != null && !apenadoDTO.getNomeDaMae().isEmpty()) {
+            spec = spec.and(new ApenadoWithNomeDaMae(apenadoDTO.getNomeDaMae()));
         }
 
         return spec;

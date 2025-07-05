@@ -1,6 +1,7 @@
 package application.apenado;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
@@ -49,6 +50,18 @@ public class ControladorApenado {
         return "signIn";
     }
 
+    @GetMapping("/certificado")
+    public String certificado(Model model) {
+        Apenado apenado = new Apenado();
+        apenado.setNome("Arnaldo");
+        apenado.setEmail("arnaldo@gmail.com");
+        apenado.setProntuario("Não sei o que é isso");
+        model.addAttribute("dia", LocalDate.now().getDayOfMonth());
+        model.addAttribute("mes", LocalDate.now().getMonth());
+        model.addAttribute("ano", LocalDate.now().getYear());
+        model.addAttribute("apenado", apenado);
+        return "certificado"; }
+
     @PostMapping("listarApenados")
     public String listarApenados(@Valid @ModelAttribute("apenadoDTO") ApenadoDTO apenadoDTO,
                                  @RequestParam(value = "limite", required = false, defaultValue = "8") String limite,
@@ -63,7 +76,7 @@ public class ControladorApenado {
             model.addAttribute("excluirFiltro", "Excluir Filtro");
         }
 
-        Specification<Apenado> spec = apenadoRepository.gerarSpec(apenadoDTO.getCpf(), apenadoDTO.getNome(), apenadoDTO.getTelefone(), apenadoDTO.getDataNascimento(), apenadoDTO.getNomeDaMae());
+        Specification<Apenado> spec = apenadoRepository.gerarSpec(apenadoDTO);
 
         Sort sort = Sort.by(Sort.Direction.ASC, "nome");
 

@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = SexoVagaValidator.class)
 public @interface SexoVaga {
 
-    String message() default "Voce tentou inserir um apenado em uma vaga de soxo diferente";
+    String message() default "Voce tentou inserir um apenado em uma vaga de sexo diferente";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

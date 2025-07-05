@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+    <!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org">
 <!--teste -->
 
@@ -19,7 +19,6 @@
 </head>
 
 <body>
-
 
 <div th:insert="fragments/menuLateral.html :: menuLateral" id="menu-lateral-print"> </div>
 
@@ -48,8 +47,8 @@
                 <h1>CAEF EMPREGO</h1>
                 <h2>Encaminhamento de Mão de Obra Reeducanda</h2>
                 <p>Encaminhamos o(a) reeducando(a) <span th:text="${apenado.nome}"></span>, Prontuário
-                    <span th:text="${apenado.prontuario}"></span> para se apresentar dia <span id="diaApresentacao"></span>/<span id="mesApresentacao"></span>, às <span id="horaApresentacao"></span>,
-                    na empresa <span th:text="${vaga.empresa.nome}"></span>, apto(a) à função de <span th:text="${vaga.tipo}"></span>(a).</p>
+                    <span th:text="${apenado.prontuario}"></span> para se apresentar dia <span id="diaApresentacao"></span>/<span id="mesApresentacao"></span>, às <span id="horaApresentacao"></span>
+<!--                    na empresa <span th:text="${vaga.empresa.nome}"></span>, apto(a) à função de <span th:text="${vaga.tipo}"></span>(a).</p>-->
                 <div class="print-data">
                     Recife, PE, <span th:text="${dia}"></span> de <span th:text="${mes}"></span> de <span th:text="${ano}"></span>.
                 </div>
@@ -67,8 +66,6 @@
             </div>
         </section>
     </div>
-
-
 
     <div id="footer">
         <div class="botao-container">
